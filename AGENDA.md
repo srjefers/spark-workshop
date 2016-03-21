@@ -1,20 +1,36 @@
 ## What You Will Learn (aka Goals)
 
-The goal of the workshop is to give you a practical introduction to Apache Spark and how to use Spark's Scala API (developer) and infrastructure (administrator, devops) effectively.
+The goal of the workshop is to give you a practical hands-on introduction to Apache Spark and how to use Spark's Scala API (developer) and infrastructure (administrator, devops) effectively.
 
 The workshop uses the code-first approach in which the modules start with enough knowledge to get you going fairly well and (after 10 minutes or so) move to using the concepts outlined in examples. It comes with many practical sessions that should meet expectations of software engineers, administrators, devops, and other technical roles like system architects or technical leads.
 
 It simply provides participants with practical skills to leverage the features of Apache Spark with Scala (the programming language).
 
+## Duration
+
+4 days
+
+## Target Audience
+
+Software engineers who know Java or similar general-purpose programming language (Python, Groovy)
+
 ## Outcomes
 
-Participants will be able to:
+After completing the workshop participants should be able to:
 
+* Use functional programming concepts in Scala
+* Describe Spark and the use cases for Apache Spark
+* Explain the RDD distributed data abstraction
+* Explore large datasets using interactive Spark Shell
 * Develop Spark applications using Scala API
+* Assemble and submit Spark applications to Spark clusters
 * Use Spark in local mode as well as Spark Standalone clusters
-* How to install Spark development and runtime environments
-* How to build processing pipelines using Spark's RDD and abstractions above in Spark SQL (DataFrames), Spark Streaming (DStreams), and Spark MLlib (Pipeline API).
-* The internals of Spark and execution model
+* Install Spark development and runtime environments
+* Understand the concepts of Spark SQL
+* Understand the concepts of Spark Streaming
+* Understand the concepts of Spark MLlib
+* Build processing pipelines using Spark's RDD and abstractions above in Spark SQL (DataFrame), Spark Streaming (DStream), and Spark MLlib (Pipeline API).
+* Explain the internals of Spark and execution model
 
 ## Agenda
 
@@ -23,6 +39,8 @@ The programming language to use during the course is [Scala](http://www.scala-la
 ### Scala (one-day crash course)
 
 This module aims at introducing Scala and the tools, i.e. sbt and Scala REPL, to complete the other Spark modules.
+
+This module requires Internet access to download sbt and plugins.
 
 This module covers:
 
@@ -38,6 +56,17 @@ This module covers:
 * Packages
 * Case Classes, Objects, and Traits
 * Pattern Matching
+
+Agenda:
+
+1. Using sbt
+  1. The tasks: `help`, `compile`, `test`, `package`, `update`, `~`, `set`, `show`, `console`
+  1. Tab experience
+  1. Configuration files and directories, i.e. `build.sbt`, `project` directory
+1. Adding new tasks to sbt through plugins
+  1. Global vs project plugins
+  1. [sbt-assembly](https://github.com/sbt/sbt-assembly)
+  1. [sbt-updates](https://github.com/rtimush/sbt-updates)
 
 ### Spark Core
 
@@ -123,9 +152,8 @@ This module covers:
 * Participants have decent computers, preferably with Linux/Mac OS operating systems
   * There are issues with running Spark on Windows (mostly with Spark SQL / Hive)
 * Participants have to download the following packages to their computers before the class:
-  * [spark-1.6.0-bin-hadoop2.6.tgz](http://www.apache.org/dyn/closer.lua/spark/spark-1.6.0/spark-1.6.0-bin-hadoop2.6.tgz)
+  * [spark-1.6.1-bin-hadoop2.6.tgz](http://www.apache.org/dyn/closer.lua/spark/spark-1.6.1/spark-1.6.1-bin-hadoop2.6.tgz)
   * [sbt-0.13.11.zip](https://dl.bintray.com/sbt/native-packages/sbt/0.13.11/sbt-0.13.11.zip)
-  * sbt-assembly plugin
   * [IntelliJ IDEA Community Edition 15.0.4](https://www.jetbrains.com/idea/download/) (or equivalent development environment)
     * Install [Scala plugin](https://plugins.jetbrains.com/plugin/?id=1347)
   * [kafka_2.11-0.9.0.1.tgz](https://www.apache.org/dyn/closer.cgi?path=/kafka/0.9.0.1/kafka_2.11-0.9.0.1.tgz)
