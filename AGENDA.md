@@ -2,9 +2,9 @@
 
 The goal of the workshop is to give you a practical hands-on introduction to Apache Spark and how to use Spark's Scala API (developer) and infrastructure (administrator, devops) effectively.
 
-The workshop uses the code-first approach in which the modules start with enough knowledge to get you going fairly well and (after 10 minutes or so) move to using the concepts outlined in examples. It comes with many practical sessions that should meet expectations of software engineers, administrators, devops, and other technical roles like system architects or technical leads.
+Please note that the workshop uses an intense code-first approach in which the modules start with just enough knowledge to get you going (through slides and scaladoc) and quickly move on to applying the concepts in programming assignments. It comes with many practical sessions that should meet expectations of software developers (and quite likely exceed expectations of administrators, devops, and other technical roles like system architects or technical leads).
 
-It simply provides participants with practical skills to leverage the features of Apache Spark with Scala (the programming language).
+The workshop provides participants with practical skills to use the features of Apache Spark with Scala.
 
 ## Duration
 
@@ -12,7 +12,8 @@ It simply provides participants with practical skills to leverage the features o
 
 ## Target Audience
 
-Software engineers who know Java or similar general-purpose programming language (Python, Groovy)
+* Software developers who know Scala and want to explore the Spark space
+* Software developers with programming experience in a similar general-purpose programming language (Java, Python, Ruby)
 
 ## Outcomes
 
@@ -78,6 +79,7 @@ Agenda:
   1. Exercise: A Complete Development Cycle of Spark Application
 1. Processing Structured Data using RDDs
   1. Traditional / Old-Fashioned Approach
+  1. Exercise: Accessing Data in CSV
   1. Exercise: Accessing Data in Apache Cassandra
 1. Monitoring Spark Applications using web UI
   1. Jobs, Stages, Tasks, and Shuffling
@@ -88,7 +90,7 @@ Agenda:
   1. Exercise: Deploying Applications using spark-submit (`--master` and `--deploy-mode`)
 1. Tuning Spark Infrastructure
   1. Exercise: Configuring CPU and Memory for Master and Executors
-  1. Exercise: Observing Shuffling using `groupByKey`
+  1. Exercise: Observing Shuffling using `groupByKey`-like operations.
 
 ### Spark SQL
 
@@ -110,6 +112,7 @@ Agenda:
 1. Caching
   1. Exercise: Measuring Query Times using web UI
 1. Aggregating
+  1. Exercise: Using `groupBy`
   1. Exercise: Compute Aggregates using `mapGroups`
     * Word Count using Datasets
 1. Accessing Structured Data using JDBC
@@ -117,15 +120,19 @@ Agenda:
   1. Exercise: Reading Data from and Writing to MySQL
 1. User-Defined Functions (UDFs)
   1. Exercise: Using UDFs to create new DataFrames
+1. Integration with Hive
+  1. Queries over DataFrames
+  1. Registering UDFs
+  1. Temporary and permanent tables
 
 ### Spark Streaming
 
 1. Spark Streaming
-  1. Exercise ConstantInputDStream in motion in Standalone Streaming Application
+  1. Exercise: ConstantInputDStream in motion in Standalone Streaming Application
 1. Input DStreams (with and without Receivers)
   1. Exercise: Processing Files Using File Receiver
     * Word Count
-  1. Exercise: Using Socket Receiver
+  1. Exercise: Using Text Socket Receiver
   1. Exercise: Processing `vmstat` Using Apache Kafka
 1. Monitoring Streaming Applications using web UI (Streaming tab)
   1. Exercise: Monitoring and Tuning Streaming Applications
@@ -134,27 +141,36 @@ Agenda:
   1. Exercise: Start StreamingContext from Checkpoint
 1. State Management in Spark Streaming (Stateful Operators)
   1. Exercise: Use `mapWithState` for stateful computation
+    * Split lines into username and message to collect messages per user
 1. Spark Streaming and Windowed Operators
   1. Exercise: ???
 
 ### Spark MLlib
 
-1. ML Pipelines
+1. Transformers
+  1. Exercise: Using Tokenizer, RegexTokenizer, and HashingTF
+1. Estimators
+  1. Exercise: Using KMeans
+    * Fitting a model and checking spams
+  1. Exercise: Using LogisticRegression
+    * Fitting a model and checking spams
+1. Pipelines
+  1. Exercise: Using Pipelines of Transformers and Estimators
 
 ### Extras
 
-1. Exercise: Stream Processing using Spark Streaming and Spark SQL.
+1. Exercise: Stream Processing using Spark Streaming, Spark SQL and Spark MLlib (Pipeline API).
 
 ## Requirements
 
-* Training classes are best for groups up to 12 participants.
-* Some experience of software development using modern programming language (Scala, Java, Python, C, Ruby, JavaScript) is recommended. The workshop introduces only enough Scala to develop Spark applications using Scala API.
-* Participants have decent computers, preferably with Linux/Mac OS operating systems
-  * There are issues with running Spark on Windows (mostly with Spark SQL / Hive)
+* Training classes are best for groups up to 8 participants.
+* Experience of software development using modern programming language (Scala, Java, Python, Ruby) is recommended. The workshop introduces Scala only enough to develop Spark applications using Scala API.
+* Participants have decent computers, preferably with Linux or Mac OS operating systems
+  * [There are issues with running Spark on Windows](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-tips-and-tricks-running-spark-windows.html) (mostly with Spark SQL / Hive).
 * Participants have to download the following packages to their computers before the class:
   * [spark-1.6.1-bin-hadoop2.6.tgz](http://www.apache.org/dyn/closer.lua/spark/spark-1.6.1/spark-1.6.1-bin-hadoop2.6.tgz)
   * [sbt-0.13.11.zip](https://dl.bintray.com/sbt/native-packages/sbt/0.13.11/sbt-0.13.11.zip)
-  * [IntelliJ IDEA Community Edition 15.0.4](https://www.jetbrains.com/idea/download/) (or equivalent development environment)
+  * [IntelliJ IDEA Community Edition 2016.1.1](https://www.jetbrains.com/idea/download/) (or equivalent development environment)
     * Install [Scala plugin](https://plugins.jetbrains.com/plugin/?id=1347)
   * [kafka_2.11-0.9.0.1.tgz](https://www.apache.org/dyn/closer.cgi?path=/kafka/0.9.0.1/kafka_2.11-0.9.0.1.tgz)
   * [H2 Database Engine](http://www.h2database.com/html/main.html) - download [zip file with Version 1.4.191 for All Platforms](http://www.h2database.com/h2-2016-01-21.zip)
