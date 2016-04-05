@@ -1,8 +1,8 @@
 # Spark Workshop
 
-This project serves as a checkpoint to get you prepared (software-wise) for the **Spark Workshop** run by [Jacek Laskowski](https://twitter.com/jaceklaskowski).
+This project serves as a checkpoint to get you prepared (software-wise) for the **Spark and Scala Workshop** run by [Jacek Laskowski](https://twitter.com/jaceklaskowski).
 
-Please execute `sbt test` in the project's directory.
+`git clone` it first and execute `sbt test` in the cloned project's directory.
 
 ```
 $ sbt test

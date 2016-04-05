@@ -99,16 +99,17 @@ Agenda:
       * `toDF`
       * `SQLContext.createDataFrame` and Explicit Schema using `StructType`
   1. Exercise: Manipulating data from CSV using DataFrames
-      * `SQLContext.read`
+      * `SQLContext.read.csv` vs `SQLContext.read.format("csv")`
       * `count`
 1. DataFrames and Query DSL
   1. Exercise: Using Query DSL to select columns
   1. Exercise: `withColumn`
 1. functions object
   1. Exercise: Manipulating DataFrames using functions
-    * `withColumn`
+    * `withColumn` and `split`
 1. Spark SQL and Datasets
-  1. Exercise: Loading data from CSV and JSON
+  1. Exercise: WordCount using `SQLContext.read.text`
+    * `withColumn` and `split`
 1. Caching
   1. Exercise: Measuring Query Times using web UI
 1. Aggregating
@@ -177,3 +178,4 @@ Agenda:
   * [apache-cassandra-3.4-bin.tar.gz](http://www.apache.org/dyn/closer.lua/cassandra/3.4/apache-cassandra-3.4-bin.tar.gz)
   * [Cassandra Spark Connector 1.6.0-M1](http://spark-packages.org/package/datastax/spark-cassandra-connector) by executing the following command: `$SPARK_HOME/bin/spark-shell --packages datastax:spark-cassandra-connector:1.6.0-M1-s_2.10`
   * (optional) Apache MySQL and MySQL JDBC Driver
+* Participants are requested to `git clone` this project and follow README.md.
