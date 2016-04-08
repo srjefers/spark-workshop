@@ -6,14 +6,17 @@ Please note that the workshop uses an intense code-first approach in which the m
 
 The workshop provides participants with practical skills to use the features of Apache Spark with Scala.
 
+**CAUTION**: The Spark and Scala workshop is very hands-on and practical, i.e. not for faint-hearted. _Seriously!_ After 4 days your mind, eyes, and hands will all be trained to recognize the patterns where and how to use Spark and Scala in your Big Data projects.
+
 ## Duration
 
-4 days
+5 days
 
 ## Target Audience
 
 * Software developers who know Scala and want to explore the Spark space
 * Software developers with programming experience in a similar general-purpose programming language (Java, Python, Ruby)
+* Non-programming IT professionals like administrators, devops, system architects or technical leads to learn about Spark and Scala from their APIs.
 
 ## Outcomes
 
@@ -27,43 +30,46 @@ After completing the workshop participants should be able to:
 * Assemble and submit Spark applications to Spark clusters
 * Use Spark in local mode as well as Spark Standalone clusters
 * Install Spark development and runtime environments
-* Understand the concepts of Spark SQL
-* Understand the concepts of Spark Streaming
-* Understand the concepts of Spark MLlib
+* Understand the concepts of Spark SQL (DataFrame, Dataset, UDF)
+* Understand the concepts of Spark Streaming (DStream, ReceiverInputDStream)
+* Understand the concepts of Spark MLlib (Pipeline API)
+* Understand the concepts of Spark GraphX (RDD-based Graph API)
 * Build processing pipelines using Spark's RDD and abstractions above in Spark SQL (DataFrame), Spark Streaming (DStream), and Spark MLlib (Pipeline API).
 * Explain the internals of Spark and execution model
 
 ## Agenda
 
-The programming language to use during the course is [Scala](http://www.scala-lang.org/). There is a one-day "crash course" to the language during the workshop. It is optional for skilled Scala developers who are familiar with the fundamentals of Scala.
+The programming language to use during the course is [Scala](http://www.scala-lang.org/). There is a one-day "crash course" to the language during the workshop. It is optional for skilled Scala developers who are familiar with the fundamentals of Scala and sbt.
 
 ### Scala (one-day crash course)
 
-This module aims at introducing Scala and the tools, i.e. sbt and Scala REPL, to complete the other Spark modules.
+This module aims at introducing Scala and the tools, i.e. **sbt** and **Scala REPL**, to complete the other Spark modules.
 
-This module requires Internet access to download sbt and plugins.
+This module requires Internet access to download sbt and plugins (unless you `git clone` the repository - see [README](README.md)).
 
 This module covers:
 
 * Scala REPL
 * Literals and Values
 * Basic Types (Numerics, Strings)
-* More Advanced Types (Tuples, Options)
+* More Advanced Types (Tuples, Options, Try, Future)
 * Expressions and Conditions
-* Methods and Functions
+* Methods, Functions (and Procedures)
 * Scala Collection API and Common Collection Types
   * Seqs, Lists, Sets, Maps
+* Case Classes, Objects, and Traits
 * Command-line Applications
 * Packages
-* Case Classes, Objects, and Traits
 * Pattern Matching
+* Partial Functions
+  * Using `case` to destructure input parameters
 
 Agenda:
 
 1. Using sbt
   1. The tasks: `help`, `compile`, `test`, `package`, `update`, `~`, `set`, `show`, `console`
   1. Tab experience
-  1. Configuration files and directories, i.e. `build.sbt`, `project` directory
+  1. Configuration files and directories, i.e. `build.sbt` file and `project` directory
 1. Adding new tasks to sbt through plugins
   1. Global vs project plugins
   1. [sbt-assembly](https://github.com/sbt/sbt-assembly)
@@ -91,40 +97,56 @@ Agenda:
 1. Tuning Spark Infrastructure
   1. Exercise: Configuring CPU and Memory for Master and Executors
   1. Exercise: Observing Shuffling using `groupByKey`-like operations.
+1. Role of the community index of packages for Apache Spark [http://spark-packages.org](http://spark-packages.org/)
 
 ### Spark SQL
 
-1. Spark SQL and DataFrames
+1. DataFrames
   1. Exercise: Creating DataFrames
       * `toDF`
       * `SQLContext.createDataFrame` and Explicit Schema using `StructType`
-  1. Exercise: Manipulating data from CSV using DataFrames
-      * `SQLContext.read.csv` vs `SQLContext.read.format("csv")`
-      * `count`
 1. DataFrames and Query DSL
   1. Exercise: Using Query DSL to select columns
-  1. Exercise: `withColumn`
-1. functions object
+1. User-Defined Functions (UDFs)
+  1. functions object
   1. Exercise: Manipulating DataFrames using functions
-    * `withColumn` and `split`
-1. Spark SQL and Datasets
-  1. Exercise: WordCount using `SQLContext.read.text`
-    * `withColumn` and `split`
-1. Caching
-  1. Exercise: Measuring Query Times using web UI
+    * `withColumn`
+    * UDFs: `split` and `explode`
+  1. Creating new UDFs
+1. DataFrameWriter and DataFrameReader
+  1. `SQLContext.read` and `load`
+  1. `DataFrame.write` and `save`
+  1. Exercise: WordCount using DataFrames (words per line)
+      * `SQLContext.read.text`
+      * `SQLContext.read.format("text")`
+  1. Exercise: Manipulating data from CSV using DataFrames
+      * `spark-submit --packages com.databricks:spark-csv_2.10:1.4.0`
+      * `SQLContext.read.csv` vs `SQLContext.read.format("csv")` or `format("com.databricks.spark.csv")`
+      * `count`
+      * [CSV Data Source for Spark](https://github.com/databricks/spark-csv)
 1. Aggregating
   1. Exercise: Using `groupBy`
+  1. Exercise: WordCount using DataFrames (words per file)
+1. Datasets
+  1. Exercise: WordCount using `SQLContext.read.text`
   1. Exercise: Compute Aggregates using `mapGroups`
     * Word Count using Datasets
+1. Caching
+  1. Exercise: Measuring Query Times using web UI
 1. Accessing Structured Data using JDBC
   1. Modern / New-Age Approach
-  1. Exercise: Reading Data from and Writing to MySQL
-1. User-Defined Functions (UDFs)
-  1. Exercise: Using UDFs to create new DataFrames
+  1. Exercise: Reading Data from and Writing to PostgreSQL
+    * [Creating DataFrames from Tables using JDBC and PostgreSQL](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/exercises/spark-exercise-dataframe-jdbc-postgresql.html)
 1. Integration with Hive
   1. Queries over DataFrames
+    * `sql`
   1. Registering UDFs
   1. Temporary and permanent tables
+    * `registerTempTable`
+    * `DataFrame.write` and `saveAsTable`
+1. DataFrame performance optimizations
+  1. Tungsten
+  1. Catalyst
 
 ### Spark Streaming
 
@@ -148,15 +170,23 @@ Agenda:
 
 ### Spark MLlib
 
+1. Spark MLlib vs Spark ML
+  1. (old-fashioned) RDD-based API vs (the latest and gratest) DataFrame-based API
 1. Transformers
   1. Exercise: Using Tokenizer, RegexTokenizer, and HashingTF
-1. Estimators
+1. Estimators and Models
   1. Exercise: Using KMeans
     * Fitting a model and checking spams
   1. Exercise: Using LogisticRegression
     * Fitting a model and checking spams
 1. Pipelines
   1. Exercise: Using Pipelines of Transformers and Estimators
+
+### Spark GraphX
+
+1. RDD-based Graph API
+1. [GraphFrames](http://spark-packages.org/package/graphframes/graphframes): DataFrame-based Graphs
+  1. `spark-shell --packages graphframes:graphframes:0.1.0-spark1.6`
 
 ### Extras
 
@@ -173,9 +203,10 @@ Agenda:
   * [sbt-0.13.11.zip](https://dl.bintray.com/sbt/native-packages/sbt/0.13.11/sbt-0.13.11.zip)
   * [IntelliJ IDEA Community Edition 2016.1.1](https://www.jetbrains.com/idea/download/) (or equivalent development environment)
     * Install [Scala plugin](https://plugins.jetbrains.com/plugin/?id=1347)
+* Optional downloads (have them ready):
   * [kafka_2.11-0.9.0.1.tgz](https://www.apache.org/dyn/closer.cgi?path=/kafka/0.9.0.1/kafka_2.11-0.9.0.1.tgz)
   * [H2 Database Engine](http://www.h2database.com/html/main.html) - download [zip file with Version 1.4.191 for All Platforms](http://www.h2database.com/h2-2016-01-21.zip)
   * [apache-cassandra-3.4-bin.tar.gz](http://www.apache.org/dyn/closer.lua/cassandra/3.4/apache-cassandra-3.4-bin.tar.gz)
   * [Cassandra Spark Connector 1.6.0-M1](http://spark-packages.org/package/datastax/spark-cassandra-connector) by executing the following command: `$SPARK_HOME/bin/spark-shell --packages datastax:spark-cassandra-connector:1.6.0-M1-s_2.10`
-  * (optional) Apache MySQL and MySQL JDBC Driver
-* Participants are requested to `git clone` this project and follow README.md.
+  * (optional) [PostgreSQL 9.5.2](http://www.postgresql.org/download/) (or later) and [JDBC42 Postgresql Driver 9.4-1208](https://jdbc.postgresql.org/download.html) (or later)
+* Participants are requested to `git clone` this project and follow [README](README.md).
