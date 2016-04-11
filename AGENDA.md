@@ -103,10 +103,12 @@ Agenda:
 
 1. DataFrames
   1. Exercise: Creating DataFrames
-      * `toDF`
+      * Seqs and `toDF`
       * `SQLContext.createDataFrame` and Explicit Schema using `StructType`
 1. DataFrames and Query DSL
-  1. Exercise: Using Query DSL to select columns
+  1. Column References: `col`, `$`, `'`, `dfName`
+  1. Exercise: Using Query DSL to `select` columns
+      * `where`
 1. User-Defined Functions (UDFs)
   1. functions object
   1. Exercise: Manipulating DataFrames using functions
@@ -125,8 +127,12 @@ Agenda:
       * `count`
       * [CSV Data Source for Spark](https://github.com/databricks/spark-csv)
 1. Aggregating
-  1. Exercise: Using `groupBy`
+  1. Exercise: Using `groupBy` and `agg`
   1. Exercise: WordCount using DataFrames (words per file)
+1. Windowed Aggregates (Windows)
+  1. Exercise: Top N per Group
+  1. Exercise: Revenue Difference per Category
+  1. Exercise: Running Totals
 1. Datasets
   1. Exercise: WordCount using `SQLContext.read.text`
   1. Exercise: Compute Aggregates using `mapGroups`
