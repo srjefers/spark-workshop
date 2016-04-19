@@ -52,11 +52,12 @@ This module covers:
 * Scala REPL
 * Literals and Values
 * Basic Types (Numerics, Strings)
-* More Advanced Types (Tuples, Options, Try, Future)
+* More Advanced Types (Tuples, Options)
 * Expressions and Conditions
 * Methods, Functions (and Procedures)
 * Scala Collection API and Common Collection Types
   * Seqs, Lists, Sets, Maps
+  * `filter`, `map`, `flatMap`
 * Case Classes, Objects, and Traits
 * Command-line Applications
 * Packages
