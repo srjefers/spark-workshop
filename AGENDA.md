@@ -1,12 +1,14 @@
 ## What You Will Learn (aka Goals)
 
-The goal of the workshop is to give you a practical hands-on introduction to Apache Spark and how to use Spark's Scala API (developer) and infrastructure (administrator, devops) effectively.
+The goal of the workshop is to give you a practical, complete and hands-on introduction to Apache Spark and how to use Spark's Scala API (developer) and infrastructure (administrator, devops) effectively.
 
-Please note that the workshop uses an intense code-first approach in which the modules start with just enough knowledge to get you going (through slides and scaladoc) and quickly move on to applying the concepts in programming assignments. It comes with many practical sessions that should meet expectations of software developers (and quite likely exceed expectations of administrators, devops, and other technical roles like system architects or technical leads).
+Please note that the workshop uses an intense code-first approach in which the modules start with just enough knowledge to get you going (through slides and scaladoc but mostly through live coding) and quickly move on to applying the concepts in programming assignments. It comes with many practical sessions that should meet expectations of software developers (and quite likely exceed expectations of administrators, devops, and other technical roles like system architects or technical leads).
 
 The workshop provides participants with practical skills to use the features of Apache Spark with Scala.
 
-**CAUTION**: The Spark and Scala workshop is very hands-on and practical, i.e. not for faint-hearted. _Seriously!_ After 4 days your mind, eyes, and hands will all be trained to recognize the patterns where and how to use Spark and Scala in your Big Data projects.
+**CAUTION**: The Spark and Scala workshop is very hands-on and practical, i.e. not for faint-hearted. _Seriously!_ After 5 days your mind, eyes, and hands will all be trained to recognise the patterns where and how to use Spark and Scala in your Big Data projects.
+
+**CAUTION** I have already trained people who expressed their concern that there were too many exercises. _Your dear drill sergeant, Jacek._
 
 ## Duration
 
@@ -52,12 +54,18 @@ This module covers:
 * Scala REPL
 * Literals and Values
 * Basic Types (Numerics, Strings)
+* Type System
+* Imports
 * More Advanced Types (Tuples, Options)
+  * Parameterized Types
 * Expressions and Conditions
 * Methods, Functions (and Procedures)
+  * Using placeholders (`_`) in functions
 * Scala Collection API and Common Collection Types
   * Seqs, Lists, Sets, Maps
   * `filter`, `map`, `flatMap`
+* Implicits and Multiple Parameter Lists
+  * Understanding method signatures
 * Case Classes, Objects, and Traits
 * Command-line Applications
 * Packages
@@ -78,27 +86,61 @@ Agenda:
 
 ### Spark Core
 
-1. Installing Spark and My First Spark Application (using spark-shell)
-  1. Exercise: Word Counter = Counting words in README.md
+1. Spark "Installation" and Your First Spark Application (using spark-shell)
+  1. [Spark API scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html)
+  1. Exercise: Counting Elements in Distributed Collection
+      * `SparkContext.parallelize`
+      * `SparkContext.range`
+      * `SparkContext.textFile`
 1. Using Spark’s Core APIs in Scala - Transformations and Actions
+  1. Exercise: Processing lines in `README.md`
+      * `filter`, `map`, `flatMap`, `foreach`
+1. Using key-value pair operators
   1. Exercise: Key-value pair operators
+      * `cogroup`
+      * `flatMapValues`
+      * `aggregateByKey`
+  1. Exercise: Word Counter = Counting words in README.md
 1. Building, Deploying and Monitoring Spark Applications (using sbt, spark-submit, and web UI)
   1. Exercise: A Complete Development Cycle of Spark Application
 1. Processing Structured Data using RDDs
   1. Traditional / Old-Fashioned Approach
   1. Exercise: Accessing Data in CSV
-  1. Exercise: Accessing Data in Apache Cassandra
+1. Partitions
+  1. `mapPartitionsWithIndex` and `foreachPartition`
+  1. Example: FIXME
+1. Accumulators
+  1. Exercise: Using Accumulators and `cogroup` to Count Non-Matching Records as in `leftOuterJoin`
+      * Ensure exactly-one processing despite task failures
+      * Use `TaskContext` to track tasks
+  1. Exercise: Custom Accumulators
+      * `AccumulatorParam`
+1. Community Packages for Apache Spark [http://spark-packages.org](http://spark-packages.org/)
+  1. Exercise: Accessing Data in Apache Cassandra using [Spark-Cassandra Connector](https://github.com/datastax/spark-cassandra-connector)
+1. `run-example` vs `spark-submit`
+
+### Spark Administration
+
 1. Monitoring Spark Applications using web UI
   1. Jobs, Stages, Tasks, and Shuffling
   1. Caching and Storage Tab
   1. Exercise: Monitoring using web UI
-1. Clustering Spark and Spark Standalone
+1. Clustering Spark using Spark Standalone
   1. Exercise: Setting up Spark Standalone
-  1. Exercise: Deploying Applications using spark-submit (`--master` and `--deploy-mode`)
+  1. Exercise: Deploying Applications using spark-submit
+      * `--master spark://...`
+      * `--deploy-mode` with `client` and `cluster`
 1. Tuning Spark Infrastructure
   1. Exercise: Configuring CPU and Memory for Master and Executors
   1. Exercise: Observing Shuffling using `groupByKey`-like operations.
-1. Role of the community index of packages for Apache Spark [http://spark-packages.org](http://spark-packages.org/)
+1. Clustering Spark using Apache Mesos
+  1. Exercise: Setting up Mesos cluster
+  1. Exercise: Deploying Applications using spark-submit
+      * `--master mesos://...`
+1. Clustering Spark using Hadoop YARN
+  1. Exercise: Setting up Hadoop YARN
+  1. Exercise: Deploying Applications using spark-submit
+      * `--master yarn`
 
 ### Spark SQL
 
