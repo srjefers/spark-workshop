@@ -63,7 +63,8 @@ This module covers:
   * Using placeholders (`_`) in functions
 * Scala Collection API and Common Collection Types
   * Seqs, Lists, Sets, Maps
-  * `filter`, `map`, `flatMap`
+  * The scaladoc of [scala.collection.Seq](http://www.scala-lang.org/api/current/index.html#scala.collection.Seq)
+  * `filter`, `map`, `flatMap`, `zipWithIndex`, `count`
 * Implicits and Multiple Parameter Lists
   * Understanding method signatures
 * Case Classes, Objects, and Traits
@@ -72,6 +73,9 @@ This module covers:
 * Pattern Matching
 * Partial Functions
   * Using `case` to destructure input parameters
+  * [Seq.collect][1]
+
+[1]: http://www.scala-lang.org/api/current/index.html#scala.collection.Seq@collect[B](pf:PartialFunction[A,B]):Seq[B]
 
 Agenda:
 
@@ -95,6 +99,10 @@ Agenda:
 1. Using Spark’s Core APIs in Scala - Transformations and Actions
   1. Exercise: Processing lines in `README.md`
       * `filter`, `map`, `flatMap`, `foreach`
+  1. Exercise: Gotchas with Transformations like `zipWithIndex` or `sortBy`
+      * It may or may not submit a Spark job
+      * Apply to RDDs of different number of partitions
+      * Use webUI to see completed jobs
 1. Using key-value pair operators
   1. Exercise: Key-value pair operators
       * `cogroup`
