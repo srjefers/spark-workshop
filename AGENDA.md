@@ -149,6 +149,11 @@ Agenda:
   1. Exercise: Setting up Hadoop YARN
   1. Exercise: Deploying Applications using spark-submit
       * `--master yarn`
+1. Monitoring Spark using SparkListeners
+  1. `StatsReportListener`
+  1. `EventLoggingListener`
+  1. Exercise: Event Logging using `EventLoggingListener`
+  1. Exercise: Developing Custom SparkListener
 
 ### Spark SQL
 
