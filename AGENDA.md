@@ -125,7 +125,12 @@ Agenda:
       * `AccumulatorParam`
 1. Community Packages for Apache Spark [http://spark-packages.org](http://spark-packages.org/)
   1. Exercise: Accessing Data in Apache Cassandra using [Spark-Cassandra Connector](https://github.com/datastax/spark-cassandra-connector)
-1. `run-example` vs `spark-submit`
+1. Submitting Spark Applications
+  1. `run-example`
+  1. `spark-submit`
+  1. Specifying memory requirements et al.
+  1. Exercise: Executing Spark Examples using `run-example`
+  1. Exercise: Executing Spark Example using `spark-submit`
 
 ### Spark Administration
 
@@ -135,7 +140,7 @@ Agenda:
   1. Exercise: Monitoring using web UI
 1. Clustering Spark using Spark Standalone
   1. Exercise: Setting up Spark Standalone
-  1. Exercise: Deploying Applications using spark-submit
+  1. Exercise: Submitting Applications using spark-submit
       * `--master spark://...`
       * `--deploy-mode` with `client` and `cluster`
 1. Tuning Spark Infrastructure
@@ -143,11 +148,11 @@ Agenda:
   1. Exercise: Observing Shuffling using `groupByKey`-like operations.
 1. Clustering Spark using Apache Mesos
   1. Exercise: Setting up Mesos cluster
-  1. Exercise: Deploying Applications using spark-submit
+  1. Exercise: Submitting Applications using spark-submit
       * `--master mesos://...`
 1. Clustering Spark using Hadoop YARN
   1. Exercise: Setting up Hadoop YARN
-  1. Exercise: Deploying Applications using spark-submit
+  1. Exercise: Submitting Applications using spark-submit
       * `--master yarn`
 1. Monitoring Spark using SparkListeners
   1. `StatsReportListener`
