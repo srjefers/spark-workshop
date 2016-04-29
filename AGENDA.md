@@ -131,6 +131,8 @@ Agenda:
   1. Specifying memory requirements et al.
   1. Exercise: Executing Spark Examples using `run-example`
   1. Exercise: Executing Spark Example using `spark-submit`
+1. Application Log Configuration
+  1. `conf/log4.properties`
 
 ### Spark Administration
 
@@ -140,20 +142,27 @@ Agenda:
   1. Exercise: Monitoring using web UI
 1. Clustering Spark using Spark Standalone
   1. Exercise: Setting up Spark Standalone
+      * Using standalone Master's web UI
   1. Exercise: Submitting Applications using spark-submit
       * `--master spark://...`
       * `--deploy-mode` with `client` and `cluster`
 1. Tuning Spark Infrastructure
   1. Exercise: Configuring CPU and Memory for Master and Executors
   1. Exercise: Observing Shuffling using `groupByKey`-like operations.
+  1. Exercise: High-Availability of standalone Master using Apache ZooKeeper
 1. Clustering Spark using Apache Mesos
   1. Exercise: Setting up Mesos cluster
-  1. Exercise: Submitting Applications using spark-submit
+  1. Exercise: Submitting Applications using `spark-submit`
       * `--master mesos://...`
 1. Clustering Spark using Hadoop YARN
   1. Exercise: Setting up Hadoop YARN
-  1. Exercise: Submitting Applications using spark-submit
+      * Accessing Resource Manager's web UI
+  1. Exercise: Submitting Applications using `spark-submit`
       * `--master yarn`
+      * `yarn-site.xml`
+      * `yarn application -list`
+      * `yarn application -status`
+      * `yarn application -kill`
 1. Monitoring Spark using SparkListeners
   1. `StatsReportListener`
   1. `EventLoggingListener`
