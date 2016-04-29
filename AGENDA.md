@@ -74,6 +74,7 @@ This module covers:
 * Partial Functions
   * Using `case` to destructure input parameters
   * [Seq.collect][1]
+* sbt - the build tool for Scala projects
 
 [1]: http://www.scala-lang.org/api/current/index.html#scala.collection.Seq@collect[B](pf:PartialFunction[A,B]):Seq[B]
 
@@ -87,6 +88,11 @@ Agenda:
   1. Global vs project plugins
   1. [sbt-assembly](https://github.com/sbt/sbt-assembly)
   1. [sbt-updates](https://github.com/rtimush/sbt-updates)
+1. Using sbt behind a proxy server
+  1. [HTTP/HTTPS/FTP Proxy](http://www.scala-sbt.org/0.13/docs/Setup-Notes.html#HTTP%2FHTTPS%2FFTP+Proxy) in the official documentation.
+  1. [How to use sbt from behind proxy?](http://stackoverflow.com/q/13803459/1305344) on StackOverflow
+1. Proxy Repositories for sbt
+  1. [Proxy Repositories](http://www.scala-sbt.org/0.13/docs/Proxy-Repositories.html) in the official documentation.
 
 ### Spark Core
 
