@@ -16,3 +16,13 @@ $ sbt test
 ```
 
 You should see `[info] All tests passed.` to consider yourself prepared.
+
+## Docker Image
+
+Execute the following command to have a complete Docker image for the workshop.
+
+NOTE: It was tested on Mac OS only. I assume that `-v` in the command will not work on Windows and need to be changed to appropriate environment settings.
+
+```
+docker run -ti -p 4040:4040 -p 8080:8080 -v "$PWD:/home/spark/workspace" -v "$HOME/.ivy2":/home/spark/.ivy2 -h spark --name=spark jaceklaskowski/docker-spark
+```
