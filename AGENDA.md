@@ -171,7 +171,7 @@ Agenda:
       * `yarn application -kill`
 1. Monitoring Spark using SparkListeners
   1. `StatsReportListener`
-  1. `EventLoggingListener`
+  1. Event Logging using `EventLoggingListener` and History Server
   1. Exercise: Event Logging using `EventLoggingListener`
   1. Exercise: Developing Custom SparkListener
 
