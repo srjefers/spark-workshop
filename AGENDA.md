@@ -2,7 +2,15 @@
 
 The goal of the workshop is to give you a practical, complete and hands-on introduction to Apache Spark and how to use Spark's Scala API (developer) and infrastructure (administrator, devops) effectively.
 
-Please note that the workshop uses an intense code-first approach in which the modules start with just enough knowledge to get you going (through slides and scaladoc but mostly through live coding) and quickly move on to applying the concepts in programming assignments. It comes with many practical sessions that should meet expectations of software developers (and quite likely exceed expectations of administrators, devops, and other technical roles like system architects or technical leads).
+The workshop and the agenda are the result of the workshops I ran in the following cities and a few online classes:
+
+* Toronto (4 classes)
+* Plymouth Meeting
+* Montreal
+
+The workshop uses an intense code-first approach in which the modules start with just enough knowledge to get you going (mostly using scaladoc and live coding) and quickly move on to applying the concepts in programming assignments. There are a lot of them.
+
+It comes with many practical sessions that should meet (and even exceed) expectations of software developers (and perhaps administrators, operators, devops, and other technical roles like system architects or technical leads).
 
 The workshop provides participants with practical skills to use the features of Apache Spark with Scala.
 
@@ -94,87 +102,6 @@ Agenda:
 1. Proxy Repositories for sbt
   1. [Proxy Repositories](http://www.scala-sbt.org/0.13/docs/Proxy-Repositories.html) in the official documentation.
 
-### Spark Core
-
-1. Spark "Installation" and Your First Spark Application (using spark-shell)
-  1. [Spark API scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html)
-  1. Exercise: Counting Elements in Distributed Collection
-      * `SparkContext.parallelize`
-      * `SparkContext.range`
-      * `SparkContext.textFile`
-1. Using Spark’s Core APIs in Scala - Transformations and Actions
-  1. Exercise: Processing lines in `README.md`
-      * `filter`, `map`, `flatMap`, `foreach`
-  1. Exercise: Gotchas with Transformations like `zipWithIndex` or `sortBy`
-      * It may or may not submit a Spark job
-      * Apply to RDDs of different number of partitions
-      * Use webUI to see completed jobs
-1. Using key-value pair operators
-  1. Exercise: Key-value pair operators
-      * `cogroup`
-      * `flatMapValues`
-      * `aggregateByKey`
-  1. Exercise: Word Counter = Counting words in README.md
-1. Building, Deploying and Monitoring Spark Applications (using sbt, spark-submit, and web UI)
-  1. Exercise: A Complete Development Cycle of Spark Application
-1. Processing Structured Data using RDDs
-  1. Traditional / Old-Fashioned Approach
-  1. Exercise: Accessing Data in CSV
-1. Partitions
-  1. `mapPartitionsWithIndex` and `foreachPartition`
-  1. Example: FIXME
-1. Accumulators
-  1. Exercise: Using Accumulators and `cogroup` to Count Non-Matching Records as in `leftOuterJoin`
-      * Ensure exactly-one processing despite task failures
-      * Use `TaskContext` to track tasks
-  1. Exercise: Custom Accumulators
-      * `AccumulatorParam`
-1. Community Packages for Apache Spark [http://spark-packages.org](http://spark-packages.org/)
-  1. Exercise: Accessing Data in Apache Cassandra using [Spark-Cassandra Connector](https://github.com/datastax/spark-cassandra-connector)
-1. Submitting Spark Applications
-  1. `run-example`
-  1. `spark-submit`
-  1. Specifying memory requirements et al.
-  1. Exercise: Executing Spark Examples using `run-example`
-  1. Exercise: Executing Spark Example using `spark-submit`
-1. Application Log Configuration
-  1. `conf/log4.properties`
-
-### Spark Administration
-
-1. Monitoring Spark Applications using web UI
-  1. Jobs, Stages, Tasks, and Shuffling
-  1. Caching and Storage Tab
-  1. Exercise: Monitoring using web UI
-1. Clustering Spark using Spark Standalone
-  1. Exercise: Setting up Spark Standalone
-      * Using standalone Master's web UI
-  1. Exercise: Submitting Applications using spark-submit
-      * `--master spark://...`
-      * `--deploy-mode` with `client` and `cluster`
-1. Tuning Spark Infrastructure
-  1. Exercise: Configuring CPU and Memory for Master and Executors
-  1. Exercise: Observing Shuffling using `groupByKey`-like operations.
-  1. Exercise: High-Availability of standalone Master using Apache ZooKeeper
-1. Clustering Spark using Apache Mesos
-  1. Exercise: Setting up Mesos cluster
-  1. Exercise: Submitting Applications using `spark-submit`
-      * `--master mesos://...`
-1. Clustering Spark using Hadoop YARN
-  1. Exercise: Setting up Hadoop YARN
-      * Accessing Resource Manager's web UI
-  1. Exercise: Submitting Applications using `spark-submit`
-      * `--master yarn`
-      * `yarn-site.xml`
-      * `yarn application -list`
-      * `yarn application -status`
-      * `yarn application -kill`
-1. Monitoring Spark using SparkListeners
-  1. `StatsReportListener`
-  1. Event Logging using `EventLoggingListener` and History Server
-  1. Exercise: Event Logging using `EventLoggingListener`
-  1. Exercise: Developing Custom SparkListener
-
 ### Spark SQL
 
 1. DataFrames
@@ -230,6 +157,20 @@ Agenda:
   1. Tungsten
   1. Catalyst
 
+### Spark MLlib
+
+1. Spark MLlib vs Spark ML
+  1. (old-fashioned) RDD-based API vs (the latest and gratest) DataFrame-based API
+1. Transformers
+  1. Exercise: Using Tokenizer, RegexTokenizer, and HashingTF
+1. Estimators and Models
+  1. Exercise: Using KMeans
+    * Fitting a model and checking spams
+  1. Exercise: Using LogisticRegression
+    * Fitting a model and checking spams
+1. Pipelines
+  1. Exercise: Using Pipelines of Transformers and Estimators
+
 ### Spark Streaming
 
 1. Spark Streaming
@@ -250,25 +191,94 @@ Agenda:
 1. Spark Streaming and Windowed Operators
   1. Exercise: ???
 
-### Spark MLlib
+### Spark Core
 
-1. Spark MLlib vs Spark ML
-  1. (old-fashioned) RDD-based API vs (the latest and gratest) DataFrame-based API
-1. Transformers
-  1. Exercise: Using Tokenizer, RegexTokenizer, and HashingTF
-1. Estimators and Models
-  1. Exercise: Using KMeans
-    * Fitting a model and checking spams
-  1. Exercise: Using LogisticRegression
-    * Fitting a model and checking spams
-1. Pipelines
-  1. Exercise: Using Pipelines of Transformers and Estimators
+1. Spark "Installation" and Your First Spark Application (using spark-shell)
+  1. [Spark API scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html)
+  1. Exercise: Counting Elements in Distributed Collection
+      * `SparkContext.parallelize`
+      * `SparkContext.range`
+      * `SparkContext.textFile`
+1. Using Spark’s Core APIs in Scala - Transformations and Actions
+  1. Exercise: Processing lines in `README.md`
+      * `filter`, `map`, `flatMap`, `foreach`
+  1. Exercise: Gotchas with Transformations like `zipWithIndex` or `sortBy`
+      * It may or may not submit a Spark job
+      * Apply to RDDs of different number of partitions
+      * Use webUI to see completed jobs
+1. Using key-value pair operators
+  1. Exercise: Key-value pair operators
+      * `cogroup`
+      * `flatMapValues`
+      * `aggregateByKey`
+  1. Exercise: Word Counter = Counting words in README.md
+1. Building, Deploying and Monitoring Spark Applications (using sbt, spark-submit, and web UI)
+  1. Exercise: A Complete Development Cycle of Spark Application
+1. Processing Structured Data using RDDs
+  1. Traditional / Old-Fashioned Approach
+  1. Exercise: Accessing Data in CSV
+1. Partitions
+  1. `mapPartitionsWithIndex` and `foreachPartition`
+  1. Example: FIXME
+1. Accumulators
+  1. Exercise: Using Accumulators and `cogroup` to Count Non-Matching Records as in `leftOuterJoin`
+      * Ensure exactly-one processing despite task failures
+      * Use `TaskContext` to track tasks
+  1. Exercise: Custom Accumulators
+      * `AccumulatorParam`
+1. Community Packages for Apache Spark [http://spark-packages.org](http://spark-packages.org/)
+  1. Exercise: Accessing Data in Apache Cassandra using [Spark-Cassandra Connector](https://github.com/datastax/spark-cassandra-connector)
+1. Submitting Spark Applications
+  1. `run-example`
+  1. `spark-submit`
+  1. Specifying memory requirements et al.
+  1. Exercise: Executing Spark Examples using `run-example`
+  1. Exercise: Executing Spark Example using `spark-submit`
+1. Application Log Configuration
+  1. `conf/log4.properties`
 
 ### Spark GraphX
 
 1. RDD-based Graph API
 1. [GraphFrames](http://spark-packages.org/package/graphframes/graphframes): DataFrame-based Graphs
   1. `spark-shell --packages graphframes:graphframes:0.1.0-spark1.6`
+
+### Spark Administration
+
+1. Monitoring Spark Applications using web UI
+  1. Jobs, Stages, Tasks, and Shuffling
+  1. Caching and Storage Tab
+  1. Exercise: Monitoring using web UI
+1. Clustering Spark using Spark Standalone
+  1. Exercise: Setting up Spark Standalone
+      * Using standalone Master's web UI
+  1. Exercise: Submitting Applications using spark-submit
+      * `--master spark://...`
+      * `--deploy-mode` with `client` and `cluster`
+1. Tuning Spark Infrastructure
+  1. Exercise: Configuring CPU and Memory for Master and Executors
+  1. Exercise: Observing Shuffling using `groupByKey`-like operations.
+  1. Exercise: High-Availability of standalone Master using Apache ZooKeeper
+1. Clustering Spark using Apache Mesos
+  1. Exercise: Setting up Mesos cluster
+  1. Exercise: Submitting Applications using `spark-submit`
+      * `--master mesos://...`
+1. Clustering Spark using Hadoop YARN
+  1. Exercise: Setting up Hadoop YARN
+      * Accessing Resource Manager's web UI
+  1. Exercise: Submitting Applications using `spark-submit`
+      * `--master yarn`
+      * `yarn-site.xml`
+      * `yarn application -list`
+      * `yarn application -status`
+      * `yarn application -kill`
+1. Monitoring Spark using SparkListeners
+  1. `StatsReportListener`
+  1. Event Logging using `EventLoggingListener` and History Server
+  1. Exercise: Event Logging using `EventLoggingListener`
+  1. Exercise: Developing Custom SparkListener
+1. Dynamic Allocation (of Executors)
+  1. External Shuffle Service
 
 ### Extras
 
