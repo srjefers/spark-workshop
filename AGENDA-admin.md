@@ -1,8 +1,10 @@
-# Spark Administration Workshop
+# Spark Administration and Monitoring Workshop
 
 ## What You Will Learn (aka Goals)
 
-The goal of the **Spark Administration** is to give you a practical, complete and hands-on introduction to [Apache Spark](http://spark.apache.org/) and how to **manage, monitor, and fine-tune Spark infrastructure**.
+The goal of the **Spark Administration and Monitoring Workshop** is to give you a practical, complete and hands-on introduction to [Apache Spark](http://spark.apache.org/) and the tools to **manage**, **monitor**, **troubleshoot** and **fine-tune Spark infrastructure**.
+
+**NOTE**: The workshop uses a tailor-made Docker image but it is also possible to use a commercial distribution for Spark like [Cloudera's CDH](http://www.cloudera.com/downloads/quickstart_vms/5-7.html) (possibly [Hortonworks Data Platform (HDP)](http://hortonworks.com/products/hdp/) or [MapR Sandbox](https://www.mapr.com/products/mapr-sandbox-hadoop/download)).
 
 The workshop uses an intense **learn-by-doing** approach in which the modules start with just enough knowledge to get you going and quickly move on to applying the concepts in assignments. There are a lot of practical exercises.
 
@@ -14,42 +16,47 @@ The workshop comes with many practical sessions that should meet (and possibly e
 
 ## Duration
 
-4 days
+5 days
 
 ## Target Audience
 
 * Aspiring Spark administrators, operators, devops
 * Perhaps system architects or technical leads
 
-## Outcomes
-
-After completing the workshop participants should be able to:
-
-* ...FIXME
-
 ## Agenda
 
-### Spark Administration
-
+1. Anatomy of Spark Data Processing
+  1. `SparkContext`
+      * SparkConf
+  1. Transformations and Actions
+  1. Jobs, Stages, and Tasks
+      * DAGScheduler
+      * TaskScheduler
+      * Scheduler Backends
+      * Executor Backends
+  1. Partitions and Partitioning
+  1. Shuffling
+      * Wide and Narrow Dependencies
+  1. Caching and Persistence
+  1. Checkpointing
+1. Elements of Spark Runtime Environment
+  1. The Driver
+  1. Executors
+      * TaskRunners
+  1. Deploy Modes
+  1. Spark Clusters
+      * Master and Workers
+  1. RPC Environment (RpcEnv)
+  1. BlockManagers
+1. Spark Tools
+  1. `spark-shell`
+  1. `spark-submit`
+  1. web UI
+  1. `spark-class`
 1. Monitoring Spark Applications using web UI
-  1. Jobs, Stages, Tasks, and Shuffling
-  1. Caching and Storage Tab
+  1. The Different Tabs in web UI
   1. Exercise: Monitoring using web UI
-1. Clustering Spark using Spark Standalone
-  1. Exercise: Setting up Spark Standalone
-      * Using standalone Master's web UI
-  1. Exercise: Submitting Applications using spark-submit
-      * `--master spark://...`
-      * `--deploy-mode` with `client` and `cluster`
-1. Tuning Spark Infrastructure
-  1. Exercise: Configuring CPU and Memory for Master and Executors
-  1. Exercise: Observing Shuffling using `groupByKey`-like operations.
-  1. Exercise: High-Availability of standalone Master using Apache ZooKeeper
-1. Clustering Spark using Apache Mesos
-  1. Exercise: Setting up Mesos cluster
-  1. Exercise: Submitting Applications using `spark-submit`
-      * `--master mesos://...`
-1. Clustering Spark using Hadoop YARN
+1. Clustering Spark using Hadoop YARN (aka Spark on YARN)
   1. Exercise: Setting up Hadoop YARN
       * Accessing Resource Manager's web UI
   1. Exercise: Submitting Applications using `spark-submit`
@@ -58,13 +65,33 @@ After completing the workshop participants should be able to:
       * `yarn application -list`
       * `yarn application -status`
       * `yarn application -kill`
-1. Monitoring Spark using SparkListeners
+  1. [Runtime Properties](http://spark.apache.org/docs/latest/running-on-yarn.html#spark-properties) - Meaning and Application
+  1. Troubleshooting
+      * log files
+1. Clustering Spark using Spark Standalone
+  1. Exercise: Setting up Spark Standalone
+      * Using standalone Master's web UI
+  1. Exercise: Submitting Applications using spark-submit
+      * `--master spark://...`
+      * `--deploy-mode` with `client` and `cluster`
+  1. Clustering Spark using Spark Standalone
+1. Tuning Spark Infrastructure
+  1. Exercise: Configuring CPU and Memory for Master and Executors
+  1. Exercise: Observing Shuffling using `groupByKey`-like operations.
+1. Monitoring Spark using `SparkListeners`
+  1. `LiveListenerBus`
   1. `StatsReportListener`
   1. Event Logging using `EventLoggingListener` and History Server
   1. Exercise: Event Logging using `EventLoggingListener`
   1. Exercise: Developing Custom SparkListener
 1. Dynamic Allocation (of Executors)
   1. External Shuffle Service
+1. Spark Metrics System
+1. (optional) Using Spark Streaming and Kafka
+1. (optional) Clustering Spark using Apache Mesos
+  1. Exercise: Setting up Mesos cluster
+  1. Exercise: Submitting Applications using `spark-submit`
+      * `--master mesos://...`
 
 ## Requirements
 
@@ -74,9 +101,9 @@ After completing the workshop participants should be able to:
 * Participants have to download the following packages to their computers before the class:
   * [spark-1.6.1-bin-hadoop2.6.tgz](http://www.apache.org/dyn/closer.lua/spark/spark-1.6.1/spark-1.6.1-bin-hadoop2.6.tgz)
   * Optional downloads (have them ready):
-    * [kafka_2.11-0.9.0.1.tgz](https://www.apache.org/dyn/closer.cgi?path=/kafka/0.9.0.1/kafka_2.11-0.9.0.1.tgz)
+    * [kafka_2.11-0.10.0.0.tgz](https://www.apache.org/dyn/closer.cgi?path=/kafka/0.10.0.0/kafka_2.11-0.10.0.0.tgz)
     * [H2 Database Engine](http://www.h2database.com/html/main.html) - download [zip file with Version 1.4.191 for All Platforms](http://www.h2database.com/h2-2016-01-21.zip)
-    * [apache-cassandra-3.4-bin.tar.gz](http://www.apache.org/dyn/closer.lua/cassandra/3.4/apache-cassandra-3.4-bin.tar.gz)
-    * [Cassandra Spark Connector 1.6.0-M1](http://spark-packages.org/package/datastax/spark-cassandra-connector) by executing the following command: `$SPARK_HOME/bin/spark-shell --packages datastax:spark-cassandra-connector:1.6.0-M1-s_2.10`
+    * [apache-cassandra-3.6-bin.tar.gz](http://www.apache.org/dyn/closer.lua/cassandra/3.6/apache-cassandra-3.6-bin.tar.gz)
+    * [Cassandra Spark Connector](http://spark-packages.org/package/datastax/spark-cassandra-connector) by executing the following command: `$SPARK_HOME/bin/spark-shell --packages datastax:spark-cassandra-connector:1.6.0-M2-s_2.11`
     * (optional) [PostgreSQL 9.5.2](http://www.postgresql.org/download/) (or later) and [JDBC42 Postgresql Driver 9.4-1208](https://jdbc.postgresql.org/download.html) (or later)
 * Participants are requested to `git clone` this project and follow [README](README.md).

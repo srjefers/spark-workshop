@@ -4,6 +4,8 @@
 
 The goal of the workshop is to give you a practical, complete and hands-on introduction to Apache Spark and how to use Spark's Scala API (developer) and infrastructure (administrator, devops) effectively.
 
+**NOTE**: Should you want a workshop about administration, monitoring, troubleshooting and fine-tuning of Spark, check out [Spark Administration and Monitoring Workshop](AGENDA-admin.md).
+
 The workshop and the agenda are the result of the workshops I ran in the following cities and a few online classes:
 
 * Toronto (4 classes)
@@ -28,7 +30,7 @@ The workshop provides participants with practical skills to use the features of 
 
 * Software developers who know Scala and want to explore the Spark space
 * Software developers with programming experience in a similar general-purpose programming language (Java, Python, Ruby)
-* Non-programming IT professionals like administrators, devops, system architects or technical leads to learn about Spark and Scala from their APIs.
+* Non-programming IT professionals like administrators, devops, system architects or technical leads to learn about Spark and Scala by their APIs.
 
 ## Outcomes
 
