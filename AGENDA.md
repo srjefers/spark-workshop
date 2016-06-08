@@ -1,3 +1,5 @@
+# Spark and Scala (Application Development) Workshop
+
 ## What You Will Learn (aka Goals)
 
 The goal of the workshop is to give you a practical, complete and hands-on introduction to Apache Spark and how to use Spark's Scala API (developer) and infrastructure (administrator, devops) effectively.
@@ -243,43 +245,6 @@ Agenda:
 1. [GraphFrames](http://spark-packages.org/package/graphframes/graphframes): DataFrame-based Graphs
   1. `spark-shell --packages graphframes:graphframes:0.1.0-spark1.6`
 
-### Spark Administration
-
-1. Monitoring Spark Applications using web UI
-  1. Jobs, Stages, Tasks, and Shuffling
-  1. Caching and Storage Tab
-  1. Exercise: Monitoring using web UI
-1. Clustering Spark using Spark Standalone
-  1. Exercise: Setting up Spark Standalone
-      * Using standalone Master's web UI
-  1. Exercise: Submitting Applications using spark-submit
-      * `--master spark://...`
-      * `--deploy-mode` with `client` and `cluster`
-1. Tuning Spark Infrastructure
-  1. Exercise: Configuring CPU and Memory for Master and Executors
-  1. Exercise: Observing Shuffling using `groupByKey`-like operations.
-  1. Exercise: High-Availability of standalone Master using Apache ZooKeeper
-1. Clustering Spark using Apache Mesos
-  1. Exercise: Setting up Mesos cluster
-  1. Exercise: Submitting Applications using `spark-submit`
-      * `--master mesos://...`
-1. Clustering Spark using Hadoop YARN
-  1. Exercise: Setting up Hadoop YARN
-      * Accessing Resource Manager's web UI
-  1. Exercise: Submitting Applications using `spark-submit`
-      * `--master yarn`
-      * `yarn-site.xml`
-      * `yarn application -list`
-      * `yarn application -status`
-      * `yarn application -kill`
-1. Monitoring Spark using SparkListeners
-  1. `StatsReportListener`
-  1. Event Logging using `EventLoggingListener` and History Server
-  1. Exercise: Event Logging using `EventLoggingListener`
-  1. Exercise: Developing Custom SparkListener
-1. Dynamic Allocation (of Executors)
-  1. External Shuffle Service
-
 ### Extras
 
 1. Exercise: Stream Processing using Spark Streaming, Spark SQL and Spark MLlib (Pipeline API).
@@ -287,7 +252,7 @@ Agenda:
 ## Requirements
 
 * Training classes are best for groups up to 8 participants.
-* Experience of software development using modern programming language (Scala, Java, Python, Ruby) is recommended. The workshop introduces Scala only enough to develop Spark applications using Scala API.
+* Experience in software development using modern programming language (Scala, Java, Python, Ruby) is recommended. The workshop introduces Scala only enough to develop Spark applications using Scala API.
 * Participants have decent computers, preferably with Linux or Mac OS operating systems
   * [There are issues with running Spark on Windows](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-tips-and-tricks-running-spark-windows.html) (mostly with Spark SQL / Hive).
 * Participants have to download the following packages to their computers before the class:
