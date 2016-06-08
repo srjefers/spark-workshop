@@ -29,13 +29,17 @@ The workshop comes with many practical sessions that should meet (and possibly e
   1. `SparkContext`
       * SparkConf
   1. Transformations and Actions
-  1. Jobs, Stages, and Tasks
+  1. Units of Physical Execution: Jobs, Stages, and Tasks
+  1. RDD Lineage
+      * DAG View of RDDs
+      * Logical Execution Plan
+  1. Spark Execution Engine
       * DAGScheduler
       * TaskScheduler
       * Scheduler Backends
       * Executor Backends
   1. Partitions and Partitioning
-  1. Shuffling
+  1. Shuffle
       * Wide and Narrow Dependencies
   1. Caching and Persistence
   1. Checkpointing
