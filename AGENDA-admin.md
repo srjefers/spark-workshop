@@ -60,6 +60,7 @@ The workshop comes with many practical sessions that should meet (and possibly e
 1. Monitoring Spark Applications using web UI
   1. The Different Tabs in web UI
   1. Exercise: Monitoring using web UI
+      * Executing Spark Jobs to Enable Different Statistics and Statuses
 1. Clustering Spark using Hadoop YARN (aka Spark on YARN)
   1. Exercise: Setting up Hadoop YARN
       * Accessing Resource Manager's web UI
