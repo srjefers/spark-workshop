@@ -72,6 +72,7 @@ The workshop comes with many practical sessions that should meet (and possibly e
   1. [Runtime Properties](http://spark.apache.org/docs/latest/running-on-yarn.html#spark-properties) - Meaning and Application
   1. Troubleshooting
       * log files
+  1. YarnShuffleService -- ExternalShuffleService on YARN
 1. Clustering Spark using Spark Standalone
   1. Exercise: Setting up Spark Standalone
       * Using standalone Master's web UI
