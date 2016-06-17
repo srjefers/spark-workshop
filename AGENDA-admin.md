@@ -61,7 +61,7 @@ The workshop comes with many practical sessions that should meet (and possibly e
   1. The Different Tabs in web UI
   1. Exercise: Monitoring using web UI
       * Executing Spark Jobs to Enable Different Statistics and Statuses
-1. Clustering Spark using Hadoop YARN (aka Spark on YARN)
+1. Spark on Hadoop YARN cluster
   1. Exercise: Setting up Hadoop YARN
       * Accessing Resource Manager's web UI
   1. Exercise: Submitting Applications using `spark-submit`
@@ -74,6 +74,9 @@ The workshop comes with many practical sessions that should meet (and possibly e
   1. Troubleshooting
       * log files
   1. YarnShuffleService -- ExternalShuffleService on YARN
+  1. Multi-tenant YARN Cluster Setup and Spark
+      * Overview of YARN Schedulers (e.g. Capacity Scheduler)
+      * `spark-submit --queue`
 1. Clustering Spark using Spark Standalone
   1. Exercise: Setting up Spark Standalone
       * Using standalone Master's web UI
@@ -84,6 +87,8 @@ The workshop comes with many practical sessions that should meet (and possibly e
 1. Tuning Spark Infrastructure
   1. Exercise: Configuring CPU and Memory for Master and Executors
   1. Exercise: Observing Shuffling using `groupByKey`-like operations.
+  1. Scheduling Modes: FIFO and FAIR
+      * Exercise: Configuring Pools in FAIR Scheduling Mode
 1. Monitoring Spark using `SparkListeners`
   1. `LiveListenerBus`
   1. `StatsReportListener`
