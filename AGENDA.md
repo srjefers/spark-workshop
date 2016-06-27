@@ -225,11 +225,13 @@ Agenda:
   1. `mapPartitionsWithIndex` and `foreachPartition`
   1. Example: FIXME
 1. Accumulators
+  1. Exercise: Distributed Counter
   1. Exercise: Using Accumulators and `cogroup` to Count Non-Matching Records as in `leftOuterJoin`
       * Ensure exactly-one processing despite task failures
       * Use `TaskContext` to track tasks
   1. Exercise: Custom Accumulators
       * `AccumulatorParam`
+1. Broadcast Variables
 1. Community Packages for Apache Spark [http://spark-packages.org](http://spark-packages.org/)
   1. Exercise: Accessing Data in Apache Cassandra using [Spark-Cassandra Connector](https://github.com/datastax/spark-cassandra-connector)
 1. Submitting Spark Applications
