@@ -2,15 +2,17 @@
 
 ## What You Will Learn (aka Goals)
 
-The goal of the workshop is to give you a practical, complete and hands-on introduction to Apache Spark and how to use Spark's Scala API (developer) and infrastructure (administrator, devops) effectively.
+This Spark and Scala workshop is supposed to give you a practical, complete and more importantly hands-on introduction to the architecture of Apache Spark and how to use Spark's Scala API (developer) and infrastructure (administrator, devops) effectively in your Big Data projects.
 
-**NOTE**: Should you want a workshop about administration, monitoring, troubleshooting and fine-tuning of Spark, check out [Spark Administration and Monitoring Workshop](AGENDA-admin.md).
+**NOTE**: Should you want a workshop about administration, monitoring, troubleshooting and fine-tuning of Apache Spark, check out [Spark Administration and Monitoring Workshop](AGENDA-admin.md).
 
-The workshop and the agenda are the result of the workshops I ran in the following cities and a few online classes:
+The agenda is the result of the workshops I hosted in the following cities and a few online classes:
 
-* Toronto (4 classes)
+* Toronto (3 classes)
+* Mississauga
 * Plymouth Meeting
 * Montreal
+* London
 
 The workshop uses an intense code-first approach in which the modules start with just enough knowledge to get you going (mostly using scaladoc and live coding) and quickly move on to applying the concepts in programming assignments. There are a lot of them.
 
