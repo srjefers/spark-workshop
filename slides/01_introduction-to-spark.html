@@ -28,6 +28,19 @@
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 
+    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
+    <style>
+      .slides .header {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      .slides .footer {
+        position: absolute;
+        bottom: 0px;
+        left: 15%;
+      }
+    </style>
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
@@ -37,6 +50,10 @@
     <div class="reveal">
 
       <div class="slides">
+        <div class="footer">
+          <small>Copyright ©2016 Jacek Laskowski &amp; Value Amplify Consulting Group</small>
+        </div>
+
         <section class="intro" data-transition="zoom">
           <img style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
           <h1>Introduction to</h1>
@@ -48,17 +65,16 @@
         <section>
           <section id="about-the-host">
             <p>
-              <img width="20%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+              <img width="40%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
+              <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
             </p>
             <ul>
-              <li><b>Jacek Laskowski</b> is an independent consultant</li>
-              <li>Contact me at <b>jacek@valueamplify.com</b> or <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a></li>
+              <li><b>Jacek Laskowski</b> is a Spark / Scala Sr Software Developer and Trainer in <b>Value Amplify Consulting Group</b></li>
+              <li>Among contributors to <a href="http://spark.apache.org/releases/spark-release-2-0-0.html#credits">Apache Spark 2.0</a> (since <a href="http://spark.apache.org/releases/spark-release-1-6-0.html#credits">1.6.0</a>)</li>
+              <li>Contact me at <b>jacek@valueamplify.com</b> or follow on twitter <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a></li>
               <li>Delivering Development Services | Consulting | Training</li>
-              <li>Building and leading development teams</li>
-              <li>Mostly <a href="http://spark.apache.org/">Apache Spark</a> and <a href="http://www.scala-lang.org/">Scala</a> these days</li>
               <li>Leader of <a href="http://warsawscala.pl">Warsaw Scala Enthusiasts</a> and <a href="http://www.meetup.com/Warsaw-Spark/">Warsaw Apache Spark</a></li>
               <li><a href="https://java.net/website/java-champions/bios.html#Laskowski">Java Champion</a></li>
-              <li>Blogger at <a href="http://blog.jaceklaskowski.pl">blog.jaceklaskowski.pl</a> and <a href="http://jaceklaskowski.pl">jaceklaskowski.pl</a></li>
             </ul>
           </section>
           <section id="about-github">
@@ -77,21 +93,79 @@
               <img width="90%" src="images/jaceklaskowski-gitbook-stats.png" style="border: 0">
             </p>
           </section>
+          <section id="spark-contributions">
+            <p>
+              <a href="http://spark.apache.org/releases/spark-release-2-0-0.html#credits">Among contributors to Apache Spark 2.0</a>
+            </p>
+            <p>
+              <img width="60%" src="images/jaceklaskowski-credits-spark-20.png" style="border: 0">
+            </p>
+          </section>
         </section>
 
-        <section id="why-spark">
-          <h2>Apache Spark</h2>
-          <section>
-            Distributed Big Data Computation Platform
+        <section id="agenda">
+          <h2>Agenda</h2>
+          <ol>
+            <li><a href="#/why-spark">Why Apache Spark 2.0</a></li>
+            <li><a href="#/spark-core">Spark Core</a></li>
+            <li><a href="#/spark-sql">Spark SQL</a></li>
+            <li><a href="#/spark-mllib">Spark MLlib</a></li>
+            <li><a href="#/spark-streaming">Spark Streaming</a></li>
+            <li><a href="#/spark-graphx">Spark GraphX</a></li>
+            <li><a href="#/tools">Spark Tools</a></li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Why Apache Spark 2.0</h2>
+          <section id="why-spark">
+            <p>"Apache Spark is a fast and general-purpose cluster computing system."</p>
+            <p>
+              <small><a href="http://spark.apache.org/docs/latest/index.html">http://spark.apache.org/docs/latest/index.html</a></small>
+            </p>
           </section>
           <section>
-            Support for Scala, Java, Python, R and SQL languages
+            <p>
+              "Apache Spark is an open-source distributed general-purpose cluster computing framework with in-memory data processing engine"
+            </p>
+            <p>
+              <small><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-overview.html">https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-overview.html</a></small>
+            </p>
           </section>
           <section>
-            RDD - Distributed Parallel Scala Collections
+            <p>
+              "One of the Spark project goals was to deliver a platform that supports a very wide array of <b>diverse workflows</b> - not only MapReduce <b>batch jobs</b> (there were available in Hadoop already at that time), but also <b>iterative computations</b> like graph algorithms or Machine Learning. [...] And also <b>different scales of workloads</b> from sub-second interactive jobs to jobs that run for many hours."
+            </p>
+            <p>
+              <small><a href="https://youtu.be/49Hr5xZyTEA">Matei Zaharia - the author of Apache Spark - in Introduction to AmpLab Spark Internals video</a></small>
+            </p>
           </section>
           <section>
-            Interactive Exploration
+            High-level APIs for Scala, Java, Python, R and SQL languages
+          </section>
+          <section>
+            <b>RDD</b> - Resilient Distributed Dataset
+            <p>
+              (or simply a Distributed Parallel Collection API for Scala)
+            </p>
+          </section>
+          <section>
+            <b>Spark SQL</b> for processing structured and semi-structured datasets
+          </section>
+          <section>
+            Support for good ol' <b>SQL</b>
+          </section>
+          <section>
+            <b>DataFrame</b> - Python's pandas for Distributed Environment
+          </section>
+          <section>
+            <b>Dataset</b> for Type-Safe DataFrames
+          </section>
+          <section>
+            Interactive Exploration / Exploratory Analytics
+            <p>
+              (ad hoc queries)
+            </p>
           </section>
           <section>
             Batch and Iterative Workloads
@@ -100,21 +174,37 @@
             Rich Data Source Support
           </section>
           <section>
-            Cluster Deployment with Standalone, YARN, and Mesos
+            Cluster Deployment with built-in <b>Spark Standalone</b>, <b>Hadoop YARN</b>, and <b>Apache Mesos</b>
           </section>
           <section>
             Data Locality
           </section>
+          <section>
+            <b>Spark MLlib</b> for Machine Learning in Distributed Environment with Peta Bytes of Data
+          </section>
+          <section>
+            <b>Spark Streaming</b> for Scalable, High-tThroughput, Fault-Tolerant Stream Processing of Live Data Streams
+          </section>
+          <section>
+            <b>Spark GraphX</b> for Graphs and Graph-Parallel Computation
+          </section>
         </section>
+
         <section id="spark-project">
           <p>
             <img width="100%" src="images/spark-platform.png" style="border: 0">
           </p>
         </section>
+
         <section id="spark-core">
           <h2>Spark Core</h2>
           <ul>
-            <li><b>RDD</b> is the foundation of Apache Spark</li>
+            <li><b>RDD</b> is the main abstraction of Apache Spark</li>
+            <ul>
+              <li>
+                And often too low-level these days.
+              </li>
+            </ul>
             <li>
               <b>R</b>esilient
             </li>
@@ -133,14 +223,19 @@
           <h2>Spark SQL</h2>
           <ul>
             <li>
-              Distributed SQL Engine
+              Distributed SQL Engine for Structured Data Processing
             </li>
             <li>
-              Main "programming" Language: <b>SQL</b>
+              <b>SQL</b> Interface
             </li>
-            <li><b>Dataset</b> (formerly: DataFrame)</li>
+            <li><b>Dataset</b> and <b>DataFrame</b></li>
+            <ul>
+              <li>
+                DataFrame is a type alias for Dataset of Rows.
+              </li>
+            </ul>
             <li>
-              Strongly-typed Query DSL
+              Query DSL
             </li>
             <li>
               Hive Support
@@ -153,21 +248,7 @@
             </li>
           </ul>
         </section>
-        <section id="spark-streaming">
-          <h2>Spark Streaming</h2>
-          <ul>
-            <li>
-              Stream Processing
-            </li>
-            <li><b>Discretized Stream</b> (DStream)</li>
-            <li>
-              Continuous Data Stream
-            </li>
-            <li>
-              Tight integration with other Spark modules
-            </li>
-          </ul>
-        </section>
+
         <section id="spark-mllib">
           <h2>Spark MLlib</h2>
           <ul>
@@ -175,22 +256,70 @@
               Large-Scale Distributed Machine Learning
             </li>
             <li>
-              Machine Learning Algorithms
+              "Making practical machine learning scalable and easy"
             </li>
-            <li><b>Pipeline API</b></li>
-            <li>Classification, Regression, Recommendation, ...</li>
+            <li>
+               DataFrame-based API
+            </li>
+            <li><b>Pipeline API</b> for designing, evaluating, and tuning machine learning pipelines</li>
+            <li>Classification, Regression, Clustering, Recommendation, Collaborative Filtering, ...</li>
             <li>
               Model Import / Export
             </li>
           </ul>
         </section>
+
+        <section>
+          <section id="spark-streaming">
+            <h2>Spark Streaming</h2>
+            <ol>
+              <li>
+                Scalable, high-throughput, fault-tolerant stream processing of live<small>*</small> data streams
+                <ul>
+                  <li>
+                    Works in batches.
+                  </li>
+                </ul>
+              </li>
+              <li><b>Discretized Stream</b> (DStream)</li>
+              <li>
+                Continuous Data Stream
+              </li>
+              <li>
+                Tight integration with other Spark modules
+              </li>
+            </ol>
+          </section>
+          <section id="spark-streaming-architecture">
+            <p>
+              <img width="100%" src="images/spark-streaming-architecture.png" style="border: 0">
+            </p>
+            <small><a href="http://spark.apache.org/docs/latest/streaming-programming-guide.html">http://spark.apache.org/docs/latest/streaming-programming-guide.html</a></small>
+          </section>
+        </section>
+
         <section id="spark-graphx">
           <h2>Spark GraphX</h2>
           <ul>
             <li>
               Distributed Graph Processing
             </li>
-            <li><b>Property Graph</b> (quite recently: GraphFrame)</li>
+            <li>
+              <b>Property Graph</b> on top of RDD
+              <ul>
+                <li>
+                  A directed multigraph with properties attached to each vertex and edge
+                </li>
+              </ul>
+            </li>
+            <li>
+              Graph algorithms
+              <ul>
+                <li>PageRank</li>
+                <li>Connected Components</li>
+                <li>Triangle Counting</li>
+              </ul>
+            </li>
           </ul>
         </section>
         <section id="tools">
@@ -207,6 +336,9 @@
             </li>
             <li>
               <b>web UI</b> - a web interface to monitor Spark computations
+            </li>
+            <li>
+              <b>Scaladoc</b> - <a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.package">Spark's Scala API documentation</a>
             </li>
           </ul>
         </section>
