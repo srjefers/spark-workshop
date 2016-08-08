@@ -196,29 +196,85 @@
           </p>
         </section>
 
-        <section id="spark-core">
+        <section>
           <h2>Spark Core</h2>
-          <ul>
-            <li><b>RDD</b> is the main abstraction of Apache Spark</li>
+          <section id="spark-core">
             <ul>
+              <li><b>RDD</b> is the main abstraction of Apache Spark</li>
               <li>
-                And often too low-level these days.
+                <b>R</b>esilient
+              </li>
+              <li>
+                <b>D</b>istributed
+              </li>
+              <li>
+                <b>D</b>ataset
+              </li>
+              <li>
+                In-Memory, Immutable, Lazy Evaluated, Partitioned, Cacheable, Parallel, Typed
+              </li>
+              <li>
+                <b>CAUTION:</b> Often too low-level these days. Leave it alone until you really want it.
               </li>
             </ul>
-            <li>
-              <b>R</b>esilient
-            </li>
-            <li>
-              <b>D</b>istributed
-            </li>
-            <li>
-              <b>D</b>ataset
-            </li>
-            <li>
-              In-Memory, Immutable, Lazy Evaluated, Partitioned, Cacheable, Parallel, Typed
-            </li>
-          </ul>
+          </section>
+          <section>
+            <h2>Partitions</h2>
+            <ol>
+              <li>
+                <b>Partitions</b> are logical buckets for data.
+              </li>
+              <li>
+                Partitions correspond to Hadoop's splits (if the data lives on HDFS) or partitioning schemes in the source storage
+              </li>
+              <li>
+                RDD (and hence the data inside) is partitioned.
+              </li>
+              <li>
+                Spark manages data using partitions that helps parallelize distributed data processing with minimal network traffic for sending data between executors.
+              </li>
+              <li>
+                Data in partitions can be <b>skewed</b>, i.e. unevenly distributed across partitions.
+              </li>
+            </ol>
+          </section>
+          <section>
+            <p>
+              <img width="100%" src="images/spark-rdd-partitioned-distributed.png" style="border: 0">
+            </p>
+          </section>
+          <section>
+            <h2>Shuffle</h2>
+            <ol>
+              <li>
+                <b>Shuffle</b> is Spark’s mechanism for re-distributing data so that it’s grouped differently across partitions.
+              </li>
+              <li>
+                Data is often distributed unevenly across partitions.
+              </li>
+              <li>
+                <b>repartition</b> and <b>coalesce</b> operators can repartition a dataset.
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h2>DAGScheduler</h2>
+            <img width="60%" src="images/dagscheduler-rdd-partitions-job-resultstage.png" style="border: 0">
+          </section>
+          <section>
+            <h2>Jobs</h2>
+            <img width="70%" src="images/rdd-job-partitions.png" style="border: 0">
+          </section>
+          <section>
+            <h2>Stages</h2>
+            <img width="70%" src="images/dagscheduler-stages.png" style="border: 0">
+          </section>
+          <section>
+            <h2>Tasks</h2>
+            <img width="100%" src="images/stage-tasks.png" style="border: 0">
+          </section>
         </section>
+
         <section id="spark-sql">
           <h2>Spark SQL</h2>
           <ul>

@@ -271,7 +271,7 @@ object Main extends App {
 
         <section>
           <section id="exercise-1-0">
-            <h2>[RDD] WordCount using groupBy</h2>
+            <h2>Exercise 1: WordCount using groupBy</h2>
             <ul>
               <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
               <li>Use <b>spark-shell</b> and <b>sbt</b></li>
@@ -283,7 +283,7 @@ object Main extends App {
             </ul>
           </section>
           <section id="exercise-1-solution">
-            <h2>[RDD] WordCount Solution</h2>
+            <h2>Solution 1: WordCount using groupBy</h2>
             <pre><code>
 sc.textFile("README.md")
   .flatMap(line => line.split("\\W+"))
@@ -294,7 +294,7 @@ sc.textFile("README.md")
               </code></pre>
           </section>
           <section id="exercise-1-1">
-            <h2>[RDD] WordCount using reduceByKey</h2>
+            <h2>Exercise 2: WordCount using reduceByKey</h2>
             <ul>
               <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
               <li>Use <b>spark-shell</b> and <b>sbt</b></li>
@@ -305,7 +305,7 @@ sc.textFile("README.md")
             </ul>
           </section>
           <section id="exercise-1-1-solution">
-            <h2>[RDD] WordCount Solution</h2>
+            <h2>Solution 2: WordCount using reduceByKey</h2>
             <pre><code>
 sc.textFile("README.md")
   .flatMap(line => line.split("\\W+"))
@@ -317,16 +317,28 @@ sc.textFile("README.md")
         </section>
         <section id="exercise-2">
           <section>
-            <h2>[Dataset] Reading CSV files using spark-csv</h2>
+            <h2>Exercise 3: Reading CSV file Using Dataset</h2>
             <ul>
+              <li>
+                Use <b>CVS file</b> from OneDrive with the Installation Instructions.
+              </li>
               <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
-              <li>Use <b>spark-shell</b> and <b>sbt</b></li>
-              <li>Use <code>sqlContext.read</code>, <code>format</code> and <code>option</code> to read a file</li>
+              <li>Use <b>spark-shell</b> and <b>sbt</b> to write the code</li>
+              <li>Use <code>spark.read</code>, <code>format</code> and <code>option</code> to read a file</li>
               <li>Use <code>withColumn</code> and <code>split</code></li>
               <li>Use a custom case class <code>Record</code></li>
               <li>Print results using <code>show</code></li>
-              <li><code>sbt package</code> and deploy it to Spark Standalone.</li>
+              <li><code>sbt package</code> and <code>spark-submit</code> it</li>
+              <li>
+                <b>Success:</b> You show a table 4 by 2.
+              </li>
             </ul>
+          </section>
+          <section id="exercise-1-1-solution">
+            <h2>Solution 3: Reading CSV file Using Dataset</h2>
+            <pre><code>
+spark.read.option("header", true).csv("people.csv").show
+            </code></pre>
           </section>
         </section>
 
