@@ -13,13 +13,7 @@ object LogisticRegressionApp extends App {
 
   // Step 2: Read the dataset to process
   case class Article(id: Long, topic: String, text: String)
-  val articles = Seq(
-    Article(0, "sci.math", "Hello, Math!"),
-    Article(1, "alt.religion", "Hello, Religion!"),
-    Article(2, "sci.physics", "Hello, Physics!"),
-    Article(3, "sci.math", "Hello, Math Revised!"),
-    Article(4, "sci.math", "Better Math"),
-    Article(5, "alt.religion", "TGIF")).toDS
+  val articles = spark.read.json("src/main/resources/articles.json")
 
   import org.apache.spark.sql.functions.udf
   val topic2Label: Boolean => Double = isSci => if (isSci) 1 else 0
