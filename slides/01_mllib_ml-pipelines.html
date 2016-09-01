@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Spark 2.0 Webinar - ML Pipelines In-Depth</title>
+
+    <meta name="description" content="Spark 2.0 Webinar - User-Defined Functions">
+    <meta name="author" content="Jacek Laskowski">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
+    <style>
+      .slides .header {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      .slides .footer {
+        position: absolute;
+        bottom: 0px;
+        left: 15%;
+      }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+
+      <div class="slides">
+        <div class="footer">
+          <small>Copyright ©2016 Jacek Laskowski &amp; Value Amplify Consulting Group</small>
+        </div>
+
+        <section class="intro" data-transition="zoom">
+          <p>
+            <img width="15%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="30%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
+          </p>
+          <h1>ML Pipelines In-Depth</h1>
+          <h4>Apache Spark 2.0</h4>
+          <h3><a href="https://www.yammer.com/valueamplify.com/#/threads/inGroup?feedId=8926699">Yammer: AML Spark Training Class</a></h3>
+        </section>
+
+        <section id="agenda">
+          <h2>Agenda</h2>
+          <ol>
+            <li><a href="#/pipelines">ML Pipelines and PipelineStages (spark.ml)</a></li>
+            <li><a href="#/transformers">ML Pipeline Components - Transformers</a></li>
+            <li><a href="#/estimators">ML Pipeline Components - Estimators</a></li>
+            <li><a href="#/models">ML Pipeline Models</a></li>
+            <li><a href="#/evaluators">Evaluators</a></li>
+            <li><a href="#/crossvalidator">CrossValidator</a></li>
+            <li><a href="#/persistence">ML Pipeline Persistence - MLWriter and MLReader</a></li>
+            <li><a href="#/examples">ML Pipeline Examples</a></li>
+          </ol>
+        </section>
+
+        <section>
+          <section id="pipelines">
+            <h2>ML Pipelines and PipelineStages (spark.ml)</h2>
+            <ol>
+              <li>DataFrame-based API under <code>spark.ml</code> package.
+                <pre><code>import org.apache.spark.ml._</code></pre>
+                <ul>
+                  <li><code>spark.mllib</code> package obsolete</li>
+                </ul>
+              </li>
+              <li>Switch to Mastering Apache Spark 2.0
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-mllib-pipelines.html">ML Pipelines - High-Level API for MLlib</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h2>text document pipeline</h2>
+            <img src="images/ml-Pipeline.png" alt="ML Pipeline" style="background:none; border:none; box-shadow:none;" />
+            <small>From <a href="http://spark.apache.org/docs/latest/ml-pipeline.html#how-it-works">the official documentation of Apache Spark</a></small>
+          </section>
+        </section>
+
+        <section id="transformers">
+          <h2>ML Pipeline Components - Transformers</h2>
+          <ol>
+            <li>Function objects to transform DataFrame into DataFrame.
+              <pre><code>transformer: DataFrame =[transform]=> DataFrame</code></pre>
+            </li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-mllib-transformers.html">Pipeline Components - Transformers</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="estimators">
+          <h2>ML Pipeline Components - Estimators</h2>
+          <ol>
+            <li>Produces a <code>Model</code> (i.e. a Transformer) for a given training DataFrame
+              <pre><code>estimator: DataFrame =[fit]=> Model</code></pre>
+            </li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-mllib-estimators.html">Pipeline Components - Estimators</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <section id="models">
+            <h2>ML Pipeline Models</h2>
+            <ol>
+              <li>A Transformer to generate predictions for input DataFrame
+                <pre><code>model: DataFrame =[predict]=> DataFrame (with predictions)</code></pre>
+              </li>
+              <li>Switch to Mastering Apache Spark 2.0
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-mllib-models.html">Models</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h2>text document pipeline model</h2>
+            <img src="images/ml-PipelineModel.png" alt="ML Pipeline Model" style="background:none; border:none; box-shadow:none;" />
+            <small>From <a href="http://spark.apache.org/docs/latest/ml-pipeline.html#how-it-works">the official documentation of Apache Spark</a></small>
+          </section>
+        </section>
+
+        <section id="evaluators">
+          <h2>Evaluators</h2>
+          <ol>
+            <li>Transformation that maps test DataFrame into a metric indicating how good a model is.
+              <pre><code>evaluator: DataFrame =[evaluate]=> Double</code></pre>
+            </li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-mllib-evaluators.html">Evaluators</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="crossvalidator">
+          <h2>CrossValidator</h2>
+          <ol>
+            <li>Estimator to produce a CrossValidatorModel
+              <pre><code>import org.apache.spark.ml.tuning.CrossValidator</code></pre>
+            </li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-mllib-crossvalidator.html">CrossValidator</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="persistence">
+          <h2>ML Pipeline Persistence - MLWriter and MLReader</h2>
+          <ol>
+            <li>Allows saving and loading models
+              <pre><code>model.write.overwrite().save("/tmp/spark-logistic-regression-model")</code></pre>
+              <pre><code>val model = PipelineModel.load("/tmp/spark-logistic-regression-model")</code></pre>
+            </li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-mllib-pipelines-persistence.html">ML Pipeline Persistence - MLWriter and MLReader</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="examples">
+          <h2>ML Pipeline Examples</h2>
+          <ol>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ol>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-mllib-pipelines-example-classification.html">Example — Text Classification</a></li>
+              </ol>
+            </li>
+            <li>MultinomialLogisticRegression (Code Review in IDE)</li>
+          </ol>
+        </section>
+
+        <section id="recap">
+          <h2>Recap</h2>
+          <ol>
+            <li><a href="#/pipelines">ML Pipelines and PipelineStages (spark.ml)</a></li>
+            <li><a href="#/transformers">ML Pipeline Components - Transformers</a></li>
+            <li><a href="#/estimators">ML Pipeline Components - Estimators</a></li>
+            <li><a href="#/models">ML Pipeline Models</a></li>
+            <li><a href="#/evaluators">Evaluators</a></li>
+            <li><a href="#/crossvalidator">CrossValidator</a></li>
+            <li><a href="#/persistence">ML Pipeline Persistence - MLWriter and MLReader</a></li>
+            <li><a href="#/examples">ML Pipeline Examples</a></li>
+          </ol>
+        </section>
+
+        <section id="questions" style="text-align: left">
+          <h1>Questions?</h1>
+          <p>
+            - Read <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> notes<br>
+            - Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> at twitter<br>
+            - Use <a href="https://github.com/jaceklaskowski">Jacek's projects at GitHub</a><br>
+            - Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a>
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true },
+                { src: 'plugin/notes/notes.js', async: true }
+            ]
+        });
+
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
