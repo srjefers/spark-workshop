@@ -5,6 +5,7 @@
 
 1. [sbt](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
 1. [Scala](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
+1. [Tungsten and Catalyst Optimizer in Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/05_sql_catalyst-optimizer-tungsten.html)
 
 ## Contact The Author
 
