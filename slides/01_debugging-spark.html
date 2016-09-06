@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Spark 2.0 Webinar - DataSource API</title>
+    <title>Spark 2.0 Webinar - Debugging Spark Applications</title>
 
-    <meta name="description" content="Spark 2.0 Webinar - DataSource API">
+    <meta name="description" content="Spark 2.0 Webinar - Debugging Spark Applications">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,28 +59,77 @@
             <img width="15%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="30%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
           </p>
-          <h1>DataSource API</h1>
-          <h3>Apache Spark 2.0</h3>
+          <h1>Debugging Spark Applications</h1>
+          <h4>Apache Spark 2.0</h4>
           <h3><a href="https://www.yammer.com/valueamplify.com/#/threads/inGroup?feedId=8926699">Yammer: AML Spark Training Class</a></h3>
         </section>
 
         <section id="agenda">
-          <h2>Agenda</h2>
+          <section>
+            <h2>Agenda</h2>
+            <ol>
+              <li><a href="#/tools-and-techniques">Debugging Tools and Techniques</a></li>
+              <li><a href="#/live-debugging-session">Live Debugging Session</a></li>
+            </ol>
+          </section>
+          <section>
+            <h2>Debugging Tools and Techniques</h2>
+            <ol>
+              <li>IntelliJ IDEA's Debugger</li>
+              <li>Loggers (conf/log4j.properties)</li>
+              <li><a href="http://www.scalatest.org/">ScalaTest</a> - tests over debugging</li>
+              <li><a href="http://spark.apache.org/docs/latest/running-on-yarn.html#debugging-your-application">Debugging your Application</a> (in Spark docs)</li>
+              <li>Spark application's web UI, esp. SQL tab</li>
+              <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-dataset.html#explain">Dataset.explain</a></li>
+              <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-debugging-execution.html">Debugging Query Execution</a> (using debug package)</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Live Debugging Session</h2>
+            <ol>
+              <li>Debugging Spark (MLlib) Application in IntelliJ IDEA</li>
+              <li>spark-shell and conf/log4j.properties</li>
+              <li>"Debugging" ML Pipelines</li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Debugging - Definition</h2>
+            <blockquote cite="https://en.wikipedia.org/wiki/Debugging">
+              <b>Debugging</b> is the process of finding and resolving of defects that prevent correct operation of computer software or a system.
+            </blockquote>
+            <small>from <a href="https://en.wikipedia.org/wiki/Debugging">Debugging</a> in Wikipedia, the free encyclopedia</small>
+          </section>
+          <section>
+            <h2>Debugging - Numerous Facets</h2>
+            <blockquote cite="https://en.wikipedia.org/wiki/Debugging">
+              Numerous books have been written about debugging, as it involves numerous aspects, including <b>interactive debugging</b>, control flow, <b>integration testing</b>, <b>log files</b>, <b>monitoring</b> (application, system), memory dumps, profiling, Statistical Process Control, and special design tactics to improve detection while simplifying changes.
+            </blockquote>
+            <small>from <a href="https://en.wikipedia.org/wiki/Debugging">Debugging</a> in Wikipedia, the free encyclopedia</small>
+          </section>
+        </section>
+
+        <section>
+          <h2>Debugging Tools and Techniques</h2>
           <ol>
-            <li>Data Source API Overview
-              <ul>
-                <li>Input and Output</li>
-                <li>File Formats (JSON, TEXT, CSV, Parquet, ORC)</li>
-                <li>Hive Tables</li>
-                <li>JDBC</li>
-              </ul>
-            </li>
-            <li>Using Data Source API in Scala
-              <ul>
-                <li>Reading data from PostgreSQL (JDBC)</li>
-                <li>Running ML experiment with JSON data source</li>
-              </ul>
-            </li>
+            <li>IntelliJ IDEA's Debugger</li>
+            <li>Loggers (conf/log4j.properties)</li>
+            <li><a href="http://www.scalatest.org/">ScalaTest</a> - tests over debugging</li>
+            <li><a href="http://spark.apache.org/docs/latest/running-on-yarn.html#debugging-your-application">Debugging your Application</a> (in Spark docs)</li>
+            <li>Spark application's web UI, esp. SQL tab</li>
+            <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-dataset.html#explain">Dataset.explain</a></li>
+            <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-debugging-execution.html">Debugging Query Execution</a> (using debug package)</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Live Debugging Session</h2>
+          <ol>
+            <li>Debugging Spark (MLlib) Application in IntelliJ IDEA</li>
+            <li>spark-shell and conf/log4j.properties</li>
+            <li>"Debugging" ML Pipelines</li>
           </ol>
         </section>
 

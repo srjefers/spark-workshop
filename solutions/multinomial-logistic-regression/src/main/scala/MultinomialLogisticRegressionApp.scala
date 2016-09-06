@@ -8,7 +8,7 @@ object MultinomialLogisticRegressionApp extends App {
   import spark.implicits._
 
   val input = Seq(
-    (0, "hello world"),
+    (0, "hello redmond"),
     (1, "and this is something slightly longer")).toDF("label", "text").as[(String, String)]
 
   val regTok = new RegexTokenizer().setInputCol("text").setOutputCol("words")

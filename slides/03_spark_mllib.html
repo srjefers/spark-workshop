@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Apache Spark 2.0 Workshop - Spark MLlib</title>
+
+    <meta name="description" content="Spark MLlib">
+    <meta name="author" content="Jacek Laskowski">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
+    <style>
+      .slides .header {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      .slides .footer {
+        position: absolute;
+        bottom: 0px;
+        left: 15%;
+      }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+
+      <div class="slides">
+        <div class="footer">
+          <small>Copyright ©2016 Jacek Laskowski &amp; Value Amplify Consulting Group</small>
+        </div>
+
+        <section class="intro" data-transition="zoom">
+          <p>
+            <img width="15%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="30%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
+          </p>
+          <h1>Spark 2.0 / Scala Workshop <small>Spark MLlib</small></h1>
+          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark Notes</a></h4>
+        </section>
+
+        <section>
+          <section id="agenda-day1">
+            <h2>Agenda - Day 1</h2>
+            <ul>
+              <li>The Elements of Apache Spark’s Architecture</li>
+              <li>Monitoring Spark Applications</li>
+              <li>Spark Setup and Your First Spark Application</li>
+            </ul>
+          </section>
+          <section id="agenda-day2">
+            <h2>Agenda - Day 2</h2>
+            <ul>
+              <li>Introduction to Scala (and sbt)</li>
+              <li>Developing Spark SQL Applications using DataFrames</li>
+            </ul>
+          </section>
+          <section id="agenda-day3">
+            <h2>Agenda - Day 3 <-- TODAY</h2>
+            <ul>
+              <li>Developing Machine Learning Pipelines using Spark MLlib</li>
+              <li>Caching and Persistence</li>
+              <li>Performance Tuning and Debugging</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h2>Spark MLlib</h2>
+          <ul>
+            <li>Provides <b>distributed machine learning algorithms</b></li>
+            <li>Simplifies the development and usage of large scale machine learning.</li>
+            <li><b>org.apache.spark.mllib</b> for a RDD-based machine learning</li>
+            <li><b>org.apache.spark.ml</b> for a DataFrame-based machine learning</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h2>ML Pipelines - High-Level API for MLlib</h2>
+            <p>
+              Use of a machine learning algorithm is only one component of a <b>predictive analytic workflow</b>. There could also be <b>pre-processing steps</b> for the machine learning algorithm to work.
+            </p>
+          </section>
+          <section>
+            <h2>Typical standard machine learning workflow</h2>
+            <ol>
+              <li>Loading data (aka <b>data ingestion</b>)</li>
+              <li>Extracting features (aka <b>feature extraction</b>)</li>
+              <li>Training model (aka <b>model training</b>)</li>
+              <li>Evaluate (or <b>predictionize</b>)</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Before Going To Production</h2>
+            <ol>
+              <li>Testing model (aka <b>model testing</b>)</li>
+              <li>Selecting the best model (aka <b>model selection</b> or <b>model tuning</b>)</li>
+              <li>Deploying model (aka <b>model deployment</b> and <b>integration</b>)</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Pipeline API</h2>
+            Assemble and configure practical distributed machine learning pipelines
+          </section>
+        </section>
+
+        <section>
+          <h2>Concepts</h2>
+          <ol>
+            <li>Pipelines and PipelineStages</li>
+            <li>Transformers</li>
+            <li>Estimators</li>
+            <li>Models</li>
+            <li>Evaluators</li>
+            <li>Params (and ParamMaps)</li>
+          </ol>
+        </section>
+
+        <section>
+          Pipeline with Transformers, Estimator, and Model
+          <img width="100%" src="images/spark-mllib-pipeline.png" style="border: 0">
+        </section>
+
+        <section>
+          <h2>Features of Pipeline API</h2>
+          <ol>
+            <li>DataFrame as a dataset format</li>
+            <li>ML Pipelines API is similar to scikit-learn</li>
+            <li>Easy debugging (via inspecting columns added during execution)</li>
+            <li>Parameter tuning</li>
+            <li>Compositions (to build more complex pipelines out of existing ones)</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>ML Pipeline Design</h2>
+          <ol>
+            <li>Choose <b>Transformers</b></li>
+            <li>Select <b>Estimator</b> (to produce a <b>Model</b>)</li>
+            <li>Create <b>Pipeline</b></li>
+            <li><b>Fit</b> the pipeline to a training <b>Dataset</b></li>
+            <li>Use the Model</li>
+          </ol>
+        </section>
+        <section>
+          <h2>ML Pipeline Design Applied - Step 1</h2>
+          <ul>
+            <li>Choose <b>Transformers</b></li>
+            <ol>
+              <li><b>Tokenizer</b></li>
+              <li><b>HashingTF</b></li>
+            </ol>
+          </ul>
+        </section>
+        <section>
+          <h2>ML Pipeline Design Applied - Step 2</h2>
+          <ul>
+            <li>Select <b>Estimator</b> (to produce a <b>Model</b>)</li>
+            <ol>
+              <li><b>LogisticRegression</b></li>
+            </ol>
+          </ul>
+        </section>
+        <section>
+          <h2>ML Pipeline Design Applied - Step 3</h2>
+          <ul>
+            <li>Create <b>Pipeline</b></li>
+            <ol>
+              <li><b>new Pipeline()</b></li>
+              <li><b>setStages</b></li>
+            </ol>
+          </ul>
+        </section>
+        <section>
+          <h2>ML Pipeline Design Applied - Step 4</h2>
+          <ul>
+            <b>Fit</b> the pipeline to a training <b>Dataset</b>
+            <ol>
+              <li><b>fit</b></li>
+            </ol>
+          </ul>
+        </section>
+        <section>
+          <h2>Use the Model - Step 5</h2>
+          <ul>
+            <b>Fit</b> the model to a real <b>Dataset</b>
+            <ol>
+              <li><b>fit</b></li>
+            </ol>
+          </ul>
+        </section>
+
+        <section id="exercises">
+          <h1>Spark MLlib Exercises</h1>
+        </section>
+
+        <section id="questions" style="text-align: left">
+          <h1>Questions?</h1>
+          <p>
+            - Read <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> notes<br>
+            - Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> at twitter<br>
+            - Use <a href="https://github.com/jaceklaskowski">Jacek's projects at GitHub</a><br>
+            - Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a>
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true },
+                { src: 'plugin/notes/notes.js', async: true }
+            ]
+        });
+
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>

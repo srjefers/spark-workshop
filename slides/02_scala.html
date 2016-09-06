@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Apache Spark 2.0 Workshop - Scala</title>
+
+    <meta name="description" content="Scala">
+    <meta name="author" content="Jacek Laskowski">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+
+      <div class="slides">
+        <section class="intro" data-transition="zoom">
+          <p>
+            <img width="10%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1>Spark 2.0 / Scala Workshop <small>Scala</small></h1>
+          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark Notes</a></h4>
+        </section>
+
+        <section>
+          <section id="agenda">
+            <h2>Agenda</h2>
+            <ul>
+              <li>Ask questions!</li>
+            </ul>
+          </section>
+        </section>
+
+        <section id="scala">
+          <h1>Scala</h1>
+          <h3>Object-Oriented Meets Functional</h3>
+        </section>
+
+        <section>
+          <section>
+            <h2>Intro to Scala</h2>
+            <ul>
+              <li>General-Purpose Programming language</li>
+              <li><b>Apache Spark</b> is developed in <b>Scala</b></li>
+              <li>Functional and Object-Oriented Paradigms</li>
+              <li>Class Hierarchies</li>
+              <li>Higher-Order Functions</li>
+              <li>The latest version: <b>2.11.8</b></li>
+              <li>Available from <a href="http://www.scala-lang.org/">http://www.scala-lang.org</a></li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h2>Scala</h2>
+          <section>
+            <h2>Hello World App</h2>
+            <hr />
+            <pre><code>
+object Main extends App {
+  println("Hello")
+}
+            </code></pre>
+          </section>
+          <section>
+            <h2>object keyword</h2>
+          </section>
+          <section>
+            <h2>extends keyword</h2>
+          </section>
+          <section>
+            <h2>println method</h2>
+          </section>
+          <section>
+            <h2>curly braces</h2>
+          </section>
+          <section>
+            <pre><code>
+object Main extends App {
+  println("Hello")
+}
+            </code></pre>
+          </section>
+          <section>
+            <h2>Let's do some coding!</h2>
+          </section>
+        </section>
+
+        <section>
+          <h2>Scala</h2>
+          <ul>
+            <li>
+              Objects -- Value Containers
+            </li>
+            <li>
+              Classes and Case Classes
+            </li>
+            <li>
+              Named Parameters in Methods
+            </li>
+            <li>for-comprehension
+              <ul>
+                <li><b>Demo:</b> Creating Pairs of Numbers (Coordinates)</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <section id="scala-exercises">
+            <h1>Scala Exercises</h1>
+          </section>
+          <section>
+            <h2>Scala Exercises - Hints</h2>
+            <ol>
+              <li>
+                Use scaladoc at <a href="http://www.scala-lang.org/api/current">http://www.scala-lang.org/api/current</a>
+              </li>
+              <li>
+                Use <b>sbt console</b> or <b>Scala Worksheet</b> (in IntelliJ IDEA)
+              </li>
+              <li>
+                Write a test first before you code and <b>sbt ~test</b> (mind the tilde)
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h2>Exercise: Println Command-Line Arguments</h2>
+            <ol>
+              <li>Use <b>args</b> to access command-line arguments</li>
+              <li>Use <b>foreach</b> and <b>println</b> to <i>println</i> elements</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Scala Exercise: Filtering Out Labels</h2>
+            <p>
+              Problem: Filter out labels
+              <pre><code>
+val labels = Seq("hello", "world", "boston", "warsaw")
+
+def filter(labels: Seq[String]): Seq[String] = ???
+
+val result = filter(labels)
+
+// Seq("hello", "world")
+// Hint: by size or by content
+              </code></pre>
+            </p>
+          </section>
+          <section>
+            <h2>Scala Exercise: Indexing Labels</h2>
+            <p>
+              Problem: Index labels (using numbers)
+              <pre><code>
+val labels = Seq("hello", "world")
+
+def index(labels: Seq[String]): Seq[(String, Int)] = ???
+
+val result = index(labels)
+
+// Seq(("hello", 0), ("world", 1))
+              </code></pre>
+            </p>
+          </section>
+          <section>
+            <h2>Scala Exercise: Taking Even Labels</h2>
+            <p>
+              Problem: Index Labels and Take Labels at Even Positions
+              <pre><code>
+val labels = Seq("hello", "world", "boston", "warsaw")
+
+def takeEven(labels: Seq[String]): Seq[String] = ???
+
+val result = takeEven(labels)
+
+// Seq("hello", "boston")
+// Hint: Use zipWithIndex and filter
+              </code></pre>
+            </p>
+          </section>
+          <section>
+            <h2>Scala Exercise: Println Labels</h2>
+            <p>
+              Problem: Println Labels
+              <pre><code>
+val labels = Seq("hello", "world", "boston", "warsaw")
+
+labels.[useFunctionHere]
+
+// Hint: Use scaladoc of Seq and review available methods
+              </code></pre>
+            </p>
+          </section>
+          <section>
+            <h2>Scala Exercise: Removing Elements From Collection</h2>
+            <p>
+              Problem: Remove Every Third Element
+              <pre><code>
+val labels = Seq("hello", "world", "boston", "warsaw")
+
+def removeThirds(labels: Seq[String]): Seq[String] = ???
+
+val result = removeThirds(labels)
+
+// Seq("hello", "world", "warsaw")
+// Hint: Use zipWithIndex and filterNot
+              </code></pre>
+            </p>
+          </section>
+          <section>
+            <h2>Scala Exercise: Println Lines From File</h2>
+            <ol>
+              <li><b>Problem:</b> Show the content of a file specified on command line</li>
+              <li>Read a file using <b>scala.io.Source</b>
+                <ol>
+                  <li><b>fromFile</b></li>
+                  <li><b>getLines</b></li>
+                </ol>
+              </li>
+              <li>Print results
+                <ul>
+                  <li><b>Seq.foreach</b></li>
+                  <li><b>println</b></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+        </section>
+
+        <section id="intellij-idea">
+          <h1>IntelliJ IDEA</h1>
+        </section>
+
+        <section>
+          <h2>IntelliJ IDEA</h2>
+          <section>
+            <ol>
+              <li>
+                The integrated development tool
+                <ul>
+                  <li>
+                     similar to Visual Studio
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Support for Scala
+              </li>
+              <li>
+                Scala Worksheet for Learning and Prototyping
+              </li>
+              <li>
+                "IntelliSense" Feature
+              </li>
+              <li>
+                Lots of Key Shortcuts
+                <ul>
+                  <li>
+                     You're going to use them quite often!
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <ol>
+              <li>
+                Creating a Scala project
+              </li>
+              <li>
+                Running the Hello World application
+              </li>
+            </ol>
+          </section>
+        </section>
+
+        <section id="scalatest">
+          <h1>ScalaTest</h1>
+        </section>
+
+        <section>
+          <h2>ScalaTest</h2>
+          <section>
+            <ol>
+              <li>
+                Scala Testing Framework
+              </li>
+              <li>
+                Matchers - Assertions
+              </li>
+              <li>
+                sbt supports ScalaTest
+                <ul>
+                  <li><b>sbt test</b> (and don't forget about <b>~</b> - a tilde)</li>
+                </ul>
+              </li>
+              <li>
+                IntelliJ IDEA supports ScalaTest, too.
+              </li>
+              <li><a href="http://www.scalatest.org">http://www.scalatest.org</a></li>
+              <li><b>Demo:</b> Installation and Execution</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Exercise: Writing a Test</h2>
+            <ol>
+              <li>
+                Follow <a href="http://www.scalatest.org">http://www.scalatest.org</a>
+              </li>
+              <li>
+                Define <b>libraryDependencies</b> in <b>build.sbt</b>
+              </li>
+              <li>
+                Run tests using <b>sbt test</b>
+              </li>
+            </ol>
+          </section>
+        </section>
+
+        <section id="scaladoc">
+          <h1>Scaladoc</h1>
+          <h3>Scala Standard API's Documentation</h3>
+        </section>
+
+        <section>
+          <h2>Scaladoc</h2>
+          <section>
+            <ol>
+              <li>
+                Official Documentation for Scala API
+              </li>
+              <li>
+                <a href="https://scala-lang.org/api/current">https://scala-lang.org/api/current</a>
+              </li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section id="exercise-1-0">
+            <h2>Exercise 1: WordCount using groupBy</h2>
+            <ul>
+              <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
+              <li>Use <b>spark-shell</b> and <b>sbt</b></li>
+              <li>Use <code>sc.textFile</code>, <code>flatMap</code> and <code>split</code></li>
+              <li>Use <code>groupBy</code> to group values per key</li>
+              <li>Use <code>mapValues</code> and <code>top</code></li>
+              <li>Print results using <code>foreach</code> and <code>println</code></li>
+              <li><code>sbt package</code> and deploy it to Spark Standalone.</li>
+            </ul>
+          </section>
+          <section id="exercise-1-solution">
+            <h2>Solution 1: WordCount using groupBy</h2>
+            <pre><code>
+sc.textFile("README.md")
+  .flatMap(line => line.split("\\W+"))
+  .map(token => (token, 1))
+  .reduceByKey { case (x, y) => x + y }
+  .top(10)(Ordering.by(wc => wc._2))
+  .foreach(println)
+              </code></pre>
+          </section>
+          <section id="exercise-1-1">
+            <h2>Exercise 2: WordCount using reduceByKey</h2>
+            <ul>
+              <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
+              <li>Use <b>spark-shell</b> and <b>sbt</b></li>
+              <li>Use <code>sc.textFile</code>, <code>flatMap</code> and <code>split</code></li>
+              <li>Use <code>groupBy</code> and <code>reduceByKey</code></li>
+              <li>Save results using <code>saveAsTextFile</code></li>
+              <li><code>sbt package</code> and deploy it to Spark Standalone.</li>
+            </ul>
+          </section>
+          <section id="exercise-1-1-solution">
+            <h2>Solution 2: WordCount using reduceByKey</h2>
+            <pre><code>
+sc.textFile("README.md")
+  .flatMap(line => line.split("\\W+"))
+  .map(token => (token, 1))
+  .reduceByKey { case (x, y) => x + y }
+  .saveAsTextFile("results.txt")
+              </code></pre>
+          </section>
+        </section>
+        <section id="exercise-2">
+          <section>
+            <h2>Exercise 3: Reading CSV file Using Dataset</h2>
+            <ul>
+              <li>
+                Use <b>CVS file</b> from OneDrive with the Installation Instructions.
+              </li>
+              <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
+              <li>Use <b>spark-shell</b> and <b>sbt</b> to write the code</li>
+              <li>Use <code>spark.read</code>, <code>format</code> and <code>option</code> to read a file</li>
+              <li>Use <code>withColumn</code> and <code>split</code></li>
+              <li>Use a custom case class <code>Record</code></li>
+              <li>Print results using <code>show</code></li>
+              <li><code>sbt package</code> and <code>spark-submit</code> it</li>
+              <li>
+                <b>Success:</b> You show a table 4 by 2.
+              </li>
+            </ul>
+          </section>
+          <section id="exercise-1-1-solution">
+            <h2>Solution 3: Reading CSV file Using Dataset</h2>
+            <pre><code>
+spark.read.option("header", true).csv("people.csv").show
+            </code></pre>
+          </section>
+        </section>
+
+        <section id="thats-all" data-background-image="images/end.jpg">
+          <!-- THAT'S IT FOLKS -->
+        </section>
+
+        <section id="questions" style="text-align: left">
+          <h1>Questions?</h1>
+          <p>
+            - Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a><br>
+            - Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> at twitter<br>
+            - Use <a href="https://github.com/jaceklaskowski">Jacek's projects at GitHub</a><br>
+            - Read <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> notes.
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true },
+                { src: 'plugin/notes/notes.js', async: true }
+            ]
+        });
+
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>

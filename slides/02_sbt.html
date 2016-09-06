@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Apache Spark 2.0 Workshop - sbt</title>
+
+    <meta name="description" content="sbt">
+    <meta name="author" content="Jacek Laskowski">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
+    <style>
+      .slides .header {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      .slides .footer {
+        position: absolute;
+        bottom: 0px;
+        left: 15%;
+      }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+
+      <div class="slides">
+        <section class="intro" data-transition="zoom">
+          <p>
+            <img width="10%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1>Spark 2.0 / Scala Workshop <small>sbt</small></h1>
+          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark Notes</a></h4>
+        </section>
+
+        <section>
+          <h1>sbt</h1>
+          <h3>The interactive build tool</h3>
+        </section>
+
+        <section>
+          <section>
+            <h2>Intro to sbt</h2>
+            <ul>
+              <li>The interactive build tool</li>
+              <li>Automation tool</li>
+              <li>Use Scala to set up your Scala projects</li>
+              <li>Running tasks in parallel from the shell</li>
+              <li>The latest version: <b>0.13.12</b></li>
+              <li>Available from <a href="http://www.scala-sbt.org/">http://www.scala-sbt.org</a></li>
+            </ul>
+          </section>
+          <section>
+            <h2>Features of sbt</h2>
+            <ul>
+              <li>Little to no configuration for basic projects</li>
+              <li>Scala-based build definition</li>
+              <li>Continuous compilation and testing with triggered execution (aka tilde)</li>
+              <li>Packages and publishes jars</li>
+              <li>Supports testing with ScalaCheck and ScalaTest</li>
+              <li>Starts the Scala REPL with project classes and dependencies on the classpath</li>
+              <li>Plugins</li>
+            </ul>
+            <small>Features borrowed from <a href="http://www.scala-sbt.org/0.13/docs/index.html">Features of sbt</a></small>
+          </section>
+          <section>
+            <h2>build.sbt</h2>
+            The configuration file of your Spark project
+            <pre><code>
+organization := "com.microsoft"
+name         := "my-spark-app"
+version      := "1.0"
+
+scalaVersion := "2.11.7"
+
+val sparkVer = "2.0.0"
+libraryDependencies += "org.apache.spark" %% "spark-mllib" % sparkVer % "provided"
+libraryDependencies += "org.apache.spark" %% "spark-sql"   % sparkVer % "provided"
+            </code></pre>
+          </section>
+          <section>
+            <h2>project directory (1 of 2)</h2>
+            <b>build.properties</b> to specify sbt version
+            <pre><code>
+sbt.version = 0.13.12
+            </code></pre>
+          </section>
+          <section>
+            <h2>project directory (2 of 2)</h2>
+            <b>*.sbt</b> files to install plugins, e.g. <b>project/assembly.sbt</b>
+            <pre><code>
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Tasks in sbt</h1>
+            <h3>Commands</h3>
+          </section>
+          <section>
+            <h2>Tasks (aka Commands)</h2>
+            <ul>
+              <li><b>help</b></li>
+              <li><b>console</b></li>
+              <li><b>compile</b></li>
+              <li><b>test</b></li>
+              <li><b>run</b></li>
+              <li><b>~</b> (aka tilde)</li>
+              <li><b>package</b></li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Directory Layout</h1>
+            <h3>Convention over Configuration</h3>
+          </section>
+          <section>
+            <h2>Directory Layout</h2>
+            <ol>
+              <li><b>build.sbt</b> - your project's configuration</li>
+              <li><b>src/main/scala</b> - main Scala sources</li>
+              <li><b>src/test/scala</b> - Scala tests</li>
+              <li><b>project</b> - sbt's configuration</li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>sbt Plugins</h1>
+            <h3>Extensions</h3>
+          </section>
+          <section>
+            <h2>sbt-assembly plugin</h2>
+            <ul>
+              <li>Creates a fat JAR of your project with all of its dependencies.</li>
+              <li>Install in <b>project/assembly.sbt</b></li>
+              <li>Home page: <a href="https://github.com/sbt/sbt-assembly">https://github.com/sbt/sbt-assembly</a></li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>sbt Demos</h1>
+          </section>
+          <section>
+            <h2>Demo: Standalone Scala Application</h2>
+            <ol>
+              <li>Create a new <b>Scala/sbt project</b> using <b>IntelliJ IDEA</b></li>
+              <li>Fix sbt version in <b>project/build.properties</b></li>
+              <li>Install <b>sbt-assembly</b></li>
+              <li>Run <b>sbt assembly</b> to produce the JAR</li>
+              <li>Run the Scala application</li>
+            </ol>
+          </section>
+        </section>
+
+        <section id="questions" style="text-align: left">
+          <h1>Questions?</h1>
+          <p>
+            - Read <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> notes<br>
+            - Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> at twitter<br>
+            - Use <a href="https://github.com/jaceklaskowski">Jacek's projects at GitHub</a><br>
+            - Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a>
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true },
+                { src: 'plugin/notes/notes.js', async: true }
+            ]
+        });
+
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
