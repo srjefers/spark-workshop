@@ -10,6 +10,7 @@
 1. [User-Defined Functions (UDFs)](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_udfs.html)
 1. [ML Pipelines In-Depth](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_mllib_ml-pipelines.html)
 1. [Tungsten and Catalyst Optimizer in Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/05_sql_catalyst-optimizer-tungsten.html)
+1. [Windowed Operators in Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/06_spark_sql_windowed_operators.html)
 
 ## Contact The Author
 
