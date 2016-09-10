@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Speak Spark SQL for your own...better performance</title>
+
+    <meta name="description" content="Spark 2.0 Webinar - Tungsten and Catalyst Optimizer in Spark SQL">
+    <meta name="author" content="Jacek Laskowski">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
+    <style>
+      .slides .header {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      .slides .footer {
+        position: absolute;
+        bottom: 0px;
+        left: 15%;
+      }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+
+      <div class="slides">
+        <div class="footer">
+          <small>Copyright ©2016 Jacek Laskowski &amp; Value Amplify Consulting Group</small>
+        </div>
+
+        <section class="intro" data-transition="zoom">
+          <h1>Speak Spark SQL for your own...</h1>
+          <h1>better performance</h1>
+        </section>
+
+        <section>
+          <section id="about-the-host">
+            <p>
+              <img width="20%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            </p>
+            <ul>
+              <li><b>Jacek Laskowski</b> is an independent consultant</li>
+              <li>Exclusively <a href="http://spark.apache.org/">Apache Spark</a> and <a href="http://www.scala-lang.org/">Scala</a> for the past two years</li>
+              <li>Partner at <b>Value Amplify Consulting Group</b></li>
+              <li>Contact me at <b>jacek@japila.pl</b> or <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a></li>
+              <li>Leader of <a href="http://warsawscala.pl">Warsaw Scala Enthusiasts</a> and <a href="http://www.meetup.com/Warsaw-Spark/">Warsaw Apache Spark</a></li>
+              <li><a href="https://java.net/website/java-champions/bios.html#Laskowski">Java Champion</a></li>
+            </ul>
+          </section>
+          <section id="about-notes">
+            <p>
+              <a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a>
+            </p>
+            <p>
+              <img width="80%" src="images/jaceklaskowski-gitbook-stats.png" style="border: 0">
+            </p>
+          </section>
+        </section>
+
+        <section id="agenda">
+          <h2>Agenda</h2>
+          <ol>
+            <li><a href="#/dataframe">DataFrames (and Schema)</a></li>
+            <li><a href="#/dataset">Datasets (and Encoders)</a></li>
+            <li><a href="#/query-execution">Query Execution</a></li>
+            <li><a href="#/catalyst-optimizer">Catalyst Query Optimizer</a></li>
+            <li><a href="#/debugging">Debugging Query Execution</a></li>
+          </ol>
+        </section>
+
+        <section id="dataframe">
+          <h2>DataFrames (and Schema)</h2>
+          <ol>
+            <li><b>DataFrame</b> - a collection of rows/records with a schema</li>
+            <li><b>Schema</b> - the structure of records</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-dataframe.html">DataFrame (aka Dataset[Row])</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="dataset">
+          <h2>Datasets (and Encoders)</h2>
+          <ol>
+            <li><b>Dataset</b> - strongly-typed API for working with structured data in Scala</li>
+            <li><b>Encoder</b> - Serialization and deserialization API</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-dataset.html">Dataset</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-Encoder.html">Encoders — Internal Row Converters</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="query-execution">
+          <h2>Query Execution</h2>
+          <ol>
+            <li><b>Logical Query Plan</b> - base representation of a structured query expression</li>
+            <li><b>Physical Execution</b> (aka SparkPlan) - query plan for physical operators</li>
+            <li><b>Dataset.explain</b> method to review logical and execution plans</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-logical-plan.html">Logical Query Plan</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-spark-plan.html">SparkPlan — Physical Execution Plan</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <section id="catalyst-optimizer">
+            <h2>Catalyst Query Optimizer</h2>
+            <ol>
+              <li><b>Catalyst Query Optimizer</b> - Optimizes trees of relational operators and expressions</li>
+              <li>Switch to Mastering Apache Spark 2.0
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-catalyst.html">Catalyst Query Optimizer</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h2>What's wrong with the code?</h2>
+            <pre><code>
+    spark.range(10).filter(_ % 2 == 0).map(_ * 2).filter(_ == 0)
+            </code></pre>
+            <span class="fragment">
+              <pre><code>
+== Optimized Logical Plan ==
+SerializeFromObject [input[0, bigint, true] AS value#42L]
++- Filter &lt;function1>.apply
+   +- MapElements &lt;function1>, class java.lang.Long, [StructField(value,LongType,true)], obj#41: bigint
+      +- Filter &lt;function1>.apply
+         +- DeserializeToObject newInstance(class java.lang.Long), obj#40: java.lang.Long
+            +- Range (0, 10, step=1, splits=Some(8))
+
+== Physical Plan ==
+*SerializeFromObject [input[0, bigint, true] AS value#42L]
++- *Filter &lt;function1>.apply
+   +- *MapElements &lt;function1>, obj#41: bigint
+      +- *Filter &lt;function1>.apply
+         +- *DeserializeToObject newInstance(class java.lang.Long), obj#40: java.lang.Long
+            +- *Range (0, 10, step=1, splits=Some(8))
+              </code></pre>
+            </span>
+          </section>
+        </section>
+
+        <section>
+          <section id="debugging">
+            <h2>Debugging Query Execution</h2>
+            <ol>
+              <li><b>debug</b> package with <b><code>debug</code></b> and <b><code>debugCodegen</code></b>
+                <pre><code>
+    import org.apache.spark.sql.execution.debug._
+    spark.range(10).where('id === 4).debug
+                </code></pre>
+              </li>
+              <li>Switch to Mastering Apache Spark 2.0
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-debugging-execution.html">Debugging Query Execution</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+        </section>
+
+        <section id="recap">
+          <h2>Recap</h2>
+          <ol>
+            <li><a href="#/dataframe">DataFrames (and Schema)</a></li>
+            <li><a href="#/dataset">Datasets (and Encoders)</a></li>
+            <li><a href="#/query-execution">Query Execution</a></li>
+            <li><a href="#/catalyst-optimizer">Catalyst Query Optimizer</a></li>
+            <li><a href="#/debugging">Debugging Query Execution</a></li>
+          </ol>
+        </section>
+
+        <section id="questions" style="text-align: left">
+          <h1>Questions?</h1>
+          <p>
+            <ul>
+              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2.0</a>
+                <ul>
+                  <li>https://bit.ly/mastering-apache-spark</li>
+                </ul>
+              </li>
+              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
+              <li>Review <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
+              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
+              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
+              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
+            </ul>
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true },
+                { src: 'plugin/notes/notes.js', async: true }
+            ]
+        });
+
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
