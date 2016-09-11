@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>HackOn(Data) in Toronto ON -- Solutions Review</title>
+
+    <meta name="description" content="HackOn(Data) in Toronto ON -- Solutions Review">
+    <meta name="author" content="Jacek Laskowski">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
+    <style>
+      .slides .header {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      .slides .footer {
+        position: absolute;
+        bottom: 0px;
+        left: 15%;
+      }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+
+      <div class="slides">
+        <div class="footer">
+          <small>Copyright ©2016 Jacek Laskowski &amp; Value Amplify Consulting Group</small>
+        </div>
+
+        <section class="intro" data-transition="zoom">
+          <h1>Solutions Review</h1>
+          <h3>HackOn(Data) / Toronto / Sept. 10-11</h3>
+        </section>
+
+        <section>
+          <section id="about-the-host">
+            <p>
+              <img width="20%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            </p>
+            <ul>
+              <li><b>Jacek Laskowski</b> is an independent consultant</li>
+              <li><a href="http://spark.apache.org/">Apache Spark</a> and <a href="http://www.scala-lang.org/">Scala</a> exclusively for the past two years</li>
+              <li>Partner at <b>Value Amplify Consulting Group</b></li>
+              <li>Contact me at <b>jacek@japila.pl</b> or <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a></li>
+              <li>Set out to master <a href="http://spark.apache.org/">Apache Kafka</a></li>
+              <li>Leader of <a href="http://warsawscala.pl">Warsaw Scala Enthusiasts</a> and <a href="http://www.meetup.com/Warsaw-Spark/">Warsaw Apache Spark</a> / <a href="https://java.net/website/java-champions/bios.html#Laskowski">Java Champion</a></li>
+            </ul>
+          </section>
+          <section id="about-notes">
+            <p>
+              <a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a>
+            </p>
+            <p>
+              <img width="80%" src="images/jaceklaskowski-gitbook-stats.png" style="border: 0">
+            </p>
+          </section>
+        </section>
+
+        <section id="agenda">
+          <h2>Agenda</h2>
+          <ol>
+            <li><a href="#/loading-datasets">Loading and Saving Datasets</a></li>
+            <li><a href="#/standard-functions">Standard Functions</a></li>
+            <li><a href="#/aggregation">Aggregation - Typed and Untyped Grouping</a></li>
+            <li><a href="#/windows">Window Aggregates (Windows)</a></li>
+            <li><a href="#/user-defined-functions">User-Defined Functions (UDFs)</a></li>
+            <li><a href="#/explain">"Explaining" Query Plans of Windows</a></li>
+            <li><a href="#/transformers">Transformers</a></li>
+            <li><a href="#/mllib-model-persistence">ML Pipeline Persistence</a></li>
+            <li><a href="#/tooling">Tooling - Git &amp; GitHub &amp; Source Code</a></li>
+          </ol>
+        </section>
+
+        <section>
+          <section id="loading-datasets">
+            <h2>Loading Datasets (1 of 3)</h2>
+            <p>
+              Please DON'T do this!
+            </p>
+              <pre><code>
+            sc.textFile("...CSV") &lt;-- HERE
+              .filter(lambda l : "ADD_NUM" not in l)
+              .map(parseCultureLoc)
+              </code></pre>
+              <pre><code>
+            sc.textFile("...TXT") &lt;-- HERE
+              .map(parseTwitter)
+              .filter(lambda t : "toronto" in t['place'].lower()))
+              </code></pre>
+              <pre><code>
+            sc.parallelize(grid)
+              </code></pre>
+          </section>
+          <section>
+            <h2>Loading Datasets (2 of 3)</h2>
+            <p>
+              Please DON'T do this!
+            </p>
+              <pre><code>
+            wdat &lt;- read.df(sqlContext,
+              "./ParkingTicket/weather/201*",
+              source = "com.databricks.spark.csv", &lt;-- this
+              inferSchema = "true",
+              header="true", skiprows=16)
+              </code></pre>
+              <pre><code>
+            sqlContext.jsonFile(file_path1)
+              </code></pre>
+          </section>
+          <section>
+            <h2>Loading Datasets (3 of 3)</h2>
+            <p>
+              Please DON'T do this!
+            </p>
+            <img style="border: 0" src="images/hackondata-jsonfile-warning.png" alt="jsonFile Warning" />
+          </section>
+          <section>
+            <h2>Saving Datasets</h2>
+            <p>
+              Please DON'T do this!
+            </p>
+            <pre><code>
+parking_2015_withTrial_df
+   .coalesce(1) &lt;------------------------- HERE
+   .write
+   .format("com.databricks.spark.csv") &lt;-- HERE
+   .options(header="true")
+   .save("/mnt/%s/Parking/Parking_Tags_2015_and_other_data" % MOUNT_NAME)
+              </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h2>Type Mismatch?</h2>
+          <p>
+            Please DON'T do this!
+          </p>
+          <img style="border: 0" src="images/hackondata-type-mismatch.png" alt="Type Mismatch?" />
+        </section>
+
+        <section id="standard-functions">
+          <h2>Standard Functions</h2>
+          <p>
+            Nothing here...you're on your own :-)
+          </p>
+        </section>
+
+        <section id="transformers">
+          <h2>Transformers</h2>
+          <ol>
+            <li>Tokenizer</li>
+            <li>HashingTF</li>
+            <li>VectorAssembler</li>
+            <li>OneHotEncoder</li>
+            <li>StringIndexer</li>
+          </ol>
+        </section>
+
+        <section>
+          <section id="tooling">
+            <h2>Tooling - Git &amp; GitHub &amp; Source Code</h2>
+            <ol>
+              <li>Very impressed by the variety of tools</li>
+              <li>GitHub</li>
+              <li>GitHub Pages for website</li>
+              <li>Databricks Cloud</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Resolution</h2>
+            <p>
+              I did learn a few things from YOU! Thanks!
+            </p>
+            <a href="https://twitter.com/jaceklaskowski/status/775003635835035649">
+              <img style="border: 0" src="images/hackondata-twitter-databrickscloud.png" alt="Tweet on Databricks Cloud" />
+            </a>
+          </section>
+        </section>
+
+        <section id="questions" style="text-align: left">
+          <h1>Questions?</h1>
+          <p>
+            <ul>
+              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2.0</a>
+                <ul>
+                  <li>https://bit.ly/mastering-apache-spark</li>
+                </ul>
+              </li>
+              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
+              <li>Review <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
+              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
+              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
+              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
+            </ul>
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true },
+                { src: 'plugin/notes/notes.js', async: true }
+            ]
+        });
+
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>

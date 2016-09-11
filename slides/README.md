@@ -18,6 +18,7 @@
 ## Conference Talks
 
 1. [Speak Spark SQL for your own...better performance](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html)
+2. [HackOn(Data) in Toronto ON - Solutions Review](http://blog.jaceklaskowski.pl/spark-workshop/slides/hackondata-solutions-review.html)
 
 ## Contact The Author
 
