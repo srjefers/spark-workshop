@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Spark 2.0 Webinar - Dynamic Allocation of Executors</title>
+    <title>Spark 2.0 Webinar - Monitoring using SparkListeners</title>
 
-    <meta name="description" content="Spark 2.0 Webinar - Dynamic Allocation of Executors">
+    <meta name="description" content="Spark 2.0 Webinar - Monitoring using SparkListeners">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,7 +60,7 @@
             <img width="25%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Dynamic Allocation of Executors</h1>
+          <h1>Monitoring using SparkListeners</h1>
           <h2>Apache Spark 2.0 / Spark Core</h2>
           <small><a href="https://www.yammer.com/valueamplify.com/#/threads/inGroup?feedId=8926699">Yammer: AML Spark Training Class</a></small>
         </section>
@@ -68,72 +68,88 @@
         <section id="agenda">
           <h2>Agenda</h2>
           <ol>
-            <li><a href="#/spark-architecture">Spark Architecture</a></li>
-            <li><a href="#/dynamic-allocation">Dynamic Allocation of Executors</a></li>
-            <li><a href="#/demo">Dynamic Allocation Demo</a></li>
+            <li><a href="#/sparklisteners">SparkListeners</a></li>
+            <li><a href="#/extraListeners">LiveListenerBus / spark.extraListeners</a></li>
+            <li><a href="#/history-server">EventLoggingListener and History Server</a></li>
+            <li><a href="#/StatsReportListener">StatsReportListener — Logging Summary Statistics</a></li>
+            <li><a href="#/demo">Demo</a></li>
           </ol>
         </section>
 
-        <section id="spark-architecture">
-          <h2>Spark Architecture</h2>
+        <section id="sparklisteners">
+          <h2>Spark Listeners</h2>
           <ol>
-            <li><b>Driver</b> is a JVM process that hosts SparkContext for a Spark application</li>
-            <li><b>Executor</b> is a distributed agent that executes Spark tasks</li>
-            <li><b>Master</b> and <b>Slaves</b> / <b>Workers</b></li>
+            <li><b>SparkListener</b> is a developer API to intercept events from the Spark scheduler</li>
             <li>Switch to Mastering Apache Spark 2.0
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-architecture.html">Spark Architecture</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-SparkListener.html">Spark Listeners</a></li>
               </ul>
             </li>
           </ol>
         </section>
 
-        <section id="dynamic-allocation">
-          <h2>Dynamic Allocation of Executors</h2>
+        <section id="extraListeners">
+          <h2>LiveListenerBus / spark.extraListeners</h2>
           <ol>
-            <li><b>Dynamic Allocation</b> is a Spark feature that allows for adding or removing executors dynamically based on the workload</li>
+            <li><b>LiveListenerBus</b> is a single-JVM SparkListenerBus for Spark events</li>
+            <li><b>spark.extraListeners</b> are Spark listeners that should be registered when SparkContext starts</li>
             <li>Switch to Mastering Apache Spark 2.0
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-dynamic-allocation.html">Dynamic Allocation (of Executors)</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-LiveListenerBus.html">LiveListenerBus</a></li>
               </ul>
             </li>
           </ol>
         </section>
 
-        <section>
-          <section id="demo">
-            <h2>Dynamic Allocation Demo - run-example</h2>
-            <ol>
-              <li><b>Spark on YARN</b> with YARN-specific <b>ExternalShuffleService</b></li>
-              <li><b>run-example</b> is <b>spark-submit</b> to run Spark examples, e.g. <b>SparkPi</b></li>
-              <li><b>web UI</b>'s Timeline</li>
-              <li>Switch to Mastering Apache Spark 2.0
-                <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit.html">spark-submit script</a></li>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/yarn/spark-yarn-YarnShuffleService.html">YarnShuffleService — ExternalShuffleService on YARN</a></li>
-                </ul>
-              </li>
-            </ol>
-          </section>
-          <section id="demo-spark-shell">
-            <h2>Dynamic Allocation Demo - spark-shell</h2>
-            <ol>
-              <li><b>Programmable Dynamic Allocation</b> in <b>spark-shell</b></li>
-              <li>Switch to Mastering Apache Spark 2.0
-                <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-dynamic-allocation.html#programmable-dynamic-allocation">Programmable Dynamic Allocation</a></li>
-                </ul>
-              </li>
-            </ol>
-          </section>
+        <section id="history-server">
+          <h2>EventLoggingListener and History Server</h2>
+          <ol>
+            <li><b>EventLoggingListener</b> is a SparkListener that logs JSON-encoded events to a file.</li>
+            <li><b>History Server</b> is a web interface for completed and running Spark applications.</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-scheduler-listeners-eventlogginglistener.html">Persisting Events using EventLoggingListener</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-HistoryServer.html">HistoryServer</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="StatsReportListener">
+          <h2>StatsReportListener — Logging Summary Statistics</h2>
+          <ol>
+            <li><b>StatsReportListener</b> is a SparkListener that logs summary statistics when each stage completes.</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-scheduler-listeners-statsreportlistener.html">StatsReportListener — Logging Summary Statistics</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="demo">
+          <h2>Demo - Developing Custom SparkListener</h2>
+          <ol>
+            <li>Creating Scala/sbt project in IntelliJ IDEA</li>
+            <li>Creating a Scala class - <b>CustomSparkListener</b></li>
+            <li>Creating deployable package using <b><code>sbt package</code></b></li>
+            <li>Activating Custom Listener in Spark shell</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/exercises/spark-exercise-custom-scheduler-listener.html">Exercise: Developing Custom SparkListener to monitor DAGScheduler in Scala</a></li>
+              </ul>
+            </li>
+          </ol>
         </section>
 
         <section id="recap">
           <h2>Recap</h2>
           <ol>
-            <li><a href="#/spark-architecture">Spark Architecture</a></li>
-            <li><a href="#/dynamic-allocation">Dynamic Allocation of Executors</a></li>
-            <li><a href="#/demo">Dynamic Allocation Demo</a></li>
+            <li><a href="#/sparklisteners">SparkListeners</a></li>
+            <li><a href="#/extraListeners">LiveListenerBus / spark.extraListeners</a></li>
+            <li><a href="#/history-server">EventLoggingListener and History Server</a></li>
+            <li><a href="#/StatsReportListener">StatsReportListener — Logging Summary Statistics</a></li>
+            <li><a href="#/demo">Demo</a></li>
           </ol>
         </section>
 
