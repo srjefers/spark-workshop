@@ -2,10 +2,11 @@
 
 This project aims to prepare participants with the proper setup for the **Spark and Scala Workshops** run by [Jacek Laskowski](https://twitter.com/jaceklaskowski).
 
-There are two Spark workshops offered currently:
+There are the following Apache Spark workshops offered currently:
 
 * [Spark and Scala (Application Development) Workshop](AGENDA.md)
 * [Spark Administration and Monitoring Workshop](AGENDA-admin.md)
+* [Spark and Scala Workshop for Developers (1 Day)](AGENDA-ONE-DAY.md)
 
 **CAUTION**: The workshops are very hands-on and practical, and certainly not for faint-hearted. _Seriously!_ After 5 days your mind, eyes, and hands will all be trained to recognize the patterns where and how to use Spark and Scala in your Big Data projects.
 
