@@ -16,6 +16,7 @@
 1. [Windowed Operators in Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/06_spark_sql_windowed_operators.html)
 1. [Dynamic Allocation of Executors](http://blog.jaceklaskowski.pl/spark-workshop/slides/07_Spark-Core-Dynamic-Allocation-Of-Executors.html)
 1. [Monitoring using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html)
+1. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html)
 
 ## Conference Talks
 
