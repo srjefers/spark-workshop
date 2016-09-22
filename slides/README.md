@@ -17,6 +17,7 @@
 1. [Dynamic Allocation of Executors](http://blog.jaceklaskowski.pl/spark-workshop/slides/07_Spark-Core-Dynamic-Allocation-Of-Executors.html)
 1. [Monitoring using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html)
 1. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html)
+1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/10_SparkSQL-Structured_Streaming.html)
 
 ## Conference Talks
 
