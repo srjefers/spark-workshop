@@ -18,6 +18,7 @@
 1. [Monitoring using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html)
 1. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html)
 1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/10_SparkSQL-Structured_Streaming.html)
+1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
 
 ## Conference Talks
 

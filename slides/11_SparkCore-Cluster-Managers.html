@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Spark 2.0 Webinar - Spark and Cluster Managers</title>
+
+    <meta name="description" content="Spark 2.0 Webinar - Spark and Cluster Managers">
+    <meta name="author" content="Jacek Laskowski">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
+    <style>
+      .slides .header {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      .slides .footer {
+        position: absolute;
+        bottom: 0px;
+        left: 15%;
+      }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+
+      <div class="slides">
+        <div class="footer">
+          <small>Copyright ©2016 Jacek Laskowski &amp; Value Amplify Consulting Group</small>
+        </div>
+
+        <section class="intro" data-transition="zoom">
+          <p>
+            <img width="15%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="25%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1>Spark and Cluster Managers</h1>
+          <h2>Apache Spark 2.0 / Spark Core</h2>
+          <small><a href="https://www.yammer.com/valueamplify.com/#/threads/inGroup?feedId=8926699">Yammer: AML Spark Training Class</a></small>
+        </section>
+
+        <section id="agenda">
+          <h2>Agenda</h2>
+          <ol>
+            <li><a href="#/anatomy-spark-app">Anatomy of Spark Application - SparkContext</a></li>
+            <li><a href="#/driver-executors">Spark Application = The Driver + Executors</a></li>
+            <li><a href="#/master-url">Master URL and Cluster Managers</a></li>
+            <li><a href="#/deploy-mode">Deploy Mode</a></li>
+            <li><a href="#/spark-submit">spark-submit Command-Line Tool</a></li>
+            <li><a href="#/spark-standalone">Spark Standalone</a></li>
+            <li><a href="#/pluggable-cluster-managers">ExternalClusterManager - Pluggable Cluster Managers</a></li>
+            <li><a href="#/spark-yarn">Spark on YARN</a></li>
+            <li><a href="#/spark-mesos">Spark on Mesos</a></li>
+            <li><a href="#/azure-spark-template">Azure Template for Spark on SLES 12</a></li>
+            <li><i>...with a few demos along the way</i></li>
+          </ol>
+        </section>
+
+        <section id="anatomy-spark-app">
+          <h2>Anatomy of Spark Application - SparkContext</h2>
+          <ol>
+            <li><b>SparkContext</b> is the entry point to Spark in a Spark application.</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-anatomy-spark-application.html">Anatomy of Spark Application</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sparkcontext.html">SparkContext — Entry Point to Spark (Core)</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="driver-executors">
+          <h2>Spark Application = The Driver + Executors</h2>
+          <ol>
+            <li>A <b>Spark application</b> consists of the driver and executors (and your code, too!)</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-architecture.html">Spark Architecture</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="master-url">
+          <h2>Master URL and Cluster Managers</h2>
+          <ol>
+            <li><b>Master URL</b> points at the cluster manager to deploy your Spark application to.</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-deployment-environments.html">Deployment Environments — Run Modes</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="deploy-mode">
+          <h2>Deploy Mode</h2>
+          <ol>
+            <li><b>Deploy mode</b> specifies the location of where the driver executes when deployed to a deployment environment</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-deploy-mode.html">Deploy Mode</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="spark-submit">
+          <h2>spark-submit Command-Line Tool</h2>
+          <ol>
+            <li><b>spark-submit</b> shell script allows you to manage your Spark applications.</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit.html">spark-submit script</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="spark-standalone">
+          <h2>Spark Standalone</h2>
+          <ol>
+            <li><b>Spark Standalone</b> is Spark's own built-in clustered environment.</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-standalone.html">Spark Standalone cluster</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/exercises/spark-exercise-standalone-master-ha.html">Exercise: Spark Standalone - Using ZooKeeper for High-Availability of Master</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="pluggable-cluster-managers">
+          <h2>ExternalClusterManager — Pluggable Cluster Managers</h2>
+          <ol>
+            <li><b>ExternalClusterManager</b> is a contract for pluggable cluster managers.</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-ExternalClusterManager.html">ExternalClusterManager — Pluggable Cluster Managers</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <section id="spark-yarn">
+            <h2>Spark on YARN (1 of 2)</h2>
+            <ol>
+              <li><b>Hadoop YARN</b> is the Resource Nagotiator from Apache Hadoop project.</li>
+              <li>Switch to Mastering Apache Spark 2.0
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/yarn/">Spark on YARN</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h2>Spark on YARN (2 of 2)</h2>
+            <img src="images/yarn_architecture.gif" alt="Apache Hadoop YARN" style="background:none; border:none; box-shadow:none;" />
+            <small>From <a href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">the official documentation of Apache Hadoop YARN</a></small>
+          </section>
+        </section>
+
+        <section>
+          <section id="spark-mesos">
+            <h2>Spark on Mesos (1 of 2)</h2>
+            <ol>
+              <li><b>Apache Mesos</b> is a distributed systems kernel with API's for
+    resource management and scheduling across entire datacenter and cloud environments.</li>
+              <li>Switch to Mastering Apache Spark 2.0
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-mesos/spark-mesos.html">Spark on Mesos</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h2>Spark on Mesos (2 of 2)</h2>
+            <img src="images/mesos-architecture.jpg" width="65%" alt="Apache Mesos" style="background:none; border:none; box-shadow:none;" />
+            <small>From <a href="http://mesos.apache.org/documentation/latest/architecture/">the official documentation of Apache Mesos</a></small>
+          </section>
+        </section>
+
+        <section id="azure-spark-template">
+          <h2>Azure Template for Spark on SLES 12</h2>
+          <ol>
+            <li><a href="https://azure.microsoft.com/en-us/documentation/templates/spark-2.0-on-suse/">Provisions a Spark Cluster on Suse Linux Enterprise Server</a></li>
+          </ol>
+        </section>
+
+        <section id="recap">
+          <h2>Recap</h2>
+          <ol>
+            <li><a href="#/anatomy-spark-app">Anatomy of Spark Application - SparkContext</a></li>
+            <li><a href="#/driver-executors">Spark Application = The Driver + Executors</a></li>
+            <li><a href="#/master-url">Master URL and Cluster Managers</a></li>
+            <li><a href="#/deploy-mode">Deploy Mode</a></li>
+            <li><a href="#/spark-submit">spark-submit Command-Line Tool</a></li>
+            <li><a href="#/spark-standalone">Spark Standalone</a></li>
+            <li><a href="#/pluggable-cluster-managers">ExternalClusterManager - Pluggable Cluster Managers</a></li>
+            <li><a href="#/spark-yarn">Spark on YARN</a></li>
+            <li><a href="#/spark-mesos">Spark on Mesos</a></li>
+            <li><a href="#/azure-spark-template">Azure Template for Spark on SLES 12</a></li>
+            <li><i>...with a few demos along the way</i></li>
+          </ol>
+        </section>
+
+        <section id="questions" style="text-align: left">
+          <h1>Questions?</h1>
+          <p>
+            <ul>
+              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2.0</a>
+                <ul>
+                  <li>https://bit.ly/mastering-apache-spark</li>
+                </ul>
+              </li>
+              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
+              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
+              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
+              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
+            </ul>
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true },
+                { src: 'plugin/notes/notes.js', async: true }
+            ]
+        });
+
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
