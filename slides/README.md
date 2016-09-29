@@ -19,6 +19,7 @@
 1. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html)
 1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/10_SparkSQL-Structured_Streaming.html)
 1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
+1. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html)
 
 ## Conference Talks
 
