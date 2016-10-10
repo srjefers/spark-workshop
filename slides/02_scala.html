@@ -83,31 +83,69 @@
             <hr />
             <pre><code>
 object Main extends App {
-  println("Hello")
+  println("Hello, Friends!")
 }
             </code></pre>
           </section>
           <section>
             <h2>object keyword</h2>
+            <pre><code>
+scala> object Main
+defined object Main
+
+scala> object Jacek {
+     |   def name = "Jacek"
+     | }
+defined object Jacek
+
+scala> Jacek.name
+res0: String = Jacek
+            </code></pre>
           </section>
           <section>
             <h2>extends keyword</h2>
+            <pre><code>
+scala> object Main extends App
+defined object Main
+
+scala> Main. // <-- press TAB after the dot
+delayedInit   executionStart   main
+
+scala> Main.main(null)
+            </code></pre>
           </section>
           <section>
             <h2>println method</h2>
+            <pre><code>
+scala> println("Hello")
+Hello
+            </code></pre>
           </section>
           <section>
             <h2>curly braces</h2>
-          </section>
-          <section>
             <pre><code>
 object Main extends App {
-  println("Hello")
+  println("Hello, Friends!")
 }
             </code></pre>
           </section>
           <section>
-            <h2>Let's do some coding!</h2>
+            <h2>Hello World in Action</h2>
+            <pre><code>
+scala> :pa
+// Entering paste mode (ctrl-D to finish)
+
+object Main extends App {
+  println("Hello, Friends!")
+}
+
+// Exiting paste mode, now interpreting.
+
+defined object Main
+
+scala> Main.main(null)
+Hello, Friends!
+            </code></pre>
           </section>
         </section>
 
@@ -129,6 +167,17 @@ object Main extends App {
               </ul>
             </li>
           </ul>
+        </section>
+
+        <section>
+          <h2>Questions</h2>
+          <ol>
+            <li>What's <code>_._1</code>?</li>
+            <li>What's <code>map</code>?</li>
+            <li>What's <code>flatMap</code>?</li>
+            <li>What's <code>foldLeft</code>?</li>
+            <li>Can I use <code>reduce</code> instead (not <code>foldLeft</code>)?</li>
+          </ol>
         </section>
 
         <section>
