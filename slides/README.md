@@ -5,37 +5,39 @@
 
 [3-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda.html)
 
-### Day 1
+### Day 1 - Introduction to Spark, Scala and Tools
 
 1. [Agenda - Day 1](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_agenda.html)
 1. [The Basics of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
 1. [Introduction to Scala (_aka_ Why Scala)](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
 1. [sbt and sbt-assembly](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
 
-### Day 2
+### Day 2 - Spark SQL
 
 1. [Agenda - Day 2](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_agenda.html)
 1. [Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_spark_sql.html)
+1. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html) (a 1-hour webinar)
+1. [User-Defined Functions (UDFs)](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_udfs.html) (a 1-hour webinar)
 1. [Windowed Operators in Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/06_spark_sql_windowed_operators.html) (a 1-hour webinar)
+1. [Speak Spark SQL for your own...better performance](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html) (a conference talk)
 
-### Day 3
+### Day 3 - Spark MLlib
 
 1. [Agenda - Day 3](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_agenda.html)
-1. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html) (a 1-hour webinar)
 1. [Spark MLlib](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_spark_mllib.html)
 1. [ML Pipelines In-Depth](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_mllib_ml-pipelines.html) (a 1-hour webinar)
+1. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html) (a 1-hour webinar)
+1. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html) (a 1-hour webinar)
 
 ## Webinars (One-Hour Each)
 
-1. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html)
 1. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
-1. [User-Defined Functions (UDFs)](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_udfs.html)
 1. [Tungsten and Catalyst Optimizer in Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/05_sql_catalyst-optimizer-tungsten.html)
 1. [Dynamic Allocation of Executors](http://blog.jaceklaskowski.pl/spark-workshop/slides/07_Spark-Core-Dynamic-Allocation-Of-Executors.html)
 1. [Monitoring using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html)
-1. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html)
 1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/10_SparkSQL-Structured_Streaming.html)
 1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
+1. ..._some were moved to the agenda above_
 
 
 ## Conference Talks
@@ -46,8 +48,8 @@
 ## Contact The Author
 
 * Read [Mastering Apache Spark 2.0](https://bit.ly/mastering-apache-spark)
-* Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) at twitter
-* Review [Jacek Laskowski's questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+* Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+* Upvote [Jacek Laskowski's activities on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
 * Use [Jacek's code at GitHub](https://github.com/jaceklaskowski)
 * Read [Jacek Laskowski @ Medium](https://medium.com/@jaceklaskowski)
 * Visit [Jacek Laskowski's blog](https://blog.jaceklaskowski.pl)
