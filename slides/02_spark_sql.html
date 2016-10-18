@@ -157,9 +157,9 @@
           <section>
             <h2>Ad-hoc Local Datasets</h2>
             <ol>
-              <li><b><code>toDF("col1", "col2", ...)</code></b></li>
-              <li><b><code>toDS</code></b></li>
-              <li><b><code>import spark.implicits._</code></b></li>
+              <li><b>toDF("col1", "col2", ...)</b></li>
+              <li><b>toDS</b></li>
+              <li><b>import spark.implicits._</b></li>
               <li>All Scala Collections Supported</li>
             </ol>
           </section>
@@ -168,8 +168,8 @@
             <ol>
               <li>Schema = StructType + StructField + Types</li>
               <li>Implicit (inferred) or explicit</li>
-              <li><b><code>dataset.printSchema</code></b></li>
-              <li>Schema is your case classes</li>
+              <li><b>dataset.printSchema</b></li>
+              <li>Schema is your case class(es)</li>
             </ol>
             <pre><code>
               case class Person(id: Long, name: String)
@@ -182,8 +182,16 @@
             <h2>Creating Spark SQL Application (Demo)</h2>
             <ol>
               <li>Use <b>IntelliJ IDEA</b> and <b>sbt</b></li>
-              <li>Define Spark SQL dependency in <b>build.sbt</b></li>
-              <li>Write your <b>Spark SQL code</b>, i.e. <b>spark.version</b></li>
+              <li>Define Spark SQL dependency in <b>build.sbt</b>
+                <ul>
+                  <li><b>libraryDependencies</b></li>
+                </ul>
+              </li>
+              <li>Write your <b>Spark SQL code</b>
+                <ul>
+                  <li><b>spark.version</b></li>
+                </ul>
+              </li>
               <li>Execute <b>sbt package</b></li>
               <li>Run the application using <b>spark-submit</b></li>
             </ol>
@@ -191,6 +199,7 @@
           <section>
             <h2>Spark SQL Application</h2>
             <pre><code>
+      // no master URL hard-coded
       val spark: SparkSession = SparkSession.builder.getOrCreate()
 
       // What is this line doing?
@@ -208,12 +217,6 @@
               <li>Execute <b>sbt package</b></li>
               <li>Run the application using <b>spark-submit</b></li>
               <li>Time: 40 mins</li>
-            </ol>
-          </section>
-          <section>
-            <h2>Windows Users</h2>
-            <ol>
-              <li>bit.ly/mastering-apache-spark</li>
             </ol>
           </section>
           <section>
@@ -276,24 +279,6 @@
               <li>Start <b>Spark Standalone</b> cluster manager</li>
               <li>Run the application using <b>spark-submit</b></li>
               <li>Time: 30 mins</li>
-            </ol>
-          </section>
-        </section>
-
-        <section>
-          <h2>Spark SQL - DataFrames</h2>
-          <section>
-            <ol>
-              <li><b>select</b></li>
-              <li><b>filter</b> / <b>where</b></li>
-              <li><b>selectExpr</b></li>
-            </ol>
-          </section>
-          <section>
-            <ol>
-              <li>functions</li>
-              <li><b>withColumn</b></li>
-              <li>User-Defined Functions (UDFs)</li>
             </ol>
           </section>
         </section>
