@@ -8,7 +8,7 @@
 ### Day 1 - Introduction to Spark, Scala and Tools
 
 1. [Agenda - Day 1](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_agenda.html)
-1. [The Basics of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
+1. [The Elements of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
 1. [Introduction to Scala (_aka_ Why Scala)](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
 1. [sbt and sbt-assembly](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
 
