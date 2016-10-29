@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2.0 Workshop - The Agenda - 2 days</title>
+    <title>Apache Spark 2.0 Workshop - The Agenda - 4 days</title>
 
-    <meta name="description" content="Apache Spark 2.0 Workshop - The Agenda">
+    <meta name="description" content="Apache Spark 2.0 Workshop - The Agenda - 4 days">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,11 @@
       <div class="slides">
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="10%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
-            <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Spark 2.0 / Scala Workshop <small>2 Days</small></h1>
-          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark Notes</a></h4>
+          <h1>Apache Spark 2.0 Workshop <small>4 Days</small></h1>
+          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2.0</a></h4>
         </section>
 
         <section>
@@ -108,28 +107,142 @@
           </section>
         </section>
 
-        <section id="agenda">
-          <h2>Agenda</h2>
-          <ul>
-            <li>Day 1. Scala and My First Scala Application</li>
-            <li>Day 1. Introduction to Apache Spark 2.0</li>
-            <li>Day 1. Developing Spark SQL Applications (in Scala)</li>
-            <li>Day 2. Developing Spark SQL Applications (in Scala)</li>
-            <li>Day 2. Using Spark MLlib and ML Pipelines</li>
-          </ul>
+        <section>
+          <h2>Agenda - Day 1</h2>
+          <ol>
+            <li>
+              Intro to Apache Spark using spark-shell
+            </li>
+            <li>
+              My first Spark SQL App
+              <ul>
+                <li>IntelliJ IDEA / sbt / spark-submit</li>
+              </ul>
+            </li>
+            <li>
+              Deploying Spark app to Spark Standalone
+            </li>
+            <li>
+              Standard Functions / Operators / UDFs in Spark SQL
+            </li>
+            <li>
+              RDDs, DataFrames, Datasets
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <section>
+            <h2>Agenda - Day 2 (1 of 2)</h2>
+            <ol>
+              <li>DataSource API
+                <ul>
+                  <li>Reading and saving datasets</li>
+                  <li>files (Parquet), JDBC (PostgreSQL), NoSQL (Cassandra)</li>
+                </ul>
+              </li>
+              <li>Encoders</li>
+              <li>Spark in Cluster Mode (Spark Standalone, Hadoop Yarn and Apache Mesos)</li>
+              <li>Deploying to a Cluster - spark-submit</li>
+              <li>Client, Driver, Master, Executors, Workers, Jobs, DAG, Stages, Tasks</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Agenda - Day 2 (2 of 2)</h2>
+            <ol>
+              <li>Performance tuning
+                <ul>
+                  <li>Reading/viewing/understanding the Web UI</li>
+                  <li>Spark Listeners</li>
+                  <li>Spark History Server</li>
+                </ul>
+              </li>
+              <li>Monitoring execution from within the application, i.e. how to discover that a job has failed, or takes too long</li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <h2>Agenda - Day 3</h2>
+          <ol>
+            <li>
+              Spark SQL
+              <ul>
+                <li>Aggregation</li>
+                <li>Windows</li>
+              </ul>
+            </li>
+            <li>Structured Query Plan and Optimizations</li>
+            <li>
+              Spark Structured Streaming
+            </li>
+            <li>
+              Spark MLlib
+            </li>
+            <li>
+              Thrift JDBC/ODBC Server
+            </li>
+            <li>
+              Dynamic Allocation of Executors
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <section>
+            <h2>Agenda - Day 4 (1 of 2)</h2>
+            <ol>
+              <li>Broadcast Variables and Accumulators</li>
+              <li>Docker support
+                <ul>
+                  <li>Docker with the Master</li>
+                  <li>Docker with a Client, and then n clients</li>
+                  <li>How to set it up</li>
+                </ul>
+              </li>
+              <li>Caching, Cache manager and Persistence</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Agenda - Day 4 (2 of 2)</h2>
+            <ol>
+              <li>Sharing Spark Master with other jobs, long running jobs (like an API) and short lived jobs at the same time, best way to solve this</li>
+              <li>Spark Streaming / Apache Kafka 0.10+
+                <ul>
+                  <li>Introduction to Spark Streaming</li>
+                  <li>Kafka Architecture / Setup</li>
+                  <li>StreamingContext and Operators</li>
+                  <li>Kafka Direct Approach (No Receivers)</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
         </section>
 
         <section id="prerequisities">
           <h2>Prerequisities</h2>
           <ol>
-            <li>Working VirtualBox image (with the tools)
+            <li>Some programming experience using modern programming language (preferably on JVM)
               <ul>
-                <li>Java SE 8, Apache Spark 2.0, IntelliJ IDEA, sbt</li>
+                <li>Java, Python, Scala, C#</li>
               </ul>
             </li>
-            <li>Some programming skills using modern programming language (preferably on JVM)
+            <li>Installed
               <ul>
-                <li>C#, Java, Python, Scala</li>
+                <li>
+                  <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java SE 8</a>
+                </li>
+                <li>
+                  <a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a>
+                </li>
+              </ul>
+            </li>
+            <li>Downloaded
+              <ul>
+                <li><a href="https://spark.apache.org/downloads.html">Apache Spark</a></li>
+                <li><a href="http://www.scala-sbt.org/download.html">sbt</a></li>
+                <li><a href="https://www.postgresql.org/download/">PostgreSQL</a></li>
+                <li><a href="http://kafka.apache.org/downloads">Kafka</a></li>
               </ul>
             </li>
             <li>Willingness to ask <b>PLENTY</b> of questions</li>
@@ -139,10 +252,18 @@
         <section id="questions" style="text-align: left">
           <h1>Questions?</h1>
           <p>
-            - Read <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> notes<br>
-            - Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> at twitter<br>
-            - Use <a href="https://github.com/jaceklaskowski">Jacek's projects at GitHub</a><br>
-            - Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a>
+            <ul>
+              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2.0</a>
+                <ul>
+                  <li>https://bit.ly/mastering-apache-spark</li>
+                </ul>
+              </li>
+              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
+              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
+              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
+              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
+            </ul>
           </p>
         </section>
 
