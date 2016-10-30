@@ -5,12 +5,13 @@
 
 * [3-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda.html)
 * [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days.html) <-- taught in London at [Apache Spark 2.0 Workshop](http://www.meetup.com/London-Spark-Coding-Dojo/events/233488536/)
-* [4-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days.html) <-- taught in Karlskrone Sweden
+* [4-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days.html) <-- taught in [Karlskrona Sweden](https://en.wikipedia.org/wiki/Karlskrona)
 
 ### Day 1 - Introduction to Spark, Scala and Tools
 
 1. [Agenda - Day 1](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_agenda.html)
 1. [The Elements of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
+1. [Introduction to Apache Spark Using spark-shell](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html) (advanced)
 1. [Introduction to Scala (_aka_ Why Scala)](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
 1. [sbt and sbt-assembly](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
 
