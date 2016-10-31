@@ -20,7 +20,7 @@
 1. [Agenda - Day 2](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_agenda.html)
 1. [Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_spark_sql.html)
 1. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html) (a 1-hour webinar)
-1. [User-Defined Functions (UDFs)](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_udfs.html) (a 1-hour webinar)
+1. [Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_udfs.html) (a 1-hour webinar)
 1. [Windowed Operators in Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/06_spark_sql_windowed_operators.html) (a 1-hour webinar)
 1. [Speak Spark SQL for your own...better performance](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html) (a conference talk)
 
