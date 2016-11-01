@@ -110,24 +110,17 @@
         <section>
           <h2>Agenda - Day 1</h2>
           <ol>
-            <li>
-              Intro to Apache Spark using spark-shell and Spark SQL
-            </li>
+            <li>Using spark-shell and Spark SQL</li>
             <li>
               My First Spark SQL Application
               <ul>
                 <li>IntelliJ IDEA, sbt and spark-submit</li>
               </ul>
             </li>
-            <li>
-              Deploying Spark Applications to Spark Standalone
-            </li>
-            <li>
-              Standard Operators and Functions, and UDFs in Spark SQL
-            </li>
-            <li>
-              Comparing RDDs, DataFrames, and Datasets
-            </li>
+            <li>Deploying Spark Applications to Spark Standalone Cluster</li>
+            <li>Datasets and Encoders</li>
+            <li>Standard Operators and Functions, and UDFs in Spark SQL</li>
+            <li>RDDs vs DataFrames vs Datasets</li>
           </ol>
         </section>
 
@@ -141,8 +134,8 @@
                   <li>files (Parquet), JDBC (PostgreSQL), NoSQL (Cassandra)</li>
                 </ul>
               </li>
-              <li>Encoders</li>
               <li>Spark in Cluster Mode (Spark Standalone, Hadoop Yarn and Apache Mesos)</li>
+              <li>Sharing Spark Master with other jobs, long running jobs (like an API) and short lived jobs at the same time, best way to solve this</li>
               <li>Deploying to a Cluster - spark-submit</li>
               <li>Client, Driver, Master, Executors, Workers, Jobs, DAG, Stages, Tasks</li>
             </ol>
@@ -150,14 +143,21 @@
           <section>
             <h2>Agenda - Day 2 (2 of 2)</h2>
             <ol>
-              <li>Performance tuning
-                <ul>
-                  <li>Reading/viewing/understanding the Web UI</li>
+              <li>
+                Monitoring / Performance Tuning
+                <ol>
+                  <li>web UI</li>
                   <li>Spark Listeners</li>
                   <li>Spark History Server</li>
-                </ul>
+                </ol>
               </li>
-              <li>Monitoring execution from within the application, i.e. how to discover that a job has failed, or takes too long</li>
+              </li>
+              <li>Monitoring execution from within the application
+                <ol>
+                  <li>how to discover that a job has failed or takes too long</li>
+                  <li>Speculative Execution of Tasks</li>
+                </ol>
+              </li>
             </ol>
           </section>
         </section>
@@ -168,23 +168,14 @@
             <li>
               Spark SQL
               <ul>
-                <li>Aggregates and UDAFs</li>
+                <li>Aggregates (and UDAFs)</li>
                 <li>Windows</li>
               </ul>
             </li>
             <li>Structured Query Plan and Optimizations</li>
-            <li>
-              Spark Structured Streaming
-            </li>
-            <li>
-              Spark MLlib
-            </li>
-            <li>
-              Thrift JDBC/ODBC Server
-            </li>
-            <li>
-              Dynamic Allocation of Executors
-            </li>
+            <li>Spark MLlib</li>
+            <li>Thrift JDBC/ODBC Server</li>
+            <li>Dynamic Allocation of Executors</li>
           </ol>
         </section>
 
@@ -193,20 +184,13 @@
             <h2>Agenda - Day 4 (1 of 2)</h2>
             <ol>
               <li>Broadcast Variables and Accumulators</li>
-              <li>Docker support
-                <ul>
-                  <li>Docker with the Master</li>
-                  <li>Docker with a Client, and then n clients</li>
-                  <li>How to set it up</li>
-                </ul>
-              </li>
               <li>Caching, Cache manager and Persistence</li>
+              <li>Spark Structured Streaming</li>
             </ol>
           </section>
           <section>
             <h2>Agenda - Day 4 (2 of 2)</h2>
             <ol>
-              <li>Sharing Spark Master with other jobs, long running jobs (like an API) and short lived jobs at the same time, best way to solve this</li>
               <li>Spark Streaming / Apache Kafka 0.10+
                 <ul>
                   <li>Introduction to Spark Streaming</li>
