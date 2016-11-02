@@ -27,6 +27,7 @@
 ### Day 3 - Spark MLlib
 
 1. [Agenda - Day 3](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_agenda.html)
+1. [Monitoring using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html) (a 1-hour webinar)
 1. [Spark MLlib](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_spark_mllib.html)
 1. [ML Pipelines In-Depth](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_mllib_ml-pipelines.html) (a 1-hour webinar)
 1. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html) (a 1-hour webinar)
@@ -37,7 +38,6 @@
 1. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
 1. [Tungsten and Catalyst Optimizer in Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/05_sql_catalyst-optimizer-tungsten.html)
 1. [Dynamic Allocation of Executors](http://blog.jaceklaskowski.pl/spark-workshop/slides/07_Spark-Core-Dynamic-Allocation-Of-Executors.html)
-1. [Monitoring using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html)
 1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/10_SparkSQL-Structured_Streaming.html)
 1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
 1. ..._some were moved to the agenda above_
