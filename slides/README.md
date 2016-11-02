@@ -28,10 +28,14 @@
 
 1. [Agenda - Day 3](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_agenda.html)
 1. [Monitoring using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html) (a 1-hour webinar)
-1. [Spark MLlib](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_spark_mllib.html)
+1. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html) (a 1-hour webinar)
+1. [Spark MLlib](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_spark_mllib.html) (1 hour)
 1. [ML Pipelines In-Depth](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_mllib_ml-pipelines.html) (a 1-hour webinar)
 1. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html) (a 1-hour webinar)
-1. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html) (a 1-hour webinar)
+
+### Day 4 - Spark Streaming, Structured Streaming and Apache Kafka
+
+1. [The Elements of Apache Kafka](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_Apache-Kafka.html)
 
 ## Webinars (One-Hour Each)
 
