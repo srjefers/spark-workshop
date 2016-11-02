@@ -21,7 +21,7 @@
 1. [Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_spark_sql.html)
 1. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html) (a 1-hour webinar)
 1. [Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_udfs.html) (a 1-hour webinar)
-1. [Windowed Operators in Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/06_spark_sql_windowed_operators.html) (a 1-hour webinar)
+1. [Windowed Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/06_spark_sql_windowed_operators.html) (a 1-hour webinar)
 1. [Speak Spark SQL for your own...better performance](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html) (a conference talk)
 
 ### Day 3 - Spark MLlib
@@ -36,16 +36,15 @@
 ### Day 4 - Spark Streaming, Structured Streaming and Apache Kafka
 
 1. [The Elements of Apache Kafka](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_Apache-Kafka.html)
+1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/10_SparkSQL-Structured_Streaming.html) (a 1-hour webinar)
 
 ## Webinars (One-Hour Each)
 
 1. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
 1. [Tungsten and Catalyst Optimizer in Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/05_sql_catalyst-optimizer-tungsten.html)
 1. [Dynamic Allocation of Executors](http://blog.jaceklaskowski.pl/spark-workshop/slides/07_Spark-Core-Dynamic-Allocation-Of-Executors.html)
-1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/10_SparkSQL-Structured_Streaming.html)
 1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
 1. ..._some were moved to the agenda above_
-
 
 ## Conference Talks
 
