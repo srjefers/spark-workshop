@@ -20,8 +20,8 @@ The example complements my [Mastering Apache Spark 2.0 Notes](https://jaceklasko
 // Terminal 3
 $ sbt package
 
-// Use whatever Spark directory you chose
-$ ~/dev/oss/spark/bin/spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.11:2.0.1 target/scala-2.11/spark-streaming-kafka-direct_2.11-1.0.jar
+// Use whatever Spark directory you chose at installation
+$ ~/dev/oss/spark/bin/spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.11:2.0.2 target/scala-2.11/spark-streaming-kafka-direct_2.11-1.0.jar
 ```
 
 ```

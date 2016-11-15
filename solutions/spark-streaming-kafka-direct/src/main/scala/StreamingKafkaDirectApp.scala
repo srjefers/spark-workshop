@@ -1,9 +1,13 @@
+import org.apache.log4j.{Level, LogManager}
 import org.apache.spark.SparkContext
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object StreamingKafkaDirectApp extends App {
+
+  LogManager.getRootLogger.setLevel(Level.INFO)
+
   val sc = SparkContext.getOrCreate
-  val ssc = new StreamingContext(sc, Seconds(5))
+  val ssc = new StreamingContext(sc, Seconds(10))
   try {
     import org.apache.spark.streaming.kafka010._
 
@@ -25,6 +29,17 @@ object StreamingKafkaDirectApp extends App {
       ssc,
       preferredHosts,
       ConsumerStrategies.Subscribe[String, String](topics, kafkaParams, offsets))
+
+    def reduceFunc(v1: String, v2: String) = s"$v1 + $v2"
+    dstream.map { r =>
+      println(s"value: ${r.value}")
+      val Array(key, value) = r.value.split("\\s+")
+      println(s">>> key = $key")
+      println(s">>> value = $value")
+      (key, value)
+    }.reduceByKeyAndWindow(
+      reduceFunc, windowDuration = Seconds(30), slideDuration = Seconds(10))
+      .print()
 
     dstream.foreachRDD { rdd =>
       // Get the offset ranges in the RDD
