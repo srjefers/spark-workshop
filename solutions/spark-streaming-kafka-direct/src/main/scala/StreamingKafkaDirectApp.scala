@@ -1,3 +1,5 @@
+import java.util.concurrent.{ExecutorService, Executors}
+
 import org.apache.log4j.{Level, LogManager}
 import org.apache.spark.SparkContext
 import org.apache.spark.streaming.{Seconds, StreamingContext}
@@ -45,13 +47,33 @@ object StreamingKafkaDirectApp extends App {
       // Get the offset ranges in the RDD
       val offsetRanges = rdd.asInstanceOf[HasOffsetRanges].offsetRanges
       for (o <- offsetRanges) {
-        println(s"${o.topic} ${o.partition} offsets: ${o.fromOffset} to ${o.untilOffset}")
+        println(s">>> ${o.topic} ${o.partition} offsets: ${o.fromOffset} to ${o.untilOffset}")
+      }
+    }
+
+    // Spark SQL integration
+    // See http://spark.apache.org/docs/latest/streaming-programming-guide.html#dataframe-and-sql-operations
+    val executorService = Executors.newFixedThreadPool(1)
+    dstream.map(cr => cr.value).foreachRDD { rdd =>
+      import org.apache.spark.sql._
+      val spark = SparkSession.builder.config(rdd.sparkContext.getConf).getOrCreate
+      import spark.implicits._
+      import spark.sql
+
+      val records = rdd.toDF("record")
+      records.createOrReplaceTempView("records")
+
+      executorService.submit {
+        new Runnable {
+          override def run(): Unit = {
+            sql("select * from records").show(truncate = false)
+          }
+        }
       }
     }
 
     ssc.start
     ssc.awaitTermination()
-
   } finally {
     ssc.stop()
   }

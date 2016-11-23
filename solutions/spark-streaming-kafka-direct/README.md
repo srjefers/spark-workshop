@@ -1,6 +1,6 @@
 # Spark Streaming Kafka 0.10 Direct
 
-The example complements my [Mastering Apache Spark 2.0 Notes](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-streaming/spark-streaming-kafka-KafkaUtils.html) about Kafka 0.10 Direct API support in Spark Streaming 2.0.
+The example complements my [Mastering Apache Spark 2.0 Notes](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-streaming/spark-streaming-kafka-KafkaUtils.html) about Kafka 0.10 Direct API support in Spark Streaming 2.0 and uses Kafka as the data source.
 
 ## Running Example
 
