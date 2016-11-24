@@ -1,14 +1,14 @@
 import java.util.concurrent.{ExecutorService, Executors}
 
 import org.apache.log4j.{Level, LogManager}
-import org.apache.spark.SparkContext
+import org.apache.spark.sql.SparkSession
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object StreamingKafkaDirectApp extends App {
 
   LogManager.getRootLogger.setLevel(Level.INFO)
 
-  val sc = SparkContext.getOrCreate
+  val sc = SparkSession.builder().getOrCreate().sparkContext
   val ssc = new StreamingContext(sc, Seconds(10))
   try {
     import org.apache.spark.streaming.kafka010._
