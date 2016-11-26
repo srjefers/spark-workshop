@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Speak Spark SQL for your own...better performance</title>
+    <title>Speak Spark SQL 2.0 For Much Better Performance</title>
 
-    <meta name="description" content="Spark 2.0 Webinar - Tungsten and Catalyst Optimizer in Spark SQL">
+    <meta name="description" content="Speak Spark SQL 2.0 For Much Better Performance">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,30 +55,43 @@
         </div>
 
         <section class="intro" data-transition="zoom">
-          <h1>Speak Spark SQL for your own...</h1>
-          <h1>better performance</h1>
+          <p>
+            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1>Speak Spark SQL 2.0</h1>
+          <h2>For Much better performance</h2>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2.0</a></h4>
         </section>
 
         <section>
           <section id="about-the-host">
             <p>
-              <img width="20%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+              <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
             </p>
             <ul>
               <li><b>Jacek Laskowski</b> is an independent consultant</li>
-              <li>Exclusively <a href="http://spark.apache.org/">Apache Spark</a> and <a href="http://www.scala-lang.org/">Scala</a> for the past two years</li>
-              <li>Partner at <b>Value Amplify Consulting Group</b></li>
-              <li>Contact me at <b>jacek@japila.pl</b> or <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a></li>
+              <li>Among contributors to <a href="http://spark.apache.org/releases/spark-release-2-0-0.html#credits">Apache Spark 2.0</a> (since <a href="http://spark.apache.org/releases/spark-release-1-6-0.html#credits">1.6.0</a>)</li>
+              <li>Contact me at <b>jacek@japila.pl</b> or follow me on twitter at <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> &lt;-- and learn more Spark!</li>
+              <li>Delivering Development Services | Consulting | Training</li>
               <li>Leader of <a href="http://warsawscala.pl">Warsaw Scala Enthusiasts</a> and <a href="http://www.meetup.com/Warsaw-Spark/">Warsaw Apache Spark</a></li>
               <li><a href="https://java.net/website/java-champions/bios.html#Laskowski">Java Champion</a></li>
             </ul>
+          </section>
+          <section id="about-github">
+            <p>
+              <a href="https://github.com/jaceklaskowski">https://github.com/jaceklaskowski</a>
+            </p>
+            <p>
+              <img width="70%" src="images/jaceklaskowski-github-stats.png" style="border: 0">
+            </p>
           </section>
           <section id="about-notes">
             <p>
               <a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a>
             </p>
             <p>
-              <img width="80%" src="images/jaceklaskowski-gitbook-stats.png" style="border: 0">
+              <img src="images/jaceklaskowski-gitbook-stats.png" style="border: 0">
             </p>
           </section>
         </section>
@@ -124,13 +137,13 @@
         <section id="query-execution">
           <h2>Query Execution</h2>
           <ol>
-            <li><b>Logical Query Plan</b> - base representation of a structured query expression</li>
-            <li><b>Physical Execution</b> (aka SparkPlan) - query plan for physical operators</li>
-            <li><b>Dataset.explain</b> method to review logical and execution plans</li>
+            <li><b>Logical Query Plan</b> - logical representation of a structured query</li>
+            <li><b>Physical Execution</b> (aka SparkPlan) - physical query plan (with physical operators)</li>
+            <li><b>Dataset.explain</b> to review logical and physical plans</li>
             <li>Switch to Mastering Apache Spark 2.0
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-logical-plan.html">Logical Query Plan</a></li>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-spark-plan.html">SparkPlan — Physical Execution Plan</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-LogicalPlan.html">LogicalPlan — Logical Query Plan / Logical Operator</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-catalyst-SparkPlan.html">SparkPlan — Physical Execution Plan</a></li>
               </ul>
             </li>
           </ol>
@@ -141,9 +154,10 @@
             <h2>Catalyst Query Optimizer</h2>
             <ol>
               <li><b>Catalyst Query Optimizer</b> - Optimizes trees of relational operators and expressions</li>
+              <li><b>Catalyst</b> - Tree Manipulation Framework</li>
               <li>Switch to Mastering Apache Spark 2.0
                 <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-catalyst.html">Catalyst Query Optimizer</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-catalyst-Optimizer.html">Logical Query Plan Optimizer</a></li>
                 </ul>
               </li>
             </ol>
@@ -151,24 +165,68 @@
           <section>
             <h2>What's wrong with the code?</h2>
             <pre><code>
-    spark.range(10).filter(_ % 2 == 0).map(_ * 2).filter(_ == 0)
+     spark.range(10)
+       .filter(_ % 2 == 0)
+       .map(_ * 2)
+       .filter(_ == 0)
             </code></pre>
             <span class="fragment">
               <pre><code>
-== Optimized Logical Plan ==
-SerializeFromObject [input[0, bigint, true] AS value#42L]
-+- Filter &lt;function1>.apply
-   +- MapElements &lt;function1>, class java.lang.Long, [StructField(value,LongType,true)], obj#41: bigint
-      +- Filter &lt;function1>.apply
-         +- DeserializeToObject newInstance(class java.lang.Long), obj#40: java.lang.Long
-            +- Range (0, 10, step=1, splits=Some(8))
-
+scala> spark.range(10).filter(_ % 2 == 0).map(_ * 2).filter(_ == 0).explain
 == Physical Plan ==
-*SerializeFromObject [input[0, bigint, true] AS value#42L]
+*SerializeFromObject [input[0, bigint, true] AS value#41L]
 +- *Filter &lt;function1>.apply
-   +- *MapElements &lt;function1>, obj#41: bigint
+   +- *MapElements &lt;function1>, obj#40: bigint
       +- *Filter &lt;function1>.apply
-         +- *DeserializeToObject newInstance(class java.lang.Long), obj#40: java.lang.Long
+         +- *DeserializeToObject newInstance(class java.lang.Long), obj#39: java.lang.Long
+            +- *Range (0, 10, step=1, splits=Some(8))
+              </code></pre>
+            </span>
+          </section>
+          <section>
+            <h2>What's wrong with the code? (2)</h2>
+            <pre><code>
+spark.range(10)
+  .filter('id % 2 === 0)
+  .map(n => n * 2)
+  .filter('value === 0)
+            </code></pre>
+            <span class="fragment">
+              <pre><code>
+scala> spark.range(10).filter('id % 2 === 0).map(n => n * 2).filter('value === 0).explain
+== Physical Plan ==
+*Filter (isnotnull(value#64L) &amp;&amp; (value#64L = 0))
++- *SerializeFromObject [input[0, bigint, true] AS value#64L]
+   +- *MapElements &lt;function1>, obj#63: bigint
+      +- *DeserializeToObject newInstance(class java.lang.Long), obj#62: java.lang.Long
+         +- *Filter ((id#57L % 2) = 0)
+            +- *Range (0, 10, step=1, splits=Some(8))
+              </code></pre>
+            </span>
+          </section>
+          <section>
+            <h2>Compare the "Same" Queries</h2>
+            <span>
+              <pre><code>
+scala> spark.range(10).filter(_ % 2 == 0).map(_ * 2).filter(_ == 0).explain
+== Physical Plan ==
+*SerializeFromObject [input[0, bigint, true] AS value#41L]
++- *Filter &lt;function1>.apply
+   +- *MapElements &lt;function1>, obj#40: bigint
+      +- *Filter &lt;function1>.apply
+         +- *DeserializeToObject newInstance(class java.lang.Long), obj#39: java.lang.Long
+            +- *Range (0, 10, step=1, splits=Some(8))
+              </code></pre>
+            </span>
+            <span class="fragment">
+              <pre><code>
+scala> spark.range(10).filter('id % 2 === 0).map(n => n * 2).filter('value === 0).explain
+== Physical Plan ==
+*Filter (isnotnull(value#64L) &amp;&amp; (value#64L = 0))
++- *SerializeFromObject [input[0, bigint, true] AS value#64L]
+   +- *MapElements &lt;function1>, obj#63: bigint
+      +- *DeserializeToObject newInstance(class java.lang.Long), obj#62: java.lang.Long
+         +- *Filter ((id#57L % 2) = 0)
             +- *Range (0, 10, step=1, splits=Some(8))
               </code></pre>
             </span>

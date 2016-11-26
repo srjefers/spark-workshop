@@ -23,7 +23,7 @@
 1. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html) (a 1-hour webinar)
 1. [Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_udfs.html) (a 1-hour webinar)
 1. [Windowed Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/06_spark_sql_windowed_operators.html) (a 1-hour webinar)
-1. [Speak Spark SQL for your own...better performance](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html) (a conference talk)
+1. [Speak Spark SQL 2.0 For Much Better Performance](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html) (a conference talk)
 1. [Tungsten and Query Optimizer (Catalyst)](http://blog.jaceklaskowski.pl/spark-workshop/slides/05_sql_catalyst-optimizer-tungsten.html) (a 1-hour webinar)
 
 ### Day 3 - Spark MLlib
