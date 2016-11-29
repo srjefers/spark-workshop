@@ -8,7 +8,10 @@ object StreamingKafkaDirectApp extends App {
 
   LogManager.getRootLogger.setLevel(Level.INFO)
 
-  val sc = SparkSession.builder().getOrCreate().sparkContext
+  val spark = SparkSession.builder
+    .config("spark.sql.warehouse.dir", "target/spark-warehouse")
+    .getOrCreate
+  val sc = spark.sparkContext
   val ssc = new StreamingContext(sc, Seconds(10))
   try {
     import org.apache.spark.streaming.kafka010._
@@ -35,7 +38,7 @@ object StreamingKafkaDirectApp extends App {
     def reduceFunc(v1: String, v2: String) = s"$v1 + $v2"
     dstream.map { r =>
       println(s"value: ${r.value}")
-      val Array(key, value) = r.value.split("\\s+")
+      val Array(key, value, _*) = r.value.split("\\s+") // only two elements accepted
       println(s">>> key = $key")
       println(s">>> value = $value")
       (key, value)
