@@ -38,8 +38,10 @@
 
 ### Day 4 - Spark Streaming, Structured Streaming and Apache Kafka
 
+1. [Spark Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_SparkStreaming-Introduction.html)
 1. [The Elements of Apache Kafka](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_Apache-Kafka.html)
 1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/10_SparkSQL-Structured_Streaming.html) (a 1-hour webinar)
+1. [Spark Streaming's Stateful Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_SparkStreaming-Stateful-Operators.html)
 
 ## Webinars (One-Hour Each)
 
