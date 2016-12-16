@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Spark 2.0 Webinar - Structured Streaming</title>
+    <title>Apache Spark 2.0 Workshop - Structured Streaming</title>
 
-    <meta name="description" content="Spark 2.0 Webinar - Structured Streaming">
+    <meta name="description" content="Apache Spark 2.0 Workshop - Structured Streaming">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,13 +56,12 @@
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="15%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="25%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
-            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>Structured Streaming</h1>
-          <h3>(Spark SQL and Spark Streaming Unified)</h3>
-          <h2>Apache Spark 2.0 / Spark SQL</h2>
+          <h2>Apache Spark 2.0 / SQL + Streaming</h2>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2.0</a></h4>
         </section>
 
         <section id="agenda">
@@ -135,7 +134,11 @@
           <h2>Streaming Sources</h2>
           <ol>
             <li><b>Streaming Source</b> represents a continuous stream of data for a streaming query.</li>
-            <li><b>FileStreamSource</b> and <b>TextSocketSource</b></li>
+            <li><b>FileStreamSource</b> and <b>TextSocketSource</b>
+              <ul>
+                <li>And <b>MemoryStream</b> for unit tests, tutorials and debugging</li>
+              </ul>
+            </li>
             <li>Switch to Mastering Apache Spark 2.0
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-streaming-source.html">Streaming Sources</a></li>
@@ -148,7 +151,11 @@
           <h2>Streaming Sinks</h2>
           <ol>
             <li><b>Streaming Sink</b> represents an external storage to write streaming datasets to.</li>
-            <li><b>ConsoleSink</b>, <b>FileStreamSink</b>, <b>ForeachSink</b></li>
+            <li><b>ConsoleSink</b>, <b>FileStreamSink</b> and <b>ForeachSink</b>
+              <ul>
+                <li>And <b>MemorySink</b> for unit tests, tutorials and debugging</li>
+              </ul>
+            </li>
             <li>Switch to Mastering Apache Spark 2.0
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-streaming-sink.html">Streaming Sinks</a></li>
@@ -160,7 +167,7 @@
         <section id="streaming-query">
           <h2>StreamingQuery</h2>
           <ol>
-            <li><b>StreamingQuery</b> represents a streaming query
+            <li><b>StreamingQuery</b> represents a streaming structured query
               <pre><code>
      val query: StreamingQuery = counter.writeStream.start
               </code></pre>
@@ -178,7 +185,7 @@
           <ol>
             <li><b>StreamingQueryManager</b> is the Management API for continuous queries per SparkSession
               <pre><code>
-     val qm: StreamingQueryManager = spark.streams
+          val qm: StreamingQueryManager = spark.streams
               </code></pre>
             </li>
             <li>Switch to Mastering Apache Spark 2.0
