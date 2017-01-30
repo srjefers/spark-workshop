@@ -6,13 +6,13 @@ scalaVersion := "2.11.8"
 
 resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
 
-val sparkV = "2.0.0"
+val sparkV = "2.1.0"
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core"      % sparkV % "provided",
-  "org.apache.spark" %% "spark-sql"       % sparkV % "provided",
-  "org.apache.spark" %% "spark-hive"      % sparkV % "provided",
-  "org.apache.spark" %% "spark-streaming" % sparkV % "provided",
-  "org.apache.spark" %% "spark-mllib"     % sparkV % "provided"
+  "org.apache.spark" %% "spark-core"      % sparkV,
+  "org.apache.spark" %% "spark-sql"       % sparkV,
+  "org.apache.spark" %% "spark-hive"      % sparkV,
+  "org.apache.spark" %% "spark-streaming" % sparkV,
+  "org.apache.spark" %% "spark-mllib"     % sparkV
 )
 
 assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
