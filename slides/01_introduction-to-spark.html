@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2.0 Workshop - The Elements of Apache Spark</title>
+    <title>Apache Spark 2 Workshop - The Elements of Apache Spark</title>
 
     <meta name="description" content="The Elements of Apache Spark">
     <meta name="author" content="Jacek Laskowski">
@@ -38,7 +38,7 @@
       .slides .footer {
         position: absolute;
         bottom: 0px;
-        left: 15%;
+        left: 35%;
       }
     </style>
     <!--[if lt IE 9]>
@@ -51,18 +51,17 @@
 
       <div class="slides">
         <div class="footer">
-          <small>Copyright ©2016 Jacek Laskowski &amp; Value Amplify Consulting Group</small>
+          <small>Copyright ©2017 Jacek Laskowski</small>
         </div>
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="15%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="30%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
+            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>The Elements of</h1>
-          <h1>Apache Spark 2.0</h1>
-          <h3>Large-Scale Big Data Analytics</h3>
-          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark Notes</a></h4>
+          <h1>Apache Spark 2</h1>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
         </section>
 
         <section>
@@ -90,7 +89,7 @@
         </section>
 
         <section>
-          <h1>Apache Spark 2.0</h1>
+          <h1>Apache Spark 2</h1>
         </section>
 
         <section>
@@ -185,83 +184,26 @@
           </p>
         </section>
 
-        <section>
+        <section id="spark-core">
           <h2>Spark Core</h2>
-          <section id="spark-core">
-            <ul>
-              <li><b>RDD</b> is the main abstraction of Apache Spark</li>
-              <li>
-                <b>R</b>esilient
-              </li>
-              <li>
-                <b>D</b>istributed
-              </li>
-              <li>
-                <b>D</b>ataset
-              </li>
-              <li>
-                In-Memory, Immutable, Lazy Evaluated, Partitioned, Cacheable, Parallel, Typed
-              </li>
-              <li>
-                <b>CAUTION:</b> Often too low-level these days. Leave it alone until you really want it.
-              </li>
-            </ul>
-          </section>
-          <section>
-            <h2>Partitions</h2>
-            <ol>
-              <li>
-                <b>Partitions</b> are logical buckets for data.
-              </li>
-              <li>
-                Partitions correspond to Hadoop's splits (if the data lives on HDFS) or partitioning schemes in the source storage
-              </li>
-              <li>
-                RDD (and hence the data inside) is partitioned.
-              </li>
-              <li>
-                Spark manages data using partitions that helps parallelize distributed data processing with minimal network traffic for sending data between executors.
-              </li>
-              <li>
-                Data in partitions can be <b>skewed</b>, i.e. unevenly distributed across partitions.
-              </li>
-            </ol>
-          </section>
-          <section>
-            <p>
-              <img width="100%" src="images/spark-rdd-partitioned-distributed.png" style="border: 0">
-            </p>
-          </section>
-          <section>
-            <h2>Shuffle</h2>
-            <ol>
-              <li>
-                <b>Shuffle</b> is Spark’s mechanism for re-distributing data so that it’s grouped differently across partitions.
-              </li>
-              <li>
-                Data is often distributed unevenly across partitions.
-              </li>
-              <li>
-                <b>repartition</b> and <b>coalesce</b> operators can repartition a dataset.
-              </li>
-            </ol>
-          </section>
-          <section>
-            <h2>DAGScheduler</h2>
-            <img width="60%" src="images/dagscheduler-rdd-partitions-job-resultstage.png" style="border: 0">
-          </section>
-          <section>
-            <h2>Jobs</h2>
-            <img width="70%" src="images/rdd-job-partitions.png" style="border: 0">
-          </section>
-          <section>
-            <h2>Stages</h2>
-            <img width="70%" src="images/dagscheduler-stages.png" style="border: 0">
-          </section>
-          <section>
-            <h2>Tasks</h2>
-            <img width="100%" src="images/stage-tasks.png" style="border: 0">
-          </section>
+          <ul>
+            <li><b>RDD</b> is the main abstraction of Apache Spark</li>
+            <li>
+              <b>R</b>esilient
+            </li>
+            <li>
+              <b>D</b>istributed
+            </li>
+            <li>
+              <b>D</b>ataset
+            </li>
+            <li>
+              In-Memory, Immutable, Lazy Evaluated, Partitioned, Cacheable, Parallel, Typed
+            </li>
+            <li>
+              <b>CAUTION:</b> Often too low-level these days. Leave it alone until you really want it.
+            </li>
+          </ul>
         </section>
 
         <section id="spark-sql">
@@ -386,10 +328,6 @@
               <b>Scaladoc</b> - <a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.package">Spark's Scala API documentation</a>
             </li>
           </ul>
-        </section>
-
-        <section id="thats-all" data-background-image="images/end.jpg">
-          <!-- THAT'S IT FOLKS -->
         </section>
 
         <section id="questions" style="text-align: left">
