@@ -16,7 +16,7 @@
 1. [The Elements of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
 1. [Introduction to Apache Spark Using spark-shell](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
 1. [Introduction to Scala (_aka_ Why Scala)](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
-1. [sbt and sbt-assembly](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
+1. [sbt](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
 1. [The Core of Spark Core](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_spark-core.html)
 
 ### Day 2 - Spark SQL

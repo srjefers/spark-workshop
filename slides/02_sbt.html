@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2.0 Workshop - sbt</title>
+    <title>Apache Spark 2 Workshop - sbt</title>
 
-    <meta name="description" content="sbt">
+    <meta name="description" content="Apache Spark 2 Workshop - sbt">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,13 +56,9 @@
             <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Spark 2.0 / Scala Workshop <small>sbt</small></h1>
-          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark Notes</a></h4>
-        </section>
-
-        <section>
           <h1>sbt</h1>
-          <h3>The interactive build tool</h3>
+          <h2>Interactive Build Tool for Apache Spark</h2>
+          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark Notes</a></h4>
         </section>
 
         <section>
@@ -94,22 +90,22 @@
             <h2>build.sbt</h2>
             The configuration file of your Spark project
             <pre><code>
-organization := "com.microsoft"
+organization := "pl.japila.spark"
 name         := "my-spark-app"
 version      := "1.0"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
-val sparkVer = "2.0.0"
-libraryDependencies += "org.apache.spark" %% "spark-mllib" % sparkVer % "provided"
-libraryDependencies += "org.apache.spark" %% "spark-sql"   % sparkVer % "provided"
+val sparkVer = "2.1.0"
+libraryDependencies += "org.apache.spark" %% "spark-mllib" % sparkVer
+libraryDependencies += "org.apache.spark" %% "spark-sql"   % sparkVer
             </code></pre>
           </section>
           <section>
             <h2>project directory (1 of 2)</h2>
             <b>build.properties</b> to specify sbt version
             <pre><code>
-sbt.version = 0.13.12
+sbt.version = 0.13.13
             </code></pre>
           </section>
           <section>
@@ -151,7 +147,9 @@ addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
               <li><b>build.sbt</b> - your project's configuration</li>
               <li><b>src/main/scala</b> - main Scala sources</li>
               <li><b>src/test/scala</b> - Scala tests</li>
-              <li><b>project</b> - sbt's configuration</li>
+              <li><b>project/build.properties</b> - the version of sbt</li>
+              <li><b>project/*.sbt</b> - sbt's own configuration</li>
+              <li><b>project/*.scala</b> - your project's Scala-based configuration</li>
             </ol>
           </section>
         </section>
@@ -162,11 +160,73 @@ addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
             <h3>Extensions</h3>
           </section>
           <section>
+            <h2>Usage</h2>
+            <ul>
+              <li>Plugins are (mostly) a set of tasks and commands</li>
+              <li>Install plugins
+                <ul>
+                  <li><b>project/*.sbt</b> per project</li>
+                  <li><b>$HOME/.sbt/0.13/plugins/*.sbt</b> globally</li>
+                </ul>
+              </li>
+              <li>Advice: use plugin name as the file name
+                <ul>
+                  <li>e.g. <b>project/assembly.sbt</b></li>
+                </ul>
+              </li>
+              <li><b>plugins</b> lists available and installed plugins</li>
+            </ul>
+          </section>
+          <section>
             <h2>sbt-assembly plugin</h2>
             <ul>
-              <li>Creates a fat JAR of your project with all of its dependencies.</li>
+              <li>Creates a fat JAR from your project's classes including all of the library dependencies
+                <ul>
+                  <li>Except <b>provided</b>-scoped</li>
+                </ul>
+              </li>
+              <li><b>assembly</b> task to assemble an application JAR</li>
+              <li>Only needed when dependencies are not included in Spark already (aka non-Spark dependencies)
+                <ul>
+                  <li>...which would make them provided</li>
+                </ul>
+              </li>
               <li>Install in <b>project/assembly.sbt</b></li>
               <li>Home page: <a href="https://github.com/sbt/sbt-assembly">https://github.com/sbt/sbt-assembly</a></li>
+              <li>Makes <b>spark-submit --packages</b> harder to use for deployment flexibility</li>
+            </ul>
+          </section>
+          <section>
+            <h2>sbt-docker plugin</h2>
+            <ul>
+              <li>Creates <a href="https://www.docker.com/">Docker</a> images directly from sbt</li>
+              <li><b>docker</b> task which builds a Docker image</li>
+              <li>Could be considered superior to sbt-assembly</li>
+              <li>Home page: <a href="https://github.com/marcuslonnberg/sbt-docker">https://github.com/marcuslonnberg/sbt-docker</a></li>
+              <li>Possibly of use for Apache Spark with Mesos or DC/OS</li>
+            </ul>
+          </section>
+          <section>
+            <h2>sbt-native-packager plugin</h2>
+            <ul>
+              <li>Builds application packages in native formats
+                <ul>
+                  <li>zip, tar.gz, xz</li>
+                  <li>deb, rpm, dmg, msi</li>
+                  <li>docker</li>
+                </ul>
+              </li>
+              <li><b>stage</b> stages your app so you can run it locally without having it packaged</li>
+              <li>Could be considered superior to sbt-assembly and sbt-docker</li>
+              <li>Home page: <a href="https://github.com/sbt/sbt-native-packager">https://github.com/sbt/sbt-native-packager</a></li>
+            </ul>
+          </section>
+          <section>
+            <h2>sbt-coursier plugin</h2>
+            <ul>
+              <li>Dependency resolver / fetcher à la Maven / Ivy, entirely rewritten from scratch in Scala</li>
+              <li><b>update</b> command taken care of by coursier</li>
+              <li>Home page: <a href="https://github.com/alexarchambault/coursier#sbt-plugin-1">https://github.com/alexarchambault/coursier</a></li>
             </ul>
           </section>
         </section>
@@ -180,9 +240,9 @@ addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
             <ol>
               <li>Create a new <b>Scala/sbt project</b> using <b>IntelliJ IDEA</b></li>
               <li>Fix sbt version in <b>project/build.properties</b></li>
-              <li>Install <b>sbt-assembly</b></li>
-              <li>Run <b>sbt assembly</b> to produce the JAR</li>
-              <li>Run the Scala application</li>
+              <li>Install <b>sbt-coursier</b></li>
+              <li>Run <b>sbt package</b> to create the application's package</li>
+              <li>Run the Scala application (using <b>spark-submit</b>)</li>
             </ol>
           </section>
         </section>
@@ -190,10 +250,18 @@ addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
         <section id="questions" style="text-align: left">
           <h1>Questions?</h1>
           <p>
-            - Read <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> notes<br>
-            - Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> at twitter<br>
-            - Use <a href="https://github.com/jaceklaskowski">Jacek's projects at GitHub</a><br>
-            - Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a>
+            <ul>
+              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
+                <ul>
+                  <li>https://bit.ly/mastering-apache-spark</li>
+                </ul>
+              </li>
+              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
+              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
+              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
+              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
+            </ul>
           </p>
         </section>
 
