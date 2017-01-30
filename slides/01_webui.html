@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2 Workshop - Spark History Server</title>
+    <title>Apache Spark 2 Workshop - web UI</title>
 
-    <meta name="description" content="Apache Spark 2 Workshop - Spark History Server">
+    <meta name="description" content="Apache Spark 2 Workshop - web UI">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,49 +59,77 @@
             <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Spark History Server</h1>
-          <h2>Apache Spark 2 / Spark Core</h2>
+          <h1>web UI</h1>
+          <h2>Spark Application's Web Console</h2>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
         </section>
 
-        <section id="agenda">
-          <h2>Agenda</h2>
+        <section id="spark-properties">
+          <h2>Spark Properties</h2>
           <ol>
-            <li><a href="#/event-logging-listener">Persisting Events using EventLoggingListener</a></li>
-            <li><a href="#/spark-history-server">Spark History Server</a></li>
-          </ol>
-        </section>
-
-        <section id="event-logging-listener">
-          <h2>Persisting Events using EventLoggingListener</h2>
-          <ol>
-            <li><b>EventLoggingListener</b> is a SparkListener that logs JSON-encoded events to a file.</li>
+            <li>Command-Line Options, Spark Properties and Environment Variables Mapping.</li>
             <li>Switch to Mastering Apache Spark 2.0
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-scheduler-listeners-eventlogginglistener.html">Persisting Events using EventLoggingListener</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-properties.html">Spark Properties and spark-defaults.conf Properties File</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit-SparkSubmitOptionParser.html">SparkSubmitOptionParser — spark-submit's Command-Line Parser</a></li>
               </ul>
             </li>
           </ol>
         </section>
 
-        <section id="spark-history-server">
-          <h2>Spark History Server</h2>
+        <section id="webui">
+          <h2>Spark Application's Web Console</h2>
           <ol>
-            <li><b>Spark History Server</b> is the web UI for reviewing execution logs of completed and running (aka incomplete) Spark applications.</li>
-            <li>Switch to Mastering Apache Spark 2.0
+            <li><b>web UI</b> is the web interface of a running Spark application for monitoring and inspecting Spark job executions in a web browser</li>
+            <li>Enabled by default unless <b>spark.ui.enabled</b> used to disable</li>
+            <li>Available at <b>http://[driver]:4040</b>
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-history-server.html">Spark History Server</a></li>
+                <li>Use <b>spark.ui.port</b> to control the port</li>
               </ul>
             </li>
           </ol>
         </section>
 
-        <section id="recap">
-          <h2>Recap</h2>
+        <section id="webui-tabs">
+          <h2>web UI Tabs</h2>
           <ol>
-            <li><a href="#/event-logging-listener">Persisting Events using EventLoggingListener</a></li>
-            <li><a href="#/spark-history-server">Spark History Server</a></li>
+            <li><b>Jobs</b> shows status of Spark jobs</li>
+            <li><b>Stages</b> shows status of stages of all Spark jobs</li>
+            <li><b>Storage</b> shows RDD size and memory use</li>
+            <li><b>Environment</b> shows the environment</li>
+            <li><b>Executors</b> shows status of executors</li>
+            <li><b>SQL</b> shows status of structured queries</li>
+            <li>Others feature-specific
+              <ul>
+                <li><b>Streaming</b> or <b>Thrift Server</b></li>
+              </ul>
+            </li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-webui.html">Web UI — Spark Application's Web Console</a></li>
+              </ul>
+            </li>
           </ol>
+        </section>
+
+        <section>
+          <section id="demos">
+            <h1>Demos</h1>
+            <h2>web UI in Action</h2>
+          </section>
+          <section>
+            <h2>Demo (1 of 2)</h2>
+            <ol>
+              <li>Using Hadoop YARN cluster to observe executors in Event Timeline</li>
+              <li>Use <b>SparkContext.requestTotalExecutors</b></li>
+            </ol>
+          </section>
+          <section>
+            <h2>Demo (2 of 2)</h2>
+            <ol>
+              <li>Showing Active, Failed, Completed Jobs in Spark UI</li>
+            </ol>
+          </section>
         </section>
 
         <section id="questions" style="text-align: left">
