@@ -96,12 +96,26 @@
           <section id="rdd">
             <h2>RDD</h2>
             <ol>
-              <li><b>RDD</b> == <b>R</b>esilient <b>D</b>istributed <b>D</b>ataset</li>
-              <li>Primary data abstraction in Spark and the core of Spark core</li>
+              <li><b>RDD</b> &mdash; <b>R</b>esilient <b>D</b>istributed <b>D</b>ataset</li>
+              <li>Primary data abstraction and the core of Spark Core</li>
               <li>Different RDD types per transformation</li>
               <li>Switch to Mastering Apache Spark 2.0
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd.html">RDD — Resilient Distributed Dataset</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section id="rdd-traits">
+            <h2>RDD Traits</h2>
+            <ol>
+              <li><b>RDD</b> is an abstract class with 5 properties:
+                <ul>
+                  <li><b>Dependencies</b> &mdash; parent RDDs</li>
+                  <li><b>Partitions</b></li>
+                  <li><b>compute</b> function to compute a partition</li>
+                  <li><b>Partitioner</b> (optional) &mdash; defines key hashing (hash, range)</li>
+                  <li><b>Preferred locations</b> (optional) &mdash; locality info</li>
                 </ul>
               </li>
             </ol>
