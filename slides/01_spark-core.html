@@ -63,8 +63,50 @@
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
         </section>
 
+        <section id="sparkconf">
+          <h2>SparkConf</h2>
+          <ol>
+            <li><b>SparkConf</b> represents the configuration of your Spark application</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-configuration.html">SparkConf — Programmable Configuration for Spark Applications</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="sparkcontext">
+          <h2>SparkContext — The Entry Point to Spark Services</h2>
+          <ol>
+            <li><b>SparkContext</b> is the entry point to the Spark services in your Spark application</li>
+            <li>SparkContext manages the connection to a Spark execution environment
+              <ul>
+                <li>Defined using the <b>master URL</b></li>
+              </ul>
+            </li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sparkcontext.html">SparkContext — Entry Point to Spark (Core)</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
         <section>
-          <section id="RDD">
+          <section id="rdd">
+            <h2>RDD</h2>
+            <ol>
+              <li><b>RDD</b> == <b>R</b>esilient <b>D</b>istributed <b>D</b>ataset</li>
+              <li>Primary data abstraction in Spark and the core of Spark core</li>
+              <li>Different RDD types per transformation</li>
+              <li>Switch to Mastering Apache Spark 2.0
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd.html">RDD — Resilient Distributed Dataset</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section id="partitions">
             <h2>Partitions</h2>
             <ol>
               <li>
@@ -90,23 +132,62 @@
             </p>
           </section>
         </section>
-        <section>
+
+        <section id="operators">
           <section>
-            <h2>Shuffle</h2>
+            <h2>RDD Operators</h2>
             <ol>
-              <li>
-                <b>Shuffle</b> is Spark’s mechanism for re-distributing data so that it’s grouped differently across partitions.
-              </li>
-              <li>
-                Data is often distributed unevenly across partitions.
-              </li>
-              <li>
-                <b>repartition</b> and <b>coalesce</b> operators can repartition a dataset.
+              <li><b>Transformation</b> is a lazy RDD operation that creates one or many RDDs</li>
+              <li><b>Action</b> is a RDD operation that produces non-RDD Scala values</li>
+              <li>Switch to Mastering Apache Spark 2.0
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-operations.html">Operators - Transformations and Actions</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-transformations.html">Transformations</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-actions.html">Actions</a></li>
+                </ul>
               </li>
             </ol>
           </section>
         </section>
-        <section>
+
+        <section id="caching">
+          <h2>RDD Caching and Persistence</h2>
+          <ol>
+            <li><b>Caching</b> is an optimization technique</li>
+            <li>Saves RDDs so they can be reused in subsequent Spark jobs</li>
+            <li><b>cache</b> and <b>persist</b> operators with StorageLevels</li>
+            <li><b>unpersist</b> operator to clean up</li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-caching.html">RDD Caching and Persistence</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-StorageLevel.html">StorageLevel</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="shuffle">
+          <h2>Shuffle</h2>
+          <ol>
+            <li>
+              <b>Shuffle</b> is Spark's mechanism for re-distributing data so that it’s grouped differently across partitions.
+            </li>
+            <li>
+              Data is often distributed unevenly across partitions.
+            </li>
+            <li>
+              <b>repartition</b> and <b>coalesce</b> operators can repartition a dataset.
+            </li>
+            <li>Switch to Mastering Apache Spark 2.0
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-dependencies.html">RDD Dependencies</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-shuffle.html">RDD Shuffle</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="dagscheduler">
           <section>
             <h2>DAGScheduler</h2>
             <img width="60%" src="images/dagscheduler-rdd-partitions-job-resultstage.png" style="border: 0">
@@ -119,6 +200,9 @@
             <h2>Stages</h2>
             <img width="70%" src="images/dagscheduler-stages.png" style="border: 0">
           </section>
+        </section>
+
+        <section id="taskscheduler">
           <section>
             <h2>Tasks</h2>
             <img width="100%" src="images/stage-tasks.png" style="border: 0">
