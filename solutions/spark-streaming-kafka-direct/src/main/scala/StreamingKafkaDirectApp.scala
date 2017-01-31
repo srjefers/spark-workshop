@@ -12,7 +12,7 @@ object StreamingKafkaDirectApp extends App {
     .config("spark.sql.warehouse.dir", "target/spark-warehouse")
     .getOrCreate
   val sc = spark.sparkContext
-  val ssc = new StreamingContext(sc, Seconds(10))
+  val ssc = new StreamingContext(sc, batchDuration = Seconds(10))
   try {
     import org.apache.spark.streaming.kafka010._
 
@@ -35,9 +35,14 @@ object StreamingKafkaDirectApp extends App {
       preferredHosts,
       ConsumerStrategies.Subscribe[String, String](topics, kafkaParams, offsets))
 
+    import org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_SER
+    dstream.persist(MEMORY_AND_DISK_SER)
+
     def reduceFunc(v1: String, v2: String) = s"$v1 + $v2"
+    // Pipeline #1
     dstream.map { r =>
       println(s"value: ${r.value}")
+      // FIXME What if there is one or zero messages on input?
       val Array(key, value, _*) = r.value.split("\\s+") // only two elements accepted
       println(s">>> key = $key")
       println(s">>> value = $value")
@@ -46,6 +51,7 @@ object StreamingKafkaDirectApp extends App {
       reduceFunc, windowDuration = Seconds(30), slideDuration = Seconds(10))
       .print()
 
+    // Pipeline #2
     dstream.foreachRDD { rdd =>
       // Get the offset ranges in the RDD
       val offsetRanges = rdd.asInstanceOf[HasOffsetRanges].offsetRanges
@@ -54,6 +60,7 @@ object StreamingKafkaDirectApp extends App {
       }
     }
 
+    // Pipeline #3
     // Spark SQL integration
     // See http://spark.apache.org/docs/latest/streaming-programming-guide.html#dataframe-and-sql-operations
     val executorService = Executors.newFixedThreadPool(1)
