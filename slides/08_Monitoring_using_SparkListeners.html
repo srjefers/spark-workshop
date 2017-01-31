@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Spark 2.0 Webinar - Monitoring using SparkListeners</title>
+    <title>Apache Spark 2 Workshop - Monitoring Spark using SparkListeners</title>
 
-    <meta name="description" content="Spark 2.0 Webinar - Monitoring using SparkListeners">
+    <meta name="description" content="Apache Spark 2 Workshop - Monitoring Spark using SparkListeners">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -38,7 +38,7 @@
       .slides .footer {
         position: absolute;
         bottom: 0px;
-        left: 15%;
+        left: 35%;
       }
     </style>
     <!--[if lt IE 9]>
@@ -51,26 +51,25 @@
 
       <div class="slides">
         <div class="footer">
-          <small>Copyright ©2016 Jacek Laskowski &amp; Value Amplify Consulting Group</small>
+          <small>Copyright ©2017 Jacek Laskowski</small>
         </div>
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="15%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="25%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
-            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Monitoring using SparkListeners</h1>
-          <h2>Apache Spark 2.0 / Spark Core</h2>
+          <h1>Monitoring Spark using SparkListeners</h1>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
         </section>
 
         <section id="agenda">
           <h2>Agenda</h2>
           <ol>
             <li><a href="#/sparklisteners">SparkListeners</a></li>
-            <li><a href="#/extraListeners">LiveListenerBus / spark.extraListeners</a></li>
+            <li><a href="#/extralisteners">LiveListenerBus / spark.extraListeners</a></li>
             <li><a href="#/history-server">EventLoggingListener and History Server</a></li>
-            <li><a href="#/StatsReportListener">StatsReportListener — Logging Summary Statistics</a></li>
+            <li><a href="#/statsreportlistener">StatsReportListener — Logging Summary Statistics</a></li>
             <li><a href="#/demo">Demo</a></li>
           </ol>
         </section>
@@ -87,7 +86,7 @@
           </ol>
         </section>
 
-        <section id="extraListeners">
+        <section id="extralisteners">
           <h2>LiveListenerBus / spark.extraListeners</h2>
           <ol>
             <li><b>LiveListenerBus</b> is a single-JVM SparkListenerBus for Spark events</li>
@@ -114,7 +113,7 @@
           </ol>
         </section>
 
-        <section id="StatsReportListener">
+        <section id="statsreportlistener">
           <h2>StatsReportListener — Logging Summary Statistics</h2>
           <ol>
             <li><b>StatsReportListener</b> is a SparkListener that logs summary statistics when each stage completes.</li>
@@ -131,8 +130,8 @@
           <ol>
             <li>Creating Scala/sbt project in IntelliJ IDEA</li>
             <li>Creating a Scala class - <b>CustomSparkListener</b></li>
-            <li>Creating deployable package using <b><code>sbt package</code></b></li>
-            <li>Activating Custom Listener in Spark shell</li>
+            <li>Creating deployable package using <b>sbt package</b></li>
+            <li>Activating SparkListener in Spark shell using <b>spark.extraListeners</b></li>
             <li>Switch to Mastering Apache Spark 2.0
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/exercises/spark-exercise-custom-scheduler-listener.html">Exercise: Developing Custom SparkListener to monitor DAGScheduler in Scala</a></li>
@@ -145,9 +144,9 @@
           <h2>Recap</h2>
           <ol>
             <li><a href="#/sparklisteners">SparkListeners</a></li>
-            <li><a href="#/extraListeners">LiveListenerBus / spark.extraListeners</a></li>
+            <li><a href="#/extralisteners">LiveListenerBus / spark.extraListeners</a></li>
             <li><a href="#/history-server">EventLoggingListener and History Server</a></li>
-            <li><a href="#/StatsReportListener">StatsReportListener — Logging Summary Statistics</a></li>
+            <li><a href="#/statsreportlistener">StatsReportListener — Logging Summary Statistics</a></li>
             <li><a href="#/demo">Demo</a></li>
           </ol>
         </section>
@@ -162,13 +161,14 @@
                 </ul>
               </li>
               <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
               <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
               <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
               <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
             </ul>
           </p>
         </section>
+
       </div>
     </div>
 
