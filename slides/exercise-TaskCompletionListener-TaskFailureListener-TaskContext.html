@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Apache Spark 2 Workshop - Exercise</title>
+
+    <meta name="description" content="Exercise: Using TaskCompletionListener, TaskFailureListener, TaskContext">
+    <meta name="author" content="Jacek Laskowski">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
+    <style>
+      .slides .header {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      .slides .footer {
+        position: absolute;
+        bottom: 0px;
+        left: 30%;
+      }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+
+      <div class="slides">
+        <section class="intro" data-transition="zoom">
+          <p>
+            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h2>Using TaskCompletionListener, TaskFailureListener, TaskContext</h2>
+          <h3>Apache Spark 2 Workshop Exercises</h3>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
+        </section>
+
+        <section>
+          <h2>Using TaskCompletionListener, TaskFailureListener, TaskContext</h2>
+          <ol>
+            <li>Create a Spark project using IDEA and sbt</li>
+            <li>Run a Spark job</li>
+            <li>Register a TaskCompletion- and TaskFailureListeners</li>
+            <li>Cause a failure == throw an exception (hint: use TaskContext)</li>
+            <li>Use web UI to see what you've done (you bad boy! :))</li>
+            <li>Time to complete: 1 hour</li>
+          </ol>
+        </section>
+
+        <section id="questions" style="text-align: left">
+          <h1>Questions?</h1>
+          <p>
+            <ul>
+              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
+                <ul>
+                  <li>https://bit.ly/mastering-apache-spark</li>
+                </ul>
+              </li>
+              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
+              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
+              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
+              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
+            </ul>
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true },
+                { src: 'plugin/notes/notes.js', async: true }
+            ]
+        });
+
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>

@@ -58,6 +58,10 @@
 1. [Speak Spark SQL for your own...better performance](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html)
 2. [HackOn(Data) in Toronto ON - Solutions Review](http://blog.jaceklaskowski.pl/spark-workshop/slides/hackondata-solutions-review.html)
 
+## Exercises
+
+1. [Using TaskCompletionListener, TaskFailureListener, TaskContext](http://blog.jaceklaskowski.pl/spark-workshop/slides/exercise-TaskCompletionListener-TaskFailureListener-TaskContext.html)
+
 ## Contact The Author
 
 * Read [Mastering Apache Spark 2.0](https://bit.ly/mastering-apache-spark)
