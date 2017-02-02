@@ -38,7 +38,7 @@
       .slides .footer {
         position: absolute;
         bottom: 0px;
-        left: 15%;
+        left: 35%;
       }
     </style>
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
 
       <div class="slides">
         <div class="footer">
-          <small>Copyright ©2016 Jacek Laskowski &amp; Value Amplify Consulting Group</small>
+          <small>Copyright ©2016 Jacek Laskowski</small>
         </div>
 
         <section class="intro" data-transition="zoom">
@@ -74,7 +74,9 @@
             <li><a href="#/streaming-sinks">Streaming Sinks</a></li>
             <li><a href="#/streaming-query">Streaming Query</a></li>
             <li><a href="#/streaming-query-manager">StreamingQueryManager</a></li>
-            <li><i>with a few demos along the way</i></li>
+            <li><a href="#/exercise-socket">Exercise: Using Structured Streaming and Socket</a></li>
+            <li><a href="#/exercise-csv">Exercise: Using Structured Streaming and CSVs</a></li>
+            <li><a href="#/exercise-kafka">Exercise: Using Structured Streaming and Kafka</a></li>
           </ol>
         </section>
 
@@ -134,11 +136,13 @@
           <h2>Streaming Sources</h2>
           <ol>
             <li><b>Streaming Source</b> represents a continuous stream of data for a streaming query.</li>
+            <li>Defined using <b>format</b> method on <b>DataFrameReader</b></li>
             <li><b>FileStreamSource</b> and <b>TextSocketSource</b>
               <ul>
                 <li>And <b>MemoryStream</b> for unit tests, tutorials and debugging</li>
               </ul>
             </li>
+            <li><b>KafkaSource</b> for Kafka 0.10.x</li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-streaming-source.html">Streaming Sources</a></li>
@@ -151,6 +155,7 @@
           <h2>Streaming Sinks</h2>
           <ol>
             <li><b>Streaming Sink</b> represents an external storage to write streaming datasets to.</li>
+            <li>Defined using <b>format</b> method on <b>DataFrameWriter</b></li>
             <li><b>ConsoleSink</b>, <b>FileStreamSink</b> and <b>ForeachSink</b>
               <ul>
                 <li>And <b>MemorySink</b> for unit tests, tutorials and debugging</li>
@@ -196,6 +201,33 @@
           </ol>
         </section>
 
+        <section id="exercise-socket">
+          <h2>Exercise: Using Structured Streaming and Socket</h2>
+          <ol>
+            <li>Create Scala/sbt project in IntelliJ IDEA</li>
+            <li>Create a Scala class - <b>SocketStreaming</b></li>
+            <li>Create deployable package using <b>sbt package</b></li>
+          </ol>
+        </section>
+
+        <section id="exercise-csv">
+          <h2>Exercise: Using Structured Streaming and CSVs</h2>
+          <ol>
+            <li>Create Scala/sbt project in IntelliJ IDEA</li>
+            <li>Create a Scala class - <b>CsvStreaming</b></li>
+            <li>Create deployable package using <b>sbt package</b></li>
+          </ol>
+        </section>
+
+        <section id="exercise-kafka">
+          <h2>Exercise: Using Structured Streaming and Kafka</h2>
+          <ol>
+            <li>Create Scala/sbt project in IntelliJ IDEA</li>
+            <li>Create a Scala class - <b>KafkaStreaming</b></li>
+            <li>Create deployable package using <b>sbt package</b></li>
+          </ol>
+        </section>
+
         <section id="recap">
           <h2>Recap</h2>
           <ol>
@@ -206,7 +238,9 @@
             <li><a href="#/streaming-sinks">Streaming Sinks</a></li>
             <li><a href="#/streaming-query">Streaming Query</a></li>
             <li><a href="#/streaming-query-manager">StreamingQueryManager</a></li>
-            <li><i>with a few demos along the way</i></li>
+            <li><a href="#/exercise-socket">Exercise: Using Structured Streaming and Socket</a></li>
+            <li><a href="#/exercise-csv">Exercise: Using Structured Streaming and CSVs</a></li>
+            <li><a href="#/exercise-kafka">Exercise: Using Structured Streaming and Kafka</a></li>
           </ol>
         </section>
 
