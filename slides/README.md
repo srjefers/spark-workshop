@@ -64,7 +64,7 @@
 
 ## Contact The Author
 
-* Read [Mastering Apache Spark 2.0](https://bit.ly/mastering-apache-spark)
+* Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
 * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
 * Upvote [Jacek Laskowski's activities on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
 * Use [Jacek's code at GitHub](https://github.com/jaceklaskowski)
