@@ -3,7 +3,7 @@
 
 ## Table of Contents
 
-* [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days.html) - taught in London at [Apache Spark 2.0 Workshop](http://www.meetup.com/London-Spark-Coding-Dojo/events/233488536/)
+* [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days.html) - taught in London at [Apache Spark 2 Workshop](http://www.meetup.com/London-Spark-Coding-Dojo/events/233488536/)
 * [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days-ljubljana.html) - taught in [Ljubljana Slovenia](https://en.wikipedia.org/wiki/Ljubljana)
 * [3-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda.html)
 * [4-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days.html) - taught in [Karlskrona Sweden](https://en.wikipedia.org/wiki/Karlskrona) and online twice (5 days x 4 hours)
