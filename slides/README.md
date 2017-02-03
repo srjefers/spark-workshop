@@ -3,12 +3,12 @@
 
 ## Table of Contents
 
-* [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days.html) - taught in London at [Apache Spark 2 Workshop](http://www.meetup.com/London-Spark-Coding-Dojo/events/233488536/)
-* [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days-ljubljana.html) - taught in [Ljubljana Slovenia](https://en.wikipedia.org/wiki/Ljubljana)
+* [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days.html) - taught in [London, UK](https://en.wikipedia.org/wiki/London) at [Apache Spark 2 Workshop](http://www.meetup.com/London-Spark-Coding-Dojo/events/233488536/)
+* [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days-ljubljana.html) - taught in [Ljubljana, Slovenia](https://en.wikipedia.org/wiki/Ljubljana)
 * [3-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda.html)
-* [4-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days.html) - taught in [Karlskrona Sweden](https://en.wikipedia.org/wiki/Karlskrona) and online twice (5 days x 4 hours)
+* [4-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days.html) - taught in [Karlskrona, Sweden](https://en.wikipedia.org/wiki/Karlskrona) and online twice (5 days x 4 hours)
 * [5-Day Spark Ecosystem Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Spark-Ecosystem.html) - taught online twice
-* [5-Day Spark Administration and Monitoring Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Spark-Administration-Monitoring.html) - *in progress*
+* [5-Day Spark Administration and Monitoring Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Spark-Administration-Monitoring.html) - taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet)
 
 ### Day 1 - Introduction to Spark, Scala and Tools
 
@@ -30,7 +30,7 @@
 1. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html) (a 1-hour webinar)
 1. [Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_udfs.html) (a 1-hour webinar)
 1. [Windowed Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/06_spark_sql_windowed_operators.html) (a 1-hour webinar)
-1. [Spark SQL 2 -- Tungsten / Catalyst / Query Optimizer / Performance Tuning](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html)
+1. [Spark SQL 2 - Tungsten / Catalyst / Query Optimizer / Performance Tuning](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html)
 
 ### Day 3 - Spark MLlib
 
