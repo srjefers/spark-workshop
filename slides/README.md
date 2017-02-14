@@ -9,6 +9,7 @@
 * [4-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days.html) - taught in [Karlskrona, Sweden](https://en.wikipedia.org/wiki/Karlskrona) and online twice (5 days x 4 hours)
 * [5-Day Spark Ecosystem Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Spark-Ecosystem.html) - taught online twice
 * [5-Day Spark Administration and Monitoring Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Spark-Administration-Monitoring.html) - taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet)
+* [1-Day Spark SQL 2 / Scala Workshop Using Databricks Cloud Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-1-day-SparkSQL-Databricks-Cloud.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
 
 ### Day 1 - Introduction to Spark, Scala and Tools
 
