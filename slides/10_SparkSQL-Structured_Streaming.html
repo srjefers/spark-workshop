@@ -60,7 +60,7 @@
             <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>Structured Streaming</h1>
-          <h2>Apache Spark 2 / SQL + Streaming</h2>
+          <h2>Apache Spark 2 / Streaming SQL</h2>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
         </section>
 
@@ -74,9 +74,9 @@
             <li><a href="#/streaming-sinks">Streaming Sinks</a></li>
             <li><a href="#/streaming-query">Streaming Query</a></li>
             <li><a href="#/streaming-query-manager">StreamingQueryManager</a></li>
-            <li><a href="#/exercise-socket">Exercise: Using Structured Streaming and Socket</a></li>
-            <li><a href="#/exercise-csv">Exercise: Using Structured Streaming and CSVs</a></li>
-            <li><a href="#/exercise-kafka">Exercise: Using Structured Streaming and Kafka</a></li>
+            <li><a href="#/exercise-socket">Exercise: Structured Streaming and Socket</a></li>
+            <li><a href="#/exercise-csv">Exercise: Structured Streaming and Files</a></li>
+            <li><a href="#/exercise-kafka">Exercise: Structured Streaming and Kafka</a></li>
           </ol>
         </section>
 
@@ -91,10 +91,10 @@
         <section id="intro">
           <h2>Structured Streaming</h2>
           <ol>
-            <li><b>Structured Streaming</b> is a new computation model in Spark 2.0 that is an attempt to unify streaming, interactive, and batch queries</li>
+            <li><b>Structured Streaming</b> is a new computation model in Spark 2 that is an attempt to unify streaming, interactive, and batch queries</li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-structured-streaming.html">Structured Streaming — Streaming Datasets</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/structured-streaming/">Structured Streaming — Streaming Datasets</a></li>
               </ul>
             </li>
           </ol>
@@ -103,14 +103,15 @@
         <section id="datastreamreader">
           <h2>DataStreamReader</h2>
           <ol>
-            <li><b>DataStreamReader</b> is an interface for reading streaming data in DataFrame
+            <li><b>DataStreamReader</b> is an interface for executing structured queries periodically (giving you nearly-streaming processing)
               <pre><code>
        val streamReader: DataStreamReader = spark.readStream
               </code></pre>
             </li>
+            <li>Structured query is described as Dataset (and DataFrame)</li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-streaming-DataStreamReader.html">DataStreamReader</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/structured-streaming/spark-sql-streaming-DataStreamReader.html">DataStreamReader</a></li>
               </ul>
             </li>
           </ol>
@@ -119,14 +120,14 @@
         <section id="datastreamwriter">
           <h2>DataStreamWriter</h2>
           <ol>
-            <li><b>DataStreamWriter</b> is the API for writing streaming data
+            <li><b>DataStreamWriter</b> is the interface for writing result of structured queries
               <pre><code>
      val streamWriter: DataStreamWriter = dataset.writeStream
               </code></pre>
             </li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-streaming-DataStreamWriter.html">DataStreamWriter</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/structured-streaming/spark-sql-streaming-DataStreamWriter.html">DataStreamWriter</a></li>
               </ul>
             </li>
           </ol>
@@ -137,15 +138,12 @@
           <ol>
             <li><b>Streaming Source</b> represents a continuous stream of data for a streaming query.</li>
             <li>Defined using <b>format</b> method on <b>DataFrameReader</b></li>
-            <li><b>FileStreamSource</b> and <b>TextSocketSource</b>
-              <ul>
-                <li>And <b>MemoryStream</b> for unit tests, tutorials and debugging</li>
-              </ul>
-            </li>
-            <li><b>KafkaSource</b> for Kafka 0.10.x</li>
+            <li><b>FileStreamSource</b> and <b>TextSocketSource</b> for files
+            <li><b>KafkaSource</b> for Apache Kafka 0.10.x</li>
+            <li><b>MemoryStream</b> for unit tests, tutorials and debugging</li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-streaming-source.html">Streaming Sources</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/structured-streaming/spark-sql-streaming-source.html">Streaming Sources</a></li>
               </ul>
             </li>
           </ol>
@@ -157,13 +155,10 @@
             <li><b>Streaming Sink</b> represents an external storage to write streaming datasets to.</li>
             <li>Defined using <b>format</b> method on <b>DataFrameWriter</b></li>
             <li><b>ConsoleSink</b>, <b>FileStreamSink</b> and <b>ForeachSink</b>
-              <ul>
-                <li>And <b>MemorySink</b> for unit tests, tutorials and debugging</li>
-              </ul>
-            </li>
+            <li><b>MemorySink</b> for unit tests, tutorials and debugging</li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-streaming-sink.html">Streaming Sinks</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/structured-streaming/spark-sql-streaming-sink.html">Streaming Sinks</a></li>
               </ul>
             </li>
           </ol>
@@ -179,7 +174,7 @@
             </li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-streaming-StreamingQuery.html">StreamingQuery</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/structured-streaming/spark-sql-streaming-StreamingQuery.html">StreamingQuery</a></li>
               </ul>
             </li>
           </ol>
@@ -195,14 +190,14 @@
             </li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-streaming-StreamingQueryManager.html">StreamingQueryManager — Streaming Query Management</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/structured-streaming/spark-sql-streaming-StreamingQueryManager.html">StreamingQueryManager — Streaming Query Management</a></li>
               </ul>
             </li>
           </ol>
         </section>
 
         <section id="exercise-socket">
-          <h2>Exercise: Using Structured Streaming and Socket</h2>
+          <h2>Exercise: Structured Streaming and Socket</h2>
           <ol>
             <li>Create Scala/sbt project in IntelliJ IDEA</li>
             <li>Create a Scala class - <b>SocketStreaming</b></li>
@@ -211,7 +206,7 @@
         </section>
 
         <section id="exercise-csv">
-          <h2>Exercise: Using Structured Streaming and CSVs</h2>
+          <h2>Exercise: Structured Streaming and Files</h2>
           <ol>
             <li>Create Scala/sbt project in IntelliJ IDEA</li>
             <li>Create a Scala class - <b>CsvStreaming</b></li>
@@ -220,7 +215,7 @@
         </section>
 
         <section id="exercise-kafka">
-          <h2>Exercise: Using Structured Streaming and Kafka</h2>
+          <h2>Exercise: Structured Streaming and Kafka</h2>
           <ol>
             <li>Create Scala/sbt project in IntelliJ IDEA</li>
             <li>Create a Scala class - <b>KafkaStreaming</b></li>
@@ -238,9 +233,9 @@
             <li><a href="#/streaming-sinks">Streaming Sinks</a></li>
             <li><a href="#/streaming-query">Streaming Query</a></li>
             <li><a href="#/streaming-query-manager">StreamingQueryManager</a></li>
-            <li><a href="#/exercise-socket">Exercise: Using Structured Streaming and Socket</a></li>
-            <li><a href="#/exercise-csv">Exercise: Using Structured Streaming and CSVs</a></li>
-            <li><a href="#/exercise-kafka">Exercise: Using Structured Streaming and Kafka</a></li>
+            <li><a href="#/exercise-socket">Exercise: Structured Streaming and Socket</a></li>
+            <li><a href="#/exercise-csv">Exercise: Structured Streaming and Files</a></li>
+            <li><a href="#/exercise-kafka">Exercise: Structured Streaming and Kafka</a></li>
           </ol>
         </section>
 
@@ -250,7 +245,7 @@
             <ul>
               <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
                 <ul>
-                  <li>https://bit.ly/mastering-apache-spark</li>
+                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
                 </ul>
               </li>
               <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
