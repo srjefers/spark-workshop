@@ -5,7 +5,7 @@
 
     <title>Apache Spark 2 Workshop - Spark MLlib</title>
 
-    <meta name="description" content="Spark MLlib">
+    <meta name="description" content="Apache Spark 2 Workshop - Spark MLlib">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,21 +56,22 @@
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="15%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="30%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
+            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Spark 2.0 / Scala Workshop <small>Spark MLlib</small></h1>
-          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark Notes</a></h4>
+          <h1>Spark MLlib</h1>
+          <h2>Apache Spark 2</h2>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
         </section>
 
         <section>
           <h2>Spark MLlib</h2>
-          <ul>
+          <ol>
             <li>Provides <b>distributed machine learning algorithms</b></li>
             <li>Simplifies the development and usage of large scale machine learning.</li>
             <li><b>org.apache.spark.mllib</b> for a RDD-based machine learning</li>
             <li><b>org.apache.spark.ml</b> for a DataFrame-based machine learning</li>
-          </ul>
+          </ol>
         </section>
 
         <section>
@@ -144,7 +145,16 @@
         <section>
           <h2>ML Pipeline Design Applied - Step 1</h2>
           <ul>
-            <li>Choose <b>Transformers</b></li>
+            <li>Selecting <b>Estimator</b> (to produce <b>Model</b>)</li>
+            <ol>
+              <li><b>LogisticRegression</b></li>
+            </ol>
+          </ul>
+        </section>
+        <section>
+          <h2>ML Pipeline Design Applied - Step 2</h2>
+          <ul>
+            <li>Selecting <b>Transformers</b></li>
             <ol>
               <li><b>Tokenizer</b></li>
               <li><b>HashingTF</b></li>
@@ -152,18 +162,9 @@
           </ul>
         </section>
         <section>
-          <h2>ML Pipeline Design Applied - Step 2</h2>
-          <ul>
-            <li>Select <b>Estimator</b> (to produce a <b>Model</b>)</li>
-            <ol>
-              <li><b>LogisticRegression</b></li>
-            </ol>
-          </ul>
-        </section>
-        <section>
           <h2>ML Pipeline Design Applied - Step 3</h2>
           <ul>
-            <li>Create <b>Pipeline</b></li>
+            <li>Creating <b>Pipeline</b></li>
             <ol>
               <li><b>new Pipeline()</b></li>
               <li><b>setStages</b></li>
@@ -173,18 +174,19 @@
         <section>
           <h2>ML Pipeline Design Applied - Step 4</h2>
           <ul>
-            <b>Fit</b> the pipeline to a training <b>Dataset</b>
+            <li><b>Fitting</b> the pipeline to a <b>training Dataset</b></li>
             <ol>
               <li><b>fit</b></li>
             </ol>
           </ul>
         </section>
         <section>
-          <h2>Use the Model - Step 5</h2>
+          <h2>ML Pipeline Design Applied - Step 5</h2>
           <ul>
-            <b>Fit</b> the model to a real <b>Dataset</b>
+            <li>Using trained <b>Model</b> (to generate predictions)</li>
             <ol>
-              <li><b>fit</b></li>
+              <li>Transforming a <b>real Dataset</b></li>
+              <li><b>transform</b></li>
             </ol>
           </ul>
         </section>
@@ -195,11 +197,11 @@
             <ul>
               <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
                 <ul>
-                  <li>https://bit.ly/mastering-apache-spark</li>
+                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
                 </ul>
               </li>
               <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
               <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
               <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
               <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>

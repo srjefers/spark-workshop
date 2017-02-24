@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Spark 2.0 Webinar - ML Pipelines In-Depth</title>
+    <title>Apache Spark 2 Workshop - ML Pipelines In-Depth</title>
 
-    <meta name="description" content="Spark 2.0 Webinar - User-Defined Functions">
+    <meta name="description" content="Apache Spark 2 Workshop - ML Pipelines In-Depth">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,11 +56,12 @@
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="15%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="30%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
+            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>ML Pipelines In-Depth</h1>
-          <h4>Apache Spark 2</h4>
+          <h2>Apache Spark 2</h2>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
         </section>
 
         <section id="agenda">
@@ -81,10 +82,10 @@
           <section id="pipelines">
             <h2>ML Pipelines and PipelineStages (spark.ml)</h2>
             <ol>
-              <li>DataFrame-based API under <code>spark.ml</code> package.
+              <li>DataFrame-based API under <b>spark.ml</b> package.
                 <pre><code>import org.apache.spark.ml._</code></pre>
                 <ul>
-                  <li><code>spark.mllib</code> package obsolete</li>
+                  <li><b>spark.mllib</b> package obsolete (as of Spark 2.0)</li>
                 </ul>
               </li>
               <li>Switch to Mastering Apache Spark 2
@@ -104,7 +105,7 @@
         <section id="transformers">
           <h2>ML Pipeline Components - Transformers</h2>
           <ol>
-            <li>Function objects to transform DataFrame into DataFrame.
+            <li><b>Transformer</b> transforms DataFrame into "better" DataFrame.
               <pre><code>transformer: DataFrame =[transform]=> DataFrame</code></pre>
             </li>
             <li>Switch to Mastering Apache Spark 2
@@ -118,7 +119,7 @@
         <section id="estimators">
           <h2>ML Pipeline Components - Estimators</h2>
           <ol>
-            <li>Produces a <code>Model</code> (i.e. a Transformer) for a given training DataFrame
+            <li><b>Estimator</b> produces <b>Model</b> (Transformer) for training DataFrame
               <pre><code>estimator: DataFrame =[fit]=> Model</code></pre>
             </li>
             <li>Switch to Mastering Apache Spark 2
@@ -133,7 +134,7 @@
           <section id="models">
             <h2>ML Pipeline Models</h2>
             <ol>
-              <li>A Transformer to generate predictions for input DataFrame
+              <li><b>Model</b> - transformer that generates <b>predictions</b> for DataFrame
                 <pre><code>model: DataFrame =[predict]=> DataFrame (with predictions)</code></pre>
               </li>
               <li>Switch to Mastering Apache Spark 2
@@ -153,7 +154,7 @@
         <section id="evaluators">
           <h2>Evaluators</h2>
           <ol>
-            <li>Transformation that maps test DataFrame into a metric indicating how good a model is.
+            <li><b>Evaluator</b> - transformation that <b>measures</b> effectiveness of Model, i.e. how good a model is.
               <pre><code>evaluator: DataFrame =[evaluate]=> Double</code></pre>
             </li>
             <li>Switch to Mastering Apache Spark 2
@@ -167,7 +168,7 @@
         <section id="crossvalidator">
           <h2>CrossValidator</h2>
           <ol>
-            <li>Estimator to produce a CrossValidatorModel
+            <li><b>CrossValidator</b> - estimator that gives the best Model for parameters
               <pre><code>import org.apache.spark.ml.tuning.CrossValidator</code></pre>
             </li>
             <li>Switch to Mastering Apache Spark 2
@@ -182,8 +183,12 @@
           <h2>ML Pipeline Persistence - MLWriter and MLReader</h2>
           <ol>
             <li>Allows saving and loading models
-              <pre><code>model.write.overwrite().save("/tmp/spark-logistic-regression-model")</code></pre>
-              <pre><code>val model = PipelineModel.load("/tmp/spark-logistic-regression-model")</code></pre>
+<pre><code>model.write
+  .overwrite()
+  .save("/path/where/to/save/model")</code></pre>
+
+<pre><code>val model =
+  PipelineModel.load("/path/with/model")</code></pre>
             </li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
@@ -197,9 +202,9 @@
           <h2>ML Pipeline Examples</h2>
           <ol>
             <li>Switch to Mastering Apache Spark 2
-              <ol>
+              <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-mllib-pipelines-example-classification.html">Example — Text Classification</a></li>
-              </ol>
+              </ul>
             </li>
           </ol>
         </section>
@@ -224,11 +229,11 @@
             <ul>
               <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
                 <ul>
-                  <li>https://bit.ly/mastering-apache-spark</li>
+                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
                 </ul>
               </li>
               <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
               <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
               <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
               <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
