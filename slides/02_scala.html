@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2 Workshop - Scala</title>
+    <title>Apache Spark 2.0 / Scala Workshop - Scala</title>
 
-    <meta name="description" content="Scala">
+    <meta name="description" content="Apache Spark 2.0 / Scala Workshop - Scala">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -28,6 +28,19 @@
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 
+    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
+    <style>
+      .slides .header {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      .slides .footer {
+        position: absolute;
+        bottom: 0px;
+        left: 35%;
+      }
+    </style>
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
@@ -37,14 +50,19 @@
     <div class="reveal">
 
       <div class="slides">
+
+        <div class="footer">
+          <small>Copyright ©2017 Jacek Laskowski</small>
+        </div>
+
         <section class="intro" data-transition="zoom">
           <p>
             <img width="10%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
             <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Spark 2.0 / Scala Workshop <small>Scala</small></h1>
-          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark Notes</a></h4>
+          <h1>Spark 2 / Scala Workshop <small>Scala</small></h1>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
         </section>
 
         <section>
@@ -70,7 +88,11 @@
               <li>Functional and Object-Oriented Paradigms</li>
               <li>Class Hierarchies</li>
               <li>Higher-Order Functions</li>
-              <li>The latest version: <b>2.11.8</b></li>
+              <li>The latest version: <b>2.12.1</b>
+                <ul>
+                  <li>Spark supports <b>2.11.8</b> only</li>
+                </ul>
+              </li>
               <li>Available from <a href="http://www.scala-lang.org/">http://www.scala-lang.org</a></li>
             </ul>
           </section>
@@ -411,7 +433,10 @@ val result = removeThirds(labels)
         </section>
 
         <section>
-          <section id="exercise-1-0">
+          <section id="more-scala-exercises">
+            <h1>More Scala Exercises</h1>
+          </section>
+          <section id="exercise-1">
             <h2>Exercise 1: WordCount using groupBy</h2>
             <ul>
               <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
@@ -424,7 +449,7 @@ val result = removeThirds(labels)
             </ul>
           </section>
           <section id="exercise-1-solution">
-            <h2>Solution 1: WordCount using groupBy</h2>
+            <h2>Solution: WordCount using groupBy</h2>
             <pre><code>
 sc.textFile("README.md")
   .flatMap(line => line.split("\\W+"))
@@ -434,7 +459,7 @@ sc.textFile("README.md")
   .foreach(println)
               </code></pre>
           </section>
-          <section id="exercise-1-1">
+          <section id="exercise-2">
             <h2>Exercise 2: WordCount using reduceByKey</h2>
             <ul>
               <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
@@ -445,8 +470,8 @@ sc.textFile("README.md")
               <li><code>sbt package</code> and deploy it to Spark Standalone.</li>
             </ul>
           </section>
-          <section id="exercise-1-1-solution">
-            <h2>Solution 2: WordCount using reduceByKey</h2>
+          <section id="exercise-2-solution">
+            <h2>Solution: WordCount using reduceByKey</h2>
             <pre><code>
 sc.textFile("README.md")
   .flatMap(line => line.split("\\W+"))
@@ -455,9 +480,7 @@ sc.textFile("README.md")
   .saveAsTextFile("results.txt")
               </code></pre>
           </section>
-        </section>
-        <section id="exercise-2">
-          <section>
+          <section id="exercise-3">
             <h2>Exercise 3: Reading CSV file Using Dataset</h2>
             <ul>
               <li>
@@ -475,25 +498,29 @@ sc.textFile("README.md")
               </li>
             </ul>
           </section>
-          <section id="exercise-1-1-solution">
-            <h2>Solution 3: Reading CSV file Using Dataset</h2>
+          <section id="exercise-3-solution">
+            <h2>Solution: Reading CSV file Using Dataset</h2>
             <pre><code>
 spark.read.option("header", true).csv("people.csv").show
             </code></pre>
           </section>
         </section>
 
-        <section id="thats-all" data-background-image="images/end.jpg">
-          <!-- THAT'S IT FOLKS -->
-        </section>
-
         <section id="questions" style="text-align: left">
           <h1>Questions?</h1>
           <p>
-            - Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a><br>
-            - Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> at twitter<br>
-            - Use <a href="https://github.com/jaceklaskowski">Jacek's projects at GitHub</a><br>
-            - Read <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> notes.
+            <ul>
+              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
+                <ul>
+                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
+                </ul>
+              </li>
+              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
+              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
+              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
+              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
+            </ul>
           </p>
         </section>
 

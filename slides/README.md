@@ -10,7 +10,7 @@
 * [5-Day Spark Ecosystem Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Spark-Ecosystem.html) - taught online twice
 * [5-Day Spark Administration and Monitoring Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Spark-Administration-Monitoring.html) - taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet)
 * [1-Day Spark SQL 2 / Scala Workshop Using Databricks Cloud Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-1-day-SparkSQL-Databricks-Cloud.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
-* [1-Day Spark Core 2 / Scala Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-1-day-Spark-Core.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
+* [4-Day Spark 2 / Scala Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days-toronto.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
 
 ### Day 1 - Introduction to Spark, Scala and Tools
 
@@ -18,7 +18,7 @@
 1. [The Elements of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
 1. [Introduction to Apache Spark Using spark-shell](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
 1. [Introduction to Scala (_aka_ Why Scala)](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
-1. [sbt](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
+1. [sbt &ndash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
 1. [The Core of Spark Core](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_spark-core.html)
 1. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_webui.html)
 1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)

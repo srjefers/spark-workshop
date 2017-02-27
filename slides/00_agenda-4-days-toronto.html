@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Spark Core 2 / Scala Workshop - The Agenda - 1 day</title>
+    <title>Spark 2 / Scala Workshop - The Agenda - 4 days</title>
 
-    <meta name="description" content="Spark Core 2 / Scala Workshop - The Agenda - 1 day">
+    <meta name="description" content="Spark 2 / Scala Workshop - The Agenda - 4 days">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,14 +50,19 @@
     <div class="reveal">
 
       <div class="slides">
+
+        <div class="footer">
+          <small>Copyright ©2017 Jacek Laskowski</small>
+        </div>
+
         <section class="intro" data-transition="zoom">
           <p>
             <img width="10%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
             <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Spark Core 2 / Scala Workshop <small>1 Day</small></h1>
-          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark Notes</a></h4>
+          <h1>Spark 2 / Scala Workshop <small>4 Days</small></h1>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
         </section>
 
         <section>
@@ -66,9 +71,13 @@
               <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
             </p>
             <ul>
-              <li><b>Jacek Laskowski</b> is an independent consultant</li>
-              <li>Among contributors to <a href="http://spark.apache.org/releases/spark-release-2-0-0.html#credits">Apache Spark 2</a> (since <a href="http://spark.apache.org/releases/spark-release-1-6-0.html#credits">1.6.0</a>)</li>
-              <li>Contact me at <b>jacek@japila.pl</b> or follow on twitter <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a></li>
+              <li><b>Jacek Laskowski</b> is an independent consultant
+                <ul>
+                  <li>Specializing in Spark, Kafka, Mesos, DC/OS, Scala</li>
+                </ul>
+              </li>
+              <li>Among contributors to <a href="http://spark.apache.org/releases/spark-release-2-1-0.html#credits">Spark 2.1</a>, <a href="http://spark.apache.org/releases/spark-release-2-0-0.html#credits">Spark 2.0</a> (since <a href="http://spark.apache.org/releases/spark-release-1-6-0.html#credits">1.6.0</a>)</li>
+              <li>Contact me at <b>jacek@japila.pl</b> or follow me on twitter at <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> &lt;-- and learn more Spark!</li>
               <li>Delivering Development Services | Consulting | Training</li>
               <li>Leader of <a href="http://warsawscala.pl">Warsaw Scala Enthusiasts</a> and <a href="http://www.meetup.com/Warsaw-Spark/">Warsaw Apache Spark</a></li>
               <li><a href="https://java.net/website/java-champions/bios.html#Laskowski">Java Champion</a></li>
@@ -79,15 +88,15 @@
               <a href="https://github.com/jaceklaskowski">https://github.com/jaceklaskowski</a>
             </p>
             <p>
-              <img width="80%" src="images/jaceklaskowski-github-stats.png" style="border: 0">
+              <img width="70%" src="images/jaceklaskowski-github-stats.png" style="border: 0">
             </p>
           </section>
           <section id="about-notes">
             <p>
-              <a href="http://bit.ly/mastering-apache-spark">http://bit.ly/mastering-apache-spark</a>
+              <a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a>
             </p>
             <p>
-              <img width="90%" src="images/jaceklaskowski-gitbook-stats.png" style="border: 0">
+              <img src="images/jaceklaskowski-gitbook-stats.png" style="border: 0">
             </p>
           </section>
           <section id="spark-credits-16">
@@ -171,28 +180,116 @@
           </ul>
         </section>
 
-        <section id="prerequisities">
-          <h2>Prerequisities</h2>
-          <ol>
-            <li>Some programming experience using modern programming language (preferably on JVM)
-              <ul>
-                <li>Scala, Python, Java, F#</li>
-              </ul>
-            </li>
-            <li>Databricks Cloud account</li>
-            <li>Installed <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java SE 8</a>
-            </li>
-            <li>Downloaded
-              <ul>
-                <li><a href="https://spark.apache.org/downloads.html">Apache Spark</a></li>
-                <li>
-                  <a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a>
-                </li>
-                <li><a href="http://www.scala-sbt.org/download.html">sbt</a></li>
-              </ul>
-            </li>
-            <li>Willingness to ask <b>PLENTY</b> of questions</li>
-          </ol>
+        <section id="day1" data-markdown>
+          <script type="text/template">
+            ## Agenda &mdash; Day 1
+
+            1. [Introduction to Scala (_aka_ Why Scala)](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
+            1. [Scala Exercises](http://blog.jaceklaskowski.pl/scala-workshop/slides/)
+            1. [sbt &ndash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
+            1. [Introduction to Apache Spark Using spark-shell](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
+            1. My First Spark Application
+              * IntelliJ IDEA, sbt and spark-submit
+          </script>
+        </section>
+
+        <section id="day2" data-markdown>
+          <script type="text/template">
+            ## Agenda &mdash; Day 2
+
+            1. [The Core of Spark Core](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_spark-core.html)
+            1. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_webui.html)
+            1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
+            1. [Spark SQL 2 - Tungsten / Catalyst / Query Optimizer / Performance Tuning](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html)
+          </script>
+        </section>
+
+        <section>
+          <section id="day3" data-markdown>
+            <script type="text/template">
+              ## Agenda &mdash; Day 3 (1 of 2)
+
+              1. Exercise: Reading data sets of any format using Spark SQL and command-line arguments
+                * Using scopt to parse command-line arguments
+                * Using `spark-submit --packages`
+              1. Exercise: Finding bestsellers (as products) per category (using Databricks Cloud and Tables)
+                * Using groupBy, join and filter operators
+                * Using window operators
+              1. Deploying Spark applications to Spark Standalone
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Agenda &mdash; Day 3 (2 of 2)
+
+              1. Caching and Persistence
+              1. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html)
+              1. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
+            </script>
+          </section>
+        </section>
+
+        <section>
+          <section id="day4" data-markdown>
+            <script type="text/template">
+              ## Agenda &mdash; Day 4 (1 of 2)
+
+              1. Exercise: (Dilip's case) Finding unique user visits per day
+                * Using Scala only
+                * Using Spark SQL and window operator
+              1. Exercise: Accessing data sets using Spark SQL and JDBC (PostgreSQL)
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Agenda &mdash; Day 4 (2 of 2)
+
+              1. Exercise: Accessing streaming data sets in Apache Kafka using Spark Structured Streaming
+              1. Exercise: Joining data from different data sources
+                * CSV files and JDBC table
+              1. Filtering and optimizations in Spark SQL using JDBC and parquet data sources
+                * Comparing different programming styles and their effect on query execution plans
+            </script>
+          </section>
+
+        </section>
+
+        <section>
+          <section id="prerequisities">
+            <h2>Prerequisities (1 of 3)</h2>
+            <ol>
+              <li>Some programming experience using modern programming language, e.g. Scala, Python, Java, F#</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Prerequisities (2 of 3)</h2>
+            <ol>
+              <li>
+                <a href="https://databricks.com/try-databricks">Databricks Cloud</a> Community Edition account
+              </li>
+              <li>Installed
+                <ul>
+                  <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Platform, Standard Edition (Java SE) 8</a></li>
+                  <li><a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a> Community Edition with <a href="https://plugins.jetbrains.com/idea/plugin/1347-scala">Scala plugin</a></li>
+                  <li><a href="http://www.scala-sbt.org/download.html">sbt</a></li>
+                  <li><a href="https://www.postgresql.org/download/">PostgreSQL</a></li>
+                  <li><a href="http://kafka.apache.org/downloads">Apache Kafka</a></li>
+                  <li><a href="https://archive.apache.org/dist/hadoop/common/hadoop-2.7.3/">Apache Hadoop 2.7.3</a> (not <strike>Hadoop 3.0.0-alpha2</strike>)</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h2>Prerequisities (3 of 3)</h2>
+            <ol>
+              <li>Downloaded
+                <ul>
+                  <li><a href="https://spark.apache.org/downloads.html">Apache Spark</a></li>
+                  <li><a href="https://jdbc.postgresql.org/">PostgreSQL JDBC Driver</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
         </section>
 
         <section id="questions" style="text-align: left">
@@ -201,7 +298,7 @@
             <ul>
               <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
                 <ul>
-                  <li>https://bit.ly/mastering-apache-spark</li>
+                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
                 </ul>
               </li>
               <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
