@@ -62,7 +62,7 @@
         </section>
 
         <section>
-          <section>
+          <section id="intro">
             <h2>Intro to sbt</h2>
             <ul>
               <li>The interactive build tool</li>
@@ -118,7 +118,7 @@ addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
         </section>
 
         <section>
-          <section>
+          <section id="tasks">
             <h1>Tasks in sbt</h1>
             <h3>Commands</h3>
           </section>
@@ -137,7 +137,7 @@ addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
         </section>
 
         <section>
-          <section>
+          <section id="layout">
             <h1>Directory Layout</h1>
             <h3>Convention over Configuration</h3>
           </section>
@@ -155,7 +155,7 @@ addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
         </section>
 
         <section>
-          <section>
+          <section id="plugins">
             <h1>sbt Plugins</h1>
             <h3>Extensions</h3>
           </section>
@@ -227,6 +227,14 @@ addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
               <li>Dependency resolver / fetcher à la Maven / Ivy, entirely rewritten from scratch in Scala</li>
               <li><b>update</b> command taken care of by coursier</li>
               <li>Home page: <a href="https://github.com/alexarchambault/coursier#sbt-plugin-1">https://github.com/alexarchambault/coursier</a></li>
+            </ul>
+          </section>
+          <section>
+            <h2>sbt-updates plugin</h2>
+            <ul>
+              <li>Checks Maven repositories for dependency updates</li>
+              <li><b>dependencyUpdates</b> shows project dependencies that can be updated</li>
+              <li>Home page: <a href="https://github.com/rtimush/sbt-updates">https://github.com/rtimush/sbt-updates</a></li>
             </ul>
           </section>
         </section>
