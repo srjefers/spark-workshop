@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Spark 2.0 Webinar - Debugging Spark Applications</title>
+    <title>Apache Spark 2 Workshop - Debugging Spark Applications</title>
 
-    <meta name="description" content="Spark 2.0 Webinar - Debugging Spark Applications">
+    <meta name="description" content="Apache Spark 2 Workshop - Debugging Spark Applications">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,47 +56,27 @@
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="15%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="30%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
+            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Debugging Spark Applications</h1>
-          <h4>Apache Spark 2</h4>
-          <h3><a href="https://www.yammer.com/valueamplify.com/#/threads/inGroup?feedId=8926699">Yammer: AML Spark Training Class</a></h3>
+          <h1>Debugging Spark</h1>
+          <h2>Apache Spark 2 / Spark SQL</h2>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
         <section id="agenda">
-          <section>
-            <h2>Agenda</h2>
-            <ol>
-              <li><a href="#/tools-and-techniques">Debugging Tools and Techniques</a></li>
-              <li><a href="#/live-debugging-session">Live Debugging Session</a></li>
-            </ol>
-          </section>
-          <section>
-            <h2>Debugging Tools and Techniques</h2>
-            <ol>
-              <li>IntelliJ IDEA's Debugger</li>
-              <li>Loggers (conf/log4j.properties)</li>
-              <li><a href="http://www.scalatest.org/">ScalaTest</a> - tests over debugging</li>
-              <li><a href="http://spark.apache.org/docs/latest/running-on-yarn.html#debugging-your-application">Debugging your Application</a> (in Spark docs)</li>
-              <li>Spark application's web UI, esp. SQL tab</li>
-              <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-dataset.html#explain">Dataset.explain</a></li>
-              <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-debugging-execution.html">Debugging Query Execution</a> (using debug package)</li>
-            </ol>
-          </section>
-          <section>
-            <h2>Live Debugging Session</h2>
-            <ol>
-              <li>Debugging Spark (MLlib) Application in IntelliJ IDEA</li>
-              <li>spark-shell and conf/log4j.properties</li>
-              <li>"Debugging" ML Pipelines</li>
-            </ol>
-          </section>
+          <h2>Agenda</h2>
+          <ol>
+            <li><a href="#/definition">Wikipedia on Debugging</a></li>
+            <li><a href="#/tools-and-techniques">Debugging Tools and Techniques</a></li>
+            <li><a href="#/live-debugging-session">Live Debugging Session</a></li>
+          </ol>
         </section>
 
         <section>
-          <section>
-            <h2>Debugging - Definition</h2>
+          <section id="definition">
+            <h2>Wikipedia on Debugging</h2>
             <blockquote cite="https://en.wikipedia.org/wiki/Debugging">
               <b>Debugging</b> is the process of finding and resolving of defects that prevent correct operation of computer software or a system.
             </blockquote>
@@ -111,7 +91,7 @@
           </section>
         </section>
 
-        <section>
+        <section id="tools-and-techniques">
           <h2>Debugging Tools and Techniques</h2>
           <ol>
             <li>IntelliJ IDEA's Debugger</li>
@@ -119,12 +99,12 @@
             <li><a href="http://www.scalatest.org/">ScalaTest</a> - tests over debugging</li>
             <li><a href="http://spark.apache.org/docs/latest/running-on-yarn.html#debugging-your-application">Debugging your Application</a> (in Spark docs)</li>
             <li>Spark application's web UI, esp. SQL tab</li>
-            <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-dataset.html#explain">Dataset.explain</a></li>
+            <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-dataset-operators.html#explain">Explaining Logical and Physical Plans &mdash; explain Operator</a></li>
             <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-debugging-execution.html">Debugging Query Execution</a> (using debug package)</li>
           </ol>
         </section>
 
-        <section>
+        <section id="live-debugging-session">
           <h2>Live Debugging Session</h2>
           <ol>
             <li>Debugging Spark (MLlib) Application in IntelliJ IDEA</li>
@@ -133,13 +113,30 @@
           </ol>
         </section>
 
+        <section id="recap">
+          <h2>Recap</h2>
+          <ol>
+            <li><a href="#/definition">Wikipedia on Debugging</a></li>
+            <li><a href="#/tools-and-techniques">Debugging Tools and Techniques</a></li>
+            <li><a href="#/live-debugging-session">Live Debugging Session</a></li>
+          </ol>
+        </section>
+
         <section id="questions" style="text-align: left">
           <h1>Questions?</h1>
           <p>
-            - Read <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> notes<br>
-            - Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> at twitter<br>
-            - Use <a href="https://github.com/jaceklaskowski">Jacek's projects at GitHub</a><br>
-            - Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a>
+            <ul>
+              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
+                <ul>
+                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
+                </ul>
+              </li>
+              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
+              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
+              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
+              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
+            </ul>
           </p>
         </section>
 

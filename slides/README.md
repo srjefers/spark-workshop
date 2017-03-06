@@ -24,6 +24,7 @@
 1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
 1. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html)
 1. [Monitoring Spark using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html)
+1. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
 
 ### Day 2 - Spark SQL
 
@@ -51,7 +52,6 @@
 
 ## Webinars (One-Hour Each)
 
-1. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
 1. [Dynamic Allocation of Executors](http://blog.jaceklaskowski.pl/spark-workshop/slides/07_Spark-Core-Dynamic-Allocation-Of-Executors.html)
 1. ..._some were moved to the agenda above_
 
@@ -66,8 +66,9 @@
 ## Contact The Author
 
 * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
+* Read [Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
 * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
 * Upvote [Jacek Laskowski's activities on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
-* Use [Jacek's code at GitHub](https://github.com/jaceklaskowski)
-* Read [Jacek Laskowski @ Medium](https://medium.com/@jaceklaskowski)
+* Use [Jacek's code on GitHub](https://github.com/jaceklaskowski)
+* Read [Jacek Laskowski on Medium](https://medium.com/@jaceklaskowski)
 * Visit [Jacek Laskowski's blog](https://blog.jaceklaskowski.pl)
