@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2 Workshop - Windowed Operators in Spark SQL</title>
+    <title>Apache Spark 2 Workshop - Aggregations in Spark SQL</title>
 
-    <meta name="description" content="Apache Spark 2 Workshop - Windowed Operators in Spark SQL">
+    <meta name="description" content="Apache Spark 2 Workshop - Aggregations in Spark SQL">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,7 +59,7 @@
             <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Windowed Operators</h1>
+          <h1>groupBy Aggregations</h1>
           <h2>Apache Spark 2 / Spark SQL</h2>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
@@ -69,7 +69,7 @@
           <h2>Agenda</h2>
           <ol>
             <li><a href="#/columns">Columns</a></li>
-            <li><a href="#/windows">Window Aggregates (Windows)</a></li>
+            <li><a href="#/aggregates">Aggregate Operators</a></li>
             <li><a href="#/explain">"Explaining" Query Plans</a></li>
           </ol>
         </section>
@@ -81,19 +81,21 @@
             <li>Column is a <b>function</b> that generates values for every record in a Dataset (for a column)</li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-columns.html">Columns</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-columns.html">Dataset Columns</a></li>
               </ul>
             </li>
           </ol>
         </section>
 
-        <section id="windows">
-          <h2>Window Aggregates (Windows)</h2>
+        <section id="aggregates">
+          <h2>Aggregate Operators</h2>
           <ol>
-            <li><b>Window Aggregates</b> - Dataset operators for working with a group of records called a <b>window</b></li>
+            <li><b>agg</b> for aggregations per columns on the entire Dataset</li>
+            <li><b>groupBy</b> for untyped grouping (using DataFrames)</li>
+            <li><b>groupByKey</b> for typed grouping (using Datasets)</li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-windows.html">Window Aggregates (Windows)</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-aggregation.html">Aggregation &mdash; Typed and Untyped Grouping</a></li>
               </ul>
             </li>
           </ol>
@@ -121,7 +123,7 @@
           <h2>Recap</h2>
           <ol>
             <li><a href="#/columns">Columns</a></li>
-            <li><a href="#/windows">Window Aggregates (Windows)</a></li>
+            <li><a href="#/aggregates">Aggregate Operators</a></li>
             <li><a href="#/explain">"Explaining" Query Plans</a></li>
           </ol>
         </section>
