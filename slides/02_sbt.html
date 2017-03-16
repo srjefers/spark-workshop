@@ -122,17 +122,20 @@ addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
             <h1>Tasks in sbt</h1>
             <h3>Commands</h3>
           </section>
-          <section>
-            <h2>Tasks (aka Commands)</h2>
-            <ul>
-              <li><b>help</b></li>
-              <li><b>console</b></li>
-              <li><b>compile</b></li>
-              <li><b>test</b></li>
-              <li><b>run</b></li>
-              <li><b>~</b> (aka tilde)</li>
-              <li><b>package</b></li>
-            </ul>
+          <section data-markdown>
+            <script type="text/template">
+            ## Tasks (aka Commands)
+
+            | Task      | Description |
+            | ----------|-------------|
+            | **help**      | Prints a help summary |
+            | **console**   | Starts Scala REPL |
+            | **compile**   | Compiles sources |
+            | **test**      | Executes tests |
+            | **run**       | Runs a main class |
+            | **~** (tilde) | Executes command after sources change |
+            | **package**   | Produces the executable jar |
+            </script>
           </section>
         </section>
 

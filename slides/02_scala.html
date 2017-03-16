@@ -61,8 +61,9 @@
             <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Spark 2 / Scala Workshop <small>Scala</small></h1>
-          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
+          <h1>Apache Spark / Scala Workshop <small>Scala</small></h1>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Notebooks: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
         <section>
@@ -267,18 +268,19 @@ Hello, Friends!
               </li>
             </ol>
           </section>
-          <section>
+          <section id="println-cmd-args">
             <h2>Exercise: Println Command-Line Arguments</h2>
             <ol>
               <li>Use <b>args</b> to access command-line arguments</li>
               <li>Use <b>foreach</b> and <b>println</b> to <i>println</i> elements</li>
             </ol>
           </section>
-          <section>
-            <h2>Scala Exercise: Filtering Out Labels</h2>
-            <p>
+          <section id="filtering" data-markdown>
+            <script type="text/template">
+              ## Scala Exercise: Filtering
+
               Problem: Filter out labels
-              <pre><code>
+```scala
 val labels = Seq("hello", "world", "boston", "warsaw")
 
 def filter(labels: Seq[String]): Seq[String] = ???
@@ -287,14 +289,15 @@ val result = filter(labels)
 
 // Seq("hello", "world")
 // Hint: by size or by content
-              </code></pre>
-            </p>
+```
+            </script>
           </section>
-          <section>
-            <h2>Scala Exercise: Indexing Labels</h2>
-            <p>
+          <section id="indexing" data-markdown>
+            <script type="text/template">
+              ## Scala Exercise: Indexing Labels
+
               Problem: Index labels (using numbers)
-              <pre><code>
+```scala
 val labels = Seq("hello", "world")
 
 def index(labels: Seq[String]): Seq[(String, Int)] = ???
@@ -302,14 +305,15 @@ def index(labels: Seq[String]): Seq[(String, Int)] = ???
 val result = index(labels)
 
 // Seq(("hello", 0), ("world", 1))
-              </code></pre>
-            </p>
+```
+            </script>
           </section>
-          <section>
-            <h2>Scala Exercise: Taking Even Labels</h2>
-            <p>
+          <section id="taking-even-labels" data-markdown>
+            <script type="text/template">
+              ## Scala Exercise: Taking Even Labels
+
               Problem: Index Labels and Take Labels at Even Positions
-              <pre><code>
+```scala
 val labels = Seq("hello", "world", "boston", "warsaw")
 
 def takeEven(labels: Seq[String]): Seq[String] = ???
@@ -318,21 +322,22 @@ val result = takeEven(labels)
 
 // Seq("hello", "boston")
 // Hint: Use zipWithIndex and filter
-              </code></pre>
-            </p>
+```
+            </script>
           </section>
-          <section>
-            <h2>Scala Exercise: Println Labels</h2>
-            <p>
+          <section id="println-labels" data-markdown>
+            <script type="text/template">
+              ## Scala Exercise: Println Labels
+
               Problem: Println Labels
-              <pre><code>
+```scala
 val labels = Seq("hello", "world", "boston", "warsaw")
 
 labels.[useFunctionHere]
 
 // Hint: Use scaladoc of Seq and review available methods
-              </code></pre>
-            </p>
+```
+            </script>
           </section>
           <section>
             <h2>Scala Exercise: Removing Elements From Collection</h2>
@@ -367,6 +372,72 @@ val result = removeThirds(labels)
                 </ul>
               </li>
             </ol>
+          </section>
+          <section id="count-lines" data-markdown>
+            <script type="text/template">
+              ## Exercise: Count lines in a file
+
+              * Use **args** to access command-line arguments
+              * Use **scala.io.Source**
+                * **getLines** to read lines
+            </script>
+          </section>
+          <section id="count-words" data-markdown>
+            <script type="text/template">
+              ## Exercise: Count words in a file
+
+              * Use **args** to access command-line arguments
+              * Use **scala.io.Source**
+                * **getLines** to read lines
+              * Define **tokenize** method
+                * Use **split("\\s+")**
+              * Use **map** and **tokenize** to tokenize
+            </script>
+          </section>
+          <section id="count-characters" data-markdown>
+            <script type="text/template">
+              ## Exercise: Count characters in a file
+
+              * Use **args** to access command-line arguments
+              * Use **scala.io.Source**
+                * **getLines** to read lines
+              * Use **map** and **tokenize** to tokenize
+              * Strings are **Seq[Char]**
+            </script>
+          </section>
+          <section id="file-stats" data-markdown>
+            <script type="text/template">
+              ## Exercise: Println statistics about a file (lines, words, characters)
+
+              * Use **scala.io.Source**
+                * **getLines** to read lines
+                * **toList** to transform one-pass iterator into list
+            </script>
+          </section>
+          <section id="double-elements" data-markdown>
+            <script type="text/template">
+              ## Exercise: Double elements in a sequence
+
+              * Use **flatMap** and **Seq.apply**
+              * **Seq(1,2) => Seq(1,1,2,2)**
+            </script>
+          </section>
+          <section id="repeat-elements" data-markdown>
+            <script type="text/template">
+              ## Exercise: Repeat elements as many times as the number says
+
+              * Use **flatMap** and **Seq.fill**
+              * **Seq(1,4) => Seq(1,4,4,4,4)**
+            </script>
+          </section>
+          <section id="string-repeat-elements" data-markdown>
+            <script type="text/template">
+              ## Exercise: Make string from repeating elements above
+
+              * Use **flatMap** and **Seq.fill**
+              * Use **mkString**
+              * **Seq(1,4) => "14444"**
+            </script>
           </section>
         </section>
 
