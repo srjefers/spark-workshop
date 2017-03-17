@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2 Workshop - Spark SQL</title>
+    <title>Apache Spark 2 Workshop &mdash; Spark SQL</title>
 
-    <meta name="description" content="Spark SQL">
+    <meta name="description" content="Apache Spark 2 Workshop &mdash; Spark SQL">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,12 +56,14 @@
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="10%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>Spark SQL</h1>
           <h2>Apache Spark 2</h2>
-          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Notebooks: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
         <section id="spark-sql">
@@ -197,45 +199,56 @@
               <li>Run the application using <b>spark-submit</b></li>
             </ol>
           </section>
-          <section>
-            <h2>Spark SQL Application</h2>
-            <pre><code>
-      // no master URL hard-coded
-      val spark: SparkSession = SparkSession.builder.getOrCreate()
+          <section data-markdown>
+            <script type="text/template">
+              ## Complete Spark SQL Application
+              ### (From CSV to Parquet)
 
-      // What is this line doing?
-      spark.read.csv("people.csv").write.json("people.json")
+```scala
+// no master URL hard-coded!
+// Use spark-submit to specify it at submission time
+val spark: SparkSession = SparkSession.builder.getOrCreate()
+try {
+  spark.read
+    .option("header", true)
+    .csv("inventory/*.csv")
+    .write
+    .mode("overwrite")
+    .save("processed")
+} finally {
+  spark.stop()
+}
+```
+            </script>
+          </section>
+          <section id="exercise-first-app" data-markdown>
+            <script type="text/template">
+              ## Exercise: My First Spark SQL Application
 
-      spark.stop()
-            </code></pre>
+              1. Create a Scala standalone application
+                * Use <b>IntelliJ IDEA</b>
+              1. Define Spark SQL dependency in <b>build.sbt</b>
+                * **libraryDependencies**
+                * **"org.apache.spark" %% "spark-sql" % "2.1.0"**
+              1. Write your <b>Spark SQL code</b>, i.e. <b>spark.version</b>
+                * **SparkSession**
+              1. Execute <b>sbt package</b>
+              1. Run the application using <b>spark-submit</b>
+              1. Time: 40 mins
+            </script>
           </section>
-          <section>
-            <h2>Exercise: My First Spark SQL Application (using IntelliJ IDEA)</h2>
-            <ol>
-              <li>Use <b>IntelliJ IDEA</b> and <b>sbt</b></li>
-              <li>Define Spark SQL dependency in <b>build.sbt</b></li>
-              <li>Write your <b>Spark SQL code</b>, i.e. <b>spark.version</b></li>
-              <li>Execute <b>sbt package</b></li>
-              <li>Run the application using <b>spark-submit</b></li>
-              <li>Time: 40 mins</li>
-            </ol>
-          </section>
-          <section>
-            <h2>Code Samples</h2>
-            <pre><code>
-                    Seq((1, 2)).toDF("i", "j").write
-                      .mode("overwrite")
-                      .saveAsTable("t1")
-            </code></pre>
-            <pre><code>
-                Seq((3, 4)).toDF("j", "i").write.insertInto("t1")
-            </code></pre>
-            <pre><code>
-                        sql("show tables").show
-            </code></pre>
-            <pre><code>
-                        sql("select * from t1").show
-            </code></pre>
+          <section id="exercise-first-app-spark-standalone" data-markdown>
+            <script type="text/template">
+              ## Exercise: Submit Spark Application to Spark Standalone
+
+              1. Spin up a Spark Standalone cluster
+                * **bin/spark-class**
+                * **org.apache.spark.deploy.master.Master**
+                * **org.apache.spark.deploy.worker.Worker**
+              1. Submit Spark application to Cluster
+                * **spark-submit --master spark://localhost:7077**
+              1. Time: 30 mins
+            </script>
           </section>
         </section>
 
@@ -289,13 +302,15 @@
             <ul>
               <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
                 <ul>
-                  <li>https://bit.ly/mastering-apache-spark</li>
+                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
                 </ul>
               </li>
               <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
               <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
               <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
+              <li>Upvote <a href="https://www.quora.com/profile/Jacek-Laskowski">my answers on Quora</a></li>
+              <li>Connect on <a href="https://www.linkedin.com/in/jaceklaskowski/">LinkedIn</a></li>
               <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
             </ul>
           </p>
