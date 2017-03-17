@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2.0 / Scala Workshop - Scala</title>
+    <title>Apache Spark 2 / Scala Workshop &mdash; Scala</title>
 
-    <meta name="description" content="Apache Spark 2.0 / Scala Workshop - Scala">
+    <meta name="description" content="Apache Spark 2 / Scala Workshop &mdash; Scala">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -437,6 +437,46 @@ val result = removeThirds(labels)
               * Use **flatMap** and **Seq.fill**
               * Use **mkString**
               * **Seq(1,4) => "14444"**
+            </script>
+          </section>
+        </section>
+
+        <section>
+          <section id="scala-checkpoint">
+            <h1>Scala Checkpoint</h1>
+          </section>
+          <section id="checkpoint-1" data-markdown>
+            <script type="text/template">
+              ## What does the following do? (1 of 2)
+
+              1. **(0 to 1).foreach(x => println(x))**
+              1. **(0 to 1).foreach(x => (0 to 1).foreach(x => println(x)))**
+              1. **(0 to 1).foreach(x => (0 to 1).foreach(y => println(y)))**
+              1. **(0 to 1).foreach(x => (0 to 1).foreach(y => println((x,y))))**
+              1. **(0 to 1).map(x => (0 to 1).map(y => (x, y)))**
+              1. **(0 to 1).flatMap(x => (10 to 13).map(y => (x, y)))**
+            </script>
+          </section>
+          <section id="checkpoint-2" data-markdown>
+            <script type="text/template">
+              ## What does the following do? (2 of 2)
+
+```scala
+('a' to 'c').flatMap { c =>
+  (0 to 1).flatMap { x =>
+    (10 to 13).map { y =>
+      (x, y, c)
+    }
+  }
+}
+```
+```scala
+for {
+  c <- 'a' to 'c'
+  x <- 0 to 1
+  y <- 10 to 13
+} yield (x, y, c)
+```
             </script>
           </section>
         </section>
