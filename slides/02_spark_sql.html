@@ -277,23 +277,42 @@ try {
           </section>
         </section>
 
-        <section id="exercise-jdbc-postgresql">
-          <h2>Exercise: Working with Datasets Using JDBC (and PostgreSQL)</h2>
-          <ol>
-            <li>Develop a standalone Spark SQL application (IntelliJ IDEA)</li>
-            <li><b>spark-submit --packages</b> to submit Spark application with PostgreSQL JDBC Driver</li>
-            <li>(optionally) Use <b>Spark Standalone</b> cluster
-              <ul>
-                <li>Troubleshoot missing PostgreSQL JDBC Driver jar</li>
-              </ul>
-            </li>
-            <li>Time: 50 mins</li>
-            <li>Use Mastering Apache Spark 2
-              <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/exercises/spark-exercise-dataframe-jdbc-postgresql.html">Working with Datasets using JDBC (and PostgreSQL)</a></li>
-              </ul>
-            </li>
-          </ol>
+        <section>
+          <section id="jdbc-exercises">
+            <h1>Spark SQL + JDBC</h1>
+            <h2>Exercises</h2>
+          </section>
+          <section id="exercise-jdbc-postgresql">
+            <h2>Exercise: Working with Datasets Using JDBC (and PostgreSQL)</h2>
+            <ol>
+              <li>Develop a standalone Spark SQL application (IntelliJ IDEA)</li>
+              <li><b>spark-submit --packages</b> to submit Spark application with PostgreSQL JDBC Driver</li>
+              <li>(optionally) Use <b>Spark Standalone</b> cluster
+                <ul>
+                  <li>Troubleshoot missing PostgreSQL JDBC Driver jar</li>
+                </ul>
+              </li>
+              <li>Time: 50 mins</li>
+              <li>Use Mastering Apache Spark 2
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/exercises/spark-exercise-dataframe-jdbc-postgresql.html">Working with Datasets using JDBC (and PostgreSQL)</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section id="exercise-table-query-cmd" data-markdown>
+            <script type="text/template">
+            ## Exercise: Specifying Table and SQL Query on Command Line
+
+            1. Build up on previous exercise
+            1. Use **args** for the table name and the SQL query
+              * **args(0)** is the table name
+              * Use **mkString** with the remining **args** for query
+            1. Register **jdbc** Dataset as temporary view
+              * Use **createOrReplaceTempView**
+            1. Execute the SQL query using **spark.sql**
+            </script>
+          </section>
         </section>
 
         <section id="questions" style="text-align: left">
