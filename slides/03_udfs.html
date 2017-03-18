@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Spark 2.0 Webinar - Standard Functions and UDFs</title>
+    <title>Apache Spark 2 Workshop &mdash; Standard Functions and UDFs</title>
 
-    <meta name="description" content="Spark 2.0 Webinar - Standard Functions and UDFs">
+    <meta name="description" content="Apache Spark 2 Workshop &mdash; Standard Functions and UDFs">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,11 +56,13 @@
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="15%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="30%" src="images/ValueAmplify_Logo_Final_medium.jpg" style="border: 0">
+            <img width="10%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Standard Functions and UDFs</h1>
-          <h4>Apache Spark 2</h4>
+          <h1>Columns, Functions and UDFs</h1>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Notebooks: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
         <section id="agenda">
@@ -80,6 +82,12 @@
         <section id="column-operators">
           <h2>Column Operators</h2>
           <ol>
+            <li>
+              <b>Column</b> generates the values for a field (for records).
+            </li>
+            <li>
+              Columns can be <b>free</b> or <b>bound</b> (to Datasets)
+            </li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-columns.html">Column Operators</a></li>
@@ -91,7 +99,8 @@
         <section id="standard-functions">
           <h2>Standard Functions</h2>
           <ol>
-            <li>Import <code>org.apache.spark.sql.functions</code> object
+            <li><b>Standard functions</b> (aka <b>native functions</b>) are built-in functions (registered in <b>SparkSession</b>)</li>
+            <li>Use <b>org.apache.spark.sql.functions</b> object
               <pre><code>import org.apache.spark.sql.functions._</code></pre>
             </li>
             <li>Switch to Mastering Apache Spark 2
@@ -105,7 +114,7 @@
         <section id="user-defined-functions">
           <h2>User-Defined Functions (UDFs)</h2>
           <ol>
-            <li>Use <code>udf</code> function to define a new user-defined function
+            <li>Use <b>spark.udf.register</b> or simply <b>udf</b> to register a user-defined function
               <pre><code>udf { (input: String) => input.toUpperCase }</code></pre>
             </li>
             <li>Switch to Mastering Apache Spark 2
@@ -122,13 +131,15 @@
             <ul>
               <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
                 <ul>
-                  <li>https://bit.ly/mastering-apache-spark</li>
+                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
                 </ul>
               </li>
               <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
               <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
               <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
+              <li>Upvote <a href="https://www.quora.com/profile/Jacek-Laskowski">my answers on Quora</a></li>
+              <li>Connect on <a href="https://www.linkedin.com/in/jaceklaskowski/">LinkedIn</a></li>
               <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
             </ul>
           </p>
