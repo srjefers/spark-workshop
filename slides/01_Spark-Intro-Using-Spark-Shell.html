@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2 Workshop - Introduction to Apache Spark Using spark-shell</title>
+    <title>Apache Spark 2 Workshop &mdash; Introduction to Apache Spark Using spark-shell</title>
 
-    <meta name="description" content="Introduction to Apache Spark Using spark-shell">
+    <meta name="description" content="Apache Spark 2 Workshop &mdash; Introduction to Apache Spark Using spark-shell">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,72 +50,54 @@
     <div class="reveal">
 
       <div class="slides">
+
+        <div class="footer">
+          <small>Copyright ©2017 Jacek Laskowski</small>
+        </div>
+
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Introduction to Spark</h1>
-          <h1>Using spark-shell <small>L2</small></h1>
-          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
+          <h2>Introduction to Apache Spark</h2>
+          <h1>Using spark-shell</h1>
+          <h3>...and Databricks Cloud</h3>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Notebooks: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
-        <section id="agenda">
-          <h2>Agenda - Day 1</h2>
-          <ol>
-            <li>
-              <b>Intro to Apache Spark using spark-shell</b> <-- We are here
-            </li>
-            <li>
-              My first Spark SQL App
-              <ul>
-                <li>IntelliJ IDEA / sbt / spark-submit</li>
-              </ul>
-            </li>
-            <li>
-              Deploying Spark app to Spark Standalone
-            </li>
-            <li>
-              Standard Functions / Operators / UDFs in Spark SQL
-            </li>
-            <li>
-              RDDs, DataFrames, Datasets
-            </li>
-          </ol>
-        </section>
+        <section>
+          <section id="spark-shell">
+            <h2>Spark Shell</h2>
+            <ol>
+              <li><b>Interactive</b> Spark Development Environment</li>
+              <li>Scala REPL + few Spark imports and values</li>
+              <li>Excellent tool to explore and learn Spark</li>
+              <li>Use <b>spark-shell</b> to open it
+                <ul>
+                  <li>Install Apache Spark first</li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-tips-and-tricks-running-spark-windows.html">Running Spark Applications on Windows</a></li>
+                  <li>Only one active due to Derby database for metadata</li>
+                </ul>
+              </li>
+              <li>Use <b>TAB</b> early and often</li>
+              <li>Switch to Mastering Apache Spark 2
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-shell.html">Spark Shell — spark-shell shell script</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section id="spark-shell-exercise" data-markdown>
+            <script type="text/template">
+              ## Exercise: Using spark-shell
 
-        <section id="spark-shell">
-          <h2>Spark Shell</h2>
-          <ol>
-            <li><b>Interactive</b> Development Environment</li>
-            <li>Use <b>spark-shell</b> to open it
-              <ul>
-                <li>You have to <i>install</i> Apache Spark first.</li>
-              </ul>
-            </li>
-            <li>Scala REPL + few Spark imports and values</li>
-            <li>Use <b>TAB</b> early and often</li>
-            <li>Switch to Mastering Apache Spark 2
-              <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-shell.html">Spark Shell — spark-shell shell script</a></li>
-              </ul>
-            </li>
-          </ol>
-        </section>
-
-        <section id="spark-submit">
-          <h2>Spark Submit</h2>
-          <ol>
-            <li>Tool to manage Spark applications</li>
-            <li>Use <b>spark-submit</b> shell script</li>
-            <li>spark-shell is a Spark application submitted for execution using spark-submit</li>
-            <li>Command-line options bring the full experience</li>
-            <li>Switch to Mastering Apache Spark 2
-              <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit.html">Spark Submit — spark-submit shell script</a></li>
-              </ul>
-            </li>
-          </ol>
+              * Open **spark-shell**
+              * Use **spark.range** and **show** the records
+            </script>
+          </section>
         </section>
 
         <section id="sparksession">
@@ -126,11 +108,41 @@
                 <li>...and Spark in general these days</li>
               </ul>
             </li>
-            <li>spark-shell creates an instance for you</li>
+            <li>spark-shell creates an instance as <b>spark</b> for you</li>
             <li><b>version</b> gives you the version of Spark you use</li>
+            <li>Used to create Datasets/DataFrames
+              <ul>
+                <li><b>spark.range(numberOfRecords)</b></li>
+              </ul>
+            </li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-sparksession.html">SparkSession — The Entry Point to Spark SQL</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section id="databricks-cloud">
+          <h2>Databricks Cloud</h2>
+          <ol>
+            <li>Web-based spark-shell in the cloud</li>
+            <li>No need to install anything but the web browser</li>
+            <li>Visit <a href="https://community.cloud.databricks.com/">Databricks Cloud Community Edition</a></li>
+            <li>Excellent tool for data scientists</li>
+          </ol>
+        </section>
+
+        <section id="spark-submit">
+          <h2>Spark Submit</h2>
+          <ol>
+            <li>Tool to submit Spark applications</li>
+            <li>Use <b>spark-submit</b> shell script</li>
+            <li>spark-shell is a Spark application submitted for execution using spark-submit</li>
+            <li>Command-line options bring the full experience</li>
+            <li>Switch to Mastering Apache Spark 2
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit.html">Spark Submit — spark-submit shell script</a></li>
               </ul>
             </li>
           </ol>
@@ -163,13 +175,15 @@
             <ul>
               <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
                 <ul>
-                  <li>https://bit.ly/mastering-apache-spark</li>
+                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
                 </ul>
               </li>
               <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
               <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
               <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
+              <li>Upvote <a href="https://www.quora.com/profile/Jacek-Laskowski">my answers on Quora</a></li>
+              <li>Connect on <a href="https://www.linkedin.com/in/jaceklaskowski/">LinkedIn</a></li>
               <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
             </ul>
           </p>

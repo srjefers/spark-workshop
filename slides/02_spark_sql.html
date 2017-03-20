@@ -56,9 +56,9 @@
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="10%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
-            <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>Spark SQL</h1>
           <h2>Apache Spark 2</h2>
@@ -86,13 +86,23 @@
           </section>
 
           <section id="sparksession">
-            <h2>SparkSession — The Entry Point to Spark SQL</h2>
+            <h2>SparkSession</h2>
             <ol>
-              <li>Use <b>SparkSession.builder</b> Fluent API</pre>
+              <li>The entry point to Spark SQL
+                <ul>
+                  <li>...and Spark in general these days</li>
+                </ul>
+              </li>
+              <li>spark-shell creates an instance as <b>spark</b> for you</li>
+              <li>Use <b>SparkSession.builder</b> Fluent API</li>
+              <li>Used to create Datasets/DataFrames
+                <ul>
+                  <li><b>spark.range(numberOfRecords)</b></li>
+                </ul>
               </li>
               <li>Switch to Mastering Apache Spark 2
                 <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-sparksession.html">SparkSession — The Entry Point</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-sparksession.html">SparkSession — The Entry Point to Spark SQL</a></li>
                 </ul>
               </li>
             </ol>

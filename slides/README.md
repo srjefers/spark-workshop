@@ -1,4 +1,5 @@
 <a id="toc" />
+
 # Apache Spark 2 (Scala) Workshops
 
 ## Table of Contents
@@ -18,8 +19,8 @@
 
 1. [Agenda - Day 1](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_agenda.html)
 1. [The Elements of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
+1. [Introduction to Scala](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
 1. [Introduction to Apache Spark Using spark-shell](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
-1. [Introduction to Scala (_aka_ Why Scala)](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
 1. [sbt &ndash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
 1. [The Core of Spark Core](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_spark-core.html)
 1. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_webui.html)

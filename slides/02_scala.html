@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2 / Scala Workshop &mdash; Scala</title>
+    <title>Apache Spark 2 Workshop &mdash; Scala</title>
 
-    <meta name="description" content="Apache Spark 2 / Scala Workshop &mdash; Scala">
+    <meta name="description" content="Apache Spark 2 Workshop &mdash; Scala">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,11 +57,11 @@
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="10%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
-            <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Apache Spark / Scala Workshop <small>Scala</small></h1>
+          <h1>Apache Spark 2 Workshop <small>Scala</small></h1>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Notebooks: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
@@ -85,6 +85,12 @@
             <h2>Intro to Scala</h2>
             <ul>
               <li>General-Purpose Programming language</li>
+              <li>Strongly-Typed Language
+                <ul>
+                  <li>Scala compiler as an additional safety net</li>
+                  <li>Application compiles? It then should run when deployed.</li>
+                </ul>
+              </li>
               <li><b>Apache Spark</b> is developed in <b>Scala</b></li>
               <li>Functional and Object-Oriented Paradigms</li>
               <li>Class Hierarchies</li>
@@ -94,7 +100,7 @@
                   <li>Spark supports <b>2.11.8</b> only</li>
                 </ul>
               </li>
-              <li>Available from <a href="http://www.scala-lang.org/">http://www.scala-lang.org</a></li>
+              <li>Home page: <a href="http://www.scala-lang.org/">http://www.scala-lang.org</a></li>
             </ul>
           </section>
         </section>
@@ -109,10 +115,22 @@ object Main extends App {
   println("Hello, Friends!")
 }
             </code></pre>
+
+            <ul>
+              <li>Possibly the easiest Scala standalone application</li>
+              <ul>
+                <li>You could cut the number of lines making it a Scala script</li>
+              </ul>
+            </ul>
           </section>
-          <section>
-            <h2>object keyword</h2>
-            <pre><code>
+          <section id="object-keyword" data-markdown>
+            <script type="text/template">
+              ## object Keyword
+
+```scala
+
+// Creates a new type and the one and only value
+
 scala> object Main
 defined object Main
 
@@ -123,28 +141,45 @@ defined object Jacek
 
 scala> Jacek.name
 res0: String = Jacek
-            </code></pre>
+```
+            </script>
           </section>
-          <section>
-            <h2>extends keyword</h2>
-            <pre><code>
+          <section id="extends-keyword" data-markdown>
+            <script type="text/template">
+              ## extends Keyword
+
+```scala
+
+// Creates "is-a" relationship
+
 scala> object Main extends App
 defined object Main
 
 scala> Main. // <-- press TAB after the dot
 delayedInit   executionStart   main
 
-scala> Main.main(null)
-            </code></pre>
+// App type gives main method
+// main is the entry point to Scala standalone applications
+
+scala> Main.main(Array.empty)
+```
+            </script>
           </section>
-          <section>
-            <h2>println method</h2>
-            <pre><code>
-scala> println("Hello")
-Hello
-            </code></pre>
+          <section id="println" data-markdown>
+            <script type="text/template">
+              ## println Procedure
+
+```scala
+
+// Accepts one input parameter of type String
+// Print the argument to the console
+
+scala> println("Hello, Friends!")
+Hello, Friends!
+```
+            </script>
           </section>
-          <section>
+          <section id="curly-braces">
             <h2>curly braces</h2>
             <pre><code>
 object Main extends App {
@@ -170,13 +205,74 @@ scala> Main.main(null)
 Hello, Friends!
             </code></pre>
           </section>
+          <section id="val-keyword" data-markdown>
+            <script type="text/template">
+              ## val keyword
+
+```scala
+
+// Defines a value (aka constant)
+
+scala> val name = "Jacek"
+name: String = Jacek
+
+scala> name
+res0: String = Jacek
+```
+            </script>
+          </section>
+          <section id="string-interpolation" data-markdown>
+            <script type="text/template">
+              ## String Interpolation
+
+```scala
+
+// Replaces $-prefixed strings with corresponding values
+// Allows for templating
+
+scala> val name = "Jacek"
+name: String = Jacek
+
+// Note the 's' character before the text
+//             |
+//             v
+scala> println(s"Hello, $name!")
+Hello, Jacek!
+
+// Template
+scala> val greeting = s"Hello $name. Nice to meet you."
+greeting: String = Hello Jacek. Nice to meet you.
+```
+            </script>
+          </section>
+          <section id="app-main-args" data-markdown>
+            <script type="text/template">
+              ## App, main and args
+
+* **main** is the entry point to a Scala standalone application
+* **App** gives **args** to access command-line arguments
+  * **args** is of type **Array[String]**
+
+```scala
+scala> object Main extends App
+defined object Main
+
+scala> Main. // <-- press TAB after the dot
+delayedInit   executionStart   main
+
+// Execute main with one input argument
+
+scala> Main.main(Array("Jacek"))
+```
+            </script>
+          </section>
         </section>
 
         <section>
           <h2>Scala</h2>
           <ul>
             <li>
-              Objects -- Value Containers
+              Objects &mdash; Value Containers
             </li>
             <li>
               Classes and Case Classes
@@ -208,43 +304,66 @@ Hello, Friends!
         </section>
 
         <section>
-          <h2>IntelliJ IDEA</h2>
           <section>
+            <h2>IntelliJ IDEA</h2>
             <ol>
               <li>
-                The integrated development tool
+                <b>Integrated development environment</b>
                 <ul>
-                  <li>
-                     similar to Visual Studio
-                  </li>
+                  <li>The best development tool for Scala</li>
+                  <li>Similar to Visual Studio</li>
                 </ul>
               </li>
-              <li>
-                Support for Scala
-              </li>
-              <li>
-                Scala Worksheet for Learning and Prototyping
-              </li>
-              <li>
-                "IntelliSense" Feature
-              </li>
+              <li>Support for Scala using separate <b>Scala plugin</b></li>
+              <li><b>Scala Worksheet</b> for Learning and Prototyping</li>
+              <li>"IntelliSense" Feature</li>
+              <li>Toggle <b>Distraction Free mode</b></li>
               <li>
                 Lots of Key Shortcuts
                 <ul>
-                  <li>
-                     You're going to use them quite often!
-                  </li>
+                  <li>You're going to use them quite often!</li>
                 </ul>
               </li>
             </ol>
           </section>
           <section>
+            <h2>IntelliJ IDEA &mdash; Demo</h2>
             <ol>
               <li>
-                Creating a Scala project
+                Creating a Scala sbt-managed project
+                <ul>
+                  <li>Enable <b>Use auto-import</b> checkbox</li>
+                  <li>Disable <b>Create directories for empty content roots automatically</b> checkbox</li>
+                  <li>Wait till IntelliJ IDEA (and sbt) resolves the project's dependencies that may take some <i>longer</i> time</li>
+                </ul>
               </li>
               <li>
                 Running the Hello World application
+                <ul>
+                  <li>Right-click the object name and select <b>Run</b></li>
+                  <li>Click <b>double-window icon</b> on the stripe on the left</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h2>IntelliJ IDEA &mdash; Exercise</h2>
+            <ol>
+              <li>
+                Create a Scala standalone application using IntelliJ IDEA
+                <ul>
+                  <li>Use a Scala sbt-managed project</li>
+                </ul>
+              </li>
+              <li>
+                Run the Scala application
+              </li>
+              <li>Pass command-line arguments
+                <ul>
+                  <li><b>Run > Edit Configurations</b> menu</li>
+                  <li><b>Program arguments</b> field</li>
+                  <li>Run the application once to have an configuration entry</li>
+                </ul>
               </li>
             </ol>
           </section>
