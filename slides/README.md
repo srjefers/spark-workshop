@@ -1,17 +1,18 @@
 <a id="toc" />
-# Apache Spark 2 (Scala) Workshop Slides
+# Apache Spark 2 (Scala) Workshops
 
 ## Table of Contents
 
-* [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days.html) - taught in [London, UK](https://en.wikipedia.org/wiki/London) at [Apache Spark 2 Workshop](http://www.meetup.com/London-Spark-Coding-Dojo/events/233488536/)
-* [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days-ljubljana.html) - taught in [Ljubljana, Slovenia](https://en.wikipedia.org/wiki/Ljubljana)
-* [3-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda.html)
-* [4-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days.html) - taught in [Karlskrona, Sweden](https://en.wikipedia.org/wiki/Karlskrona) and online twice (5 days x 4 hours)
-* [5-Day Spark Ecosystem Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Spark-Ecosystem.html) - taught online twice
-* [5-Day Spark Administration and Monitoring Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Spark-Administration-Monitoring.html) - taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet)
-* [1-Day Spark SQL 2 / Scala Workshop Using Databricks Cloud Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-1-day-SparkSQL-Databricks-Cloud.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
-* [4-Day Spark 2 / Scala Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days-toronto.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
-* [Spark SQL / Scala Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Scala-SparkSQL.html) for Data Engineers - taught in [Collegeville, PA, USA](https://en.wikipedia.org/wiki/Collegeville,_Pennsylvania)
+1. [Spark / Scala Workshop Agenda (5 4-hour "days"  Online)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda_5-days-4-hour-Online-Scala-SparkSQL-SparkMLlib.html)
+1. [Spark SQL / Scala Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Scala-SparkSQL.html) for Data Engineers - taught in [Collegeville, PA, USA](https://en.wikipedia.org/wiki/Collegeville,_Pennsylvania)
+1. [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days.html) - taught in [London, UK](https://en.wikipedia.org/wiki/London) at [Apache Spark 2 Workshop](http://www.meetup.com/London-Spark-Coding-Dojo/events/233488536/)
+1. [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days-ljubljana.html) - taught in [Ljubljana, Slovenia](https://en.wikipedia.org/wiki/Ljubljana)
+1. [3-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda.html)
+1. [4-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days.html) - taught in [Karlskrona, Sweden](https://en.wikipedia.org/wiki/Karlskrona) and online twice (5 days x 4 hours)
+1. [5-Day Spark Ecosystem Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Spark-Ecosystem.html) - taught online twice
+1. [5-Day Spark Administration and Monitoring Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Spark-Administration-Monitoring.html) - taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet)
+1. [1-Day Spark SQL 2 / Scala Workshop Using Databricks Cloud Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-1-day-SparkSQL-Databricks-Cloud.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
+1. [4-Day Spark 2 / Scala Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days-toronto.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
 
 ### Day 1 - Introduction to Spark, Scala and Tools
 
