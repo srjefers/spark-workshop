@@ -70,11 +70,11 @@
           <section>
             <h2>Introduction to Spark SQL</h2>
             <ol>
-              <li>Spark SQL = <b>SQL</b> + <b>DataFrame</b> + <b>Dataset</b>
+              <li>Spark SQL = <b>SQL</b> + <b>Dataset</b> (and <b>DataFrame</b>)
                 <ul>
                   <li><b>SQL</b></li>
-                  <li><b>DataFrame</b></li>
-                  <li><b>Dataset</b></i></li>
+                  <li><b>Dataset</b></i> (and <b>DataFrame</b>)</li>
+                  <li><b>Encoder</b></i></li>
                 </ul>
               </li>
               <li>Switch to Mastering Apache Spark 2
@@ -90,12 +90,12 @@
             <ol>
               <li>The entry point to Spark SQL
                 <ul>
-                  <li>...and Spark in general these days</li>
+                  <li>&hellip;and Spark in general these days</li>
                 </ul>
               </li>
-              <li>spark-shell creates an instance as <b>spark</b> for you</li>
+              <li>spark-shell gives you one instance as <b>spark</b></li>
               <li>Use <b>SparkSession.builder</b> Fluent API</li>
-              <li>Used to create Datasets/DataFrames
+              <li>Use to create Datasets (and DataFrames)
                 <ul>
                   <li><b>spark.range(numberOfRecords)</b></li>
                 </ul>
@@ -109,10 +109,14 @@
           </section>
 
           <section>
-            <h2>DataSource API — Reading and Writing Datasets</h2>
+            <h2>DataSource API &mdash; Reading and Writing Datasets</h2>
             <ol>
               <li>Loading Datasets using <b>spark.read</b></li>
-              <li>Writing Datasets using <b>write</b></li>
+              <li>Writing Datasets using <b>dataset.write</b>
+                <ul>
+                  <li>Lower-case to denote instances (not types)</li>
+                </ul>
+              </li>
               <li>Switch to Mastering Apache Spark 2
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-datasource-api.html">DataSource API — Loading and Saving Datasets</a></li>
@@ -124,7 +128,7 @@
           <section>
             <h2>Reading/Loading Datasets</h2>
             <ol>
-              <li><b>spark.read</b> - DataFrameReader
+              <li><b>spark.read</b> &mdash; DataFrameReader
                 <ol>
                   <li><b>format</b></li>
                   <li><b>mode</b></li>
@@ -139,7 +143,7 @@
             <ul>
               <li>Switch to Mastering Apache Spark 2
                 <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-dataframereader.html">DataFrameReader</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-DataFrameReader.html">DataFrameReader</a></li>
                 </ul>
               </li>
             </ul>
@@ -147,7 +151,7 @@
           <section>
             <h2>Writing/Saving Datasets</h2>
             <ol>
-              <li><b>DataFrame.write</b> - DataFrameWriter
+              <li><b>DataFrame.write</b> &mdash; DataFrameWriter
                 <ol>
                   <li><b>format</b></li>
                   <li><b>mode</b></li>
@@ -170,29 +174,43 @@
           <section>
             <h2>Ad-hoc Local Datasets</h2>
             <ol>
-              <li><b>toDF("col1", "col2", ...)</b></li>
-              <li><b>toDS</b></li>
-              <li><b>import spark.implicits._</b></li>
-              <li>All Scala Collections Supported</li>
+              <li><b>toDF("col1", "col2", ...)</b> for local DataFrames</li>
+              <li><b>toDS</b> for local typed Datasets</li>
+              <li>Use <b>import spark.implicits._</b></li>
+              <li>All Scala Collections supported (almost)</li>
+              <li>Switch to Mastering Apache Spark 2
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-sparksession.html#implicits">Implicit Conversions &mdash; implicits object</a></li>
+                </ul>
+              </li>
             </ol>
           </section>
           <section>
             <h2>Schema</h2>
             <ol>
-              <li>Schema = StructType + StructField + Types</li>
+              <li>Schema = <b>StructType</b> with one or many <b>StructFields</b></li>
               <li>Implicit (inferred) or explicit</li>
               <li><b>dataset.printSchema</b></li>
-              <li>Schema is your case class(es)</li>
+              <li>Schema is your case class(es)
+                <pre><code>
+  case class Person(id: Long, name: String)
+
+  import org.apache.spark.sql.Encoders
+  val schema = Encoders.product[Person].schema
+                </code></pre>
+              </li>
+              <li>Switch to Mastering Apache Spark 2
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-schema.html">Schema — Structure of Data</a></li>
+                </ul>
+              </li>
             </ol>
-            <pre><code>
-              case class Person(id: Long, name: String)
-            </code></pre>
           </section>
         </section>
 
         <section>
           <section>
-            <h2>Creating Spark SQL Application (Demo)</h2>
+            <h2>Demo: Creating Spark SQL Application</h2>
             <ol>
               <li>Use <b>IntelliJ IDEA</b> and <b>sbt</b></li>
               <li>Define Spark SQL dependency in <b>build.sbt</b>
@@ -234,6 +252,7 @@ try {
           <section id="exercise-first-app" data-markdown>
             <script type="text/template">
               ## Exercise: My First Spark SQL Application
+              #### spark.version
 
               1. Create a Scala standalone application
                 * Use <b>IntelliJ IDEA</b>
@@ -242,6 +261,19 @@ try {
                 * **"org.apache.spark" %% "spark-sql" % "2.1.0"**
               1. Write your <b>Spark SQL code</b>, i.e. <b>spark.version</b>
                 * **SparkSession**
+              1. Execute <b>sbt package</b>
+              1. Run the application using <b>spark-submit</b>
+              1. Time: 40 mins
+            </script>
+          </section>
+          <section id="exercise-csv" data-markdown>
+            <script type="text/template">
+              ## Exercise: Using CSV As Data Source
+
+              1. Write Spark SQL code
+                * **spark.read.csv**
+                * Use **header** and **inferSchema** options
+                * Use **args** for the path to CSV file(s)
               1. Execute <b>sbt package</b>
               1. Run the application using <b>spark-submit</b>
               1. Time: 40 mins

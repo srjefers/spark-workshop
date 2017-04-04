@@ -4,7 +4,7 @@
 
 ## Table of Contents
 
-1. [Apache Spark / Scala Workshop Agenda (5 half-days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-half-days-Scala-SparkSQL-SparkMLlib-Kafka.html) - taught online and once in a class (in [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw))
+1. [Apache Spark 2 Workshop Agenda (5 half-days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-half-days-Scala-SparkSQL-SparkMLlib-Kafka.html) - taught online and once in a class (in [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw))
 1. [Spark SQL / Scala Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Scala-SparkSQL.html) for Data Engineers - taught in [Collegeville, PA, USA](https://en.wikipedia.org/wiki/Collegeville,_Pennsylvania)
 1. [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days.html) - taught in [London, UK](https://en.wikipedia.org/wiki/London) at [Apache Spark 2 Workshop](http://www.meetup.com/London-Spark-Coding-Dojo/events/233488536/)
 1. [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days-ljubljana.html) - taught in [Ljubljana, Slovenia](https://en.wikipedia.org/wiki/Ljubljana)
@@ -19,9 +19,9 @@
 
 1. [Agenda - Day 1](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_agenda.html)
 1. [The Elements of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
-1. [Introduction to Scala](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
-1. [Introduction to Apache Spark Using spark-shell](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
-1. [sbt &ndash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
+1. [Scala &mdash; Just Enough for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
+1. [Into Apache Spark 2 Using spark-shell (and Databricks)](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
+1. [sbt &mdash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
 1. [The Core of Spark Core](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_spark-core.html)
 1. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_webui.html)
 1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)

@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark / Scala Workshop Agenda (5 half-days)</title>
+    <title>Apache Spark 2 Workshop Agenda (5 half-days)</title>
 
-    <meta name="description" content="Apache Spark / Scala Workshop Agenda (5 half-days)">
+    <meta name="description" content="Apache Spark 2 Workshop Agenda (5 half-days)">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,7 +61,7 @@
             <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Apache Spark / Scala Workshop <small>5 half-days</small></h1>
+          <h1>Apache Spark 2 Workshop <small>5 half-days</small></h1>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Notebooks: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
@@ -150,12 +150,12 @@
           <h2>Agenda</h2>
           <ul>
             <li><a href="#/day1">Day 1</a> &mdash; <b>Scala + sbt + IntelliJ IDEA</b></li>
-            <li><a href="#/day2">Day 2</a> &mdash; <b>Spark SQL + Databricks</b></li>
+            <li><a href="#/day2">Day 2</a> &mdash; <b>Spark SQL and Tools</b></li>
             <li><a href="#/day3a">Day 3a</a> &mdash; <b>Spark SQL</b></li>
             <li><a href="#/day3b">Day 3b</a> &mdash; <b>Monitoring using web UI</b></li>
-            <li><a href="#/day4a">Day 4a</a> &mdash; <b>Structured Streaming</b></li>
-            <li><a href="#/day4b">Day 4b</a> &mdash; <b>Structured Streaming + Kafka</b></li>
-            <li><a href="#/day5">Day 5</a> &mdash; <b>Spark MLlib</b></li>
+            <li><a href="#/day4">Day 4</a> &mdash; <b>Spark MLlib</b></li>
+            <li><a href="#/day5a">Day 5a</a> &mdash; <b>Structured Streaming</b></li>
+            <li><a href="#/day5b">Day 5b</a> &mdash; <b>Structured Streaming + Kafka</b></li>
           </ul>
         </section>
 
@@ -165,63 +165,69 @@
 
             1. Spark Installation
               * [Running Spark Applications on Windows](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-tips-and-tricks-running-spark-windows.html)
-            1. [Introduction to Scala](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html#/) (with spark-shell)
+            1. [Scala &mdash; Just Enough for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html) (with spark-shell)
             1. My First Scala Standalone Application
-              * IntelliJ IDEA only
+              * IntelliJ IDEA
+              * sbt package
+              * spark-submit
           </script>
         </section>
 
         <section id="day2" data-markdown>
           <script type="text/template">
-            ## Day 2 &mdash; Spark SQL + Databricks
+            ## Day 2 &mdash; Spark SQL and Tools
 
-            1. [Introduction to Apache Spark Using spark-shell (and Databricks)](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
+            1. [Into Apache Spark 2 Using spark-shell (and Databricks)](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
+            1. [Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_spark_sql.html)
+            1. [sbt &mdash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
           </script>
         </section>
 
-        <section id="day3a" data-markdown>
-          <script type="text/template">
-            ## Day 3A &mdash; Spark SQL
+        <section>
+          <section id="day3a" data-markdown>
+            <script type="text/template">
+              ## Day 3A &mdash; Spark SQL
 
-            1. Data formats: CSV, JSON, Avro, Parquet
-            1. Data storage: JDBC, HDFS
-          </script>
+              1. Data formats: CSV, JSON, Avro, Parquet
+              1. Data storage: JDBC, HDFS
+            </script>
+          </section>
+          <section id="day3b" data-markdown>
+            <script type="text/template">
+              ## Day 3B &mdash; Monitoring using web UI
+
+              1. web UI
+              2. Spark and Cluster Managers
+            </script>
+          </section>
         </section>
 
-        <section id="day3b" data-markdown>
+        <section id="day4" data-markdown>
           <script type="text/template">
-            ## Day 3B &mdash; Monitoring using web UI
-
-            1. web UI
-            2. Spark and Cluster Managers
-          </script>
-        </section>
-
-        <section id="day4a" data-markdown>
-          <script type="text/template">
-            ## Day 4a &mdash; Structured Streaming
-
-            1. Introduction to Structured Streaming
-          </script>
-        </section>
-
-        <section id="day4b" data-markdown>
-          <script type="text/template">
-            ## Day 4b &mdash; Structured Streaming + Kafka
-
-            1. Introduction to Kafka
-            1. Kafka Source and Sink
-            1. Window Operations on Event Time
-            1. Handling Late Data and Watermarking
-          </script>
-        </section>
-
-        <section id="day5" data-markdown>
-          <script type="text/template">
-            ## Day 5 &mdash; Spark MLlib
+            ## Day 4 &mdash; Spark MLlib
 
             1. FIXME
           </script>
+        </section>
+
+        <section>
+          <section id="day5a" data-markdown>
+            <script type="text/template">
+              ## Day 5a &mdash; Structured Streaming
+
+              1. Introduction to Structured Streaming
+            </script>
+          </section>
+          <section id="day5b" data-markdown>
+            <script type="text/template">
+              ## Day 5b &mdash; Structured Streaming + Kafka
+
+              1. Introduction to Kafka
+              1. Kafka Source and Sink
+              1. Window Operations on Event Time
+              1. Handling Late Data and Watermarking
+            </script>
+          </section>
         </section>
 
         <section>
