@@ -4,7 +4,8 @@
 
 ## Table of Contents
 
-1. [Apache Spark 2 Workshop Agenda (5 half-days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-half-days-Scala-SparkSQL-SparkMLlib-Kafka.html) - taught online and once in a class (in [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw))
+1. [Apache Spark 2 Workshop Agenda (5 half-days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-half-days-Scala-SparkSQL-SparkMLlib-Kafka.html) - taught mostly online and in-class once (in [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw))
+    * featuring Spark SQL, Spark MLlib, Spark Structured Streaming, web UI, Apache Kafka, Scala, sbt, IntelliJ IDEA, Databricks
 1. [Apache Spark 2 Workshop Agenda (4 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days-Scala-SparkSQL-Streaming-MLlib-Kafka.html) - _to be taught very soon_
     * featuring Spark SQL, Spark Streaming, Spark MLlib, Spark Structured Streaming, Spark Architecture, web UI, Apache Kafka, Scala, sbt, IntelliJ IDEA, Databricks
 1. [Spark SQL / Scala Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Scala-SparkSQL.html) for Data Engineers - taught in [Collegeville, PA, USA](https://en.wikipedia.org/wiki/Collegeville,_Pennsylvania)
@@ -72,9 +73,11 @@
 ## Contact The Author
 
 * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
-* Read [Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+* Read [Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
 * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
-* Upvote [Jacek Laskowski's activities on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+* Upvote [Jacek Laskowski's questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
 * Use [Jacek's code on GitHub](https://github.com/jaceklaskowski)
-* Read [Jacek Laskowski on Medium](https://medium.com/@jaceklaskowski)
+* Read [blog posts on Medium](https://medium.com/@jaceklaskowski)
+* Upvote [Jacek's answers on Quora](https://www.quora.com/profile/Jacek-Laskowski)
+* Connect [on LinkedIn](https://www.linkedin.com/in/jaceklaskowski/)
 * Visit [Jacek Laskowski's blog](https://blog.jaceklaskowski.pl)
