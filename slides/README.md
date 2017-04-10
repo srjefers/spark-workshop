@@ -34,10 +34,10 @@
 
 ### Day 2 - Spark SQL
 
-1. [Agenda - Day 2](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_agenda.html)
+1. [Agenda &mdash; Day 2](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_agenda.html)
 1. [Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_spark_sql.html)
 1. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html)
-1. [Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_udfs.html)
+1. [Columns, Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Columns-StandardFunctions-UDFs.html)
 1. [groupBy Aggregations](http://blog.jaceklaskowski.pl/spark-workshop/slides/06_SparkSQL_Aggregations.html)
 1. [Advanced Aggregation Using ROLLUP and CUBE](http://blog.jaceklaskowski.pl/spark-workshop/slides/06_SparkSQL_Aggregations_ROLLUP_CUBE.html)
 1. [Windowed Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/06_spark_sql_windowed_operators.html)
