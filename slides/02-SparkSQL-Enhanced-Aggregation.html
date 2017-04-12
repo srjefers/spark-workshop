@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Apache Spark 2 Workshop &mdash; Basic Aggregation (Spark SQL)</title>
+    <title>Apache Spark 2 Workshop &mdash; Enhanced Aggregation with rollup, cube and GROUPING SETS (Spark SQL)</title>
 
-    <meta name="description" content="Apache Spark 2 Workshop &mdash; Basic Aggregation (Spark SQL)">
+    <meta name="description" content="Apache Spark 2 Workshop &mdash; Enhanced Aggregation with rollup, cube and GROUPING SETS (Spark SQL)">
     <meta name="author" content="Jacek Laskowski">
 
     <link rel="stylesheet" href="css/reveal.css">
@@ -53,8 +53,8 @@
             <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Basic Aggregation</h1>
-          <h3>(agg, groupBy and groupByKey)</h3>
+          <h1>Enhanced Aggregation</h1>
+          <h3>(rollup, cube and grouping sets)</h3>
           <h2>Apache Spark 2 / Spark SQL</h2>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
@@ -64,121 +64,114 @@
           <script type="text/template">
             ## Agenda
 
-            1. [Aggregate Functions](#/aggregate-functions)
-            1. [agg Operator](#/agg-operator)
-              * [Exercise](#/agg-operator-exercise): Finding maximum value (agg)
-            1. [Untyped groupBy Operator](#/groupBy-operator)
-              * [Exercise](#/groupBy-operator-exercise-max): Finding maximum values per group (groupBy)
-              * [Exercise](#/groupBy-operator-exercise-collect): Collect values (per group)
-            1. [Typed groupByKey Operator](#/groupByKey-operator)
+            1. [Multi-dimensional rollup Operator](#/rollup)
+              * [Exercise](#/rollup-exercise): Total and average salaries by department and company-wide
+            1. [Multi-dimensional cube Operator](#/cube)
+            1. [GROUPING SETS SQL clause](#/grouping-sets)
+            1. [grouping Aggregate Function](#/grouping-function)
+            1. [grouping_id Aggregate Function](#/grouping-id-function)
             1. ["Explaining" Query Plans](#/explain)
           </script>
         </section>
 
-        <section id="aggregate-functions" data-markdown>
-          <script type="text/template">
-            ## Aggregate Functions
-
-            1. **Aggregate functions** accept a group of records as input
-              * Unlike regular functions that act on a single record
-            1. Available among standard functions
-              ```scala
-              import org.apache.spark.sql.functions._
-              ```
-            1. _Usual suspects_: **avg**, **collect_list**, **count**, **min**, **mean**, **sum**
-            1. You can create custom **user-defined aggregate functions (UDAFs)**
-            1. Read [functions object's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-          </script>
-        </section>
-
         <section>
-          <section id="agg-operator" data-markdown>
+          <section id="rollup" data-markdown style="font-size: 0.9em;">
             <script type="text/template">
-              ## agg Operator
+              ## Multi-dimensional rollup Operator
 
-              1. **agg** applies an aggregate function to records in Dataset
-              ```scala
-                val ds = spark.range(10)
-                ds.agg(sum('id) as "sum")
-              ```
-              1. Entire Dataset acts as a single group
-                * **groupBy** used to define groups (_on the following slide_)
-              1. Creates DataFrame
-                * &hellip;hence considered untyped due to **Row** inside
-                * Typed variant available (_on the following slide_)
-              1. Switch to Mastering Apache Spark 2
-                * [Aggregation &mdash; Typed and Untyped Grouping](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-aggregation.html)
-            </script>
-          </section>
-          <section id="agg-operator-exercise" data-markdown>
-            <script type="text/template">
-              ## Exercise: Finding maximum value (agg)
-
-              1. Develop a standalone Spark SQL application (IntelliJ IDEA)
-              1. Use **max** function (with **withColumn** or **select** operators)
-              1. Use Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-              1. (hard) Use **min** to find the maximum value
-                * Hint: Think about the order
-              1. Time: **30 mins**
-            </script>
-          </section>
-        </section>
-
-        <section>
-          <section id="groupBy-operator" data-markdown>
-            <script type="text/template">
-              ## Untyped groupBy Operator
-
-              1. **groupBy** groups records in Dataset per _discriminator function_
-              ```scala
-                val nums = spark.range(10)
-                nums.groupBy('id % 2 as "group").agg(sum('id) as "sum")
-              ```
+              1. **rollup** calculates subtotals and totals over (ordered) combination of groups
+                ```scala
+                val inventory =
+                  Seq(("t1", 2015, 100), ("t1", 2016, 50), ("t2", 2016, 40))
+                    .toDF("name", "year", "amount")
+                inventory.rollup("name", "year").sum("amount")
+                ```
+                * **Quiz**: How many records in result set?
+              1. Advanced variant of **groupBy** with higher efficiency
               1. Creates **RelationalGroupedDataset**
                 * Supports untyped, Row-based **agg**
                 * Shortcuts for _the usual suspects_, e.g. **avg**, **count**, **pivot**
-                * Read [RelationalGroupedDataset's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.RelationalGroupedDataset)
+              1. Switch to Mastering Apache Spark 2
+                * [rollup Aggregation Operator](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-aggregation-rollup-cube.html#rollup)
             </script>
           </section>
-          <section id="groupBy-operator-exercise-max" data-markdown>
+          <section id="rollup-exercise" data-markdown>
             <script type="text/template">
-              ## Exercise: Finding maximum values per group (groupBy)
+              ## Exercise: Total and average salaries by department and company-wide
 
               1. Develop a standalone Spark SQL application (IntelliJ IDEA)
-              1. Use **groupBy** operator with **max** function
-                * Use **spark.range** for sample numbers
-              1. Use Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-              1. (hard) Use **min** to find the maximum value
-                * Hint: Think about the order
-              1. Time: **30 mins**
-            </script>
-          </section>
-          <section id="groupBy-operator-exercise-collect" data-markdown>
-            <script type="text/template">
-              ## Exercise: Collect values (per group)
-
-              1. Collect values per group in single column
-              1. Use Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) to find **the function**
+              1. Use **rollup** aggregate operator (and multi-column **agg**)
+              1. Use Spark API scaladoc
+                * [Dataset](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
+                * [RelationalGroupedDataset](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.RelationalGroupedDataset)
               1. Time: **30 mins**
             </script>
           </section>
         </section>
 
-        <section id="groupByKey-operator" data-markdown>
+        <section>
+          <section id="cube" data-markdown>
+            <script type="text/template">
+              ## Multi-dimensional cube Operator
+
+              1. **cube** is similar to **rollup** but calculates subtotals and totals over **all combinations** of groups
+                ```scala
+                val inventory =
+                  Seq(("t1", 2015, 100), ("t1", 2016, 50), ("t2", 2016, 40))
+                    .toDF("name", "year", "amount")
+                inventory.cube("name", "year").sum("amount") // note cube (not rollup)
+                ```
+                * **Quiz**: How many records in result set?
+              1. Advanced variant of **groupBy** with higher efficiency
+              1. Creates **RelationalGroupedDataset**
+              1. Switch to Mastering Apache Spark 2
+                * [cube Aggregation Operator](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-aggregation-rollup-cube.html#cube)
+            </script>
+          </section>
+        </section>
+
+        <section id="grouping-sets" data-markdown>
           <script type="text/template">
-            ## Typed groupByKey Operator
+            ## GROUPING SETS SQL clause
 
-            1. **groupByKey** similar to **groupBy** operator, but gives typed interface
+            1. Spark SQL supports **GROUPING SETS** in SQL only
+            1. Used in GROUP BY allows to specify more than one GROUP BY option in the same record set
+              * Equivalent to several GROUP BYs connected by UNION
+
             ```scala
-              ds.groupByKey(_ % 2).reduceGroups(_ + _).show
-
-              // compare to untyped query
-              nums.groupBy('id % 2 as "group").agg(sum('id) as "sum")
+Seq(("a1", "b1", 3), ("a1", "b2", 7), ("a2", "b2", 5))
+  .toDF("a", "b", "c")
+  .createOrReplaceTempView("t1")
+val q = sql(
+  "SELECT a,b, SUM(c) FROM t1 GROUP BY a, b GROUPING SETS (a,b)"
+)
             ```
-            1. Creates **KeyValueGroupedDataset**
-              * Supports typed **agg**
-              * Shortcuts for _the usual suspects_, e.g. **reduceGroups**, **mapValues**, **mapGroups**, **flatMapGroups**, **cogroup**
-              * Read [KeyValueGroupedDataset's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.KeyValueGroupedDataset)
+            **Quiz**: How many records in result set?
+          </script>
+        </section>
+
+        <section id="grouping-function" data-markdown>
+          <script type="text/template">
+            ## grouping Aggregate Function
+
+            1. **grouping** - aggregate function that indicates whether a specified column in a GROUP BY list is aggregated or not
+              ```scala
+workshops
+  .cube("city", "year")
+  .agg(grouping("city"), grouping("year"))
+  .sort($"city".desc_nulls_last, $"year".desc_nulls_last)
+              ```
+              * returns 1 for aggregated or 0 for not aggregated
+            1. Switch to Mastering Apache Spark 2
+              * [grouping Function](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-functions.html#grouping)
+          </script>
+        </section>
+
+        <section id="grouping-id-function" data-markdown>
+          <script type="text/template">
+            ## grouping_id Aggregate Function
+
+            1. **Exercise** (hard): Can you guess yourself?
           </script>
         </section>
 
@@ -204,13 +197,12 @@
           <script type="text/template">
             ## Recap
 
-            1. [Aggregate Functions](#/aggregate-functions)
-            1. [agg Operator](#/agg-operator)
-              * [Exercise](#/agg-operator-exercise): Finding maximum value (agg)
-            1. [Untyped groupBy Operator](#/groupBy-operator)
-              * [Exercise](#/groupBy-operator-exercise-max): Finding maximum values per group (groupBy)
-              * [Exercise](#/groupBy-operator-exercise-collect): Collect values (per group)
-            1. [Typed groupByKey Operator](#/groupByKey-operator)
+            1. [Multi-dimensional rollup Operator](#/rollup)
+              * [Exercise](#/rollup-exercise): Total and average salaries by department and company-wide
+            1. [Multi-dimensional cube Operator](#/cube)
+            1. [GROUPING SETS SQL clause](#/grouping-sets)
+            1. [grouping Aggregate Function](#/grouping-function)
+            1. [grouping_id Aggregate Function](#/grouping-id-function)
             1. ["Explaining" Query Plans](#/explain)
           </script>
         </section>
