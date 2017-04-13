@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Apache Spark 2 Workshop &mdash; Enhanced Aggregation with rollup, cube and GROUPING SETS (Spark SQL)</title>
+    <title>Apache Spark 2 Workshop &mdash; Multi-Dimensional Aggregation (Spark SQL)</title>
 
-    <meta name="description" content="Apache Spark 2 Workshop &mdash; Enhanced Aggregation with rollup, cube and GROUPING SETS (Spark SQL)">
+    <meta name="description" content="Apache Spark 2 Workshop &mdash; Multi-Dimensional Aggregation (Spark SQL)">
     <meta name="author" content="Jacek Laskowski">
 
     <link rel="stylesheet" href="css/reveal.css">
@@ -53,9 +53,7 @@
             <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Enhanced Aggregation</h1>
-          <h3>(rollup, cube and grouping sets)</h3>
-          <h2>Apache Spark 2 / Spark SQL</h2>
+          <h1>Multi-Dimensional Aggregation</h1>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
@@ -68,8 +66,9 @@
               * [Exercise](#/rollup-exercise): Total and average salaries by department and company-wide
             1. [Multi-dimensional cube Operator](#/cube)
             1. [GROUPING SETS SQL clause](#/grouping-sets)
-            1. [grouping Aggregate Function](#/grouping-function)
-            1. [grouping_id Aggregate Function](#/grouping-id-function)
+            1. [grouping Aggregate Function](#/grouping)
+            1. [grouping_id Aggregate Function](#/grouping-id)
+              * [Exercise](#/grouping-id-exercise): Convert grouping_id to bitmask
             1. ["Explaining" Query Plans](#/explain)
           </script>
         </section>
@@ -92,7 +91,7 @@
                 * Supports untyped, Row-based **agg**
                 * Shortcuts for _the usual suspects_, e.g. **avg**, **count**, **pivot**
               1. Switch to Mastering Apache Spark 2
-                * [rollup Aggregation Operator](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-aggregation-rollup-cube.html#rollup)
+                * [rollup Aggregation Operator](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-multi-dimensional-aggregation.html#rollup)
             </script>
           </section>
           <section id="rollup-exercise" data-markdown>
@@ -125,7 +124,7 @@
               1. Advanced variant of **groupBy** with higher efficiency
               1. Creates **RelationalGroupedDataset**
               1. Switch to Mastering Apache Spark 2
-                * [cube Aggregation Operator](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-aggregation-rollup-cube.html#cube)
+                * [cube Aggregation Operator](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-multi-dimensional-aggregation.html#cube)
             </script>
           </section>
         </section>
@@ -137,7 +136,6 @@
             1. Spark SQL supports **GROUPING SETS** in SQL only
             1. Used in GROUP BY allows to specify more than one GROUP BY option in the same record set
               * Equivalent to several GROUP BYs connected by UNION
-
             ```scala
 Seq(("a1", "b1", 3), ("a1", "b2", 7), ("a2", "b2", 5))
   .toDF("a", "b", "c")
@@ -147,10 +145,12 @@ val q = sql(
 )
             ```
             **Quiz**: How many records in result set?
+            1. Switch to Mastering Apache Spark 2
+              * [GROUPING SETS SQL Clause](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-multi-dimensional-aggregation.html#grouping-sets)
           </script>
         </section>
 
-        <section id="grouping-function" data-markdown>
+        <section id="grouping" data-markdown>
           <script type="text/template">
             ## grouping Aggregate Function
 
@@ -163,16 +163,31 @@ workshops
               ```
               * returns 1 for aggregated or 0 for not aggregated
             1. Switch to Mastering Apache Spark 2
-              * [grouping Function](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-functions.html#grouping)
+              * [grouping Aggregate Function](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-functions.html#grouping)
           </script>
         </section>
 
-        <section id="grouping-id-function" data-markdown>
-          <script type="text/template">
-            ## grouping_id Aggregate Function
+        <section>
+          <section id="grouping-id" data-markdown>
+            <script type="text/template">
+              ## grouping_id Aggregate Function
 
-            1. **Exercise** (hard): Can you guess yourself?
-          </script>
+              1. **Exercise** (hard): Can you guess yourself?
+              1. Switch to Mastering Apache Spark 2
+                * [grouping_id Aggregate Function](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-functions.html#grouping_id)
+            </script>
+          </section>
+          <section id="grouping-id-exercise" data-markdown>
+            <script type="text/template">
+              ## Exercise: Convert grouping_id to bitmask
+
+              1. Find the function to _return the string representation of the binary value of a long column_
+              1. Use the function to "binarize" **grouping_id** results
+              1. Use Spark API scaladoc
+                * [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
+              1. Time: **30 mins**
+            </script>
+          </section>
         </section>
 
         <section id="explain">
@@ -187,7 +202,7 @@ workshops
             <li>Switch to Mastering Apache Spark 2
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-dataset-operators.html#explain">Explaining Logical and Physical Plans &mdash; explain Operator</a></li>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-catalyst-analyzer.html">Logical Query Plan Analyzer</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-Analyzer.html">Analyzer &mdash; Logical Query Plan Analyzer</a></li>
               </ul>
             </li>
           </ol>
@@ -201,8 +216,9 @@ workshops
               * [Exercise](#/rollup-exercise): Total and average salaries by department and company-wide
             1. [Multi-dimensional cube Operator](#/cube)
             1. [GROUPING SETS SQL clause](#/grouping-sets)
-            1. [grouping Aggregate Function](#/grouping-function)
-            1. [grouping_id Aggregate Function](#/grouping-id-function)
+            1. [grouping Aggregate Function](#/grouping)
+            1. [grouping_id Aggregate Function](#/grouping-id)
+              * [Exercise](#/grouping-id-exercise): Convert grouping_id to bitmask
             1. ["Explaining" Query Plans](#/explain)
           </script>
         </section>
