@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Apache Spark 2 Workshop &mdash; Columns, Standard Functions and UDFs</title>
+    <title>Apache Spark 2 Workshop &mdash; Columns, Operators, Standard Functions and UDFs</title>
 
-    <meta name="description" content="Apache Spark 2 Workshop &mdash; Columns, Standard Functions and UDFs">
+    <meta name="description" content="Apache Spark 2 Workshop &mdash; Columns, Operators, Standard Functions and UDFs">
     <meta name="author" content="Jacek Laskowski">
 
     <link rel="stylesheet" href="css/reveal.css">
@@ -53,32 +53,27 @@
             <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1 style="font-size: 3.07em;">Columns,</h1>
+          <h1 style="font-size: 3.07em;">Columns, Operators</h1>
           <h1 style="font-size: 3em;">Standard Functions and UDFs</h1>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Notebooks: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
-        <section id="agenda">
-          <section>
-            <h2>Agenda</h2>
-            <ol>
-              <li><a href="#/columns">Dataset Columns</a></li>
-              <li><a href="#/column-operators">Column Operators / Expressions</a></li>
-              <li><a href="#/dataset-operators">Dataset Operators</a></li>
-              <li><a href="#/standard-functions">Standard Functions</a>
-                <ul>
-                  <li><a href="#/standard-functions-exercise">Exercise</a>: Using Standard Functions (upper)</li>
-                  <li><a href="#/dataset-operators-exercise">Exercise</a> (hard): Using flatMap</li>
-                </ul>
-              </li>
-              <li><a href="#/udf-heads-up">User-Defined Functions (UDFs)</a>
-                <ul>
-                  <li><a href="#/udf-exercise">Exercise</a>: Using UDFs</li>
-                </ul>
-              </li>
-            </ol>
-          </section>
+        <section id="agenda" data-markdown>
+          <script type="text/template">
+            ## Agenda
+
+            1. [Dataset Columns](#/columns)
+            1. [Column Operators / Expressions](#/column-operators)
+            1. [Dataset Operators](#/dataset-operators)
+              * [Exercise](#/dataset-operators-exercise-createOrReplaceTempView): Using createOrReplaceTempView and SQL
+              * [Exercise](#/dataset-operators-exercise-flatMap) (hard): Using flatMap
+            1. [Standard Functions](#/standard-functions)
+              * [Exercise](#/standard-functions-exercise): Using Standard Functions (upper)
+            1. [Standard Functions for Date and Time](#/standard-functions-datetime)
+            1. [User-Defined Functions (UDFs)](#/udf-heads-up)
+              * [Exercise](#/udf-exercise): Using UDFs
+          </script>
         </section>
 
         <section id="columns" data-markdown>
@@ -134,6 +129,25 @@
                 * [Dataset Operators](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-dataset-operators.html)
             </script>
           </section>
+          <section id="dataset-operators-exercise-createOrReplaceTempView" data-markdown>
+            <script type="text/template">
+              ## Exercise: Using createOrReplaceTempView and SQL
+
+              1. Use **createOrReplaceTempView** to register a Dataset and execute a SQL (_of your liking_)
+                * Read up [the scaladoc of createOrReplaceTempView](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
+              1. Time: **15 mins**
+            </script>
+          </section>
+          <section id="dataset-operators-exercise-flatMap" data-markdown>
+            <script type="text/template">
+              ## Exercise (hard): Using flatMap
+
+              1. Create a Dataset with "collection" column
+              1. Use **flatMap** to expand the "collection" column
+                * Read up [flatMap's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
+              1. Time: **30 mins**
+            </script>
+          </section>
         </section>
 
         <section>
@@ -145,6 +159,7 @@
                 * Aggregate functions, e.g. **avg**, **count**, **sum**
                 * Collection functions, e.g. **explode**, **from_json**
                 * Date time functions, e.g. **current_timestamp**, **to_date**, **window**
+                  * <!-- .element: style="font-size: 0.8em;" --> _More in the upcoming [slide](#/standard-functions-datetime)_
                 * Math functions, e.g. **conv**, **factorial**, **pow**
                 * Non-aggregate functions, e.g. **array**, **broadcast**, **expr**, **lit**
                 * Sorting functions, e.g. **asc**, **asc_nulls_first**, **asc_nulls_last**
@@ -178,16 +193,19 @@
               1. Time: **30 mins**
             </script>
           </section>
-          <section id="dataset-operators-exercise" data-markdown>
-            <script type="text/template">
-              ## Exercise (hard): Using flatMap
+        </section>
 
-              1. Create a Dataset with "collection" column
-              1. Use **flatMap** to expand the "collection" column
-                * Read up [flatMap's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
-              1. Time: **30 mins**
-            </script>
-          </section>
+        <section id="standard-functions-datetime" data-markdown>
+          <script type="text/template">
+            ## Standard Functions for Date and Time
+
+            1. **unix_timestamp**
+            1. **to_timestamp**
+            1. **window**
+            1. Read Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
+            1. Switch to Mastering Apache Spark 2
+              * [Standard Functions for Date and Time](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-functions-datetime.html)
+          </script>
         </section>
 
         <section>
@@ -227,6 +245,23 @@
               1. Time: **30 mins**
             </script>
           </section>
+        </section>
+
+        <section id="recap" data-markdown>
+          <script type="text/template">
+            ## Recap
+
+            1. [Dataset Columns](#/columns)
+            1. [Column Operators / Expressions](#/column-operators)
+            1. [Dataset Operators](#/dataset-operators)
+              * [Exercise](#/dataset-operators-exercise-createOrReplaceTempView): Using createOrReplaceTempView and SQL
+              * [Exercise](#/dataset-operators-exercise-flatMap) (hard): Using flatMap
+            1. [Standard Functions](#/standard-functions)
+              * [Exercise](#/standard-functions-exercise): Using Standard Functions (upper)
+            1. [Standard Functions for Date and Time](#/standard-functions-datetime)
+            1. [User-Defined Functions (UDFs)](#/udf-heads-up)
+              * [Exercise](#/udf-exercise): Using UDFs
+          </script>
         </section>
 
         <section id="questions" style="text-align: left">
