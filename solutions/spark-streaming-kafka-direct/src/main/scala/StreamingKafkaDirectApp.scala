@@ -1,8 +1,12 @@
-import java.util.concurrent.{ExecutorService, Executors}
+import java.util.concurrent.Executors
 
 import org.apache.log4j.{Level, LogManager}
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.streaming.{Seconds, StreamingContext}
+
+object Utils {
+  def concatenate(v1: String, v2: String) = s"$v1 + $v2"
+}
 
 object StreamingKafkaDirectApp extends App {
 
@@ -30,25 +34,24 @@ object StreamingKafkaDirectApp extends App {
     // val offsets = Map(new TopicPartition("topic3", 0) -> 2L)
     val offsets = Map.empty[TopicPartition, Long]
 
-    val dstream = KafkaUtils.createDirectStream[String, String](
-      ssc,
-      preferredHosts,
-      ConsumerStrategies.Subscribe[String, String](topics, kafkaParams, offsets))
+    import org.apache.spark.streaming.dstream.InputDStream
+    import org.apache.kafka.clients.consumer.ConsumerRecord
+    val dstream: InputDStream[ConsumerRecord[String, String]] =
+      KafkaUtils.createDirectStream[String, String](
+        ssc,
+        preferredHosts,
+        ConsumerStrategies.Subscribe[String, String](topics, kafkaParams, offsets))
 
-    import org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_SER
-    dstream.persist(MEMORY_AND_DISK_SER)
+    // NOTE: ConsumerRecord is not serializable
+    // So the following won't work -- dunno why.
+//    import org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_SER
+//    dstream.persist(MEMORY_AND_DISK_SER)
 
-    def reduceFunc(v1: String, v2: String) = s"$v1 + $v2"
     // Pipeline #1
-    dstream.map { r =>
-      println(s"value: ${r.value}")
-      // FIXME What if there is one or zero messages on input?
-      val Array(key, value, _*) = r.value.split("\\s+") // only two elements accepted
-      println(s">>> key = $key")
-      println(s">>> value = $value")
-      (key, value)
-    }.reduceByKeyAndWindow(
-      reduceFunc, windowDuration = Seconds(30), slideDuration = Seconds(10))
+    dstream
+      .map { r => (0, r.value.toString) }
+      .reduceByKeyAndWindow(
+        reduceFunc = Utils.concatenate, windowDuration = Seconds(30), slideDuration = Seconds(10))
       .print()
 
     // Pipeline #2
@@ -81,6 +84,14 @@ object StreamingKafkaDirectApp extends App {
         }
       }
     }
+
+    // reduceByKeyAndWindow
+    // http://stackoverflow.com/q/43777143/1305344
+    import org.apache.spark.streaming.dstream.DStream
+    val mapped: DStream[(String, Int)] = dstream.map(_ => ("mockkey", 1))
+
+    val add = (x: Int, y: Int) => x + y
+    mapped.reduceByKeyAndWindow(add, Seconds(30), Seconds(10)).print()
 
     ssc.start
     ssc.awaitTermination()
