@@ -4,10 +4,10 @@
 
 ## Table of Contents
 
+1. [Apache Spark 2 Workshop Agenda (4 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days-Scala-SparkSQL-Streaming-MLlib-Kafka.html) - taught in [Geneva, Switzerland](https://en.wikipedia.org/wiki/Geneva)
+    * featuring Spark SQL, Structured Streaming, Spark MLlib, Spark Streaming, Spark Architecture, web UI, Apache Kafka, Scala, sbt, IntelliJ IDEA, Databricks
 1. [Apache Spark 2 Workshop Agenda (5 half-days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-half-days-Scala-SparkSQL-SparkMLlib-Kafka.html) - taught mostly online and in-class once (in [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw))
     * featuring Spark SQL, Spark MLlib, Spark Structured Streaming, web UI, Apache Kafka, Scala, sbt, IntelliJ IDEA, Databricks
-1. [Apache Spark 2 Workshop Agenda (4 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days-Scala-SparkSQL-Streaming-MLlib-Kafka.html) - _to be taught very soon_
-    * featuring Spark SQL, Spark Streaming, Spark MLlib, Spark Structured Streaming, Spark Architecture, web UI, Apache Kafka, Scala, sbt, IntelliJ IDEA, Databricks
 1. [Spark SQL / Scala Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Scala-SparkSQL.html) for Data Engineers - taught in [Collegeville, PA, USA](https://en.wikipedia.org/wiki/Collegeville,_Pennsylvania)
 1. [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days.html) - taught in [London, UK](https://en.wikipedia.org/wiki/London) at [Apache Spark 2 Workshop](http://www.meetup.com/London-Spark-Coding-Dojo/events/233488536/)
 1. [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days-ljubljana.html) - taught in [Ljubljana, Slovenia](https://en.wikipedia.org/wiki/Ljubljana)

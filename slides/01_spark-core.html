@@ -164,6 +164,56 @@
           </section>
         </section>
 
+        <section>
+          <section id="spark-exercises">
+            <h1>Spark Exercises</h1>
+          </section>
+          <section id="exercise-wordcount-groupby">
+            <h2>Exercise 1: WordCount using groupBy</h2>
+            <ul>
+              <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
+              <li>Use <b>spark-shell</b> and <b>sbt</b></li>
+              <li>Use <code>sc.textFile</code>, <code>flatMap</code> and <code>split</code></li>
+              <li>Use <code>groupBy</code> to group values per key</li>
+              <li>Use <code>mapValues</code> and <code>top</code></li>
+              <li>Print results using <code>foreach</code> and <code>println</code></li>
+              <li><code>sbt package</code> and deploy it to Spark Standalone.</li>
+            </ul>
+          </section>
+          <section id="exercise-wordcount-groupby-solution">
+            <h2>Solution: WordCount using groupBy</h2>
+            <pre><code>
+sc.textFile("README.md")
+  .flatMap(line => line.split("\\W+"))
+  .map(token => (token, 1))
+  .reduceByKey { case (x, y) => x + y }
+  .top(10)(Ordering.by(wc => wc._2))
+  .foreach(println)
+              </code></pre>
+          </section>
+          <section id="exercise-wordcount-reducebykey">
+            <h2>Exercise 2: WordCount using reduceByKey</h2>
+            <ul>
+              <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
+              <li>Use <b>spark-shell</b> and <b>sbt</b></li>
+              <li>Use <code>sc.textFile</code>, <code>flatMap</code> and <code>split</code></li>
+              <li>Use <code>groupBy</code> and <code>reduceByKey</code></li>
+              <li>Save results using <code>saveAsTextFile</code></li>
+              <li><code>sbt package</code> and deploy it to Spark Standalone.</li>
+            </ul>
+          </section>
+          <section id="exercise-wordcount-reducebykey-solution">
+            <h2>Solution: WordCount using reduceByKey</h2>
+            <pre><code>
+sc.textFile("README.md")
+  .flatMap(line => line.split("\\W+"))
+  .map(token => (token, 1))
+  .reduceByKey { case (x, y) => x + y }
+  .saveAsTextFile("results.txt")
+              </code></pre>
+          </section>
+        </section>
+
         <section id="caching">
           <h2>RDD Caching and Persistence</h2>
           <ol>

@@ -82,9 +82,9 @@
               <li>Functional and Object-Oriented Paradigms blended nicely</li>
               <li>Class Hierarchies</li>
               <li>Higher-Order Functions</li>
-              <li>The latest version: <b>2.12.1</b>
+              <li>The latest version: <b>2.12.2</b>
                 <ul>
-                  <li>Spark supports <b>2.11.8</b> only</li>
+                  <li>Spark supports up to <b>2.11.11</b></li>
                 </ul>
               </li>
               <li>Home page: <a href="http://www.scala-lang.org/">http://www.scala-lang.org</a></li>
@@ -273,17 +273,6 @@ scala> Main.main(Array("Jacek"))
               </ul>
             </li>
           </ul>
-        </section>
-
-        <section>
-          <h2>Questions</h2>
-          <ol>
-            <li>What's <code>_._1</code>?</li>
-            <li>What's <code>map</code>?</li>
-            <li>What's <code>flatMap</code>?</li>
-            <li>What's <code>foldLeft</code>?</li>
-            <li>Can I use <code>reduce</code> instead (not <code>foldLeft</code>)?</li>
-          </ol>
         </section>
 
         <section id="intellij-idea">
@@ -585,6 +574,15 @@ for {
 ```
             </script>
           </section>
+          <section id="checkpoint-3" data-markdown>
+            ## Additional Questions
+
+            * What's `_._1`?
+            * What's `map`?
+            * What's `flatMap`?
+            * What's `foldLeft`?
+            * Can I and when to use `reduce` instead of `foldLeft`?
+          </section>
         </section>
 
         <section id="scalatest">
@@ -646,80 +644,6 @@ for {
                 <a href="https://scala-lang.org/api/current">https://scala-lang.org/api/current</a>
               </li>
             </ol>
-          </section>
-        </section>
-
-        <section>
-          <section id="more-scala-exercises">
-            <h1>More Scala Exercises</h1>
-          </section>
-          <section id="exercise-1">
-            <h2>Exercise 1: WordCount using groupBy</h2>
-            <ul>
-              <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
-              <li>Use <b>spark-shell</b> and <b>sbt</b></li>
-              <li>Use <code>sc.textFile</code>, <code>flatMap</code> and <code>split</code></li>
-              <li>Use <code>groupBy</code> to group values per key</li>
-              <li>Use <code>mapValues</code> and <code>top</code></li>
-              <li>Print results using <code>foreach</code> and <code>println</code></li>
-              <li><code>sbt package</code> and deploy it to Spark Standalone.</li>
-            </ul>
-          </section>
-          <section id="exercise-1-solution">
-            <h2>Solution: WordCount using groupBy</h2>
-            <pre><code>
-sc.textFile("README.md")
-  .flatMap(line => line.split("\\W+"))
-  .map(token => (token, 1))
-  .reduceByKey { case (x, y) => x + y }
-  .top(10)(Ordering.by(wc => wc._2))
-  .foreach(println)
-              </code></pre>
-          </section>
-          <section id="exercise-2">
-            <h2>Exercise 2: WordCount using reduceByKey</h2>
-            <ul>
-              <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
-              <li>Use <b>spark-shell</b> and <b>sbt</b></li>
-              <li>Use <code>sc.textFile</code>, <code>flatMap</code> and <code>split</code></li>
-              <li>Use <code>groupBy</code> and <code>reduceByKey</code></li>
-              <li>Save results using <code>saveAsTextFile</code></li>
-              <li><code>sbt package</code> and deploy it to Spark Standalone.</li>
-            </ul>
-          </section>
-          <section id="exercise-2-solution">
-            <h2>Solution: WordCount using reduceByKey</h2>
-            <pre><code>
-sc.textFile("README.md")
-  .flatMap(line => line.split("\\W+"))
-  .map(token => (token, 1))
-  .reduceByKey { case (x, y) => x + y }
-  .saveAsTextFile("results.txt")
-              </code></pre>
-          </section>
-          <section id="exercise-3">
-            <h2>Exercise 3: Reading CSV file Using Dataset</h2>
-            <ul>
-              <li>
-                Use <b>CVS file</b> from OneDrive with the Installation Instructions.
-              </li>
-              <li>Use Spark API scaladoc at <a href="http://spark.apache.org/docs/latest/api/scala/">http://spark.apache.org/docs/latest/api/scala</a></li>
-              <li>Use <b>spark-shell</b> and <b>sbt</b> to write the code</li>
-              <li>Use <code>spark.read</code>, <code>format</code> and <code>option</code> to read a file</li>
-              <li>Use <code>withColumn</code> and <code>split</code></li>
-              <li>Use a custom case class <code>Record</code></li>
-              <li>Print results using <code>show</code></li>
-              <li><code>sbt package</code> and <code>spark-submit</code> it</li>
-              <li>
-                <b>Success:</b> You show a table 4 by 2.
-              </li>
-            </ul>
-          </section>
-          <section id="exercise-3-solution">
-            <h2>Solution: Reading CSV file Using Dataset</h2>
-            <pre><code>
-spark.read.option("header", true).csv("people.csv").show
-            </code></pre>
           </section>
         </section>
 
