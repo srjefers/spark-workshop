@@ -71,6 +71,7 @@
             1. [Standard Functions](#/standard-functions)
               * [Exercise](#/standard-functions-exercise): Using Standard Functions (upper)
             1. [Standard Functions for Date and Time](#/standard-functions-datetime)
+              * [Exercise](#/exercise-datetime-functions): Difference in Days Between Date Strings
             1. [User-Defined Functions (UDFs)](#/udf-heads-up)
               * [Exercise](#/udf-exercise): Using UDFs
           </script>
@@ -195,17 +196,52 @@
           </section>
         </section>
 
-        <section id="standard-functions-datetime" data-markdown>
-          <script type="text/template">
-            ## Standard Functions for Date and Time
+        <section>
+          <section id="standard-functions-datetime" data-markdown>
+            <script type="text/template">
+              ## Standard Functions for Date and Time
 
-            1. **unix_timestamp**
-            1. **to_timestamp**
-            1. **window**
-            1. Read Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-            1. Switch to Mastering Apache Spark 2
-              * [Standard Functions for Date and Time](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-functions-datetime.html)
-          </script>
+              1. **unix_timestamp**
+              1. **to_timestamp**
+              1. **window**
+              1. Read Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
+              1. Switch to Mastering Apache Spark 2
+                * [Standard Functions for Date and Time](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-functions-datetime.html)
+            </script>
+          </section>
+          <section id="exercise-datetime-functions" data-markdown>
+            <script type="text/template">
+              ## Exercise: Difference in Days Between Date Strings (1 of 2)
+
+              1. Given dataset with date strings calculate number of days between them and current day
+              1. Use **unix_timestamp** function and **cast** to **timestamp**
+              1. Use **to_date** and **datediff** functions
+              1. Read Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
+            </script>
+          </section>
+          <section id="exercise-datetime-functions-setup" data-markdown>
+            <script type="text/template">
+              ## Exercise: Difference in Days Between Date Strings (2 of 2)
+
+```scala
+val dates = Seq(
+   "08/11/2015",
+   "09/11/2015",
+   "09/12/2015").toDF("date_string")
+
+val diffs = // <-- your solution here
+
+scala> diffs.show
++-----------+-------------------+----+
+|date_string|          timestamp|diff|
++-----------+-------------------+----+
+| 08/11/2015|2015-11-08 00:00:00| 584|
+| 09/11/2015|2015-11-09 00:00:00| 583|
+| 09/12/2015|2015-12-09 00:00:00| 553|
++-----------+-------------------+----+
+```
+            </script>
+          </section>
         </section>
 
         <section>
@@ -259,6 +295,7 @@
             1. [Standard Functions](#/standard-functions)
               * [Exercise](#/standard-functions-exercise): Using Standard Functions (upper)
             1. [Standard Functions for Date and Time](#/standard-functions-datetime)
+              * [Exercise](#/exercise-datetime-functions): Difference in Days Between Date Strings
             1. [User-Defined Functions (UDFs)](#/udf-heads-up)
               * [Exercise](#/udf-exercise): Using UDFs
           </script>
