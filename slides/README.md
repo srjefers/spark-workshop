@@ -1,9 +1,10 @@
 <a id="toc" />
 
-# Apache Spark 2 (Scala) Workshops
+# Apache Spark Workshops and Webinars
 
 ## Table of Contents
 
+1. [Packt Live :: Streaming Analytics with Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_Packt_Live_Streaming_Analytics.html) - 2-hour webinar about Spark SQL, Spark MLlib, Structured Streaming and Apache Kafka
 1. [Apache Spark 2 Workshop Agenda (4 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days-Scala-SparkSQL-Streaming-MLlib-Kafka.html) - taught in [Geneva, Switzerland](https://en.wikipedia.org/wiki/Geneva)
     * featuring Spark SQL, Structured Streaming, Spark MLlib, Spark Streaming, Spark Architecture, web UI, Apache Kafka, Scala, sbt, IntelliJ IDEA, Databricks
 1. [Apache Spark 2 Workshop Agenda (5 half-days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-half-days-Scala-SparkSQL-SparkMLlib-Kafka.html) - taught mostly online and in-class once (in [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw))
