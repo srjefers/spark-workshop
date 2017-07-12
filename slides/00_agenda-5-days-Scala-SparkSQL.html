@@ -57,13 +57,13 @@
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="10%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
-            <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>Spark SQL / Scala Workshop <small>5 Days</small></h1>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
-          Notebooks: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+          Gitbooks: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
         <section>
@@ -102,7 +102,7 @@
           </section>
           <section id="github-spark-contributors">
             <p>
-              <a href="https://github.com/apache/spark/graphs/contributors">Ranked #97 in Spark contributors</a>
+              <a href="https://github.com/apache/spark/graphs/contributors">Ranked #90 in Spark contributors</a>
             </p>
             <p>
               <img width="100%" src="images/jaceklaskowski-github-spark-stats.png" style="border: 0">
@@ -113,7 +113,7 @@
               <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">http://stackoverflow.com/users/1305344/jacek-laskowski</a>
             </p>
             <p>
-              <img width="80%" src="images/jaceklaskowski-stackoverflow-stats.png" style="border: 0">
+              <img width="45%" src="images/jaceklaskowski-stackoverflow-stats.png" style="border: 0">
             </p>
           </section>
           <section id="about-twitter">
@@ -121,7 +121,7 @@
               <a href="https://twitter.com/jaceklaskowski">https://twitter.com/jaceklaskowski</a>
             </p>
             <p>
-              <img width="90%" src="images/jaceklaskowski-twitter-stats.png" style="border: 0">
+              <img width="100%" src="images/jaceklaskowski-twitter-stats.png" style="border: 0">
             </p>
           </section>
         </section>
@@ -129,72 +129,78 @@
         <section id="goal">
           <h2>Goal</h2>
           <p>
-            Building up hands-on experience and practical wisdom<br/> in <b>Spark SQL</b> and <b>Scala</b><br />
-            to analyze massive data sets <br>
-            for data-oriented decision making.
+            Developing hands-on experience in<br />
+            <b>Spark SQL</b> and <b>Scala</b> (and <b>Structured Streaming</b>),<br />
+            to exploit massive datasets<br />
+            for advanced analytics and data-oriented decision making
           </p>
         </section>
 
         <section id="agenda">
           <h2>Agenda</h2>
           <ul>
-            <li>Day 1-2 &mdash; Honing <b>Scala</b> skills</li>
-            <li>Day 3-5 &mdash; Mastering <b>Spark SQL</b></li>
+            <li><a href="#/day1">Day 1</a> &mdash; <b>Just Enough Scala and IntelliJ IDEA</b></li>
+            <li><a href="#/day2a">Day 2a</a> &mdash; <b>Build Automation using sbt</b></li>
+            <li><a href="#/day2b">Day 2b</a> &mdash; <b>Spark SQL and Tools (spark-shell, Databricks)</b></li>
+            <li><a href="#/day3a">Day 3a</a> &mdash; <b>Standard Functions and Basic Aggregation</b></li>
+            <li><a href="#/day3b">Day 3b</a> &mdash; <b>More exercises</b></li>
+            <li><a href="#/day4">Day 4</a> &mdash; <b>Even more exercises</b></li>
+            <li><a href="#/day5">Day 5</a> &mdash; <b>And more exercises</b></li>
           </ul>
         </section>
 
         <section id="day1" data-markdown>
           <script type="text/template">
-            ## Agenda &mdash; Day 1
+            ## Day 1 &mdash; Just Enough Scala and IntelliJ IDEA
 
-            1. [Introduction to Scala (_aka_ Why Scala)](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
-            1. [Scala Exercises](http://blog.jaceklaskowski.pl/scala-workshop/slides/)
+            1. [Scala &mdash; Just Enough for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html) (with spark-shell)
+              * including over **10 exercises**
+            1. My First Scala Standalone Application
+              * Using IntelliJ IDEA
+            1. [More Scala Exercises](http://blog.jaceklaskowski.pl/scala-workshop/slides/)
           </script>
         </section>
 
         <section>
-          <section id="day2-1" data-markdown>
+          <section id="day2a" data-markdown>
             <script type="text/template">
-              ## Agenda &mdash; Day 2 (1 of 2)
+              ## Day 2A &mdash; Build Automation using sbt
 
-              1. [sbt &ndash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
-              1. Exercise: Count lines in a file
-              1. Exercise: Count words in a file
-              1. Exercise: Count characters (without whitespaces) in a file
-              1. Exercise: Println statistics about a file (lines, words, characters)
+              1. [sbt &ndash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html) (~2h)
+              1. **Exercise**: Developing Scala Standalone Application
+                * Using IntelliJ IDEA, sbt package, and spark-submit
             </script>
           </section>
-          <section id="day2-2" data-markdown>
+          <section id="day2b" data-markdown>
             <script type="text/template">
-              ## Agenda &mdash; Day 2 (2 of 2)
+              ## Day 2B &mdash; Spark SQL and Tools (spark-shell, Databricks)
 
-              1. Exercise: Increment numbers in a sequence by given number
-              1. Exercise: Double elements in a sequence
-              1. Exercise: Repeat elements as many times as the number says
-              1. Exercise: Make string from repeating elements above
+              1. [Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_spark_sql.html)
+              1. My First Spark SQL Application
+                * Printing out the Spark version to the console
+                * IntelliJ IDEA, sbt and spark-submit
+              1. **Exercise**: Reading datasets using Spark SQL
+                * Using **scopt** to parse command-line arguments
+                * Using **spark-submit --packages**
+              1. [Into Apache Spark 2 Using spark-shell (and Databricks)](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
             </script>
           </section>
         </section>
 
         <section>
-          <section id="day3" data-markdown>
+          <section id="day3a" data-markdown>
             <script type="text/template">
-              ## Agenda &mdash; Day 3 (1 of 2)
+              ## Day 3A &mdash; Standard Functions and Basic Aggregation
 
-              1. [Introduction to Apache Spark Using spark-shell](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
-              1. My First Spark Application
-                * IntelliJ IDEA, sbt and spark-submit
-              1. Exercise: Reading data sets of any format using Spark SQL and command-line arguments
-                * Using scopt to parse command-line arguments
-                * Using `spark-submit --packages`
-              1. Exercise: Finding bestsellers (as products) per category
-                * Using groupBy, join and filter operators
-                * Using window operators
+              1. [Columns, Operators, Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-columns-standard-functions-udfs.html)
+              1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Basic-Aggregation.html)
+              1. **Exercise**: Finding bestsellers (as products) per category
+                * Using **groupBy**, **join** and **filter** operators
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Agenda &mdash; Day 3 (2 of 2)
+              ## Day 3B &mdash; ...
 
               1. Caching and Persistence
               1. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)

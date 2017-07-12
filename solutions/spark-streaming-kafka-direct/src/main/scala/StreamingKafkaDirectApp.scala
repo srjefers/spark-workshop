@@ -93,6 +93,33 @@ object StreamingKafkaDirectApp extends App {
     val add = (x: Int, y: Int) => x + y
     mapped.reduceByKeyAndWindow(add, Seconds(30), Seconds(10)).print()
 
+    // Pipeline to read file names from records and process them using Spark
+    // http://stackoverflow.com/q/44044317/1305344
+    def sendMessage(message: String) = {
+      println(s"Sending $message to Kafka")
+    }
+    dstream.map(_.value).foreachRDD { rdd =>
+      println(s"Received rdd: $rdd with ${rdd.count()} records")
+      // take paths from RDD that contains Kafka records with the file names
+      val files = rdd.collect()
+      files.foreach { f =>
+        // read a file `f` using Spark Core's RDD API
+        rdd.sparkContext.textFile(f).map { line =>
+          // do something with line
+          // this is the place for a pure Spark transformation
+          // it's as if you were outside Spark Streaming
+          println(line)
+          line
+        }.foreachPartition { linesAfterProcessingPerPartition =>
+          // send lines to Kafka
+          // they have been processed using Spark
+          linesAfterProcessingPerPartition.foreach { line =>
+            sendMessage(message = line)
+          }
+        }
+      }
+    }
+
     ssc.start
     ssc.awaitTermination()
   } finally {

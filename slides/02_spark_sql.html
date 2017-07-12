@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2 Workshop &mdash; Spark SQL</title>
+    <title>Apache Spark 2 Workshop :: Spark SQL</title>
 
-    <meta name="description" content="Apache Spark 2 Workshop &mdash; Spark SQL">
+    <meta name="description" content="Apache Spark 2 Workshop :: Spark SQL">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -63,7 +63,7 @@
           <h1>Spark SQL</h1>
           <h2>Apache Spark 2</h2>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
-          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+          Gitbooks: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
         <section id="spark-sql">
@@ -72,9 +72,9 @@
             <ol>
               <li>Spark SQL = <b>SQL</b> + <b>Dataset</b> (and <b>DataFrame</b>)
                 <ul>
-                  <li><b>SQL</b></li>
-                  <li><b>Dataset</b></i> (and <b>DataFrame</b>)</li>
-                  <li><b>Encoder</b></i></li>
+                  <li>Good ol' <b>SQL</b> statements</li>
+                  <li><b>Dataset</b></i> (and <b>DataFrame</b>) data abstractions</li>
+                  <li><b>Encoder</b></i> for storage- and performance optimizations</li>
                 </ul>
               </li>
               <li>Switch to Mastering Apache Spark 2
@@ -95,7 +95,7 @@
               </li>
               <li>spark-shell gives you one instance as <b>spark</b></li>
               <li>Use <b>SparkSession.builder</b> Fluent API</li>
-              <li>Use to create Datasets (and DataFrames)
+              <li>Helps creating local Datasets
                 <ul>
                   <li><b>spark.range(numberOfRecords)</b></li>
                 </ul>
@@ -131,8 +131,8 @@
               <li><b>spark.read</b> &mdash; DataFrameReader
                 <ol>
                   <li><b>format</b></li>
-                  <li><b>mode</b></li>
-                  <li><b>options</b></li>
+                  <li><b>option</b> and <b>options</b></li>
+                  <li><b>schema</b></li>
                   <li><b>load</b></li>
                 </ol>
               </li>
@@ -149,14 +149,29 @@
             </ul>
           </section>
           <section>
+            <h2>Built-In Formats</h2>
+            <ol>
+              <li><b>csv</b></li>
+              <li><b>jdbc</b></li>
+              <li><b>json</b></li>
+              <li><b>orc</b></li>
+              <li><b>parquet</b></li>
+              <li><b>table</b></li>
+              <li><b>text</b> and <b>textFile</b></li>
+              <li><b>spark.read.format(source: String)</b></li>
+            </ol>
+          </section>
+          <section>
             <h2>Writing/Saving Datasets</h2>
             <ol>
               <li><b>DataFrame.write</b> &mdash; DataFrameWriter
                 <ol>
                   <li><b>format</b></li>
                   <li><b>mode</b></li>
-                  <li><b>options</b></li>
-                  <li><b>save</b> <-- <i>the only change to DataFrameReader</i></li>
+                  <li><b>option</b> and <b>options</b></li>
+                  <li><b>bucketBy</b> and <b>partitionBy</b></li>
+                  <li><b>sortBy</b></li>
+                  <li><b>insertInto</b>, <b>save</b> and <b>saveAsTable</b></li>
                 </ol>
               </li>
             </ol>
@@ -174,8 +189,8 @@
           <section>
             <h2>Ad-hoc Local Datasets</h2>
             <ol>
-              <li><b>toDF("col1", "col2", ...)</b> for local DataFrames</li>
-              <li><b>toDS</b> for local typed Datasets</li>
+              <li><b>Seq(...).toDF("col1", "col2", ...)</b> for local DataFrames</li>
+              <li><b>Seq(...).toDS</b> for local Datasets</li>
               <li>Use <b>import spark.implicits._</b></li>
               <li>All Scala Collections supported (almost)</li>
               <li>Switch to Mastering Apache Spark 2
@@ -227,6 +242,23 @@
               <li>Run the application using <b>spark-submit</b></li>
             </ol>
           </section>
+          <section id="exercise-first-app" data-markdown>
+            <script type="text/template">
+              ## Exercise: My First Spark SQL Application
+              #### spark.version
+
+              1. Create a Scala sbt-managed standalone application
+                * Use <b>IntelliJ IDEA</b>
+              1. Define Spark SQL dependency in <b>build.sbt</b>
+                * **libraryDependencies**
+                * **"org.apache.spark" %% "spark-sql" % "2.1.1"**
+              1. Write your <b>Spark SQL code</b>, i.e. <b>spark.version</b>
+                * **SparkSession**
+              1. Execute <b>sbt package</b>
+              1. Run the application using <b>spark-submit</b>
+              1. Time: 40 mins
+            </script>
+          </section>
           <section data-markdown>
             <script type="text/template">
               ## Complete Spark SQL Application
@@ -247,23 +279,6 @@ try {
   spark.stop()
 }
 ```
-            </script>
-          </section>
-          <section id="exercise-first-app" data-markdown>
-            <script type="text/template">
-              ## Exercise: My First Spark SQL Application
-              #### spark.version
-
-              1. Create a Scala standalone application
-                * Use <b>IntelliJ IDEA</b>
-              1. Define Spark SQL dependency in <b>build.sbt</b>
-                * **libraryDependencies**
-                * **"org.apache.spark" %% "spark-sql" % "2.1.0"**
-              1. Write your <b>Spark SQL code</b>, i.e. <b>spark.version</b>
-                * **SparkSession**
-              1. Execute <b>sbt package</b>
-              1. Run the application using <b>spark-submit</b>
-              1. Time: 40 mins
             </script>
           </section>
           <section id="exercise-csv" data-markdown>
@@ -304,17 +319,16 @@ try {
               <li>Switch to Mastering Apache Spark 2
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit.html">Spark Submit — spark-submit shell script</a></li>
-                  <li><a href="https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples">Spark / Scala Examples distributed with Spark</a></li>
                 </ul>
               </li>
             </ol>
           </section>
           <section>
-            <h2>Exercise: spark-submit Your Spark App / run-example SparkPi</h2>
+            <h2>Exercise: run-example SparkPi</h2>
             <ol>
-              <li>Execute <b>sbt package</b></li>
               <li>Start <b>Spark Standalone</b> cluster manager</li>
-              <li>Run the application using <b>spark-submit</b></li>
+              <li><a href="https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples">Spark / Scala Examples distributed with Spark</a></li>
+              <li>Run a Spark application using <b>run-example</b></li>
               <li>Time: 30 mins</li>
             </ol>
           </section>
@@ -358,24 +372,20 @@ try {
           </section>
         </section>
 
-        <section id="questions" style="text-align: left">
-          <h1>Questions?</h1>
-          <p>
-            <ul>
-              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
-                <ul>
-                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
-                </ul>
-              </li>
-              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
-              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
-              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
-              <li>Upvote <a href="https://www.quora.com/profile/Jacek-Laskowski">my answers on Quora</a></li>
-              <li>Connect on <a href="https://www.linkedin.com/in/jaceklaskowski/">LinkedIn</a></li>
-              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
-            </ul>
-          </p>
+        <section id="questions" style="text-align: left" data-markdown>
+          <script type="text/template">
+            # Questions?
+
+              * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
+                * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
+              * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+              * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+              * Use [Jacek's code at GitHub](https://github.com/jaceklaskowski)
+              * Read [blog posts on Medium](https://medium.com/@jaceklaskowski)
+              * Upvote [my answers on Quora](https://www.quora.com/profile/Jacek-Laskowski)
+              * Connect on [LinkedIn](https://www.linkedin.com/in/jaceklaskowski/)
+              * Visit [Jacek Laskowski's blog](https://blog.jaceklaskowski.pl)
+          </script>
         </section>
 
       </div>

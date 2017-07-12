@@ -50,75 +50,84 @@
     <div class="reveal">
 
       <div class="slides">
+
         <div class="footer">
           <small>Copyright ©2017 Jacek Laskowski</small>
         </div>
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/kafka-logo.png">
-            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="20%" style="background:none; border:none; box-shadow:none;" data-src="images/kafka-logo.png">
+            <img width="10%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>The Elements of</h1>
           <h1>Apache Kafka</h1>
-          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="https://jaceklaskowski.gitbooks.io/apache-kafka">Apache Kafka Notebook</a></h4>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Gitbooks: <a href="https://jaceklaskowski.gitbooks.io/apache-kafka">Apache Kafka Gitbook</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
-        <section id="agenda">
-          <h2>Agenda</h2>
-          <ol>
-            <li><a href="#/intro">Introduction</a></li>
-            <li><a href="#/concepts">Concepts</a></li>
-            <li><a href="#/why-kafka">Why Kafka</a></li>
-            <li><a href="#/demo">Demo</a></li>
-          </ol>
+        <section id="agenda" data-markdown>
+          <script type="text/template">
+            ## Agenda
+
+            1. [Introduction](#/intro)
+            1. [Concepts](#/concepts)
+            1. [Features of Kafka](#/kafka-features)
+            1. [Exercises](#/exercises)
+          </script>
         </section>
 
         <section>
-          <section id="intro">
-            <h2>Introduction</h2>
-            <p>
-              <b>Apache Kafka</b> is a publish/subscribe messaging system based on the concept of a <b>distributed commit log</b>.
-            </p>
-            <p>
-              <b>Records</b> in Kafka are distributed, stored durably, in order, and can be read deterministically.
-            </p>
+          <section id="intro" data-markdown>
+            <script type="text/template">
+              ## Introduction
+
+              **Apache Kafka** is an open source **publish-subscribe messaging system** based on the concept of a **distributed commit log**.
+
+              **Messages** (aka **records**) in Kafka are distributed, stored durably and in order, and can be read deterministically.
+            </script>
           </section>
           <section>
             <h2>Kafka Producers and Consumers</h2>
             <img style="background:none; border:none; box-shadow:none;" data-src="images/kafka-producers-topics-consumers.png">
-            <small><a href="https://www.infoq.com/articles/apache-kafka">Apache Kafka: Next Generation Distributed Messaging System</a></small>
+            <small>From <a href="https://www.infoq.com/articles/apache-kafka">Apache Kafka: Next Generation Distributed Messaging System</a></small>
           </section>
           <section>
             <h2>Kafka Topics and Partitions</h2>
             <img width="70%" style="background:none; border:none; box-shadow:none;" data-src="images/kafka-topic-anatomy.png">
             <br>
-            <small><a href="https://kafka.apache.org/documentation">Official Documentation of Apache Kafka</a></small>
+            <small>From <a href="https://kafka.apache.org/documentation">Official Documentation of Apache Kafka</a></small>
           </section>
           <section>
-            <h2>Kafka Producers and Consumers</h2>
+            <h2>Kafka Producers and Consumers <small>(cntd)</small></h2>
             <img width="70%" style="background:none; border:none; box-shadow:none;" data-src="images/kafka-producers-consumers.png">
-            <small><a href="https://kafka.apache.org/documentation">Official Documentation of Apache Kafka</a></small>
+            <small>From <a href="https://kafka.apache.org/documentation">Official Documentation of Apache Kafka</a></small>
           </section>
         </section>
 
         <section>
-          <section id="concepts">
+          <section id="concepts" data-markdown>
+            <script type="text/template">
+              # Kafka Concepts
+            </script>
+          </section>
+          <section>
             <h2>Concepts (1 of 3)</h2>
             <ol>
-              <li><b>Message</b> (<i>record</i>) is the unit of data in Kafka.
+              <li><b>Message</b> (<i>record</i>) is the unit of data in Kafka
                 <ul>
-                  <li>Array of bytes in any format (with no meaning to Kafka).</li>
+                  <li>Array of bytes in any format (with no meaning to Kafka)</li>
                   <li><a href="http://avro.apache.org/">Apache Avro</a> often used</li>
                 </ul>
               </li>
-              <li>Messages are categorized into <b>topics</b> (<i>table</i> or <i>directory</i>).</li>
-              <li>Topics are broken down into a number of <b>partitions</b>.
+              <li>Messages are categorized into <b>topics</b> (<i>table</i> or <i>directory</i>)</li>
+              <li>Topics are made up of one or many <b>partitions</b>
                 <ul>
                   <li>A partition is a single log (and hence <i>distributed commit log</i>)</li>
-                  <li>Messages written to partitions in an append-only fashion.</li>
-                  <li>Messages read from beginning to end in order.</li>
-                  <li>Partitions can be hosted on different servers.</li>
+                  <li>Ordered immutable sequence of records</li>
+                  <li>Messages written to partitions in an append-only fashion</li>
+                  <li>Messages read from beginning to end in order</li>
+                  <li>Partitions can be hosted on different servers</li>
                 </ul>
               </li>
             </ol>
@@ -127,7 +136,7 @@
             <h2>Kafka Partitions</h2>
             <img width="150%" style="background:none; border:none; box-shadow:none;" data-src="images/kafka-partitions.png">
             <br>
-            <small><a href="https://www.safaribooksonline.com/library/view/kafka-the-definitive/9781491936153/">Kafka: The Definitive Guide</a></small>
+            <small>From <a href="https://www.safaribooksonline.com/library/view/kafka-the-definitive/9781491936153/">Kafka: The Definitive Guide</a></small>
           </section>
           <section>
             <h2>Concepts (2 of 3)</h2>
@@ -137,19 +146,19 @@
                   <li>Receives messages, assigns offsets, and commits messages to storage on disk</li>
                 </ul>
               </li>
-              <li><b>Kafka Cluster</b> consists of one or more brokers.</li>
-              <li><b>Kafka Producers</b> publish messages to one or more topics.
+              <li><b>Kafka Cluster</b> consists of one or more brokers</li>
+              <li><b>Kafka Producers</b> publish messages to one or more topics
                 <ul>
                   <li>May or may not have preference for partitions</li>
                 </ul>
               </li>
-              <li><b>Kafka Consumers</b> read messages from one or more topics.
+              <li><b>Kafka Consumers</b> read messages from one or more topics
                 <ul>
                   <li>Subscribe to topics</li>
                   <li>Read messages in the order they were produced</li>
                 </ul>
               </li>
-              <li><b>Offset</b> is a numerical position of a message in a partition in a topic.</li>
+              <li><b>Offset</b> is a unique sequential numerical position of a message in a partition in a topic</li>
             </ol>
           </section>
           <section>
@@ -164,59 +173,70 @@
               </li>
               <li>Once these limits are reached, messages are expired and deleted.</li>
               <li>Can be selected on a per-topic basis.</li>
+              <li><b>ZooKeeper</b> coordinates brokers</li>
             </ol>
           </section>
         </section>
 
-        <section id="why-kafka">
-          <h2>Why Kafka</h2>
+        <section id="kafka-features">
+          <h2>Features of Kafka</h2>
           <ol>
-            <li>Thousand of Producers</li>
+            <li>Thousands of Producers</li>
             <li>Thousand of Consumers</li>
+            <li>Client Independence</li>
+            <li>High Throughput</li>
+            <li>Message Persistence</li>
             <li>Disk-based Retention</li>
             <li>Scalability</li>
             <li>High Performance</li>
           </ol>
         </section>
 
-        <section id="demo">
-          <h2>Demo - Installation and Setup</h2>
-          <ol>
-            <li>Switch to (Mastering) Apache Kafka
-              <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/apache-kafka/content/kafka-broker.html#starting-broker">Starting Kafka Broker</a></li>
-                <li><a href="https://jaceklaskowski.gitbooks.io/apache-kafka/content/kafka-tools.html">Kafka Tools</a></li>
-              </ul>
-            </li>
-          </ol>
+        <section>
+          <section id="exercises" data-markdown>
+            <script type="text/template">
+              # Exercises
+            </script>
+          </section>
+          <section id="exercise-setting-up-kafka-cluster" data-markdown>
+            <script type="text/template">
+              ## Exercise &mdash; Setting Up Kafka Cluster
+
+              1. Setting up a multiple-broker single-node Kafka cluster
+                1. Start ZooKeeper and Kafka servers
+                1. Create Topic
+              1. Switch to (Mastering) Apache Kafka Gitbook
+                * [Starting Kafka Broker](https://jaceklaskowski.gitbooks.io/apache-kafka/content/kafka-broker.html#starting-broker)
+                * [Kafka Tools](https://jaceklaskowski.gitbooks.io/apache-kafka/content/kafka-tools.html)
+            </script>
+          </section>
         </section>
 
-        <section id="recap">
-          <h2>Recap</h2>
-          <ol>
-            <li><a href="#/intro">Introduction</a></li>
-            <li><a href="#/concepts">Concepts</a></li>
-            <li><a href="#/why-kafka">Why Kafka</a></li>
-            <li><a href="#/demo">Demo</a></li>
-          </ol>
+        <section id="recap" data-markdown>
+          <script type="text/template">
+            ## Recap
+
+            1. [Introduction](#/intro)
+            1. [Concepts](#/concepts)
+            1. [Features of Kafka](#/kafka-features)
+            1. [Exercises](#/exercises)
+          </script>
         </section>
 
-        <section id="questions" style="text-align: left">
-          <h1>Questions?</h1>
-          <p>
-            <ul>
-              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
-                <ul>
-                  <li>https://bit.ly/mastering-apache-spark</li>
-                </ul>
-              </li>
-              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
-              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
-              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
-              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
-            </ul>
-          </p>
+        <section id="questions" style="text-align: left" data-markdown>
+          <script type="text/template">
+            # Questions?
+
+              * Read [Apache Kafka Gitbook](https://jaceklaskowski.gitbooks.io/apache-kafka)
+              * Read [Spark Structured Streaming Gitbook](http://bit.ly/spark-structured-streaming)
+              * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+              * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+              * Use [Jacek's code at GitHub](https://github.com/jaceklaskowski)
+              * Read [blog posts on Medium](https://medium.com/@jaceklaskowski)
+              * Upvote [my answers on Quora](https://www.quora.com/profile/Jacek-Laskowski)
+              * Connect on [LinkedIn](https://www.linkedin.com/in/jaceklaskowski/)
+              * Visit [Jacek Laskowski's blog](https://blog.jaceklaskowski.pl)
+          </script>
         </section>
       </div>
     </div>
