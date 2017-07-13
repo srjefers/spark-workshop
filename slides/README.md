@@ -41,7 +41,7 @@
 1. [Columns, Operators, Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-columns-standard-functions-udfs.html)
 1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Basic-Aggregation.html)
 1. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Joins.html)
-1. [Windowed Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/06_spark_sql_windowed_operators.html)
+1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html)
 1. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Multi-Dimensional-Aggregation.html)
 1. [Spark SQL 2 &mdash; Tungsten, Catalyst, Query Optimizer and Performance Tuning](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html)
 

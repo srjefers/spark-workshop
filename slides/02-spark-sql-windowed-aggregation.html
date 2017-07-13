@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2 Workshop :: Joins (Spark SQL)</title>
+    <title>Apache Spark 2 Workshop :: Windowed Operators in Spark SQL</title>
 
-    <meta name="description" content="Apache Spark 2 Workshop :: Joins (Spark SQL)">
+    <meta name="description" content="Apache Spark 2 Workshop :: Windowed Operators in Spark SQL">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,7 +60,7 @@
             <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Joins</h1>
+          <h1>Windowed Aggregation</h1>
           <h2>Apache Spark 2 / Spark SQL</h2>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
@@ -70,83 +70,120 @@
           <script type="text/template">
             ## Agenda
 
-            1. [join Operators (Dataset)](#/join-dataset)
-            1. [join Operators (SQL)](#/join-sql)
-            1. [Join Types](#/join-types)
-            1. [Broadcast Join (aka Map-Side Join)](#/broadcast-join)
+            1. [Window Aggregate Functions](#/window-aggregate-functions)
+            1. [Window Functions](#/window-functions)
+            1. [Window Specification (aka WindowSpec)](#/windowspec)
+            1. [over Column Operator](#/over-column-operator)
+            1. [Exercises](#/exercises)
           </script>
         </section>
 
-        <section id="join-dataset" data-markdown>
-          <script type="text/template">
-            ## join Operators (Dataset)
+        <section>
+          <section id="window-aggregate-functions" data-markdown>
+            <script type="text/template">
+              ## Window Aggregate Functions
 
-            1. You can join two Datasets using join operators:
-              * **join** for untyped Row-based joins
-              * Type-preserving **joinWith**
-              * **crossJoin** for explicit cartesian joins
-            1. Join condition in **join** or **filter** / **where** operators
+              1. **Window Aggregate Functions** perform a calculation over a group of records called **window** that are in *some* relation to the current record
+              1. Generates a value for **every row**
+                * Unlike basic aggregates that generate **at most** the number of input rows
+              1. Switch to Mastering Apache Spark 2
+                * [Window Aggregate Functions](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-functions-windows.html)
+            </script>
+          </section>
+          <section id="window-functions" data-markdown>
+            <script type="text/template">
+              ## Window Functions
+
+              1. **Ranking functions**
+                * rank, dense_rank, percent_rank
+                * ntile
+                * row_number
+              1. **Analytic functions**
+                * cume_dist, lag, lead
+              1. **Aggregate functions**
+                * sum, avg, min, max, count, etc.
+            </script>
+          </section>
+          <section id="windowspec" data-markdown>
+            <script type="text/template">
+              ## Window Specification (aka WindowSpec)
+
+              1. **Window Specification** defines which rows are included in a **window** given a row
+              1. (Logically) **partitions** dataset
+              1. Can optionally define **frame boundary** and **ordering**
+              1. Use **Window** factory object to create **WindowSpec**
               ```scala
-              left.join(right, "id")  // equivalent to left("id") === right("id")
-              left.join(right, "id", "anti")  // explicit join type
-              left.join(right).filter(left("id") === right("id"))
+                import org.apache.spark.sql.expressions.Window
+                val byHTokens = Window.partitionBy($"token" startsWith "h")
               ```
-              <!-- .element: style="width: 810px;" -->
-            1. Switch to Mastering Apache Spark 2
-              * [Join Operators](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-joins.html)
-          </script>
-        </section>
+            </script>
+          </section>
+          <section id="over-column-operator" data-markdown>
+            <script type="text/template">
+              ## over Column Operator
 
-        <section id="join-sql" data-markdown>
-          <script type="text/template">
-            ## join Operators (SQL)
-
-            1. You can join two tables using regular SQL join operators
-              * _SQL join types on the following slide_
-            1. Use **SparkSession.sql** to execute SQL
+              1. **over** column operator defines a **windowing column** (aka **analytic clause**)
+              1. Applies aggregate function over window
               ```scala
-              spark.sql("select * from t1, t2 where t1.id = t2.id")
+                val overUnspecifiedFrame = $"someColumn".over()
+                val overRange = $"someColumn" over someWindow
               ```
-            1. Switch to Mastering Apache Spark 2
-              * [Executing SQL Queries &mdash; sql Method](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-SparkSession.html#sql)
-          </script>
-        </section>
-
-        <section id="join-types" data-markdown>
-          <script type="text/template">
-            ## Join Types
-
-            | SQL         | Names       |
-            | ------------|-------------|
-            | CROSS       | cross |
-            | INNER       | inner |
-            | FULL OUTER  | outer, full, fullouter |
-            | LEFT ANTI   | leftanti |
-            | LEFT OUTER  | leftouter, left |
-            | LEFT SEMI   | leftsemi |
-            | RIGHT OUTER | rightouter, right |
-            | NATURAL     ||
-            | USING       ||
-            <!-- .element: style="font-size: 0.8em;" -->
-          </script>
-        </section>
-
-        <section id="broadcast-join" data-markdown>
-          <script type="text/template">
-            ## Broadcast Join (aka Map-Side Join)
-
-            1. Use **broadcast** function to mark a Dataset to be broadcast
+              1. Use with **withColumn** or **select** operators
               ```scala
-              left.join(broadcast(right), "token")
+                numbers.withColumn("max", max("num") over dividedBy2)
               ```
-            1. Use **broadcast hints** in SQL
-              ```
-              SELECT /*+ BROADCAST (t1) */ * FROM t1, t2 WHERE t1.id = t2.id
-              ```
-              * **BROADCAST**, **BROADCASTJOIN** or **MAPJOIN** hints supported
-            1. Switch to Mastering Apache Spark 2
-              * [broadcast function](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-functions.html#broadcast)
-              * [withHints Parsing Handler](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-AstBuilder.html#withHints)
+              1. Switch to Mastering Apache Spark 2
+                * [Defining Windowing Column (Analytic Clause) &mdash; over Operator](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-Column.html#over)
+            </script>
+          </section>
+        </section>
+
+        <section>
+          <section id="exercises" data-markdown>
+            # Exercises
+          </section>
+          <section id="exercise-bestsellers" data-markdown>
+            <script type="text/template">
+              ## Exercise
+              ## Finding 1st and 2nd bestsellers per genre
+
+              1. Define window specification to **partitionBy** dataset per genre
+              1. Define ordering using **orderBy**
+              1. Use **rank** function and **filter** operator
+              1. Use Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
+              1. Time: **30 mins**
+            </script>
+          </section>
+          <section id="exercise-gap" data-markdown>
+            <script type="text/template">
+              ## Exercise
+              ## Gap between current and highest salaries per department
+
+              1. Use **max** function (with **withColumn** operator) over departments
+              1. Use **withColumn** to compute the difference
+              1. Time: **30 mins**
+            </script>
+          </section>
+          <section id="exercise-running-total" data-markdown>
+            <script type="text/template">
+              ## Exercise
+              ## Running Total / Cumulative Sum
+
+              1. Calculate the sum of all previous lines including the current one
+              1. Time: **30 mins**
+            </script>
+          </section>
+        </section>
+
+        <section id="recap" data-markdown>
+          <script type="text/template">
+            ## Recap
+
+            1. [Window Aggregate Functions](#/window-aggregate-functions)
+            1. [Window Functions](#/window-functions)
+            1. [Window Specification (aka WindowSpec)](#/windowspec)
+            1. [over Column Operator](#/over-column-operator)
+            1. [Exercises](#/exercises)
           </script>
         </section>
 

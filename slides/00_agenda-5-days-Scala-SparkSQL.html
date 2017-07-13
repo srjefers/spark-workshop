@@ -136,17 +136,18 @@
           </p>
         </section>
 
-        <section id="agenda">
-          <h2>Agenda</h2>
-          <ul>
-            <li><a href="#/day1">Day 1</a> &mdash; <b>Just Enough Scala and IntelliJ IDEA</b></li>
-            <li><a href="#/day2a">Day 2a</a> &mdash; <b>Build Automation using sbt</b></li>
-            <li><a href="#/day2b">Day 2b</a> &mdash; <b>Spark SQL and Tools (spark-shell, Databricks)</b></li>
-            <li><a href="#/day3a">Day 3a</a> &mdash; <b>Standard Functions and Basic Aggregation</b></li>
-            <li><a href="#/day3b">Day 3b</a> &mdash; <b>More exercises</b></li>
-            <li><a href="#/day4">Day 4</a> &mdash; <b>Even more exercises</b></li>
-            <li><a href="#/day5">Day 5</a> &mdash; <b>And more exercises</b></li>
-          </ul>
+        <section id="agenda" data-markdown>
+          <script type="text/template">
+            ## Agenda
+
+            1. [Day 1](#/day1) &mdash; Just Enough Scala and IntelliJ IDEA
+            1. [Day 2A](#/day2a) &mdash; Build Automation using sbt
+            1. [Day 2B](#/day2b) &mdash; Spark SQL and Tools (spark-shell, Databricks)
+            1. [Day 3](#/day3) &mdash; Columns, Operators, Standard Functions and UDFs
+            1. [Day 4A](#/day4a) &mdash; Basic Aggregation and Joins
+            1. [Day 4B](#/day4b) &mdash; Advanced Aggregation
+            1. [Day 5](#/day5) &mdash; Exercise Day
+          </script>
         </section>
 
         <section id="day1" data-markdown>
@@ -187,49 +188,33 @@
           </section>
         </section>
 
-        <section>
-          <section id="day3a" data-markdown>
-            <script type="text/template">
-              ## Day 3A &mdash; Standard Functions and Basic Aggregation
+        <section id="day3" data-markdown>
+          <script type="text/template">
+            ## Day 3 &mdash; Columns, Operators, Standard Functions and UDFs
 
-              1. [Columns, Operators, Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-columns-standard-functions-udfs.html)
-              1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Basic-Aggregation.html)
-              1. **Exercise**: Finding bestsellers (as products) per category
-                * Using **groupBy**, **join** and **filter** operators
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              ## Day 3B &mdash; ...
-
-              1. Caching and Persistence
-              1. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
-              1. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_webui.html)
-              1. [Spark SQL 2 - Tungsten / Catalyst / Query Optimizer / Performance Tuning](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html)
-            </script>
-          </section>
+            1. [Columns, Operators, Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-columns-standard-functions-udfs.html)
+          </script>
         </section>
 
         <section>
-          <section id="day4" data-markdown>
+          <section id="day4a" data-markdown>
             <script type="text/template">
-              ## Agenda &mdash; Day 4 (1 of 2)
+              ## Day 4A &mdash; Basic Aggregation and Joins
 
-              1. Exercise: (Dilip's case) Finding unique user visits per day
-                * Using Scala only
-                * Using Spark SQL's groupBy and join
-                * Using Spark SQL's window operator
-              1. Exercise: Accessing data sets using Spark SQL and JDBC (PostgreSQL)
+              1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Basic-Aggregation.html)
+              1. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Joins.html)
+              1. **Exercise**: Finding bestsellers (as products) per category
+                * Using **groupBy**, **join** and **filter** operators
+              1. **Exercise**: Joining data from different data sources
+                * CSV files and JDBC table
             </script>
           </section>
-          <section data-markdown>
+          <section id="day4b" data-markdown>
             <script type="text/template">
-              ## Agenda &mdash; Day 4 (2 of 2)
+              ## Day 4B &mdash; Advanced Aggregation
 
-              1. Exercise: Joining data from different data sources
-                * CSV files and JDBC table
-              1. Filtering and optimizations in Spark SQL using JDBC and parquet data sources
-                * Comparing different programming styles and their effect on query execution plans
+              1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html)
+              1. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Multi-Dimensional-Aggregation.html)
             </script>
           </section>
         </section>
@@ -238,6 +223,17 @@
           <script type="text/template">
             ## Agenda &mdash; Day 5
 
+            1. Exercise: (Dilip's case) Finding unique user visits per day
+              * Using Scala only
+              * Using Spark SQL's groupBy and join
+              * Using Spark SQL's window operator
+            1. Exercise: Accessing data sets using Spark SQL and JDBC (PostgreSQL)
+            1. Caching and Persistence
+            1. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
+            1. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_webui.html)
+            1. [Spark SQL 2 - Tungsten / Catalyst / Query Optimizer / Performance Tuning](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html)
+            1. Filtering and optimizations in Spark SQL using JDBC and parquet data sources
+              * Comparing different programming styles and their effect on query execution plans
             1. Exercise
           </script>
         </section>
