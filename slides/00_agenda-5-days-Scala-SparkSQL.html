@@ -48,7 +48,6 @@
 
   <body>
     <div class="reveal">
-
       <div class="slides">
 
         <div class="footer">
@@ -63,7 +62,7 @@
           </p>
           <h1>Spark SQL / Scala Workshop <small>5 Days</small></h1>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
-          Gitbooks: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
         <section>
@@ -146,7 +145,7 @@
             1. [Day 3](#/day3) &mdash; Columns, Operators, Standard Functions and UDFs
             1. [Day 4A](#/day4a) &mdash; Basic Aggregation and Joins
             1. [Day 4B](#/day4b) &mdash; Advanced Aggregation
-            1. [Day 5](#/day5) &mdash; Exercise Day
+            1. [Day 5](#/day5) &mdash; Spark MLlib and Structured Streaming
           </script>
         </section>
 
@@ -201,12 +200,10 @@
             <script type="text/template">
               ## Day 4A &mdash; Basic Aggregation and Joins
 
-              1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Basic-Aggregation.html)
-              1. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Joins.html)
-              1. **Exercise**: Finding bestsellers (as products) per category
-                * Using **groupBy**, **join** and **filter** operators
-              1. **Exercise**: Joining data from different data sources
-                * CSV files and JDBC table
+              1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-basic-aggregation.html)
+              1. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-joins.html)
+              1. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01-spark-core-webui.html)
+              1. **Exercise**: Loading datasets using JDBC (Oracle)
             </script>
           </section>
           <section id="day4b" data-markdown>
@@ -214,27 +211,17 @@
               ## Day 4B &mdash; Advanced Aggregation
 
               1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html)
-              1. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Multi-Dimensional-Aggregation.html)
+              1. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-multi-dimensional-aggregation.html)
             </script>
           </section>
         </section>
 
         <section id="day5" data-markdown>
           <script type="text/template">
-            ## Agenda &mdash; Day 5
+            ## Day 5 &mdash; Spark MLlib and Structured Streaming
 
-            1. Exercise: (Dilip's case) Finding unique user visits per day
-              * Using Scala only
-              * Using Spark SQL's groupBy and join
-              * Using Spark SQL's window operator
-            1. Exercise: Accessing data sets using Spark SQL and JDBC (PostgreSQL)
-            1. Caching and Persistence
-            1. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
-            1. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_webui.html)
-            1. [Spark SQL 2 - Tungsten / Catalyst / Query Optimizer / Performance Tuning](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html)
-            1. Filtering and optimizations in Spark SQL using JDBC and parquet data sources
-              * Comparing different programming styles and their effect on query execution plans
-            1. Exercise
+            1. [ML Pipelines In-Depth](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-spark-mllib-ml-pipelines.html)
+            1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-structured-streaming.html)
           </script>
         </section>
 
@@ -315,29 +302,25 @@
               ## « case class » (2 of 2)
 
               1. Write down your name on paper and put it in front of you
-              1. When is the lunch? 12pm or 1pm?
+              1. When is the lunch? 12 noon or 1 PM?
             </script>
           </section>
         </section>
 
-        <section id="questions" style="text-align: left">
-          <h1>Questions?</h1>
-          <p>
-            <ul>
-              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
-                <ul>
-                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
-                </ul>
-              </li>
-              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
-              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
-              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
-              <li>Upvote <a href="https://www.quora.com/profile/Jacek-Laskowski">my answers on Quora</a></li>
-              <li>Connect on <a href="https://www.linkedin.com/in/jaceklaskowski/">LinkedIn</a></li>
-              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
-            </ul>
-          </p>
+        <section id="questions" style="text-align: left" data-markdown>
+          <script type="text/template">
+            # Questions?
+
+              * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
+                * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
+              * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+              * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+              * Use [Jacek's code at GitHub](https://github.com/jaceklaskowski)
+              * Read [blog posts on Medium](https://medium.com/@jaceklaskowski)
+              * Upvote [my answers on Quora](https://www.quora.com/profile/Jacek-Laskowski)
+              * Connect on [LinkedIn](https://www.linkedin.com/in/jaceklaskowski/)
+              * Visit [Jacek Laskowski's blog](https://blog.jaceklaskowski.pl)
+          </script>
         </section>
 
       </div>
@@ -363,7 +346,7 @@
                 { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
                 { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                 { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                 { src: 'plugin/zoom-js/zoom.js', async: true },
                 { src: 'plugin/notes/notes.js', async: true }
             ]

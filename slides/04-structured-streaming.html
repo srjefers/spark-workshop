@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2 Workshop &mdash; Structured Streaming</title>
+    <title>Apache Spark 2 Workshop :: Structured Streaming</title>
 
-    <meta name="description" content="Apache Spark 2 Workshop &mdash; Structured Streaming">
+    <meta name="description" content="Apache Spark 2 Workshop :: Structured Streaming">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -48,8 +48,8 @@
 
   <body>
     <div class="reveal">
-
       <div class="slides">
+
         <div class="footer">
           <small>Copyright ©2017 Jacek Laskowski</small>
         </div>
@@ -66,34 +66,27 @@
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
-        <section id="agenda">
-          <h2>Agenda</h2>
-          <ol>
-            <li><a href="#/intro">Structured Streaming</a></li>
-            <li><a href="#/datastreamreader">DataStreamReader</a></li>
-            <li><a href="#/datastreamwriter">DataStreamWriter</a></li>
-            <li><a href="#/streaming-source">Streaming Source</a></li>
-            <li><a href="#/streaming-sink">Streaming Sink</a></li>
-            <li><a href="#/streaming-query">Streaming Query</a></li>
-            <li><a href="#/streaming-query-manager">StreamingQueryManager</a></li>
-            <li><a href="#/exercise-socket">Exercise: Structured Streaming and Socket</a></li>
-            <li><a href="#/exercise-csv">Exercise: Structured Streaming and Files</a></li>
-            <li><a href="#/exercise-kafka">Exercise: Structured Streaming and Kafka</a></li>
-          </ol>
-        </section>
+        <section id="agenda" data-markdown>
+          <script type="text/template">
+            ## Agenda
 
-        <section id="warning">
-          <h2>Heads-up</h2>
-          <blockquote cite="http://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#overview">
-            <b>Structured Streaming is still ALPHA in Spark 2.1</b> and the APIs are still experimental.
-          </blockquote>
-          <small>From <a href="http://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#overview">Structured Streaming Programming Guide [Alpha]</a></small>
+            1. [Structured Streaming](#/intro)
+            1. [DataStreamReader](#/datastreamreader)
+            1. [DataStreamWriter](#/datastreamwriter)
+            1. [Streaming Source](#/streaming-source)
+            1. [Streaming Sink](#/streaming-sink)
+            1. [Streaming Query](#/streaming-query)
+            1. [StreamingQueryManager](#/streaming-query-manager)
+            1. [Demo: Structured Streaming and Rate Source](#/demo-rate)
+            1. [Exercise: Structured Streaming and CSV Files](#/exercise-csv)
+            1. [Exercise: Structured Streaming and Apache Kafka](#/exercise-kafka)
+          </script>
         </section>
 
         <section id="intro">
           <h2>Structured Streaming</h2>
           <ol>
-            <li><b>Structured Streaming</b> is a new computation model in Spark 2 that is an attempt to unify streaming, interactive, and batch queries</li>
+            <li><b>Structured Streaming</b> is a new computation model in Spark 2 that is an attempt to unify streaming, interactive, and batch query execution engines</li>
             <li>Switch to Mastering Apache Spark 2
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-structured-streaming.html">Spark Structured Streaming &mdash; Streaming Datasets</a></li>
@@ -110,7 +103,7 @@
        val streamReader: DataStreamReader = spark.readStream
               </code></pre>
             </li>
-            <li>Structured query is described as Dataset (and DataFrame)</li>
+            <li>Structured query is described as a streaming Dataset (and DataFrame)</li>
             <li>Switch to Spark Structured Streaming
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-DataStreamReader.html">DataStreamReader</a></li>
@@ -142,7 +135,7 @@
             <li>Defined using <b>format</b> method on <b>DataFrameReader</b></li>
             <li><b>FileStreamSource</b> and <b>TextSocketSource</b> for files
             <li><b>KafkaSource</b> for Apache Kafka 0.10.x</li>
-            <li><b>MemoryStream</b> for unit tests, tutorials and debugging</li>
+            <li><b>RateStreamSource</b> and <b>MemoryStream</b> for unit tests, PoCs, tutorials and debugging</li>
             <li>Switch to Spark Structured Streaming
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-Source.html">Streaming Source</a></li>
@@ -161,7 +154,7 @@
             <li><b>MemorySink</b> for unit tests, tutorials and debugging</li>
             <li>Switch to Spark Structured Streaming
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-sink.html">Streaming Sink</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-Sink.html">Streaming Sink</a></li>
               </ul>
             </li>
           </ol>
@@ -199,77 +192,77 @@
           </ol>
         </section>
 
+        <section id="demo-rate" data-markdown>
+          <script type="text/template">
+            ## Structured Streaming and Rate Source
+            ### (Demo)
+
+            1. Using **rate** format for source and **console** for sink
+          </script>
+        </section>
+
         <section>
           <section id="exercises">
             <h1>Structured Streaming</h1>
             <h1>Exercises</h1>
           </section>
-          <section id="exercise-socket">
-            <h2>Exercise: Structured Streaming and Socket</h2>
-            <ol>
-              <li>Create Scala/sbt project in IntelliJ IDEA</li>
-              <li>Create a Scala class - <b>SocketStreaming</b></li>
-              <li>Create deployable package using <b>sbt package</b></li>
-            </ol>
+          <section id="exercise-csv" data-markdown>
+            <script type="text/template">
+              ## Structured Streaming and CSV Files
+              ### (Exercise)
+
+              1. Develop a standalone Spark SQL application (IntelliJ IDEA)
+              1. Use **csv** format for source and **console** for sink
+              1. Use **sbt package** and **spark-submit**
+              1. Time: **30 mins**
+            </script>
           </section>
-          <section id="exercise-csv">
-            <h2>Exercise: Structured Streaming and Files</h2>
-            <ol>
-              <li>Create Scala/sbt project in IntelliJ IDEA</li>
-              <li>Create a Scala class - <b>CsvStreaming</b></li>
-              <li>Create deployable package using <b>sbt package</b></li>
-            </ol>
-          </section>
-          <section id="exercise-kafka">
-            <h2>Exercise: Structured Streaming and Kafka</h2>
-            <ol>
-              <li>Create Scala/sbt project in IntelliJ IDEA</li>
-              <li>Create a Scala class - <b>KafkaStreaming</b></li>
-              <li>Create deployable package using <b>sbt package</b></li>
-              <li>Time: 50 mins</li>
-              <li>Use Spark Structured Streaming
-                <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-KafkaSource.html">KafkaSource</a></li>
-                </ul>
-              </li>
-            </ol>
+          <section id="exercise-kafka" data-markdown>
+            <script type="text/template">
+              ## Structured Streaming and Apache Kafka
+              ### (Exercise)
+
+              1. Start Kafka Broker and Kafka's Console Producer
+              1. Develop a standalone Spark SQL application (IntelliJ IDEA)
+              1. Use **kafka** format for source and **console** for sink
+              1. Use **sbt package** and **spark-submit**
+              1. Read [KafkaSource](https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-KafkaSource.html)
+              1. Time: **45 mins**
+            </script>
           </section>
         </section>
 
-        <section id="recap">
-          <h2>Recap</h2>
-          <ol>
-            <li><a href="#/intro">Structured Streaming</a></li>
-            <li><a href="#/datastreamreader">DataStreamReader</a></li>
-            <li><a href="#/datastreamwriter">DataStreamWriter</a></li>
-            <li><a href="#/streaming-source">Streaming Source</a></li>
-            <li><a href="#/streaming-sink">Streaming Sink</a></li>
-            <li><a href="#/streaming-query">Streaming Query</a></li>
-            <li><a href="#/streaming-query-manager">StreamingQueryManager</a></li>
-            <li><a href="#/exercise-socket">Exercise: Structured Streaming and Socket</a></li>
-            <li><a href="#/exercise-csv">Exercise: Structured Streaming and Files</a></li>
-            <li><a href="#/exercise-kafka">Exercise: Structured Streaming and Kafka</a></li>
-          </ol>
+        <section id="recap" data-markdown>
+          <script type="text/template">
+            ## Recap
+
+            1. [Structured Streaming](#/intro)
+            1. [DataStreamReader](#/datastreamreader)
+            1. [DataStreamWriter](#/datastreamwriter)
+            1. [Streaming Source](#/streaming-source)
+            1. [Streaming Sink](#/streaming-sink)
+            1. [Streaming Query](#/streaming-query)
+            1. [StreamingQueryManager](#/streaming-query-manager)
+            1. [Demo: Structured Streaming and Rate Source](#/demo-rate)
+            1. [Exercise: Structured Streaming and CSV Files](#/exercise-csv)
+            1. [Exercise: Structured Streaming and Apache Kafka](#/exercise-kafka)
+          </script>
         </section>
 
-        <section id="questions" style="text-align: left">
-          <h1>Questions?</h1>
-          <p>
-            <ul>
-              <li>Read <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
-                <ul>
-                  <li><a href="http://bit.ly/spark-structured-streaming">http://bit.ly/spark-structured-streaming</a></li>
-                </ul>
-              </li>
-              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
-              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
-              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
-              <li>Upvote <a href="https://www.quora.com/profile/Jacek-Laskowski">my answers on Quora</a></li>
-              <li>Connect on <a href="https://www.linkedin.com/in/jaceklaskowski/">LinkedIn</a></li>
-              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
-            </ul>
-          </p>
+        <section id="questions" style="text-align: left" data-markdown>
+          <script type="text/template">
+            # Questions?
+
+              * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
+                * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
+              * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+              * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+              * Use [Jacek's code at GitHub](https://github.com/jaceklaskowski)
+              * Read [blog posts on Medium](https://medium.com/@jaceklaskowski)
+              * Upvote [my answers on Quora](https://www.quora.com/profile/Jacek-Laskowski)
+              * Connect on [LinkedIn](https://www.linkedin.com/in/jaceklaskowski/)
+              * Visit [Jacek Laskowski's blog](https://blog.jaceklaskowski.pl)
+          </script>
         </section>
 
       </div>
@@ -295,7 +288,7 @@
                 { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
                 { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                 { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                 { src: 'plugin/zoom-js/zoom.js', async: true },
                 { src: 'plugin/notes/notes.js', async: true }
             ]

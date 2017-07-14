@@ -27,7 +27,7 @@
 1. [Into Apache Spark 2 Using spark-shell (and Databricks)](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
 1. [sbt &mdash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
 1. [The Core of Spark Core](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_spark-core.html)
-1. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_webui.html)
+1. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01-spark-core-webui.html)
 1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
 1. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html)
 1. [Monitoring Spark using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html)
@@ -39,24 +39,24 @@
 1. [Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_spark_sql.html)
 1. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html)
 1. [Columns, Operators, Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-columns-standard-functions-udfs.html)
-1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Basic-Aggregation.html)
-1. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Joins.html)
+1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-basic-aggregation.html)
+1. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-joins.html)
 1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html)
-1. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-SparkSQL-Multi-Dimensional-Aggregation.html)
+1. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-multi-dimensional-aggregation.html)
 1. [Spark SQL 2 &mdash; Tungsten, Catalyst, Query Optimizer and Performance Tuning](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html)
 
 ### Day 3 - Spark MLlib
 
 1. [Agenda - Day 3](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_agenda.html)
 1. [Spark MLlib](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_spark_mllib.html)
-1. [ML Pipelines In-Depth](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_mllib_ml-pipelines.html)
+1. [ML Pipelines In-Depth](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-spark-mllib-ml-pipelines.html)
 1. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html)
 
 ### Day 4 - Spark Streaming, Structured Streaming and Apache Kafka
 
 1. [Spark Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_spark_streaming.html)
 1. [The Elements of Apache Kafka](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-apache-kafka.html)
-1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/10_SparkSQL-Structured_Streaming.html)
+1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-structured-streaming.html)
 1. [Spark Streaming's Stateful Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_SparkStreaming-Stateful-Operators.html)
 
 ## Webinars (One-Hour Each)

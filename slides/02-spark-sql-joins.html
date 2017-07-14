@@ -71,9 +71,11 @@
             ## Agenda
 
             1. [join Operators (Dataset)](#/join-dataset)
-            1. [join Operators (SQL)](#/join-sql)
+            1. [Join Condition](#/join-condition)
             1. [Join Types](#/join-types)
+            1. [Join Clause (SQL)](#/join-sql)
             1. [Broadcast Join (aka Map-Side Join)](#/broadcast-join)
+            1. [Exercise](#/exercise-join-bestsellers): Finding bestsellers per category
           </script>
         </section>
 
@@ -85,7 +87,7 @@
               * **join** for untyped Row-based joins
               * Type-preserving **joinWith**
               * **crossJoin** for explicit cartesian joins
-            1. Join condition in **join** or **filter** / **where** operators
+            1. Join conditions in **join** or **filter** / **where** operators
               ```scala
               left.join(right, "id")  // equivalent to left("id") === right("id")
               left.join(right, "id", "anti")  // explicit join type
@@ -97,18 +99,23 @@
           </script>
         </section>
 
-        <section id="join-sql" data-markdown>
+        <section id="join-condition" data-markdown>
           <script type="text/template">
-            ## join Operators (SQL)
+            ## Join Condition
 
-            1. You can join two tables using regular SQL join operators
-              * _SQL join types on the following slide_
-            1. Use **SparkSession.sql** to execute SQL
+            1. Join conditions in **join** or **filter** / **where** operators
               ```scala
-              spark.sql("select * from t1, t2 where t1.id = t2.id")
+              left.join(right, "id")  // equivalent to left("id") === right("id")
+              left.join(right, "id", "anti")  // explicit join type
+              left.join(right).filter(left("id") === right("id"))
               ```
-            1. Switch to Mastering Apache Spark 2
-              * [Executing SQL Queries &mdash; sql Method](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-SparkSession.html#sql)
+              <!-- .element: style="width: 810px;" -->
+            1. Uses [Column API](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Column)
+              ```
+                left("id") === right("empid")
+                left("id") === right("empid") AND left("name") === right("empname")
+              ```
+              <!-- .element: style="width: 850px;" -->
           </script>
         </section>
 
@@ -125,9 +132,22 @@
             | LEFT OUTER  | leftouter, left |
             | LEFT SEMI   | leftsemi |
             | RIGHT OUTER | rightouter, right |
-            | NATURAL     ||
-            | USING       ||
             <!-- .element: style="font-size: 0.8em;" -->
+          </script>
+        </section>
+
+        <section id="join-sql" data-markdown>
+          <script type="text/template">
+            ## Join Clause (SQL)
+
+            1. You can join two tables using regular SQL join operators
+              * _SQL join types on the following slide_
+            1. Use **SparkSession.sql** to execute SQL
+              ```scala
+              spark.sql("select * from t1, t2 where t1.id = t2.id")
+              ```
+            1. Switch to Mastering Apache Spark 2
+              * [Executing SQL Queries &mdash; sql Method](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-SparkSession.html#sql)
           </script>
         </section>
 
@@ -147,6 +167,17 @@
             1. Switch to Mastering Apache Spark 2
               * [broadcast function](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-functions.html#broadcast)
               * [withHints Parsing Handler](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-AstBuilder.html#withHints)
+          </script>
+        </section>
+
+        <section id="exercise-join-bestsellers" data-markdown>
+          <script type="text/template">
+            ## Exercise: Finding bestsellers per category
+
+            1. Use **groupBy** operator and **max** function to find the highest sales
+            1. Use **join** to find the names of bestsellers
+            1. Consult [Spark API scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html)
+            1. Time: **30 mins**
           </script>
         </section>
 

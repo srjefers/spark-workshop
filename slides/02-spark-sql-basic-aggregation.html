@@ -77,6 +77,7 @@
             1. [Untyped groupBy Operator](#/groupBy-operator)
               * [Exercise](#/groupBy-operator-exercise-max): Finding maximum values per group (groupBy)
               * [Exercise](#/groupBy-operator-exercise-collect): Collect values (per group)
+              * [Exercise](#/exercise-multiple-aggregations): Multiple Aggregations
             1. [Typed groupByKey Operator](#/groupByKey-operator)
             1. ["Explaining" Query Plans](#/explain)
           </script>
@@ -122,11 +123,9 @@
               ## Exercise: Finding maximum value (agg)
 
               1. Develop a standalone Spark SQL application (IntelliJ IDEA)
-              1. Use **max** function (with **withColumn** or **select** operators)
-              1. Use Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-              1. (hard) Use **min** to find the maximum value
-                * Hint: Think about the order
-              1. Time: **30 mins**
+              1. Use **max** function (with **agg** or **select** operators)
+              1. Read [Spark API scaladoc for function object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) to learn about **max** function
+              1. Time: **15 mins**
             </script>
           </section>
         </section>
@@ -154,9 +153,8 @@
               1. Develop a standalone Spark SQL application (IntelliJ IDEA)
               1. Use **groupBy** operator with **max** function
                 * Use **spark.range** for sample numbers
-              1. Use Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-              1. (hard) Use **min** to find the maximum value
-                * Hint: Think about the order
+                * Use a CSV file with two columns for a real dataset
+              1. Read [Spark API scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html)
               1. Time: **30 mins**
             </script>
           </section>
@@ -165,7 +163,17 @@
               ## Exercise: Collect values (per group)
 
               1. Collect values per group in single column
-              1. Use Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) to find **the function**
+              1. Read Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) to find **the function**
+              1. Time: **30 mins**
+            </script>
+          </section>
+          <section id="exercise-multiple-aggregations" data-markdown>
+            <script type="text/template">
+              ## Exercise: Multiple Aggregations
+
+              1. Compute **max** and **min** for groups
+                * **TIP**: Review available **agg** operators
+              1. Read [the scaladoc of Dataset](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
               1. Time: **30 mins**
             </script>
           </section>
@@ -217,6 +225,7 @@
             1. [Untyped groupBy Operator](#/groupBy-operator)
               * [Exercise](#/groupBy-operator-exercise-max): Finding maximum values per group (groupBy)
               * [Exercise](#/groupBy-operator-exercise-collect): Collect values (per group)
+              * [Exercise](#/exercise-multiple-aggregations): Multiple Aggregations
             1. [Typed groupByKey Operator](#/groupByKey-operator)
             1. ["Explaining" Query Plans](#/explain)
           </script>

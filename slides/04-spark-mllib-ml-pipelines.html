@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2 Workshop - ML Pipelines In-Depth</title>
+    <title>Apache Spark 2 Workshop :: ML Pipelines In-Depth</title>
 
-    <meta name="description" content="Apache Spark 2 Workshop - ML Pipelines In-Depth">
+    <meta name="description" content="Apache Spark 2 Workshop :: ML Pipelines In-Depth">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -48,34 +48,37 @@
 
   <body>
     <div class="reveal">
-
       <div class="slides">
+
         <div class="footer">
           <small>Copyright ©2017 Jacek Laskowski</small>
         </div>
 
         <section class="intro" data-transition="zoom">
           <p>
-            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>ML Pipelines In-Depth</h1>
-          <h2>Apache Spark 2</h2>
-          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
+          <h2>Apache Spark 2 / Spark MLlib</h2>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
-        <section id="agenda">
-          <h2>Agenda</h2>
-          <ol>
-            <li><a href="#/pipelines">ML Pipelines and PipelineStages (spark.ml)</a></li>
-            <li><a href="#/transformers">ML Pipeline Components - Transformers</a></li>
-            <li><a href="#/estimators">ML Pipeline Components - Estimators</a></li>
-            <li><a href="#/models">ML Pipeline Models</a></li>
-            <li><a href="#/evaluators">Evaluators</a></li>
-            <li><a href="#/crossvalidator">CrossValidator</a></li>
-            <li><a href="#/persistence">ML Pipeline Persistence - MLWriter and MLReader</a></li>
-            <li><a href="#/examples">ML Pipeline Examples</a></li>
-          </ol>
+        <section id="agenda" data-markdown>
+          <script type="text/template">
+            ## Agenda
+
+            1. [ML Pipelines and PipelineStages (spark.ml)](#/pipelines)
+            1. [ML Pipeline Components &mdash; Transformers](#/transformers)
+            1. [ML Pipeline Components &mdash; Estimators](#/estimators)
+            1. [ML Pipeline Models](#/models)
+            1. [Evaluators](#/evaluators)
+            1. [CrossValidator](#/crossvalidator)
+            1. [ML Pipeline Persistence &mdash; MLWriter and MLReader](#/persistence)
+            1. [ML Pipeline Examples](#/examples)
+          </script>
         </section>
 
         <section>
@@ -103,9 +106,9 @@
         </section>
 
         <section id="transformers">
-          <h2>ML Pipeline Components - Transformers</h2>
+          <h2>ML Pipeline Components &mdash; Transformers</h2>
           <ol>
-            <li><b>Transformer</b> transforms DataFrame into "better" DataFrame.
+            <li><b>Transformer</b> transforms DataFrame into "enhanced" DataFrame.
               <pre><code>transformer: DataFrame =[transform]=> DataFrame</code></pre>
             </li>
             <li>Switch to Mastering Apache Spark 2
@@ -117,7 +120,7 @@
         </section>
 
         <section id="estimators">
-          <h2>ML Pipeline Components - Estimators</h2>
+          <h2>ML Pipeline Components &mdash; Estimators</h2>
           <ol>
             <li><b>Estimator</b> produces <b>Model</b> (Transformer) for training DataFrame
               <pre><code>estimator: DataFrame =[fit]=> Model</code></pre>
@@ -209,36 +212,35 @@
           </ol>
         </section>
 
-        <section id="recap">
-          <h2>Recap</h2>
-          <ol>
-            <li><a href="#/pipelines">ML Pipelines and PipelineStages (spark.ml)</a></li>
-            <li><a href="#/transformers">ML Pipeline Components - Transformers</a></li>
-            <li><a href="#/estimators">ML Pipeline Components - Estimators</a></li>
-            <li><a href="#/models">ML Pipeline Models</a></li>
-            <li><a href="#/evaluators">Evaluators</a></li>
-            <li><a href="#/crossvalidator">CrossValidator</a></li>
-            <li><a href="#/persistence">ML Pipeline Persistence - MLWriter and MLReader</a></li>
-            <li><a href="#/examples">ML Pipeline Examples</a></li>
-          </ol>
+        <section id="recap" data-markdown>
+          <script type="text/template">
+            ## Recap
+
+            1. [ML Pipelines and PipelineStages (spark.ml)](#/pipelines)
+            1. [ML Pipeline Components &mdash; Transformers](#/transformers)
+            1. [ML Pipeline Components &mdash; Estimators](#/estimators)
+            1. [ML Pipeline Models](#/models)
+            1. [Evaluators](#/evaluators)
+            1. [CrossValidator](#/crossvalidator)
+            1. [ML Pipeline Persistence &mdash; MLWriter and MLReader](#/persistence)
+            1. [ML Pipeline Examples](#/examples)
+          </script>
         </section>
 
-        <section id="questions" style="text-align: left">
-          <h1>Questions?</h1>
-          <p>
-            <ul>
-              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
-                <ul>
-                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
-                </ul>
-              </li>
-              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
-              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
-              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
-              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
-            </ul>
-          </p>
+        <section id="questions" style="text-align: left" data-markdown>
+          <script type="text/template">
+            # Questions?
+
+              * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
+                * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
+              * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+              * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+              * Use [Jacek's code at GitHub](https://github.com/jaceklaskowski)
+              * Read [blog posts on Medium](https://medium.com/@jaceklaskowski)
+              * Upvote [my answers on Quora](https://www.quora.com/profile/Jacek-Laskowski)
+              * Connect on [LinkedIn](https://www.linkedin.com/in/jaceklaskowski/)
+              * Visit [Jacek Laskowski's blog](https://blog.jaceklaskowski.pl)
+          </script>
         </section>
 
       </div>
@@ -264,7 +266,7 @@
                 { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
                 { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                 { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                 { src: 'plugin/zoom-js/zoom.js', async: true },
                 { src: 'plugin/notes/notes.js', async: true }
             ]
