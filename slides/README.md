@@ -4,6 +4,7 @@
 
 ## Table of Contents
 
+1. [Spark SQL 2.2 Workshop Agenda (3 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-3-days-Spark-SQL.html) for Data Engineers, Business Analysts and Architects - taught in-class once in [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw)
 1. [Spark SQL / Scala Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Scala-SparkSQL.html) for Data Engineers, Business Analysts and Architects - taught twice in [Collegeville, PA, USA](https://en.wikipedia.org/wiki/Collegeville,_Pennsylvania)
 1. [Packt Live :: Streaming Analytics with Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_Packt_Live_Streaming_Analytics.html) - 2-hour webinar about Spark SQL, Spark MLlib, Structured Streaming and Apache Kafka
 1. [Apache Spark 2 Workshop Agenda (4 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days-Scala-SparkSQL-Streaming-MLlib-Kafka.html) - taught in [Geneva, Switzerland](https://en.wikipedia.org/wiki/Geneva)
