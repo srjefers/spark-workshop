@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Apache Spark 2 Workshop &mdash; Scala</title>
+    <title>Apache Spark 2 Workshop :: Scala - Just Enough For Developing Spark Applications</title>
 
-    <meta name="description" content="Apache Spark 2 Workshop &mdash; Scala">
+    <meta name="description" content="Apache Spark 2 Workshop :: Scala - Just Enough For Developing Spark Applications">
     <meta name="author" content="Jacek Laskowski">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -62,53 +62,60 @@
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>Scala</h1>
-          <h2>Just Enough for Apache Spark</h2>
+          <h3>Just Enough For Developing Spark Applications</h3>
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
-          Gitbooks: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
         </section>
 
         <section>
-          <section>
-            <h2>Intro to Scala</h2>
-            <ul>
-              <li>General-Purpose Programming language</li>
-              <li>Strongly-Typed Language
-                <ul>
-                  <li>Scala compiler as an additional safety net</li>
-                  <li>Application compiles? It then should run when deployed.</li>
-                </ul>
-              </li>
-              <li><b>Apache Spark</b> is developed in <b>Scala</b></li>
-              <li>Functional and Object-Oriented Paradigms blended nicely</li>
-              <li>Class Hierarchies</li>
-              <li>Higher-Order Functions</li>
-              <li>The latest version: <b>2.12.2</b>
-                <ul>
-                  <li>Spark supports up to <b>2.11.11</b></li>
-                </ul>
-              </li>
-              <li>Home page: <a href="http://www.scala-lang.org/">http://www.scala-lang.org</a></li>
-            </ul>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala
+
+              * General-Purpose Programming language
+              * Strongly-Typed Language
+                  * Types known at compile time
+                  * Scala compiler as a safety net
+                  * Application compiles? It then should run in production
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala
+
+              * Functional and Object-Oriented Paradigms blended nicely
+              * Class Hierarchies
+              * Higher-Order Functions
+              * The latest version: **2.12.3**
+              * Home page: <a href="http://www.scala-lang.org/">http://www.scala-lang.org</a>
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala and Spark
+
+              * **Apache Spark** is written in **Scala**
+              * Spark supports up to **2.11.11**
+              * Support for 2.12 is coming
+            </script>
           </section>
         </section>
 
         <section>
-          <h2>Scala</h2>
-          <section>
-            <h2>Hello World App</h2>
-            <hr />
-            <pre><code>
-object Main extends App {
-  println("Hello, Friends!")
-}
-            </code></pre>
+          <h2>Hello World Scala App</h2>
+          <section data-markdown>
+            <script type="text/template">
+```scala
 
-            <ul>
-              <li>Possibly the easiest Scala standalone application</li>
-              <ul>
-                <li>You could cut the number of lines as a Scala script</li>
-              </ul>
-            </ul>
+  object Main extends App {
+    println("Hello, Friends!")
+  }
+
+```
+
+* Most likely the easiest Scala standalone application
+  * You could cut the number of lines as a Scala script
+            </script>
           </section>
           <section id="object-keyword" data-markdown>
             <script type="text/template">
@@ -177,7 +184,7 @@ object Main extends App {
           <section>
             <h2>Hello World in Action</h2>
             <pre><code>
-scala> :pa
+scala> :paste
 // Entering paste mode (ctrl-D to finish)
 
 object Main extends App {
@@ -189,6 +196,14 @@ object Main extends App {
 defined object Main
 
 scala> Main.main(null)
+Hello, Friends!
+            </code></pre>
+          </section>
+          <section>
+            <h2>Hello World in Action</h2>
+            <pre><code>
+scala> :load yourScalaCode.txt
+defined object Main
 Hello, Friends!
             </code></pre>
           </section>
@@ -256,27 +271,303 @@ scala> Main.main(Array("Jacek"))
         </section>
 
         <section>
-          <h2>Scala</h2>
-          <ul>
-            <li>
-              Objects &mdash; Value Containers
-            </li>
-            <li>
-              Classes and Case Classes
-            </li>
-            <li>
-              Named Parameters in Methods
-            </li>
-            <li>for-comprehension
-              <ul>
-                <li><b>Demo:</b> Creating Pairs of Numbers (Coordinates)</li>
-              </ul>
-            </li>
-          </ul>
+          <section id="spark-shell" data-markdown>
+            # spark-shell
+            ### Learning Scala (and Spark) Interactively
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## spark-shell
+
+* **Scala REPL** is an interactive environment for Scala exploration and prototyping
+  * Extremely helpful during your first days in Scala
+* **spark-shell** is Scala REPL with Scala imports and values
+  * Gives you both worlds — Scala and Spark
+
+```
+$ ./bin/spark-shell
+```
+            </script>
+          </section>
+          <section data-markdown>
+            ## Enjoy Scala (Exercises)
+
+            1. Get familiar with type literals
+              * Strings, Ints, Longs, Doubles, Chars, Symbols
+            1. **Println** your name to the console
+            1. Define your name as a **val** and use to println
+              * Use string interpolation #protip
+            1. Save the code to a file and **:load** it
+          </section>
         </section>
 
-        <section id="intellij-idea">
-          <h1>IntelliJ IDEA</h1>
+        <section>
+          <section id="types" data-markdown>
+            # Scala Types
+          </section>
+          <section data-markdown>
+            ## Built-In "Primitive" Types
+
+            * Numeric types
+              * Int, Long, Double
+            * Character types
+              * Char, Symbol
+              * String
+            * Logical type
+              * Boolean
+          </section>
+          <section data-markdown>
+            ## Standard Types
+
+            * Tuple **(1,2)**
+            * Seq(uence) **Seq(0,1,2,3)**
+            * Range **0 to 4**
+            * Iterator **Seq(...).toIterator**
+            * Function
+              * To be explained soon
+          </section>
+          <section data-markdown>
+            ## Custom Types
+
+            * **case class** Keywords
+              * Auto-generates many methods
+            * **class** Keyword
+              * Less often in Spark
+
+```
+// Define a custom type
+scala> case class Person(name: String, age: Int)
+defined class Person
+
+// Create an instance
+scala> val jacek = Person("Jacek", 44)
+jacek: Person = Person(Jacek,44)
+```
+          </section>
+          <section data-markdown>
+            ## Types in spark-shell
+
+```
+scala> :help type
+
+display the type of an expression without evaluating it
+
+scala> val lang = "Scala"
+lang: String = Scala
+
+scala> :type lang
+String
+
+// Object defined previously
+scala> :type jacek
+Person
+```
+          </section>
+        </section>
+
+
+        <section>
+          <section id="expressions" data-markdown>
+            # Expressions
+
+            ### ... And Statements
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Expression
+
+              * Unit of code that returns a value
+              * **Expression block** is a collection of expressions wrapped in curly braces
+
+```scala
+scala> val five = 5
+five: Int = 5
+
+scala> five + 10
+res1: Int = 15
+```
+
+```scala
+// What's the value of block value?
+// Use spark-shell to answer the question.
+val block = {
+  "hello world"
+  5
+}
+```
+<!-- .element: class="fragment" -->
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## If Expression
+
+              * **if (boolean expression) expr1 else expr2**
+
+```scala
+scala> val five = if (true) 5 else 10
+five: Int = 5
+
+scala> val ten = if (false) 5 else 10
+ten: Int = 10
+```
+<!-- .element: class="fragment" -->
+            </script>
+          </section>
+        </section>
+
+        <section>
+          <section id="scaladoc" data-markdown>
+            # Scaladoc
+            ## Scala Documentation
+          </section>
+          <section data-markdown>
+            ## Scala Standard Library
+
+            * http://www.scala-lang.org/api/2.11.11/
+            * Spend as much time with the docs as possible
+              * That will pay off quickly
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            # Methods in Scala
+            ## Named executable blocks of code
+          </section>
+          <section data-markdown>
+            ## Method Definition
+
+            * **def** Keyword
+            * Optional input parameters (in round brackets)
+              * **name: Type**
+              * comma as separator for multiple input params
+            * Optional return type
+
+```
+scala> def greet(name: String): String = s"Hello, $name"
+greet: (name: String)String
+
+scala> greet("Jacek")
+res8: String = Hello, Jacek
+
+// What's res8?
+```
+
+          </section>
+          <section data-markdown>
+            ## Methods
+
+            * Methods belong to classes
+              * Class as a container of methods (and state)
+            * Implicit **this** parameter for the owning object
+
+```
+case class Person(name: String) {
+  def introduceYourself: String = s"I'm $name"
+}
+
+// Use :paste or :load
+
+scala> val jacek = new Person("Jacek")
+jacek: Person = Person(Jacek)
+
+scala> jacek.introduceYourself
+res9: String = I'm Jacek
+```
+
+          </section>
+          <section data-markdown>
+            ## Methods in spark-shell
+
+            * spark-shell auto-generates an implicit object
+              * Another reason to use spark-shell early and often
+              * Makes for a better learning experience
+
+```
+scala> def greet(name: String) = s"Hello, $name"
+greet: (name: String)String
+
+scala> greet("Jacek")
+res8: String = Hello, Jacek
+```
+
+          </section>
+          <section data-markdown>
+            ## Named Parameters
+
+            * Use parameter names at call site
+            * Any order of parameters possible
+
+```
+scala> def greet(name: String) = s"Hello, $name"
+greet: (name: String)String
+
+scala> greet(name = "Jacek")
+res8: String = Hello, Jacek
+```
+
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            # Functions in Scala
+            ## (Another) Named executable blocks
+          </section>
+          <section data-markdown>
+            ## Function Definition
+
+            * Functions are values of a function type
+            * Part of objects or classes
+
+```
+scala> val greet: String => String = { name => s"Hello, $name" }
+greet: String => String = <function1>
+
+scala> val greet = { name: String => s"Hello, $name" }
+greet: String => String = <function1>
+
+scala> greet("Jacek")
+res10: String = Hello, Jacek
+```
+
+          </section>
+          <section data-markdown>
+            ## _ Placeholder
+
+            * **_** (underscore) to reference one input parameter
+            * \# underscores = \# input parameters
+            * Access ordered from left to right
+            * Very useful notation with higher-order functions
+              * Higher-order functions defined on the following slide
+
+```
+// What's the more proper name of the function?
+scala> val f: (Int, Int) => Int = _ + _
+f: (Int, Int) => Int = <function2>
+```
+
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            # for-comprehension
+            ## Functional for Loop
+          </section>
+          <section data-markdown>
+            ## Demo
+
+            * Generating Coordinates (as Pairs of Numbers)
+          </section>
+        </section>
+
+        <section id="intellij-idea" data-markdown>
+          # IntelliJ IDEA
+
+          ## Integrated development environment
+          ## for Scala and Spark
         </section>
 
         <section>
@@ -287,7 +578,6 @@ scala> Main.main(Array("Jacek"))
                 <b>Integrated development environment</b>
                 <ul>
                   <li>The best development tool for Scala</li>
-                  <li>Similar to Visual Studio</li>
                 </ul>
               </li>
               <li>Support for Scala using separate <b>Scala plugin</b></li>
@@ -623,25 +913,6 @@ for {
               </li>
               <li>
                 Run tests using <b>sbt test</b>
-              </li>
-            </ol>
-          </section>
-        </section>
-
-        <section id="scaladoc">
-          <h1>Scaladoc</h1>
-          <h3>Scala Standard API's Documentation</h3>
-        </section>
-
-        <section>
-          <h2>Scaladoc</h2>
-          <section>
-            <ol>
-              <li>
-                Official Documentation for Scala API
-              </li>
-              <li>
-                <a href="https://scala-lang.org/api/current">https://scala-lang.org/api/current</a>
               </li>
             </ol>
           </section>
