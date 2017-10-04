@@ -4,6 +4,7 @@ This project aims to prepare participants with the proper setup for the **Spark 
 
 There are the following Apache Spark workshops offered currently:
 
+* [Advanced Apache Spark for Developers Workshop (5 days)](agendas/advanced-apache-spark-for-developers.md)
 * [Spark Structured Streaming (Apache Spark 2.2) Workshop](spark-structured-streaming-workshop.md)
 * [Spark and Scala (Application Development) Workshop](AGENDA.md)
 * [Spark Administration and Monitoring Workshop](AGENDA-admin.md)
