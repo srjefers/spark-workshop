@@ -21,7 +21,7 @@
 1. [1-Day Spark SQL 2 / Scala Workshop Using Databricks Cloud Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-1-day-SparkSQL-Databricks-Cloud.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
 1. [4-Day Spark 2 / Scala Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days-toronto.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
 
-### Day 1 - Introduction to Spark, Scala and Tools
+### Day 1 &mdash; Introduction to Spark, Scala and Tools
 
 1. [Agenda - Day 1](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_agenda.html)
 1. [The Elements of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
@@ -36,7 +36,7 @@
 1. [Monitoring Spark using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html)
 1. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
 
-### Day 2 - Spark SQL
+### Day 2 &mdash; Spark SQL
 
 1. [Agenda &mdash; Day 2](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_agenda.html)
 1. [Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_spark_sql.html)
@@ -47,20 +47,20 @@
 1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html)
 1. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-multi-dimensional-aggregation.html)
 1. [Spark SQL 2 &mdash; Tungsten, Catalyst, Query Optimizer and Performance Tuning](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html)
+1. [Spark SQL Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-exercises.html)
 
-### Day 3 - Spark MLlib
+### Day 3 &mdash; Spark MLlib
 
 1. [Agenda - Day 3](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_agenda.html)
 1. [Spark MLlib](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_spark_mllib.html)
 1. [ML Pipelines In-Depth](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-spark-mllib-ml-pipelines.html)
 1. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html)
 
-### Day 4 - Spark Streaming, Structured Streaming and Apache Kafka
+### Day 4 &mdash; Spark Structured Streaming and Apache Kafka
 
-1. [Spark Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_spark_streaming.html)
-1. [The Elements of Apache Kafka](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-apache-kafka.html)
 1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-structured-streaming.html)
 1. [Spark Streaming's Stateful Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_SparkStreaming-Stateful-Operators.html)
+1. [The Elements of Apache Kafka](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-apache-kafka.html)
 
 ## Webinars (One-Hour Each)
 
@@ -74,6 +74,10 @@
 ## Exercises
 
 1. [Using TaskCompletionListener, TaskFailureListener, TaskContext](http://blog.jaceklaskowski.pl/spark-workshop/slides/exercise-TaskCompletionListener-TaskFailureListener-TaskContext.html)
+
+## Deprecated
+
+1. [Spark Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_spark_streaming.html)
 
 ## Contact The Author
 

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Apache Spark 2 Workshop ~ Spark SQL Exercises</title>
+
+    <meta name="description" content="Apache Spark 2 Workshop ~ Spark SQL Exercises">
+    <meta name="author" content="Jacek Laskowski">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
+    <style>
+      .slides .header {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      .slides .footer {
+        position: absolute;
+        bottom: 0px;
+        left: 35%;
+      }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+
+      <div class="slides">
+
+        <div class="footer">
+          <small>Copyright ©2017 Jacek Laskowski</small>
+        </div>
+
+        <section class="intro" data-transition="zoom">
+          <p>
+            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1>Spark SQL Exercises</h1>
+          <h3>Apache Spark 2 Workshop</h3>
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+        </section>
+
+        <section id="hints" data-markdown>
+          <script type="text/template">
+            ## Spark SQL Exercises &mdash; Hints
+
+            1. Use Spark API for Scala's scaladoc
+              * http://spark.apache.org/docs/latest/api/scala
+            1. Use **spark-shell**
+            1. Use [Mastering Apache Spark 2](http://bit.ly/mastering-apache-spark) book
+          </script>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Converting column of arrays of strings to string?
+
+```scala
+val words = Seq(Array("hello", "world")).toDF("words")
+scala> words.show
++--------------+
+|         words|
++--------------+
+|[hello, world]|
++--------------+
+
+scala> words.printSchema
+root
+ |-- words: array (nullable = true)
+ |    |-- element: string (containsNull = true)
+
+// contd on next slide...
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Converting column of arrays of strings to string?
+
+```scala
+scala> solution.show
++--------------+-----------+
+|         words|   solution|
++--------------+-----------+
+|[hello, world]|hello world|
++--------------+-----------+
+
+scala> solution.printSchema
+root
+ |-- words: array (nullable = true)
+ |    |-- element: string (containsNull = true)
+ |-- solution: string (nullable = false)
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              # SPOILER
+
+              * A solution is on the following slide
+              * [Question on StackOverflow](https://stackoverflow.com/q/38924762/1305344)
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Solution
+
+              * Use [concat_ws](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
+                * Concatenates multiple input string columns together into a single string column, using the given separator
+
+```
+val solution = words.withColumn("solution", concat_ws(" ", $"words"))
+scala> solution.show
++--------------+-----------+
+|         words|   solution|
++--------------+-----------+
+|[hello, world]|hello world|
++--------------+-----------+
+```
+            </script>
+          </section>
+        </section>
+
+        <section id="questions" style="text-align: left">
+          <h1>Questions?</h1>
+          <p>
+            <ul>
+              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
+                <ul>
+                  <li><a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a></li>
+                </ul>
+              </li>
+              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
+              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers on StackOverflow</a></li>
+              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
+              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
+              <li>Upvote <a href="https://www.quora.com/profile/Jacek-Laskowski">my answers on Quora</a></li>
+              <li>Connect on <a href="https://www.linkedin.com/in/jaceklaskowski/">LinkedIn</a></li>
+              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
+            </ul>
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true },
+                { src: 'plugin/notes/notes.js', async: true }
+            ]
+        });
+
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
