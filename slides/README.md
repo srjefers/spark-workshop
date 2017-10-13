@@ -4,7 +4,7 @@
 
 ## Table of Contents
 
-1. [Graduate in Scala and Spark Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-graduate-scala-spark.html) for Python Developers  - taught in [London, UK](https://en.wikipedia.org/wiki/London)
+1. [Graduate Scala and Spark Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-graduate-scala-spark.html) for Junior Python and Java Developers &mdash; taught in [London, UK](https://en.wikipedia.org/wiki/London)
 1. [Spark SQL 2.2 Workshop Agenda (3 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-3-days-Spark-SQL.html) for Data Engineers, Business Analysts and Architects - taught in-class once in [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw)
 1. [Spark SQL / Scala Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Scala-SparkSQL.html) for Data Engineers, Business Analysts and Architects - taught twice in [Collegeville, PA, USA](https://en.wikipedia.org/wiki/Collegeville,_Pennsylvania)
 1. [Packt Live :: Streaming Analytics with Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_Packt_Live_Streaming_Analytics.html) - 2-hour webinar about Spark SQL, Spark MLlib, Structured Streaming and Apache Kafka
