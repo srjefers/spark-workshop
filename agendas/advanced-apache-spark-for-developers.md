@@ -140,11 +140,15 @@ The workshop includes many practical sessions that should meet (and quite possib
 
 ## Requirements
 
-* Training classes are best for groups up to 12 participants.
+* Training classes are best for groups up to 12 participants
 * Participants have decent computers, preferably with Linux or Mac OS operating systems
   * [There are issues with running Spark on Windows](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-tips-and-tricks-running-spark-windows.html) (mostly with Spark SQL / Hive).
-* Participants have to install the following packages on their computers before the class:
-  * [Apache Spark 2.2](http://spark.apache.org/downloads.html)
+* Installed software
+  * [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+  * [IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download/) with the [Scala plugin](https://www.jetbrains.com/help/idea/creating-and-running-your-scala-application.html)
+  * [sbt](http://www.scala-sbt.org/download.html)
   * [Apache Kafka 0.11.0.1](http://kafka.apache.org/downloads)
-  * [PostgreSQL 9.6.5](http://www.postgresql.org/download/)
+  * [PostgreSQL 10](http://www.postgresql.org/download/) or any other relational database
+* Participants should download the following software
+  * [Apache Spark 2.2](http://spark.apache.org/downloads.html)
   * [PostgreSQL JDBC 4.2 Driver, 42.1.4](https://jdbc.postgresql.org/download.html)
