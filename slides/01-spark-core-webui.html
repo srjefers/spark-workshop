@@ -1,194 +1,217 @@
 <!doctype html>
+<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Apache Spark 2 Workshop - web UI</title>
-
-    <meta name="description" content="Apache Spark 2 Workshop - web UI">
+    <meta name="description" content="Apache Spark 2 Workshop | web UI">
     <meta name="author" content="Jacek Laskowski">
+
+    <title>Apache Spark 2 Workshop | web UI</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/jacek.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
-
-    <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
-
     <!-- Printing and PDF exports -->
-    <script>
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    </script>
-
-    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
-    <style>
-      .slides .header {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-      }
-      .slides .footer {
-        position: absolute;
-        bottom: 0px;
-        left: 35%;
-      }
-    </style>
-    <!--[if lt IE 9]>
-    <script src="lib/js/html5shiv.js"></script>
-    <![endif]-->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
   </head>
 
   <body>
     <div class="reveal">
-
       <div class="slides">
-        <div class="footer">
-          <small>Copyright ©2017 Jacek Laskowski</small>
-        </div>
 
-        <section class="intro" data-transition="zoom">
+        <section class="intro" data-transition="zoom" id="home" data-menu-title="Title Slide">
           <p>
             <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>web UI</h1>
           <h2>Spark Application's Web Console</h2>
-          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
+
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2017 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
 
         <section id="spark-properties">
-          <h2>Spark Properties</h2>
-          <ol>
-            <li>Command-Line Options, Spark Properties and Environment Variables Mapping.</li>
-            <li>Switch to Mastering Apache Spark 2
-              <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-properties.html">Spark Properties and spark-defaults.conf Properties File</a></li>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit-SparkSubmitOptionParser.html">SparkSubmitOptionParser — spark-submit's Command-Line Parser</a></li>
-              </ul>
-            </li>
-          </ol>
+          <div style="text-align: left">
+            <h2>Spark Properties</h2>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <b>spark-submit</b>'s Command-Line Options
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Spark Properties
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Environment Variables <small>(considered obsolete)</small>
+            </p>
+            <ul>
+              <li>Switch to Mastering Apache Spark 2
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-properties.html">Spark Properties and spark-defaults.conf Properties File</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit-SparkSubmitOptionParser.html">SparkSubmitOptionParser — spark-submit's Command-Line Parser</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
 
         <section id="webui">
-          <h2>Spark Application's Web Console</h2>
-          <ol>
-            <li><b>web UI</b> is the web interface of a running Spark application for monitoring and inspecting Spark job executions in a web browser</li>
-            <li>Enabled by default unless <b>spark.ui.enabled</b> used to disable</li>
-            <li>Available at <b>http://[driver]:4040</b>
-              <ul>
-                <li>Use <b>spark.ui.port</b> to control the port</li>
-              </ul>
-            </li>
-          </ol>
+          <div style="text-align: left">
+            <h2>web UI</h2>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <b>web UI</b> is the web interface of a singe Spark application</p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Monitoring and inspecting Spark jobs and tasks</p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Opens at <b>http://localhost:4040</b> (by default)</p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              One big <b>SparkListener</b></p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Composed of tabs and pages <small>(on the following slides)</small></p>
+          </div>
+          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section id="webui-spark-properties">
+          <div style="text-align: left">
+            <h2>web UI / Spark Properties</h2>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Enabled by default unless <b>spark.ui.enabled</b> is turned off
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Use <b>spark.ui.port</b> to set the port number
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Actual availability and URL dependent on the deployment environment (e.g. YARN, Mesos, Standalone, local, Kubernetes)
+            </p>
+          </div>
+          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
 
         <section id="webui-tabs">
-          <h2>web UI Tabs</h2>
-          <ol>
-            <li><b>Jobs</b> shows status of Spark jobs</li>
-            <li><b>Stages</b> shows status of stages of all Spark jobs</li>
-            <li><b>Storage</b> shows RDD size and memory use</li>
-            <li><b>Environment</b> shows the environment</li>
-            <li><b>Executors</b> shows status of executors</li>
-            <li><b>SQL</b> shows status of structured queries</li>
-            <li>Others feature-specific
-              <ul>
-                <li><b>Streaming</b> or <b>Thrift Server</b></li>
-              </ul>
-            </li>
-            <li>Switch to Mastering Apache Spark 2
-              <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-webui.html">Web UI — Spark Application's Web Console</a></li>
-              </ul>
-            </li>
-          </ol>
+          <div style="text-align: left">
+            <h2>web UI Tabs</h2>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <b>Jobs</b> shows status of Spark jobs
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <b>Stages</b> shows status of stages of all Spark jobs
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <b>Storage</b> shows RDD size and memory use
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <b>Environment</b> shows the environment
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <b>Executors</b> shows status of executors
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <b>SQL</b> shows status of structured queries
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Module-specific tabs (<b>Streaming</b> or <b>Thrift Server</b>)
+            </p>
+            <small>Switch to <a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-webui.html">Mastering Apache Spark 2</a></small>
+          </div>
+          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
 
         <section>
-          <section id="demos">
-            <h1>Demos</h1>
+          <section id="webui-demos">
+            <h1>Demo Time</h1>
             <h2>web UI in Action</h2>
           </section>
           <section>
-            <h2>Demo (1 of 2)</h2>
-            <ol>
-              <li>Using Hadoop YARN cluster to observe executors in Event Timeline</li>
-              <li>Use <b>SparkContext.requestTotalExecutors</b></li>
-            </ol>
+            <span class="menu-title" style="display: none">Using web UI</span>
+            <div style="text-align: left">
+              <h2>Demo <small>(1 of 2)</small></h2>
+              <hr>
+              <ol>
+                <li>Showing Active, Failed, Completed Jobs in Spark UI</li>
+              </ol>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
           <section>
-            <h2>Demo (2 of 2)</h2>
-            <ol>
-              <li>Showing Active, Failed, Completed Jobs in Spark UI</li>
-            </ol>
+            <span class="menu-title" style="display: none">Observing Executors</span>
+            <div style="text-align: left">
+              <h2>Demo <small>(2 of 2)</small></h2>
+              <hr>
+              <ol>
+                <li>Using Hadoop YARN cluster to observe executors in Event Timeline</li>
+                <li>Use <b>SparkContext.requestTotalExecutors</b></li>
+              </ol>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
         </section>
 
-        <section id="questions" style="text-align: left">
-          <h1>Questions?</h1>
-          <p>
-            <ul>
-              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
-                <ul>
-                  <li>https://bit.ly/mastering-apache-spark</li>
-                </ul>
-              </li>
-              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
-              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
-              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
-              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
-            </ul>
-          </p>
+        <section style="text-align: left" data-markdown id="questions">
+          <script type="text/template">
+            # Questions?
+
+            * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
+              * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
+            * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+            * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+          </script>
         </section>
 
       </div>
     </div>
 
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.js"></script>
+    <script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
 
-    <script>
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+        controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
 
-        // Full list of configuration options available at:
-        // https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-            transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-            // Optional reveal.js plugins
-            dependencies: [
-                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-                { src: 'plugin/zoom-js/zoom.js', async: true },
-                { src: 'plugin/notes/notes.js', async: true }
-            ]
-        });
-
-    </script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-45999426-3', 'auto');
-      ga('send', 'pageview');
-
-    </script>
-  </body>
+				menu: {
+					markers: true,
+					openSlideNumber: true
+				},
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js' },
+					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/menu/menu.js', async: true },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
 </html>
