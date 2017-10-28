@@ -34,13 +34,14 @@
     <div class="reveal">
       <div class="slides">
 
-        <section class="intro" data-transition="zoom" id="home" data-menu-title="Title Slide">
+        <section class="intro" data-transition="zoom" id="home">
+          <span class="menu-title" style="display: none">Home</span>
           <p>
             <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>web UI</h1>
-          <h2>Spark Application's Web Console</h2>
+          <h1 style="font-size: 3.55em;">web UI</h1>
+          <h1 style="font-size: 2.77em;">Apache Spark 2.2</h1>
 
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
@@ -61,14 +62,17 @@
             <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
               Environment Variables <small>(considered obsolete)</small>
             </p>
-            <ul>
-              <li>Switch to Mastering Apache Spark 2
-                <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-properties.html">Spark Properties and spark-defaults.conf Properties File</a></li>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit-SparkSubmitOptionParser.html">SparkSubmitOptionParser — spark-submit's Command-Line Parser</a></li>
-                </ul>
-              </li>
-            </ul>
+            <hr>
+            <div style="font-size: medium;">
+              <ul>
+                <li>Find more in Mastering Apache Spark 2
+                  <ul>
+                    <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-properties.html">Spark Properties and spark-defaults.conf Properties File</a></li>
+                    <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit-SparkSubmitOptionParser.html">SparkSubmitOptionParser — spark-submit's Command-Line Parser</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           </div>
           <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
@@ -108,61 +112,90 @@
           <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
 
-        <section id="webui-tabs">
-          <div style="text-align: left">
-            <h2>web UI Tabs</h2>
-            <hr>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              <b>Jobs</b> shows status of Spark jobs
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              <b>Stages</b> shows status of stages of all Spark jobs
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              <b>Storage</b> shows RDD size and memory use
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              <b>Environment</b> shows the environment
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              <b>Executors</b> shows status of executors
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              <b>SQL</b> shows status of structured queries
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Module-specific tabs (<b>Streaming</b> or <b>Thrift Server</b>)
-            </p>
-            <small>Switch to <a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-webui.html">Mastering Apache Spark 2</a></small>
-          </div>
-          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
-        </section>
-
         <section>
-          <section id="webui-demos">
-            <h1>Demo Time</h1>
-            <h2>web UI in Action</h2>
-          </section>
-          <section>
-            <span class="menu-title" style="display: none">Using web UI</span>
+          <section id="webui-tabs">
             <div style="text-align: left">
-              <h2>Demo <small>(1 of 2)</small></h2>
+              <h2>web UI Tabs <small>(1 of 2)</small></h2>
               <hr>
-              <ol>
-                <li>Showing Active, Failed, Completed Jobs in Spark UI</li>
-              </ol>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <b>Jobs</b> shows status of Spark jobs
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <b>Stages</b> shows status of stages of all Spark jobs
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <b>Storage</b> shows RDD size and memory use
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <b>Environment</b> shows the environment
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <b>Executors</b> shows status of executors
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <b>SQL</b> shows status of batch and streaming queries
+              </p>
             </div>
             <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
           <section>
+            <div style="text-align: left">
+              <h2>web UI Tabs <small>(2 of 2)</small></h2>
+              <hr>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Module-specific tabs for <b>Streaming</b> and <b>Thrift Server</b>
+              </p>
+              <hr>
+              <div style="font-size: medium;">
+                <ul>
+                  <li>Find more in Mastering Apache Spark 2
+                    <ul>
+                      <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-webui.html">Web UI — Spark Application’s Web Console</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+        </section>
+
+        <section>
+          <section id="demos">
+            <div style="text-align: left">
+    					<h2>Demo Time</h2>
+              <hr>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="#/using-webui">Using web UI</a>
+              </p>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="#/webui-executors">Observing Executors</a>
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="using-webui">
+            <span class="menu-title" style="display: none">Using web UI</span>
+            <div style="text-align: left">
+              <h2>Demo / Using web UI</h2>
+              <hr>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Showing Active, Failed, Completed Jobs in Spark UI
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="webui-executors">
             <span class="menu-title" style="display: none">Observing Executors</span>
             <div style="text-align: left">
-              <h2>Demo <small>(2 of 2)</small></h2>
+              <h2>Demo / Observing Executors</h2>
               <hr>
-              <ol>
-                <li>Using Hadoop YARN cluster to observe executors in Event Timeline</li>
-                <li>Use <b>SparkContext.requestTotalExecutors</b></li>
-              </ol>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Using Hadoop YARN cluster to observe executors in Event Timeline
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Using <b>SparkContext.requestTotalExecutors</b> to request executors
+              </p>
             </div>
             <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>

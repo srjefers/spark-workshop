@@ -1,69 +1,53 @@
 <!doctype html>
+<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Apache Spark 2 Workshop :: Structured Streaming</title>
-
-    <meta name="description" content="Apache Spark 2 Workshop :: Structured Streaming">
+    <meta name="description" content="Apache Spark 2 Workshop | Structured Streaming">
     <meta name="author" content="Jacek Laskowski">
+
+    <title>Apache Spark 2 Workshop | Structured Streaming</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/jacek.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
-
-    <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
-
     <!-- Printing and PDF exports -->
-    <script>
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    </script>
-
-    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
-    <style>
-      .slides .header {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-      }
-      .slides .footer {
-        position: absolute;
-        bottom: 0px;
-        left: 35%;
-      }
-    </style>
-    <!--[if lt IE 9]>
-    <script src="lib/js/html5shiv.js"></script>
-    <![endif]-->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
   </head>
 
   <body>
     <div class="reveal">
       <div class="slides">
 
-        <div class="footer">
-          <small>Copyright ©2017 Jacek Laskowski</small>
-        </div>
-
-        <section class="intro" data-transition="zoom">
+        <section class="intro" data-transition="zoom" id="home">
+          <span class="menu-title" style="display: none">Home</span>
           <p>
             <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
             <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Structured Streaming</h1>
-          <h2>Apache Spark 2.2</h2>
+          <h1 style="font-size: 3.55em;">Structured Streaming</h1>
+          <h1 style="font-size: 2.77em;">Apache Spark 2.2</h1>
+
           <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2017 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
 
         <section id="agenda" data-markdown>
@@ -77,9 +61,8 @@
             1. [Streaming Sink](#/streaming-sink)
             1. [Streaming Query](#/streaming-query)
             1. [StreamingQueryManager](#/streaming-query-manager)
-            1. [Demo: Structured Streaming and Rate Source](#/demo-rate)
-            1. [Exercise: Structured Streaming and CSV Files](#/exercise-csv)
-            1. [Exercise: Structured Streaming and Apache Kafka](#/exercise-kafka)
+            1. [Demo: Streaming with Rate Source](#/demo-rate)
+            1. [Exercises](#/exercises)
           </script>
         </section>
 
@@ -194,24 +177,37 @@
 
         <section id="demo-rate" data-markdown>
           <script type="text/template">
-            ## Structured Streaming and Rate Source
+            ## Streaming with Rate Source
             ### (Demo)
 
+            1. Simple rate-to-console pipeline
             1. Using **rate** format for source and **console** for sink
           </script>
         </section>
 
         <section>
           <section id="exercises">
-            <h1>Structured Streaming</h1>
-            <h1>Exercises</h1>
+            <div style="text-align: left">
+    					<h2>Exercises</h2>
+              <hr>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="#/exercise-csv">Streaming CSV Files</a>
+              </p>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="#/exercise-kafka">From and To Apache Kafka</a>
+              </p>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="#/exercise-groupBy">Streaming Aggregation with groupBy</a>
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
           <section id="exercise-csv" data-markdown>
             <script type="text/template">
-              ## Structured Streaming and CSV Files
-              ### (Exercise)
+              ## Streaming CSV Files
 
-              1. Develop a standalone Spark SQL application (IntelliJ IDEA)
+              1. Develop a standalone Spark SQL application
+                * Use IntelliJ IDEA
               1. Use **csv** format for source and **console** for sink
               1. Use **sbt package** and **spark-submit**
               1. Time: **30 mins**
@@ -219,18 +215,103 @@
           </section>
           <section id="exercise-kafka" data-markdown>
             <script type="text/template">
-              ## Structured Streaming and Apache Kafka
-              ### (Exercise)
+              ## From and To Apache Kafka
 
-              1. Start Kafka Broker and Kafka's Console Producer
-              1. Develop a standalone Spark SQL application (IntelliJ IDEA)
-              1. Use **kafka** format for source and **console** for sink
+              1. Start Kafka Broker and Console Producer
+              1. Develop a standalone Spark SQL application
+                * Use IntelliJ IDEA
+              1. (part 1) **kafka** format for source and **console** for sink
+              1. (part 2) **kafka** format for source and **kafka** for sink
               1. Use **sbt package** and **spark-submit**
               1. Read [KafkaSource](https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-KafkaSource.html)
               1. Time: **45 mins**
             </script>
           </section>
+          <section id="exercise-groupBy" data-markdown>
+            <script type="text/template">
+              ## Streaming Aggregation with groupBy
+
+              1. Develop a standalone Spark SQL application
+                * Use IntelliJ IDEA
+              1. Read datasets from Apache Kafka (**kafka** source)
+              1. Use **groupBy** operator on streaming Dataset
+              1. Use **sbt package** and **spark-submit**
+              1. Time: **45 mins**
+            </script>
+          </section>
         </section>
+
+        <section>
+          <section id="structured-streaming-internals">
+            <div style="text-align: left">
+    					<h2>Internals / StreamExecution <small>(1 of 4)</small></h2>
+              <hr>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <b>StreamExecution</b> &mdash; execution environment of a single continuous query (aka <b>streaming Dataset</b>)</p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                StreamExecution has multiple streaming <b>sources</b> but only one streaming <b>sink</b></p>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Executes every <b>trigger</b> and adds results to the <b>sink</b></p>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Created exclusively when <b>DataStreamWriter</b> is started.</p>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <div style="text-align: left">
+    					<h2>StreamExecution <small>(2 of 4)</small></h2>
+              <hr>
+              <div style="text-align: left">
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                  StreamExecution starts a <b>thread of execution</b> that runs the streaming query continuously and concurrently</p>
+              </div>
+              <div style="text-align: center">
+							  <img src="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/images/StreamExecution-start.png">
+              </div>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <div style="text-align: left">
+    					<h2>StreamExecution <small>(3 of 4)</small></h2>
+              <hr>
+              <div style="text-align: center">
+							  <img src="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/images/StreamExecution-uniqueSources.png">
+              </div>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <div style="text-align: left">
+    					<h2>StreamExecution <small>(4 of 4)</small></h2>
+              <hr>
+              <div style="text-align: left">
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                  StreamExecution collects <b>duration</b> for the execution units of a streaming batch</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                  Use <b>StreamingQuery.lastProgress</b> or <b>StreamingQuery.recentProgress</b></p>
+              </div>
+              <div style="text-align: center">
+							  <img src="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/images/StreamExecution-durationMs.png">
+              </div>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+				</section>
+
+        <section>
+          <section>
+            <div style="text-align: left">
+    					<h2>Internals / IncrementalExecution</h2>
+              <hr>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <b>IncrementalExecution</b> &mdash; QueryExecution of a streaming Dataset</p>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Created (in <b>queryPlanning</b> Phase) for incremental execution of the logical query plan (every trigger)</p>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+				</section>
 
         <section id="recap" data-markdown>
           <script type="text/template">
@@ -243,67 +324,55 @@
             1. [Streaming Sink](#/streaming-sink)
             1. [Streaming Query](#/streaming-query)
             1. [StreamingQueryManager](#/streaming-query-manager)
-            1. [Demo: Structured Streaming and Rate Source](#/demo-rate)
-            1. [Exercise: Structured Streaming and CSV Files](#/exercise-csv)
-            1. [Exercise: Structured Streaming and Apache Kafka](#/exercise-kafka)
+            1. [Demo: Streaming with Rate Source](#/demo-rate)
+            1. [Exercises](#/exercises)
           </script>
         </section>
 
-        <section id="questions" style="text-align: left" data-markdown>
+        <section style="text-align: left" data-markdown id="questions">
           <script type="text/template">
             # Questions?
 
-              * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
-                * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
-              * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
-              * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
-              * Use [Jacek's code at GitHub](https://github.com/jaceklaskowski)
-              * Read [blog posts on Medium](https://medium.com/@jaceklaskowski)
-              * Upvote [my answers on Quora](https://www.quora.com/profile/Jacek-Laskowski)
-              * Connect on [LinkedIn](https://www.linkedin.com/in/jaceklaskowski/)
-              * Visit [Jacek Laskowski's blog](https://blog.jaceklaskowski.pl)
+            * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
+              * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
+            * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+            * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </script>
         </section>
 
       </div>
     </div>
 
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.js"></script>
+    <script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
 
-    <script>
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+        controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
 
-        // Full list of configuration options available at:
-        // https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-            transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-            // Optional reveal.js plugins
-            dependencies: [
-                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                { src: 'plugin/zoom-js/zoom.js', async: true },
-                { src: 'plugin/notes/notes.js', async: true }
-            ]
-        });
-
-    </script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-45999426-3', 'auto');
-      ga('send', 'pageview');
-
-    </script>
-  </body>
+				menu: {
+					markers: true,
+					openSlideNumber: true
+				},
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js' },
+					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/menu/menu.js', async: true },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
 </html>
