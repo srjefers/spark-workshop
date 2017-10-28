@@ -1,18 +1,16 @@
 # Advanced Apache Spark for Developers Workshop (5 days)
 
-## What You Will Learn (aka Objectives)
+## What You Will Learn / Objectives
 
-The goal of the **Advanced Apache Spark for Developers Workshop** is to understand the internals of Apache Spark 2.x and the modules (Spark SQL, Spark Structured Streaming and Spark MLlib). The workshop will give you a deep understanding of performance tuning of Apache Spark applications and the advanced features of Apache Spark.
+The goal of the **Advanced Apache Spark for Developers Workshop** is to build the deeper understanding of the internals of Apache Spark 2.x (i.e. Spark Core, Spark SQL, Spark Structured Streaming and Spark MLlib). The workshop will teach you how to do performance tuning of Apache Spark applications and the more advanced features of Apache Spark.
 
-**NOTE** The workshop uses the latest and greatest **Apache Spark 2.2.0**.
+**NOTE** The workshop uses the latest and greatest [Apache Spark 2.2.0](http://spark.apache.org/releases/spark-release-2-2-0.html).
 
-The workshop uses an intense **learn-by-doing** approach in which the modules start with just enough knowledge to get you going and quickly move on to applying the concepts in assignments.
+The workshop follows a very intense **learn-by-doing** approach in which the modules start with just enough knowledge to get you going and quickly move on to applying the concepts in practical exercises.
 
-The workshop includes many practical sessions that should meet (and quite possibly exceed) expectations of software developers with a significant experience in Apache Spark and a good knowledge of Scala, senior administrators, operators, devops, and senior support engineers.
+The workshop includes many practical sessions that should meet (and quite likely exceed) expectations of software developers with a significant experience in Apache Spark and a good knowledge of Scala, senior administrators, operators, devops, and senior support engineers.
 
-**CAUTION**: The workshop is very hands-on and practical, i.e. not for faint-hearted. _Seriously!_ After just a couple of days your mind, eyes, and hands will all be trained to recognise the patterns how to set up and operate Spark infrastructure in your Big Data and Predictive Analytics projects.
-
-**CAUTION** I have already trained people who expressed their concern that there were too many exercises. _Your dear drill sergeant, Jacek._
+**CAUTION**: The workshop is very hands-on and practical, i.e. not for faint-hearted. _Seriously!_ After just a couple of days your mind, eyes, and hands will all be trained to recognise the patterns how to set up and operate Spark infrastructure for your Big Data and Predictive Analytics projects.
 
 ## Duration
 
@@ -21,134 +19,115 @@ The workshop includes many practical sessions that should meet (and quite possib
 ## Target Audience
 
 * Experienced Software Developers
-  * Significant experience of Apache Spark
   * Good knowledge of Scala
+  * Significant experience in Apache Spark
 * Senior Administrators
 * Senior Support Engineers
 
 ## Agenda
 
-### Day 1 &mdash; Spark Core
+### Spark Core (1.5 Days)
 
 1. Anatomy of Spark Core Data Processing
-  1. `SparkContext`, `SparkConf`
-  1. Transformations and Actions
-  1. Units of Physical Execution: Jobs, Stages, Tasks and Job Groups
-  1. RDD Lineage
-      * DAG View of RDDs
-      * Logical Execution Plan
-  1. Spark Execution Engine
-      * DAGScheduler
-      * TaskScheduler
-      * Scheduler Backends
-      * Executor Backends
-  1. Partitions and Partitioning
-  1. Shuffle
-      * Wide and Narrow Dependencies
-  1. Caching and Persistence
-  1. Checkpointing
+    1. `SparkContext` and `SparkConf`
+    1. Transformations and Actions
+    1. Units of Physical Execution: Jobs, Stages, Tasks and Job Groups
+    1. RDD Lineage
+        * DAG View of RDDs
+        * Logical Execution Plan
+    1. Spark Execution Engine
+        * DAGScheduler
+        * TaskScheduler
+        * Scheduler Backends
+        * Executor Backends
+    1. Partitions and Partitioning
+    1. Shuffle
+    1. Caching and Persistence
+    1. Checkpointing
 1. Elements of Spark Runtime Environment
-  1. The Driver
-  1. Executors
-      * TaskRunners
-      * BlockManagers
-  1. RPC Environment (RpcEnv)
-  1. Deploy Modes
-  1. Spark Clusters
-      * Master and Workers
+    1. The Driver and Executors
+    1. Deploy Modes
+    1. Spark Clusters
+        * Master and Workers
 1. Spark Tools
-  1. `spark-shell`
-  1. `spark-submit`
-  1. `spark-class`
-1. Monitoring Spark Applications using web UI
-  1. The Different Tabs in web UI
-  1. Exercise: Monitoring using web UI
-      * Executing Spark Jobs to Enable Different Statistics and Statuses
-
-### Day 2 &mdash; Spark Core
-
-1. Spark on Hadoop YARN cluster
-  1. Exercise: Setting up Hadoop YARN
-      * Accessing Resource Manager's web UI
-  1. Exercise: Submitting Applications using `spark-submit`
-      * `--master yarn`
-      * `yarn-site.xml`
-      * `yarn application -list`
-      * `yarn application -status`
-      * `yarn application -kill`
-  1. [Runtime Properties](http://spark.apache.org/docs/latest/running-on-yarn.html#spark-properties) - Meaning and Application
-  1. Troubleshooting
-      * log files
-  1. YarnShuffleService -- ExternalShuffleService on YARN
-  1. Multi-tenant YARN Cluster Setup and Spark
-      * Overview of YARN Schedulers (e.g. Capacity Scheduler)
-      * `spark-submit --queue`
+    * `spark-shell`
+    * `spark-submit`
+    * `spark-class`
+1. Troubleshooting and Monitoring
+    1. web UI
+    1. Log Files
+    1. `SparkListeners`
+        * `StatsReportListener`
+        * Event Logging using `EventLoggingListener` and History Server
+        * Exercise: Event Logging using `EventLoggingListener`
+        * Exercise: Developing Custom SparkListener
+    1. Spark Metrics System
 1. Tuning Spark Infrastructure
-  1. Exercise: Configuring CPU and Memory for Driver and Executors
-  1. Scheduling Modes: FIFO and FAIR
-      * Exercise: Configuring Pools in FAIR Scheduling Mode
-1. Monitoring Spark using `SparkListeners`
-  1. `LiveListenerBus`
-  1. `StatsReportListener`
-  1. Event Logging using `EventLoggingListener` and History Server
-  1. Exercise: Event Logging using `EventLoggingListener`
-  1. Exercise: Developing Custom SparkListener
+    1. Exercise: Configuring CPU and Memory for Driver and Executors
+    1. Scheduling Modes: FIFO and FAIR
+    1. Exercise: Configuring Pools in FAIR Scheduling Mode
 
-### Day 3 &mdash; Spark SQL
+### Spark SQL (2 Days)
 
-1. `SparkSession` vs `SparkContext`
+1. `SparkSession`
 1. Dataset, DataFrame and Encoders
-1. QueryExecution — Query Execution of Dataset
+1. `QueryExecution` — Query Execution of Dataset
 1. Exercise: Debugging Query Execution
 1. web UI
-1. Joins, esp. Broadcast Joins
-1. Caching and Persistence
 1. DataSource API
-1. Exercise: Observing Shuffling with Aggregations operations.
-1. [Case Study: Number of Partitions for groupBy Aggregation](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-performance-tuning-groupBy-aggregation.html)
+1. Columns, Operators, Standard Functions and UDFs
+1. Joins
+1. Basic Aggregation
+    * **groupBy** and **groupByKey** operators
+    * [Case Study: Number of Partitions for groupBy Aggregation](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-performance-tuning-groupBy-aggregation.html)
+1. Windowed Aggregation
+1. Multi-Dimensional Aggregation
+1. Caching and Persistence
 1. Catalyst — Tree Manipulation Framework
-  1. Expressions, LogicalPlans and SparkPlans
-  1. Logical and Physical Operators
+    1. Expressions, LogicalPlans and SparkPlans
+    1. Logical and Physical Operators
 1. Analyzer — Logical Query Plan Analyzer
 1. SparkOptimizer — Logical Query Optimizer
-  1. Logical Plan Optimizations
+    1. Logical Plan Optimizations
 1. SparkPlanner — Query Planner with no Hive Support
-  1. Execution Planning Strategies
+    1. Execution Planning Strategies
 1. Physical Plan Preparations Rules
 1. Tungsten Execution Backend (aka Project Tungsten)
-  1. Whole-Stage Code Generation (aka Whole-Stage CodeGen)
-  1. InternalRow and UnsafeRow
+    1. Whole-Stage Code Generation (aka Whole-Stage CodeGen)
+    1. InternalRow and UnsafeRow
 
-### Day 4 &mdash; Spark Structured Streaming
+### Spark Structured Streaming (0.5 Days)
 
 1. [Spark Structured Streaming](../spark-structured-streaming-workshop.md)
 
-### Day 5 &mdash; Spark MLlib
+### Spark MLlib (1 Day)
 
 1. ML Pipelines and PipelineStages (spark.ml)
 1. ML Pipeline Components
-  1. Transformers
-  1. Estimators
-  1. Models
-  1. Evaluators
-  1. CrossValidator
-  1. Params (and ParamMaps)
+    1. Transformers
+    1. Estimators
+    1. Models
+    1. Evaluators
+    1. CrossValidator
+    1. Params (and ParamMaps)
+1. Supervised and Unsupervised Learning with Spark MLlib
+    1. Classification and Regression
+    1. Clustering
+    1. Collaborative Filtering
+1. Model Selection and Tuning
 1. ML Persistence — Saving and Loading Models and Pipelines
-1. Exercise: Text Classification
-1. Exercise: Linear Regression
-1. Exercise: Classification using K-Means
 
 ## Requirements
 
 * Training classes are best for groups up to 12 participants
 * Participants have decent computers, preferably with Linux or Mac OS operating systems
   * [There are issues with running Spark on Windows](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-tips-and-tricks-running-spark-windows.html) (mostly with Spark SQL / Hive).
-* Installed software
+* Participants should install the following packages:
   * [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
   * [IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download/) with the [Scala plugin](https://www.jetbrains.com/help/idea/creating-and-running-your-scala-application.html)
   * [sbt](http://www.scala-sbt.org/download.html)
   * [Apache Kafka 0.11.0.1](http://kafka.apache.org/downloads)
   * [PostgreSQL 10](http://www.postgresql.org/download/) or any other relational database
-* Participants should download the following software
+* Participants should download the following packages:
   * [Apache Spark 2.2](http://spark.apache.org/downloads.html)
   * [PostgreSQL JDBC 4.2 Driver, 42.1.4](https://jdbc.postgresql.org/download.html)
