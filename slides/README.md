@@ -4,6 +4,7 @@
 
 ## Table of Contents
 
+1. [Advanced Apache Spark for Developers Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-advanced-spark-developers.html) for Experienced Scala Developers with significant experience in Apache Spark &mdash; taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet)
 1. [Graduate Scala and Spark Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-graduate-scala-spark.html) for Junior Python and Java Developers &mdash; taught in [London, UK](https://en.wikipedia.org/wiki/London)
 1. [Spark SQL 2.2 Workshop Agenda (3 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-3-days-Spark-SQL.html) for Data Engineers, Business Analysts and Architects - taught in-class once in [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw)
 1. [Spark SQL / Scala Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Scala-SparkSQL.html) for Data Engineers, Business Analysts and Architects - taught twice in [Collegeville, PA, USA](https://en.wikipedia.org/wiki/Collegeville,_Pennsylvania)
