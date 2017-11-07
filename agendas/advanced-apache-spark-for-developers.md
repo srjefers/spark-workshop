@@ -2,9 +2,9 @@
 
 ## What You Will Learn / Objectives
 
-The goal of the **Advanced Apache Spark for Developers Workshop** is to build the deeper understanding of the internals of Apache Spark 2.x (i.e. Spark Core, Spark SQL, Spark Structured Streaming and Spark MLlib). The workshop will teach you how to do performance tuning of Apache Spark applications and the more advanced features of Apache Spark.
+The goal of the **Advanced Apache Spark for Developers Workshop** is to build the deeper understanding of the internals of Apache Spark (Spark Core) and the modules in Apache Spark 2 (Spark SQL, Spark Structured Streaming and Spark MLlib). The workshop will teach you how to do performance tuning of Apache Spark applications and the more advanced features of Apache Spark 2.
 
-**NOTE** The workshop uses the latest and greatest [Apache Spark 2.2.0](http://spark.apache.org/releases/spark-release-2-2-0.html).
+**NOTE** The workshop uses the latest and greatest [Apache Spark 2.2.0](http://spark.apache.org/releases/spark-release-2-2-0.html) and is particularly well-suited to Spark developers who worked with Apache Spark 1.x.
 
 The workshop follows a very intense **learn-by-doing** approach in which the modules start with just enough knowledge to get you going and quickly move on to applying the concepts in practical exercises.
 
@@ -20,7 +20,7 @@ The workshop includes many practical sessions that should meet (and quite likely
 
 * Experienced Software Developers
   * Good knowledge of Scala
-  * Significant experience in Apache Spark
+  * Significant experience in Apache Spark 1.x
 * Senior Administrators
 * Senior Support Engineers
 
