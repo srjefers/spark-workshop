@@ -12,22 +12,22 @@
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
     <link rel="stylesheet" href="reveal.js/css/jacek.css">
-		<link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
 
     <!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
   </head>
 
   <body>
@@ -70,138 +70,33 @@
           </script>
         </section>
 
-        <section>
-          <section data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Window with first function</span>
-              ## Window with first function
-
-              1. [How to find first non-null ids per group?](https://stackoverflow.com/q/42986965/1305344)
-```scala
-scala> dataset.show
-+----+-----+
-|  id|group|
-+----+-----+
-|null|    0|
-|null|    1|
-|   2|    0| <-- 2 for group 0
-|null|    1|
-|   4|    1| <-- 4 for group 1
-+----+-----+
-```
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              ## Hints
-
-              1. Use window aggregation
-              1. Use [first](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
-                * Aggregate function that returns the first value of a column in a group.
-                * Return the first non-null value it sees when **ignoreNulls** is set to **true**.
-            </script>
-          </section>
-        </section>
-
-        <section>
-          <section data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Window with count</span>
-              ## Window with count
-
-              1. [How to add groupBy().count() to the source DataFrame?](https://stackoverflow.com/q/44434590/1305344)
-```scala
-// count column added
-scala> solution.show
-+---+---+-----+
-|  x|  y|count|
-+---+---+-----+
-|  1|  a|    2|
-|  1|  b|    1|
-|  1|  a|    2|
-+---+---+-----+
-```
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              ## Hints
-
-              1. Use window aggregation
-              1. Use [count](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
-                * Aggregate function that returns the number of items in a group.
-            </script>
-          </section>
-        </section>
-
-        <section data-markdown>
+        <section id="exercises" data-markdown>
           <script type="text/template">
-            ## max with All Columns
-
-            1. [How to max value and keep all columns (for max records per group)?](https://stackoverflow.com/q/42636179/1305344)
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ## Window with collect_set and UDF
-
-            1. [How to pass in limit parameter to collect_set function?](https://stackoverflow.com/q/38730912/1305344)
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ## Window and rank
-
-            1. [How to find longest sequence of consecutive dates?](https://stackoverflow.com/q/44282077/1305344)
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ## Window with lag
-
-            1. [How to divide the value of current row with the following one?](https://stackoverflow.com/q/44392754/1305344)
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ## Window with rowsBetween
-
-            1. [How to calculate the current row with the next one?](https://stackoverflow.com/q/44390004/1305344)
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ## Aggregation with nulls
-
-            1. [How to max per column with nulls that should be replaced (with 0)?](https://stackoverflow.com/q/42688684/1305344)
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ## Window Example
-
-            1. [How to select columns not in GROUP BY clause or aggregate function?](https://stackoverflow.com/q/42700933/1305344)
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ## Aggregation to collections
-
-            1. [How to aggregate values into collection after groupBy?](https://stackoverflow.com/q/34202997/1305344)
+            <!-- .slide: style="font-size: 80%; text-align: left" -->
+            ## Exercises
+            <hr>
+            1. [Converting arrays of strings to string](#/converting-arrays-of-strings-to-string)
+            1. [Collecting aggregates](#/groupby-collect-list)
+            1. [Window with first](#/window-first)
+            1. [Window with count](#/window-count)
+            1. [Window with percent_rank](#/window-percent-rank)
+            1. [max with All Columns](#/max-with-all-columns)
+            1. [Window with collect_set and UDF](#/window-collect-set-udf)
+            1. [Window and rank for longest sequence](#/window-rank-longest-sequence)
+            1. [Window with lag](#/window-lag)
+            1. [Window with rowsBetween](#/window-rows-between)
+            1. [Aggregation with nulls](#/aggregation-with-nulls)
           </script>
         </section>
 
         <section>
-          <section data-markdown>
+          <section id="converting-arrays-of-strings-to-string" data-markdown>
             <script type="text/template">
-              ## Converting column of arrays of strings to string?
+              <!-- .slide: style="font-size: 90%" -->
+              <span class="menu-title" style="display: none">Converting arrays of strings to string</span>
+              ## Converting arrays of strings to string <small>(1 of 3)</small>
+
+              1. [How to convert column of arrays of strings to strings?](https://stackoverflow.com/q/38924762/1305344)
 
 ```scala
 val words = Seq(Array("hello", "world")).toDF("words")
@@ -223,7 +118,9 @@ root
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Converting column of arrays of strings to string?
+              <span class="menu-title" style="display: none">Final Output</span>
+              <!-- .slide: style="font-size: 90%" -->
+              ## Converting arrays of strings to string <small>(2 of 3)</small>
 
 ```scala
 scala> solution.show
@@ -243,15 +140,9 @@ root
           </section>
           <section data-markdown>
             <script type="text/template">
-              # SPOILER
-
-              * A solution is on the following slide
-              * [Question on StackOverflow](https://stackoverflow.com/q/38924762/1305344)
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              ## Solution
+              <span class="menu-title" style="display: none">Hints</span>
+              <!-- .slide: style="font-size: 90%" -->
+              ## Converting arrays of strings to string <small>Hints</small>
 
               * Use [concat_ws](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
                 * Concatenates multiple input string columns together into a single string column, using the given separator
@@ -269,6 +160,196 @@ scala> solution.show
           </section>
         </section>
 
+        <section>
+          <section id="groupby-collect-list" data-markdown>
+            <script type="text/template">
+              ## Collecting aggregates
+
+              1. [How to aggregate values into collection after groupBy?](https://stackoverflow.com/q/34202997/1305344)
+              1. Dataset has visitorId, trackingIds and emailIds
+              1. visitorId can appear multiple times
+              1. Collect all trackingIds and emailIds per visitorId
+```
+// Final result
++----------+----------------+----------+
+|visitorId |    trackingIds | emailIds |
++----------+----------------+----------+
+|      a158|[666b,666b,777c]|   [12,'']|
+|      7g21|[c0b5,c0b4]     |  [45, 87]|
++----------+----------------+----------+
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Hints</span>
+              ## Collecting aggregates <small>Hints</small>
+
+              1. Use <b>groupBy</b> aggregate operator
+              1. Use [collect_list](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
+                * Aggregate function that returns a list of objects with duplicates.
+            </script>
+          </section>
+        </section>
+
+        <section>
+          <section id="window-first" data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Window with first</span>
+              ## Window with first
+
+              1. [How to find first non-null ids per group?](https://stackoverflow.com/q/42986965/1305344)
+```scala
+scala> dataset.show
++----+-----+
+|  id|group|
++----+-----+
+|null|    0|
+|null|    1|
+|   2|    0| <-- 2 for group 0
+|null|    1|
+|   4|    1| <-- 4 for group 1
++----+-----+
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Hints</span>
+              ## Window with first <small>Hints</small>
+
+              1. Use window aggregation
+              1. Use [first](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
+                * Aggregate function that returns the first value of a column in a group.
+                * Return the first non-null value it sees when **ignoreNulls** is set to **true**.
+            </script>
+          </section>
+        </section>
+
+        <section>
+          <section id="window-count" data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Window with count</span>
+              ## Window with count
+
+              1. [How to add groupBy().count() to the source DataFrame?](https://stackoverflow.com/q/44434590/1305344)
+```scala
+// count column added
+scala> solution.show
++---+---+-----+
+|  x|  y|count|
++---+---+-----+
+|  1|  a|    2|
+|  1|  b|    1|
+|  1|  a|    2|
++---+---+-----+
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Hints</span>
+              ## Window with count <small>Hints</small>
+
+              1. Use window aggregation
+              1. Use [count](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
+                * Aggregate function that returns the number of items in a group.
+            </script>
+          </section>
+        </section>
+
+        <section>
+          <section id="window-percent-rank" data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Window with percent_rank</span>
+              <!-- .slide: style="font-size: 80%" -->
+              ## Window with percent_rank
+
+              1. [How to add a column with values based on popularity?](https://stackoverflow.com/q/47195372/1305344)
+              1. Dataset has employees and salaries in no particular order
+              1. Add a new column with the following requirements:
+                1. Top 30% gets a value "high"
+                1. The next 40% gets "average"
+                1. The rest gets "low"
+
+```
+Employee   Salary   Percentage
+Tony       50000    Average
+Alan       45000    Low
+Lee        60000    Average
+David      35000    Low
+Steve      65000    High
+Paul       48000    Average
+Micky      62000    Average
+George     80000    High
+Nigel      64000    High
+John       42000    Low
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Hints</span>
+              ## Window with percent_rank <small>Hints</small>
+
+              1. Use window aggregation
+              1. Use [percent_rank](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
+                * Window function that returns the relative rank (i.e. percentile) of rows within a window partition.
+              1. Use [when](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Column) and [otherwise](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Column) methods for the labels
+                * <b>when</b> evaluates a list of conditions and returns one of multiple possible result expressions
+                * <b>otherwise</b> gives the value when no <b>when</b>s have matched
+            </script>
+          </section>
+        </section>
+
+        <section id="max-with-all-columns" data-markdown>
+          <script type="text/template">
+            ## max with All Columns
+
+            1. [How to max value and keep all columns (for max records per group)?](https://stackoverflow.com/q/42636179/1305344)
+          </script>
+        </section>
+
+        <section id="window-collect-set-udf" data-markdown>
+          <script type="text/template">
+            ## Window with collect_set and UDF
+
+            1. [How to pass in limit parameter to collect_set function?](https://stackoverflow.com/q/38730912/1305344)
+          </script>
+        </section>
+
+        <section id="window-rank-longest-sequence" data-markdown>
+          <script type="text/template">
+            ## Window and rank for longest sequence
+
+            1. [How to find longest sequence of consecutive dates?](https://stackoverflow.com/q/44282077/1305344)
+          </script>
+        </section>
+
+        <section id="window-lag" data-markdown>
+          <script type="text/template">
+            ## Window with lag
+
+            1. [How to divide the value of current row with the following one?](https://stackoverflow.com/q/44392754/1305344)
+          </script>
+        </section>
+
+        <section id="window-rows-between" data-markdown>
+          <script type="text/template">
+            ## Window with rowsBetween
+
+            1. [How to calculate the current row with the next one?](https://stackoverflow.com/q/44390004/1305344)
+          </script>
+        </section>
+
+        <section id="aggregation-with-nulls" data-markdown>
+          <script type="text/template">
+            ## Aggregation with nulls
+
+            1. [How to max per column with nulls that should be replaced (with 0)?](https://stackoverflow.com/q/42688684/1305344)
+          </script>
+        </section>
+
         <section style="text-align: left" data-markdown id="questions">
           <script type="text/template">
             # Questions?
@@ -284,35 +365,35 @@ scala> solution.show
     </div>
 
     <script src="reveal.js/lib/js/head.min.js"></script>
-		<script src="reveal.js/js/reveal.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
         controls: true,
-				progress: true,
-				history: true,
-				center: true,
-				slideNumber: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				menu: {
-					markers: true,
-					openSlideNumber: true
-				},
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'reveal.js/plugin/markdown/marked.js' },
-					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
           { src: 'reveal.js/plugin/menu/menu.js', async: true },
-					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
 </html>
