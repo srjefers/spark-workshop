@@ -1,0 +1,2 @@
+# org.apache.spark.sql.sources.DataSourceRegister
+pl.japila.spark.AmadeusDataSourceRegister
