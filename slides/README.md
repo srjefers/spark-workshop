@@ -4,6 +4,7 @@
 
 ## Table of Contents
 
+1. [Spark Structured Streaming in Apache Spark 2.2 Workshop (1 day)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-1-day-spark-structured-streaming.html) for Software Developers &mdash; held in [Ljubljana, Slovenia](https://en.wikipedia.org/wiki/Ljubljana)
 1. [Advanced Apache Spark for Developers Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-advanced-spark-developers.html) for Experienced Scala Developers with significant experience in Apache Spark &mdash; taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet)
 1. [Graduate Scala and Spark Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-graduate-scala-spark.html) for Junior Python and Java Developers &mdash; taught in [London, UK](https://en.wikipedia.org/wiki/London)
 1. [Spark SQL 2.2 Workshop Agenda (3 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-3-days-Spark-SQL.html) for Data Engineers, Business Analysts and Architects - taught in-class once in [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw)
@@ -14,7 +15,7 @@
 1. [Apache Spark 2 Workshop Agenda (5 half-days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-half-days-Scala-SparkSQL-SparkMLlib-Kafka.html) - taught mostly online and in-class once (in [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw))
     * featuring Spark SQL, Spark MLlib, Spark Structured Streaming, web UI, Apache Kafka, Scala, sbt, IntelliJ IDEA, Databricks
 1. [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days.html) - taught in [London, UK](https://en.wikipedia.org/wiki/London) at [Apache Spark 2 Workshop](http://www.meetup.com/London-Spark-Coding-Dojo/events/233488536/)
-1. [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days-ljubljana.html) - taught in [Ljubljana, Slovenia](https://en.wikipedia.org/wiki/Ljubljana)
+1. [2-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-2-days-ljubljana.html) - held in [Ljubljana, Slovenia](https://en.wikipedia.org/wiki/Ljubljana)
 1. [3-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda.html)
 1. [4-Day Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days.html) - taught in [Karlskrona, Sweden](https://en.wikipedia.org/wiki/Karlskrona) and online twice (5 half-days)
 1. [5-Day Spark Ecosystem Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Spark-Ecosystem.html) - taught online twice
@@ -22,24 +23,27 @@
 1. [1-Day Spark SQL 2 / Scala Workshop Using Databricks Cloud Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-1-day-SparkSQL-Databricks-Cloud.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
 1. [4-Day Spark 2 / Scala Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days-toronto.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
 
-### Day 1 &mdash; Introduction to Spark, Scala and Tools
+### Day 0 &mdash; Scala
 
-1. [Agenda - Day 1](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_agenda.html)
-1. [The Elements of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
 1. [Scala &mdash; Just Enough to Write Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
-    1. [Scala Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala-exercises.html)
-1. [Into Apache Spark 2 Using spark-shell (and Databricks)](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
+1. [Scala Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala-exercises.html)
 1. [sbt &mdash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
+
+### Day 1 &mdash; Spark Core
+
+1. [The Elements of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
+1. [Into Apache Spark 2 Using spark-shell (and Databricks)](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
 1. [The Core of Spark Core](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_spark-core.html)
 1. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01-spark-core-webui.html)
 1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
 1. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html)
 1. [Monitoring Spark using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html)
 1. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
+1. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html)
+1. [Dynamic Allocation of Executors](http://blog.jaceklaskowski.pl/spark-workshop/slides/07_Spark-Core-Dynamic-Allocation-Of-Executors.html)
 
-### Day 2 &mdash; Spark SQL
+### Days 2 and 3 &mdash; Spark SQL
 
-1. [Agenda &mdash; Day 2](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_agenda.html)
 1. [Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_spark_sql.html)
 1. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html)
 1. [Columns, Operators, Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-columns-standard-functions-udfs.html)
@@ -52,21 +56,13 @@
 
 ### Day 3 &mdash; Spark MLlib
 
-1. [Agenda - Day 3](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_agenda.html)
 1. [Spark MLlib](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_spark_mllib.html)
 1. [ML Pipelines In-Depth](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-spark-mllib-ml-pipelines.html)
-1. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html)
 
 ### Day 4 &mdash; Spark Structured Streaming and Apache Kafka
 
 1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-structured-streaming.html)
-1. [Spark Streaming's Stateful Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_SparkStreaming-Stateful-Operators.html)
 1. [The Elements of Apache Kafka](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-apache-kafka.html)
-
-## Webinars (One-Hour Each)
-
-1. [Dynamic Allocation of Executors](http://blog.jaceklaskowski.pl/spark-workshop/slides/07_Spark-Core-Dynamic-Allocation-Of-Executors.html)
-1. ..._some were moved to the agenda above_
 
 ## Conference Talks
 
@@ -76,9 +72,13 @@
 
 1. [Using TaskCompletionListener, TaskFailureListener, TaskContext](http://blog.jaceklaskowski.pl/spark-workshop/slides/exercise-TaskCompletionListener-TaskFailureListener-TaskContext.html)
 
-## Deprecated
+## Attic / Deprecated Material
 
 1. [Spark Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_spark_streaming.html)
+1. [Spark Streaming's Stateful Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/04_SparkStreaming-Stateful-Operators.html)
+1. [Agenda &mdash; Day 1](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_agenda.html)
+1. [Agenda &mdash; Day 2](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_agenda.html)
+1. [Agenda &mdash; Day 3](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_agenda.html)
 
 ## Contact The Author
 
