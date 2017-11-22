@@ -63,6 +63,7 @@
 
 1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-structured-streaming.html)
 1. [Fault Tolerance and Checkpointing](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-checkpointing.html)
+1. [Monitoring Streaming Queries](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-monitoring.html)
 1. [Structured Streaming's Internals](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-internals.html)
 1. [The Elements of Apache Kafka](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-apache-kafka.html)
 

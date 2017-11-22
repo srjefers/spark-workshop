@@ -1,0 +1,229 @@
+<!doctype html>
+<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="description" content="Apache Spark 2 Workshop | Structured Streaming | Monitoring Streaming Queries">
+    <meta name="author" content="Jacek Laskowski">
+
+    <title>Apache Spark 2 Workshop | Structured Streaming | Monitoring Streaming Queries</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/jacek.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section class="intro" data-transition="zoom" id="home">
+          <span class="menu-title" style="display: none">Home</span>
+          <p>
+            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1 style="font-size: 2.99em;">Monitoring<br>Streaming Queries</h1>
+          <h3>Spark Structured Streaming</h3>
+
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section id="agenda" data-markdown>
+          <script type="text/template">
+            ## Agenda
+
+            1. [StreamingQueryListener](#/intro)
+              1. [onQueryStarted Callback](#/onQueryStarted)
+              1. [onQueryProgress Callback](#/onQueryProgress)
+              1. [onQueryTerminated Callback](#/onQueryTerminated)
+            1. [Registering and De-Registering StreamingQueryListeners](#/StreamingQueryManager-addListener)
+            1. [Exercise: Custom StreamingQueryListener](#/exercise)
+          </script>
+        </section>
+
+        <section id="intro">
+          <h2>StreamingQueryListener</h2>
+          <ol>
+            <li><b>StreamingQueryListener</b> is the contract for listeners that want to be notified about the life cycle events of streaming queries, i.e. <b>start</b>, <b>progress</b> and <b>termination</b> of a streaming query</li>
+          </ol>
+          <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
+package org.apache.spark.sql.streaming
+
+abstract class StreamingQueryListener {
+  def onQueryStarted(event: QueryStartedEvent): Unit
+  def onQueryProgress(event: QueryProgressEvent): Unit
+  def onQueryTerminated(event: QueryTerminatedEvent): Unit
+}
+          </code></pre>
+        </section>
+
+        <section id="onQueryStarted">
+          <h2>onQueryStarted Callback</h2>
+          <ol>
+            <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
+  def onQueryStarted(event: QueryStartedEvent): Unit
+            </code></pre>
+            <li><b>onQueryStarted</b> triggered right after <b>StreamExecution</b> has started (running streaming batches)</li>
+            <li><b>QueryStartedEvent</b> holds <b>id</b>, <b>runId</b> and <b>name</b></li>
+          </ol>
+        </section>
+
+        <section>
+          <section id="onQueryProgress">
+            <h2>onQueryProgress Callback</h2>
+            <ol>
+              <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
+  def onQueryProgress(event: QueryProgressEvent): Unit
+              </code></pre>
+              <li><b>onQueryProgress</b> triggered when <b>ProgressReporter</b> reports query progress (which is right after <b>StreamExecution</b> has finished a batch trigger)</li>
+              <li><b>QueryProgressEvent</b> holds <b>StreamingQueryProgress</b><small>(on next slide)</small></li>
+            </ol>
+          </section>
+          <section id="StreamingQueryProgress">
+            <h2>StreamingQueryProgress</h2>
+            <ol>
+              <li><b>StreamingQueryProgress</b> holds information about the progress of a streaming query</li>
+              <li><b>StreamingQuery.lastProgress</b> is the most recent <b>StreamingQueryProgress</b> update</li>
+              <li><b>StreamingQuery.recentProgress</b> is the most recent collection of <b>StreamingQueryProgress</b> updates</li>
+            </ol>
+          </section>
+        </section>
+
+        <section id="onQueryTerminated">
+          <h2>onQueryTerminated Callback</h2>
+          <ol>
+            <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
+  def onQueryTerminated(event: QueryTerminatedEvent): Unit
+            </code></pre>
+            <li><b>onQueryTerminated</b> triggered right before <b>StreamExecution</b> finishes running streaming batches (due to a <b>stop</b> or an exception)</li>
+            <li><b>QueryTerminatedEvent</b> holds <b>id</b>, <b>runId</b> and the <b>exception</b> that led to the termination</li>
+          </ol>
+        </section>
+
+        <section>
+          <section id="StreamingQueryManager-addListener">
+            <h2>Registering StreamingQueryListener &mdash; addListener Method</h2>
+            <ol>
+              <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
+  val queryListener: StreamingQueryListener = ...
+  spark.streams.addListener(queryListener)
+              </code></pre>
+            </ol>
+          </section>
+
+          <section id="StreamingQueryManager-removeListener">
+            <h2 style="font-size: 1.88em;">De-registering StreamingQueryListener &mdash; removeListener Method</h2>
+            <ol>
+              <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
+  val queryListener: StreamingQueryListener = ...
+  spark.streams.removeListener(queryListener)
+              </code></pre>
+            </ol>
+          </section>
+        </section>
+
+        <section id="exercise">
+          <div style="text-align: left; font-size: 85%">
+            <h2>Exercise: Custom StreamingQueryListener</h2>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Use <b>StreamingQueryListener</b> to implement your own listener
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Observe how your listener intercepts the lifecycle events
+            </p>
+          </div>
+          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section id="recap" data-markdown>
+          <script type="text/template">
+            ## Recap
+
+            1. [StreamingQueryListener](#/intro)
+              1. [onQueryStarted Callback](#/onQueryStarted)
+              1. [onQueryProgress Callback](#/onQueryProgress)
+              1. [onQueryTerminated Callback](#/onQueryTerminated)
+            1. [Registering and De-Registering StreamingQueryListeners](#/StreamingQueryManager-addListener)
+            1. [Exercise: Custom StreamingQueryListener](#/exercise)
+          </script>
+        </section>
+
+        <section id="questions">
+          <div style="text-align: left">
+            <h1>Questions?</h1>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers</a> on StackOverflow
+            </p>
+          </div>
+          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+        controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				menu: {
+					markers: true,
+					openSlideNumber: true
+				},
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js' },
+					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/menu/menu.js', async: true },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
