@@ -1,0 +1,197 @@
+<!doctype html>
+<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="description" content="Apache Spark 2 Workshop | Structured Streaming | Fault Tolerance and Checkpointing">
+    <meta name="author" content="Jacek Laskowski">
+
+    <title>Apache Spark 2 Workshop | Structured Streaming | Fault Tolerance and Checkpointing</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/jacek.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section class="intro" data-transition="zoom" id="home">
+          <span class="menu-title" style="display: none">Home</span>
+          <p>
+            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1 style="font-size: 3.11em;">Fault Tolerance</h1>
+          <h1 style="font-size: 2.77em;">(and Checkpointing)</h1>
+          <h3>Spark Structured Streaming</h3>
+
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section id="agenda" data-markdown>
+          <script type="text/template">
+            ## Agenda
+
+            1. [Checkpointing](#/intro)
+            1. [Checkpoint Location](#/checkpoint-location)
+            1. [StreamingQuery Identifiers](#/StreamingQuery-identifiers)
+            1. [Exercise: Fault-Tolerant Streaming Query](#/exercise)
+          </script>
+        </section>
+
+        <section id="intro">
+          <h2>Checkpointing</h2>
+          <ol>
+            <li><b>Checkpointing</b> is a process of storing query metadata (i.e. offsets) so that it can recover from upon failure or planned downtime (e.g. system maintenance or application upgrade)</li>
+            <li>Allows for failure-free execution</li>
+            <li><b>Local checkpoints</b> created and deleted automatically</li>
+            <li><b>External checkpoints</b> saved to persistent storage and are never deleted</li>
+          </ol>
+        </section>
+
+        <section id="checkpoint-location">
+          <h2>Checkpoint Location</h2>
+          <ol>
+            <li>Path to a directory where the application will write checkpoint information for fault-tolerance</li>
+            <li>HDFS-compatible fault-tolerant file system</li>
+            <li><b>checkpointLocation</b> option</li>
+            <pre><code>
+  messages.writeStream
+    .format("console")
+    // define checkpoint location
+    .option("checkpointLocation", "path/to/checkpoint/dir")
+    .start
+            </code></pre>
+          </ol>
+        </section>
+
+        <section id="StreamingQuery-identifiers">
+          <h2>StreamingQuery Identifiers</h2>
+          <ol>
+            <li><b>StreamingQuery.id</b> remains the same across restarts with checkpointing enabled</li>
+            <li><b>StreamingQuery.runId</b> always generated every run (regardless of checkpointing status)</li>
+            <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
+val q: StreamingQuery = spark.readStream...start
+q.id    // &lt;-- same across restarts with checkpointing enabled
+q.runId // &lt;-- always unique
+            </code></pre>
+            <li>With checkpointing enabled, every time a query is restarted, it will have the same id but different runIds.</li>
+          </ol>
+        </section>
+
+        <section id="exercise">
+          <div style="text-align: left; font-size: 85%">
+            <h2>Exercise: Fault-Tolerant Streaming Query</h2>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Write a streaming query with <b>checkpointLocation</b> option
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              What happens when you stop the query and start over with checkpointing enabled?
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              What happens when you stop the query and start over without checkpointing?
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              What are the query identifiers?
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              What are the directory structure and files in the checkpoint location?
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              What is the format of the files?
+            </p>
+          </div>
+          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section id="recap" data-markdown>
+          <script type="text/template">
+            ## Recap
+
+            1. [Checkpointing](#/intro)
+            1. [Checkpoint Location](#/checkpoint-location)
+            1. [StreamingQuery Identifiers](#/StreamingQuery-identifiers)
+            1. [Exercise: Fault-Tolerant Streaming Query](#/exercise)
+          </script>
+        </section>
+
+        <section id="questions">
+          <div style="text-align: left">
+            <h1>Questions?</h1>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers</a> on StackOverflow
+            </p>
+          </div>
+          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+        controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				menu: {
+					markers: true,
+					openSlideNumber: true
+				},
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js' },
+					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/menu/menu.js', async: true },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="description" content="Apache Spark 2 Workshop | Structured Streaming | Internals">
+    <meta name="author" content="Jacek Laskowski">
+
+    <title>Apache Spark 2 Workshop | Structured Streaming | Internals</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/jacek.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section class="intro" data-transition="zoom" id="home">
+          <span class="menu-title" style="display: none">Home</span>
+          <p>
+            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1 style="font-size: 2.44em;">Structured Streaming</h1>
+          <h1 style="font-size: 3.55em;">Internals</h1>
+          <h3>Apache Spark 2.2</h3>
+
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section>
+          <section id="StreamExecution">
+            <div style="text-align: left">
+    					<h2>StreamExecution <small>(1 of 4)</small></h2>
+              <hr>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <b>StreamExecution</b> &mdash; execution environment of a single continuous query (aka <b>streaming Dataset</b>)</p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                StreamExecution has multiple streaming <b>sources</b> but only one streaming <b>sink</b></p>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Executes every <b>trigger</b> and adds results to the <b>sink</b></p>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Created exclusively when <b>DataStreamWriter</b> is started.</p>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <div style="text-align: left">
+    					<h2>StreamExecution <small>(2 of 4)</small></h2>
+              <hr>
+              <div style="text-align: left">
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                  StreamExecution starts a <b>thread of execution</b> that runs the streaming query continuously and concurrently</p>
+              </div>
+              <div style="text-align: center">
+							  <img src="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/images/StreamExecution-start.png">
+              </div>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <div style="text-align: left">
+    					<h2>StreamExecution <small>(3 of 4)</small></h2>
+              <hr>
+              <div style="text-align: center">
+							  <img src="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/images/StreamExecution-uniqueSources.png">
+              </div>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <div style="text-align: left">
+    					<h2>StreamExecution <small>(4 of 4)</small></h2>
+              <hr>
+              <div style="text-align: left">
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                  StreamExecution collects <b>duration</b> for the execution units of a streaming batch</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                  Use <b>StreamingQuery.lastProgress</b> or <b>StreamingQuery.recentProgress</b></p>
+              </div>
+              <div style="text-align: center">
+							  <img src="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/images/StreamExecution-durationMs.png">
+              </div>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+				</section>
+
+        <section>
+          <section id="IncrementalExecution">
+            <div style="text-align: left">
+    					<h2>IncrementalExecution</h2>
+              <hr>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <b>IncrementalExecution</b> &mdash; QueryExecution of a streaming Dataset</p>
+    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Created (in <b>queryPlanning</b> Phase) for incremental execution of the logical query plan (every trigger)</p>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+				</section>
+
+        <section style="text-align: left" data-markdown id="questions">
+          <script type="text/template">
+            # Questions?
+
+            * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
+              * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
+            * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+            * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+          </script>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+        controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				menu: {
+					markers: true,
+					openSlideNumber: true
+				},
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js' },
+					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/menu/menu.js', async: true },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

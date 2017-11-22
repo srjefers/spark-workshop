@@ -54,14 +54,16 @@
 1. [Spark SQL 2 &mdash; Tungsten, Catalyst, Query Optimizer and Performance Tuning](http://blog.jaceklaskowski.pl/spark-workshop/slides/speak-spark-sql-for-better-performance.html)
 1. [Spark SQL Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-exercises.html)
 
-### Day 3 &mdash; Spark MLlib
+### Day 4 &mdash; Spark MLlib
 
 1. [Spark MLlib](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_spark_mllib.html)
 1. [ML Pipelines In-Depth](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-spark-mllib-ml-pipelines.html)
 
-### Day 4 &mdash; Spark Structured Streaming and Apache Kafka
+### Day 5 &mdash; Spark Structured Streaming and Apache Kafka
 
 1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-structured-streaming.html)
+1. [Fault Tolerance and Checkpointing](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-checkpointing.html)
+1. [Structured Streaming's Internals](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-internals.html)
 1. [The Elements of Apache Kafka](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-apache-kafka.html)
 
 ## Conference Talks
