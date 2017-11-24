@@ -59,16 +59,17 @@
 1. [Spark MLlib](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_spark_mllib.html)
 1. [ML Pipelines In-Depth](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-spark-mllib-ml-pipelines.html)
 
-### Day 5 &mdash; Spark Structured Streaming and Apache Kafka
+### Day 5 and 6 &mdash; Spark Structured Streaming and Apache Kafka
 
 1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-structured-streaming.html)
-1. [Fault Tolerance and Checkpointing](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-checkpointing.html)
-1. [Monitoring Streaming Queries](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-monitoring.html)
-1. [Structured Streaming's Internals](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-internals.html)
+    1. [Fault Tolerance and Checkpointing](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-checkpointing.html)
+    1. [Monitoring Streaming Queries](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-monitoring.html)
+    1. [Structured Streaming's Internals](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-internals.html)
 1. [The Elements of Apache Kafka](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-apache-kafka.html)
 
 ## Conference Talks
 
+1. [From Basic to Advanced Aggregate Operators in Apache Spark 2.2 (SQL and Streams) by Examples](http://blog.jaceklaskowski.pl/spark-workshop/slides/beescala-nov-24-spark-sql-streaming-from-basic-to-advanced-aggregates.html) @ [BeeScala Conference](https://www.bee-scala.org), Nov 24th, 2017 Ljubljana Slovenia
 1. [HackOn(Data) in Toronto ON - Solutions Review](http://blog.jaceklaskowski.pl/spark-workshop/slides/hackondata-solutions-review.html)
 
 ## Exercises

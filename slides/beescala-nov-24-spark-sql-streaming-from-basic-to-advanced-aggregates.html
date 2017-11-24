@@ -1,0 +1,246 @@
+<!doctype html>
+<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="description" content="From Basic to Advanced Aggregate Operators in Apache Spark 2.2 (SQL and Streams) by Examples | BeeScala Conference">
+    <meta name="author" content="Jacek Laskowski">
+
+    <title>From Basic to Advanced Aggregate Operators in Apache Spark 2.2 (SQL and Streams) by Examples | BeeScala Conference</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/jacek.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section class="intro" data-transition="zoom" id="home" style="font-size: 90%;">
+          <span class="menu-title" style="display: none">Home</span>
+          <p>
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="10%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1 style="font-size: 2.44em;">From Basic to Advanced Aggregates</h1>
+          <h1 style="font-size: 2.67em;">Spark SQL &amp; "Spark Streams"</h1>
+          <h3>Apache Spark 2.2 @BeeScalaConf</h3>
+
+          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section>
+          <section id="speaker" data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Introduction</span>
+              <p>
+                <img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+              </p>
+
+              <div style="text-align: left">
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<b>Jacek Laskowski</b> is an independent consultant</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Specializing in <b>Apache Spark</b>, Apache Kafka, Scala, Apache Mesos, DC/OS, Kafka Streams (recently)</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Development Services | Consulting | Training</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Among contributors to <a href="http://spark.apache.org/releases/spark-release-2-2-0.html#credits">Spark</a> (since <a href="http://spark.apache.org/releases/spark-release-1-6-0.html#credits">1.6.0</a>)</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Contact me at **jacek@japila.pl**</p> <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Follow [@JacekLaskowski](https://twitter.com/jaceklaskowski) on twitter to **#LearnSpark**</p>
+              </div>
+              <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+            </script>
+          </section>
+          <section id="gitbook-spark">
+            <div style="text-align: center">
+              <span class="menu-title" style="display: none">Mastering Apache Spark 2</span>
+              <p>
+                <a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a>
+              </p>
+              <p>
+                <img src="images/jaceklaskowski-gitbook-stats.png" style="border: 0">
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="gitbook-structured-streaming">
+            <div style="text-align: center">
+              <span class="menu-title" style="display: none">Spark Structured Streaming</span>
+              <p>
+                <a href="https://bit.ly/spark-structured-streaming">https://bit.ly/spark-structured-streaming</a>
+              </p>
+              <p>
+                <img width="100%" src="images/jaceklaskowski-structured-streaming-gitbook-stats.png" style="border: 0">
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="gitbooks-mobile-formats">
+            <div style="text-align: center">
+              <span class="menu-title" style="display: none">Gitbooks in Mobile Formats</span>
+              <p>
+                Mobile formats available (PDF, Mobi, ePub) DRM-free
+              </p>
+              <p>
+                <img width="80%" src="images/jaceklaskowski-gitbooks-mobile-formats.png" style="border: 0">
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="stackoverflow">
+            <div style="text-align: center">
+              <span class="menu-title" style="display: none">StackOverflow</span>
+              <p>
+                <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a>
+              </p>
+              <p>
+                <img width="45%" src="images/jaceklaskowski-stackoverflow-stats.png" style="border: 0">
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+        </section>
+
+        <section id="beescala-talk">
+          <div style="text-align: center">
+            <img src="images/beescala-talk-description.png">
+          </div>
+          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section>
+          <section id="agenda">
+            <div style="text-align: left">
+              <h2>Agenda / Spark SQL</h2>
+              <hr>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-basic-aggregation.html#/">Basic Aggregation</a>
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html#/">Windowed Aggregation</a>
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-multi-dimensional-aggregation.html#/">Multi-Dimensional Aggregation</a>
+              </p>
+              <small><i>...and <b>20 mins</b> of our time went away</i></small>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="agenda-from-batch-to-streaming">
+            <div style="text-align: left">
+              <h2>Agenda / From Batch to Streaming</h2>
+              <hr>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-internals.html#/home">Spark Structured Streaming's Internals</a>
+              </p>
+              <small><i>...and <b>25 mins</b> of our time went away</i></small>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="agenda-structured-streaming" style="font-size: 75%;">
+            <div style="text-align: left">
+              <h2 style="font-size: 1.66em">Agenda / Spark Structured Streaming <small>Spark Streams</small></h2>
+              <hr>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-Dataset-operators.html">Streaming Dataset API for aggregates</a>
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-Dataset-groupBy.html">groupBy Operator &mdash; Untyped Streaming Aggregation</a>
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-demo-groupBy-aggregation-append.html">Demo: groupBy Streaming Aggregation with Append Output Mode</a>
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-Dataset-groupByKey.html">groupByKey Operator &mdash; Streaming Aggregation</a>
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-window.html">window Function &mdash; Stream Time Windows</a>
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-Dataset-withWatermark.html">withWatermark Operator &mdash; Event Time Watermark</a>
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-KeyValueGroupedDataset-mapGroupsWithState.html">mapGroupsWithState Operator &mdash; Stateful Streaming Aggregation (with Explicit State Logic)</a>
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-KeyValueGroupedDataset-flatMapGroupsWithState.html">flatMapGroupsWithState Operator &mdash; Arbitrary Stateful Streaming Aggregation (with Explicit State Logic)</a>
+              </p>
+              <small><i>...and <b>40 mins</b> of our time went away</i></small>
+            </div>
+            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+        </section>
+
+        <section id="questions">
+          <div style="text-align: left">
+            <h1>Questions?</h1>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers</a> on StackOverflow
+            </p>
+          </div>
+          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+        controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				menu: {
+					markers: true,
+					openSlideNumber: true
+				},
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js' },
+					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/menu/menu.js', async: true },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
