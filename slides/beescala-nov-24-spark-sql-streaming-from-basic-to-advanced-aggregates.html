@@ -11,23 +11,23 @@
     <title>From Basic to Advanced Aggregate Operators in Apache Spark 2.2 (SQL and Streams) by Examples | BeeScala Conference</title>
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/jacek.css">
-		<link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+    <link rel="stylesheet" href="revealjs-css/jacek.css">
 
     <!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
   </head>
 
   <body>
@@ -119,6 +119,7 @@
         </section>
 
         <section id="beescala-talk">
+          <span class="menu-title" style="display: none">Talk Description</span>
           <div style="text-align: center">
             <img src="images/beescala-talk-description.png">
           </div>
@@ -133,13 +134,13 @@
               <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-basic-aggregation.html#/">Basic Aggregation</a>
               </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <p class="fragment"><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html#/">Windowed Aggregation</a>
               </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <p class="fragment"><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-multi-dimensional-aggregation.html#/">Multi-Dimensional Aggregation</a>
               </p>
-              <small><i>...and <b>20 mins</b> of our time went away</i></small>
+              <small class="fragment"><i>...and <b>20 mins</b> of our time went away</i></small>
             </div>
             <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
@@ -150,7 +151,7 @@
               <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-internals.html#/home">Spark Structured Streaming's Internals</a>
               </p>
-              <small><i>...and <b>25 mins</b> of our time went away</i></small>
+              <small class="fragment"><i>...and <b>25 mins</b> of our time went away</i></small>
             </div>
             <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
@@ -161,28 +162,28 @@
               <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-Dataset-operators.html">Streaming Dataset API for aggregates</a>
               </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <p class="fragment"><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-Dataset-groupBy.html">groupBy Operator &mdash; Untyped Streaming Aggregation</a>
               </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <p class="fragment"><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-demo-groupBy-aggregation-append.html">Demo: groupBy Streaming Aggregation with Append Output Mode</a>
               </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <p class="fragment"><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-Dataset-groupByKey.html">groupByKey Operator &mdash; Streaming Aggregation</a>
               </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <p class="fragment"><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-window.html">window Function &mdash; Stream Time Windows</a>
               </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <p class="fragment"><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-Dataset-withWatermark.html">withWatermark Operator &mdash; Event Time Watermark</a>
               </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <p class="fragment"><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-KeyValueGroupedDataset-mapGroupsWithState.html">mapGroupsWithState Operator &mdash; Stateful Streaming Aggregation (with Explicit State Logic)</a>
               </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              <p class="fragment"><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-sql-streaming-KeyValueGroupedDataset-flatMapGroupsWithState.html">flatMapGroupsWithState Operator &mdash; Arbitrary Stateful Streaming Aggregation (with Explicit State Logic)</a>
               </p>
-              <small><i>...and <b>40 mins</b> of our time went away</i></small>
+              <small class="fragment"><i>...and <b>40 mins</b> of our time went away</i></small>
             </div>
             <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
@@ -212,35 +213,35 @@
     </div>
 
     <script src="reveal.js/lib/js/head.min.js"></script>
-		<script src="reveal.js/js/reveal.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
         controls: true,
-				progress: true,
-				history: true,
-				center: true,
-				slideNumber: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				menu: {
-					markers: true,
-					openSlideNumber: true
-				},
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'reveal.js/plugin/markdown/marked.js' },
-					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'reveal.js/plugin/menu/menu.js', async: true },
-					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'revealjs-plugins/menu/menu.js', async: true },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
 </html>
