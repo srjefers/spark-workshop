@@ -11,12 +11,12 @@ Run with --help for usage help or --verbose for debug output
 ## Steps
 
 1. Create a brand new Scala/sbt project
-  * Use the one and only IntelliJ IDEA
-  * Project name: `spark-external-cluster-manager`
+    * Use the one and only IntelliJ IDEA
+    * Project name: `spark-external-cluster-manager`
 1. Add `libraryDependencies` for Spark 2.0.0 (RC5)
-  * See https://gist.github.com/jborkowski/a77d9cc88067feea24261479afcc4ee1
+    * See https://gist.github.com/jborkowski/a77d9cc88067feea24261479afcc4ee1
 1. ScalaTest
-  * Follow Spark's own  [ExternalClusterManagerSuite](https://github.com/apache/spark/blob/master/core/src/test/scala/org/apache/spark/scheduler/ExternalClusterManagerSuite.scala)
+    * Follow Spark's own  [ExternalClusterManagerSuite](https://github.com/apache/spark/blob/master/core/src/test/scala/org/apache/spark/scheduler/ExternalClusterManagerSuite.scala)
 
 ## Hints
 
