@@ -1,3 +1,5 @@
+# [Spark Core] Developing Custom ExternalClusterManager
+
 ## Goal
 
 The goal of the exercise is to register a custom `ExternalClusterManager` so `scalania` master URL is supported and the following works:

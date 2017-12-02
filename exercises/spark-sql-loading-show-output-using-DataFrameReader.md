@@ -1,6 +1,4 @@
-# Loading Dataset In Format Of show Output Using DataFrameReader
-
-## Goal
+# [Spark SQL] Loading Dataset In Format Of show Output Using DataFrameReader
 
 The exercise is about loading a dataset that is in the format of `show` output using `DataFrameReader`.
 
