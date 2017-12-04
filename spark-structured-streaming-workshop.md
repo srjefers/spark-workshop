@@ -1,8 +1,10 @@
 # Spark Structured Streaming (Apache Spark 2.2) Workshop
 
-[Spark Structured Streaming](https://jaceklaskowski.gitbooks.io/spark-structured-streaming) is the stream processing module in Apache Spark that offers a high-level declarative streaming Dataset API built on top of Spark SQL and allowing for continuous incremental execution of structured queries. As of Spark 2.2.0, Structured Streaming has been marked stable and announced as ready for production use.
+[Spark Structured Streaming](https://jaceklaskowski.gitbooks.io/spark-structured-streaming) is the stream processing module in Apache Spark that offers a high-level declarative streaming Dataset API built on top of Spark SQL and allowing for continuous incremental execution of structured queries.
 
-In this condensed 1-day Spark Structured Streaming hands-on workshop, you will deep dive into and develop end-to-end continuous streaming applications using Spark Structured Streaming, and in particular:
+Note that as of Spark 2.2.0, Structured Streaming has been marked stable and announced as ready for production use.
+
+In this intensive one-day Spark Structured Streaming hands-on workshop, you will learn how to develop end-to-end continuous streaming applications using Spark Structured Streaming. You will gain a strong understanding of the following features:
 
 * Develop and execute your own streaming applications
 * Explore available streaming sources and sinks

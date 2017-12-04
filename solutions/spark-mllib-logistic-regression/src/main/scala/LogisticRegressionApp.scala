@@ -1,4 +1,4 @@
-package com.valueamplify.spark
+package pl.japila.spark
 
 import org.apache.spark.ml.Pipeline
 import org.apache.spark.ml.classification.LogisticRegression
@@ -18,8 +18,9 @@ object LogisticRegressionApp extends App {
   import org.apache.spark.sql.functions.udf
   val topic2Label: Boolean => Double = isSci => if (isSci) 1 else 0
   val toLabel = udf(topic2Label)
-  val labelled = articles.withColumn("label", toLabel('topic.like("sci%"))).cache
+  val labelled = articles.withColumn("label", toLabel('topic like "sci%")).cache
 
+  // that will trigger caching
   labelled.show
 
   // Step 3: Define a ML Pipeline for LogisticRegression classification
