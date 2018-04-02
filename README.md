@@ -9,7 +9,7 @@ This repository contains the materials (i.e. agendas, slides, code) for **Apache
 If you answered **YES** to one or more questions above, I have good news for you! Join one of the following Apache Spark™ workshops and become a Apache Spark™ pro.
 
 1. [Advanced Apache Spark for Developers Workshop (5 days)](agendas/advanced-apache-spark-for-developers.md)
-1. [Spark Structured Streaming (Apache Spark 2.2) Workshop](spark-structured-streaming-workshop.md)
+1. [Spark Structured Streaming Workshop (Apache Spark 2.3)](spark-structured-streaming-workshop.md)
 1. [Spark and Scala (Application Development) Workshop](AGENDA.md)
 1. [Spark Administration and Monitoring Workshop](AGENDA-admin.md)
 1. [Spark and Scala Workshop for Developers (1 Day)](AGENDA-ONE-DAY.md)
