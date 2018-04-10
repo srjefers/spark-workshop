@@ -2,57 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-
-    <title>Apache Spark 2 Workshop :: Spark SQL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <meta name="description" content="Apache Spark 2 Workshop :: Spark SQL">
     <meta name="author" content="Jacek Laskowski">
 
+    <title>Apache Spark 2 Workshop :: Spark SQL</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="revealjs-css/jacek.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
-
-    <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
-
     <!-- Printing and PDF exports -->
     <script>
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
-
-    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
-    <style>
-      .slides .header {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-      }
-      .slides .footer {
-        position: absolute;
-        bottom: 0px;
-        left: 35%;
-      }
-    </style>
-    <!--[if lt IE 9]>
-    <script src="lib/js/html5shiv.js"></script>
-    <![endif]-->
   </head>
 
   <body>
     <div class="reveal">
 
       <div class="slides">
-        <div class="footer">
-          <small>Copyright ©2017 Jacek Laskowski</small>
-        </div>
 
         <section class="intro" data-transition="zoom">
           <p>
@@ -61,9 +41,12 @@
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>Spark SQL</h1>
-          <h2>Apache Spark 2</h2>
-          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
-          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+          <h2>Overview</h2>
+
+          <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
 
         <section id="spark-sql">
@@ -71,18 +54,25 @@
             <h2>Introduction to Spark SQL</h2>
             <ol>
               <li>Spark SQL = <b>SQL</b> + <b>Dataset</b> (and <b>DataFrame</b>)
+              <li>Good ol' <b>SQL</b> statements</li>
+              <li><b>Dataset</b> (and <b>DataFrame</b>) data abstractions
                 <ul>
-                  <li>Good ol' <b>SQL</b> statements</li>
-                  <li><b>Dataset</b> (and <b>DataFrame</b>) data abstractions</li>
-                  <li><b>Encoder</b> for storage- and performance optimizations</li>
+                  <li>Distributed computations</li>
                 </ul>
               </li>
-              <li>Switch to Mastering Apache Spark 2
+              <li><b>Encoder</b> for storage- and performance optimizations
                 <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql.html">Spark SQL — Structured Queries on Large Scale</a></li>
+                  <li>Reducing garbage collections</li>
+                </ul>
+              </li>
+              <li>Read Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql.html">Spark SQL &mdash; Structured Data Processing with Relational Queries on Massive Scale</a></li>
                 </ul>
               </li>
             </ol>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
 
           <section id="sparksession">
@@ -93,61 +83,73 @@
                   <li>&hellip;and Spark in general these days</li>
                 </ul>
               </li>
-              <li>spark-shell gives you one instance as <b>spark</b></li>
-              <li>Use <b>SparkSession.builder</b> Fluent API</li>
-              <li>Helps creating local Datasets
+              <li>Use <b>SparkSession.builder</b> Fluent API to create one</li>
+              <li>Allows creating local Datasets
                 <ul>
                   <li><b>spark.range(numberOfRecords)</b></li>
                 </ul>
               </li>
-              <li>Switch to Mastering Apache Spark 2
+              <li>Loading datasets using <b>load</b> <small>discussed later</small></li>
+              <li>spark-shell gives you one instance as <b>spark</b></li>
+              <li>Read Mastering Spark SQL
                 <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-SparkSession.html">SparkSession — The Entry Point to Spark SQL</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-SparkSession.html">SparkSession &mdash; The Entry Point to Spark SQL</a></li>
                 </ul>
               </li>
             </ol>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
 
-          <section>
+          <section style="font-size: 90%;">
             <h2>DataSource API &mdash; Reading and Writing Datasets</h2>
             <ol>
-              <li>Loading Datasets using <b>spark.read</b></li>
-              <li>Writing Datasets using <b>dataset.write</b>
+              <li>Loading datasets using <b>SparkSession.read</b>
                 <ul>
-                  <li>Lower-case to denote instances (not types)</li>
+                  <li>dataset <span style="font-size: small; vertical-align: super;">(lowercase)</span> = data for processing</li>
                 </ul>
               </li>
-              <li>Switch to Mastering Apache Spark 2
+              <li>Writing Datasets using <b>Dataset.write</b>
                 <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-datasource-api.html">DataSource API — Loading and Saving Datasets</a></li>
+                  <li>Dataset <span style="font-size: small; vertical-align: super;">(uppercase)</span> = a distributed computation</li>
+                </ul>
+              </li>
+              <li>Loading and writing operators create source and sink nodes in a data flow graph</li>
+              <li>Read Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-datasource-api.html">DataSource API &mdash; Managing Datasets in External Data Sources</a></li>
                 </ul>
               </li>
             </ol>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
 
-          <section>
+          <section style="font-size: 90%;">
             <h2>Reading/Loading Datasets</h2>
+            <pre><code>
+      val dataset = spark.read.format("csv").load("csvs/*")
+            </code></pre>
             <ol>
-              <li><b>spark.read</b> &mdash; DataFrameReader
+              <li><b>SparkSession.read</b> &mdash; DataFrameReader
                 <ol>
                   <li><b>format</b></li>
                   <li><b>option</b> and <b>options</b></li>
                   <li><b>schema</b></li>
                   <li><b>load</b></li>
+                  <li>format-specific loading methods <small>discussed on next slide</small></li>
                 </ol>
               </li>
-            </ol>
-            <pre><code>
-          val dataset = spark.read.format("csv").load("csvs/*")
-            </code></pre>
-            <ul>
-              <li>Switch to Mastering Apache Spark 2
+              <li>Read Mastering Spark SQL
                 <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-DataFrameReader.html">DataFrameReader</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-DataFrameReader.html">DataFrameReader &mdash; Reading Datasets from External Data Sources</a></li>
                 </ul>
               </li>
-            </ul>
+            </ol>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
+
           <section>
             <h2>Built-In Formats</h2>
             <ol>
@@ -158,34 +160,36 @@
               <li><b>parquet</b></li>
               <li><b>table</b></li>
               <li><b>text</b> and <b>textFile</b></li>
-              <li><b>spark.read.format(source: String)</b></li>
             </ol>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
-          <section>
+
+          <section style="font-size: 90%;">
             <h2>Writing/Saving Datasets</h2>
+            <pre><code>
+          dataset.write.format("json").save("dailies")
+            </code></pre>
             <ol>
               <li><b>DataFrame.write</b> &mdash; DataFrameWriter
                 <ol>
                   <li><b>format</b></li>
                   <li><b>mode</b></li>
                   <li><b>option</b> and <b>options</b></li>
-                  <li><b>bucketBy</b> and <b>partitionBy</b></li>
-                  <li><b>sortBy</b></li>
+                  <li><b>partitionBy</b>, <b>bucketBy</b> and <b>sortBy</b></li>
                   <li><b>insertInto</b>, <b>save</b> and <b>saveAsTable</b></li>
                 </ol>
               </li>
-            </ol>
-            <pre><code>
-              dataset.write.format("json").save("jsons")
-            </code></pre>
-            <ul>
-              <li>Switch to Mastering Apache Spark 2
+              <li>Read Mastering Spark SQL
                 <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-DataFrameWriter.html">DataFrameWriter</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-DataFrameWriter.html">DataFrameWriter</a></li>
                 </ul>
               </li>
-            </ul>
+            </ol>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
+
           <section>
             <h2>Ad-hoc Local Datasets</h2>
             <ol>
@@ -193,13 +197,16 @@
               <li><b>Seq(...).toDS</b> for local Datasets</li>
               <li>Use <b>import spark.implicits._</b></li>
               <li>All Scala Collections supported (almost)</li>
-              <li>Switch to Mastering Apache Spark 2
+              <li>Read Mastering Spark SQL
                 <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-SparkSession.html#implicits">Implicit Conversions &mdash; implicits object</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-SparkSession.html#implicits">Implicit Conversions &mdash; implicits object</a></li>
                 </ul>
               </li>
             </ol>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
+
           <section>
             <h2>Schema</h2>
             <ol>
@@ -214,12 +221,14 @@
   val schema = Encoders.product[Person].schema
                 </code></pre>
               </li>
-              <li>Switch to Mastering Apache Spark 2
+              <li>Read Mastering Spark SQL
                 <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-schema.html">Schema — Structure of Data</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-schema.html">Schema &mdash; Structure of Data</a></li>
                 </ul>
               </li>
             </ol>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
         </section>
 
@@ -241,8 +250,10 @@
               <li>Execute <b>sbt package</b></li>
               <li>Run the application using <b>spark-submit</b></li>
             </ol>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
-          <section id="exercise-first-app" data-markdown>
+
+          <section style="font-size: 90%;" id="exercise-first-app" data-markdown>
             <script type="text/template">
               ## Exercise: My First Spark SQL Application
               #### spark.version
@@ -251,7 +262,7 @@
                 * Use <b>IntelliJ IDEA</b>
               1. Define Spark SQL dependency in <b>build.sbt</b>
                 * **libraryDependencies**
-                * **"org.apache.spark" %% "spark-sql" % "2.1.1"**
+                * **"org.apache.spark" %% "spark-sql" % "2.3.0"**
               1. Write your <b>Spark SQL code</b>, i.e. <b>spark.version</b>
                 * **SparkSession**
               1. Execute <b>sbt package</b>
@@ -274,7 +285,7 @@ try {
     .csv("inventory/*.csv")
     .write
     .mode("overwrite")
-    .save("processed")
+    .save("reports")
 } finally {
   spark.stop()
 }
@@ -292,7 +303,7 @@ try {
                 * **show** the records
               1. Execute <b>sbt package</b>
               1. Run the application using <b>spark-submit</b>
-              1. Time: 40 mins
+              1. Time: 30 mins
             </script>
           </section>
           <section id="exercise-first-app-spark-standalone" data-markdown>
@@ -305,32 +316,8 @@ try {
                 * **org.apache.spark.deploy.worker.Worker**
               1. Submit Spark application to Cluster
                 * **spark-submit --master spark://localhost:7077**
-              1. Time: 30 mins
+              1. Time: 15 mins
             </script>
-          </section>
-        </section>
-
-        <section>
-          <section>
-            <h2>spark-submit and run-example</h2>
-            <ol>
-              <li><b>spark-submit</b> is a shell script to manage Spark applications.</li>
-              <li><b>run-example</b> is a shell script to run Spark Examples</li>
-              <li>Switch to Mastering Apache Spark 2
-                <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit.html">Spark Submit — spark-submit shell script</a></li>
-                </ul>
-              </li>
-            </ol>
-          </section>
-          <section>
-            <h2>Exercise: run-example SparkPi</h2>
-            <ol>
-              <li>Start <b>Spark Standalone</b> cluster manager</li>
-              <li><a href="https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples">Spark / Scala Examples distributed with Spark</a></li>
-              <li>Run a Spark application using <b>run-example</b></li>
-              <li>Time: 30 mins</li>
-            </ol>
           </section>
         </section>
 
@@ -339,7 +326,7 @@ try {
             <h1>Spark SQL + JDBC</h1>
             <h2>Exercises</h2>
           </section>
-          <section id="exercise-jdbc-postgresql">
+          <section id="exercise-jdbc-postgresql" style="font-size: 90%;">
             <h2>Exercise: Working with Datasets Using JDBC (and PostgreSQL)</h2>
             <ol>
               <li>Develop a standalone Spark SQL application (IntelliJ IDEA)</li>
@@ -372,51 +359,50 @@ try {
           </section>
         </section>
 
-        <section id="questions" style="text-align: left" data-markdown>
+        <section style="text-align: left" data-markdown id="questions">
           <script type="text/template">
             # Questions?
 
-              * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
-                * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
-              * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
-              * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
-              * Use [Jacek's code at GitHub](https://github.com/jaceklaskowski)
-              * Read [blog posts on Medium](https://medium.com/@jaceklaskowski)
-              * Upvote [my answers on Quora](https://www.quora.com/profile/Jacek-Laskowski)
-              * Connect on [LinkedIn](https://www.linkedin.com/in/jaceklaskowski/)
-              * Visit [Jacek Laskowski's blog](https://blog.jaceklaskowski.pl)
+            * Read [Mastering Apache Spark (2.3.0)](https://bit.ly/mastering-apache-spark)
+              * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
+            * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+            * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </script>
         </section>
 
       </div>
     </div>
 
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.js"></script>
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
 
     <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
 
-        // Full list of configuration options available at:
-        // https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-            transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-            // Optional reveal.js plugins
-            dependencies: [
-                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-                { src: 'plugin/zoom-js/zoom.js', async: true },
-                { src: 'plugin/notes/notes.js', async: true }
-            ]
-        });
-
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'revealjs-plugins/menu/menu.js', async: true },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
     </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
