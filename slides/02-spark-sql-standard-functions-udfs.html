@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <meta name="description" content="Apache Spark 2 Workshop | Columns, Operators, Standard Functions and UDFs">
+    <meta name="description" content="Apache Spark 2 Workshop | Standard and User-Defined Functions">
     <meta name="author" content="Jacek Laskowski">
 
-    <title>Apache Spark 2 Workshop | Columns, Operators, Standard Functions and UDFs</title>
+    <title>Apache Spark 2 Workshop | Standard and User-Defined Functions</title>
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
     <link rel="stylesheet" href="revealjs-css/jacek.css">
@@ -40,13 +40,12 @@
             <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1 style="font-size: 2.57em;">Columns, Operators,</h1>
-          <h1 style="font-size: 2.57em;">Standard and User-Defined Functions</h1>
+          <h1 style="font-size: 2.77em;">Standard and User-Defined Functions</h1>
 
-          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
-          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+          <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
 
-          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2017 | @jaceklaskowski | jacek@japila.pl</footer>
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
 
         <section id="agenda" data-markdown>
@@ -54,11 +53,6 @@
             <!-- .slide: style="font-size: 90%" -->
             ## Agenda
 
-            1. [Dataset Columns](#/columns)
-            1. [Column Operators / Expressions](#/column-operators)
-            1. [Dataset Operators](#/dataset-operators)
-              * [Exercise](#/dataset-operators-exercise-createOrReplaceTempView): Using createOrReplaceTempView and SQL
-              * [Exercise](#/dataset-operators-exercise-flatMap) (hard): Using flatMap
             1. [Standard Functions](#/standard-functions)
               * [Exercise](#/standard-functions-exercise): Using Standard Functions (upper)
             1. [Standard Functions for Date and Time](#/standard-functions-datetime)
@@ -66,92 +60,6 @@
             1. [User-Defined Functions (UDFs)](#/udf-heads-up)
               * [Exercise](#/udf-exercise): Using UDFs
           </script>
-        </section>
-
-        <section id="columns" data-markdown>
-          <script type="text/template">
-            <!-- .slide: style="font-size: 90%" -->
-            ## Dataset Columns
-
-            1. **Column** is a function that generates a value per row
-            1. **Column** type with methods
-              * _Explained in the following slide_
-            1. Columns can be <b>free</b> or <b>bound</b> (associated or not with Datasets)
-              ```scala
-              $"columnName"   // free (no Dataset) column reference
-              myDataset("id") // bound column reference
-              ```
-            1. Use **import spark.implicits._**
-            1. Switch to Mastering Apache Spark 2
-              * [Dataset Columns](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-Column.html)
-          </script>
-        </section>
-
-        <section id="column-operators" data-markdown>
-          <script type="text/template">
-            <!-- .slide: style="font-size: 90%" -->
-            ## Column Operators / Expressions
-
-            1. **Column** is an Catalyst expression to generate values
-            1. Special **&#9733;** (star) column reference
-            1. **Operators** to create (compound) columns
-              * **as**, **alias** or **name** for aliases
-              * **===** for equality _(!)_
-              * **desc**, **desc_nulls_first** and **desc_nulls_last** (and for **asc**)
-              * **getItem** to access items in arrays and maps
-              * **over** for windowed aggregates
-              * **cast** for casting to a custom data type
-              * **when** and **otherwise** for conditional values
-            1. **Home exercise**: Read up [Column's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Column)
-          </script>
-        </section>
-
-        <section>
-          <section id="dataset-operators" data-markdown>
-            <script type="text/template">
-              <!-- .slide: style="font-size: 90%" -->
-              ## Dataset Operators
-
-              1. **Dataset Operators** work with all records of a Dataset
-                * **as** to converting a Row-based DataFrame to a Dataset
-                * **createOrReplaceTempView** to register a temporary view
-                * **explain** to show the logical and execution plans
-                * **flatMap** to "explode" records
-                * **randomSplit** to split records to two Datasets randomly
-                * **select**, **selectExpr**, **filter**, **where**
-                * &hellip; _many many more_ &mdash; read up [Dataset's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
-              1. Switch to Mastering Apache Spark 2
-                * [Dataset Operators](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-dataset-operators.html)
-            </script>
-          </section>
-          <section id="dataset-operators-exercise-createOrReplaceTempView" data-markdown>
-            <script type="text/template">
-              ## Exercise: Using createOrReplaceTempView and SQL
-
-              1. Use **createOrReplaceTempView** to register a Dataset and execute a SQL (_of your liking_)
-                * Read up [the scaladoc of createOrReplaceTempView](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
-              1. Time: **15 mins**
-            </script>
-          </section>
-          <section id="dataset-operators-exercise-flatMap" data-markdown>
-            <script type="text/template">
-              <!-- .slide: style="font-size: 90%" -->
-              ## Exercise (hard): Using flatMap
-
-              1. Create a Dataset with a column of array type
-                ```scala
-                val nums = Seq(Seq(1,2,3)).toDF("nums")
-                scala> nums.printSchema
-                root
-                 |-- nums: array (nullable = true)
-                 |    |-- element: integer (containsNull = false)
-                ```
-              1. Use **flatMap** to expand the array column
-                * Read up [flatMap's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
-              1. (extra) Compare performance of **flatMap** and **explode**
-              1. Time: **30 mins**
-            </script>
-          </section>
         </section>
 
         <section>
@@ -181,8 +89,8 @@
               ```scala
               import org.apache.spark.sql.functions._
               ```
-              1. Switch to Mastering Apache Spark 2
-                * [Standard Functions &mdash; functions object](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-functions.html)
+              1. Switch to Mastering Spark SQL
+                * [Standard Functions — functions Object](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions.html)
               1. **Home exercise**: Read up [functions object's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
             </script>
           </section>
@@ -211,8 +119,8 @@
               1. **to_timestamp**
               1. **window**
               1. Read Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-              1. Switch to Mastering Apache Spark 2
-                * [Standard Functions for Date and Time](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-functions-datetime.html)
+              1. Switch to Mastering Spark SQL
+                * [Date and Time Functions](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions-datetime.html)
             </script>
           </section>
           <section id="exercise-datetime-functions" data-markdown>
@@ -255,9 +163,9 @@ scala> diffs.show
             ## User-Defined Functions (UDFs)
             ### « HEADS-UP »
 
-            > **Use the standard functions whenever possible** before reverting to using your own custom UDFs.
+            > **Use the standard functions whenever possible** before reverting to custom UDFs.
 
-            > UDFs are a blackbox for Spark and so it does **not even try** to optimize them.
+            > UDFs are a blackbox for Spark Optimizer and does **not even try** to optimize them.
           </section>
           <section id="user-defined-functions" data-markdown>
             <script type="text/template">
@@ -276,8 +184,8 @@ scala> diffs.show
               1. Use UDFs as standard functions
                 * <b>withColumn</b>, <b>select</b>, <b>filter</b> etc.
                 * Also **callUDF** function
-              1. Switch to Mastering Apache Spark 2
-                * [UDFs — User-Defined Functions](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-sql-udfs.html)
+              1. Switch to Mastering Spark SQL
+                * [UDFs — User-Defined Functions](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-udfs.html)
             </script>
           </section>
           <section data-markdown>
@@ -319,11 +227,6 @@ scala> diffs.show
             <!-- .slide: style="font-size: 90%" -->
             ## Recap
 
-            1. [Dataset Columns](#/columns)
-            1. [Column Operators / Expressions](#/column-operators)
-            1. [Dataset Operators](#/dataset-operators)
-              * [Exercise](#/dataset-operators-exercise-createOrReplaceTempView): Using createOrReplaceTempView and SQL
-              * [Exercise](#/dataset-operators-exercise-flatMap) (hard): Using flatMap
             1. [Standard Functions](#/standard-functions)
               * [Exercise](#/standard-functions-exercise): Using Standard Functions (upper)
             1. [Standard Functions for Date and Time](#/standard-functions-datetime)
@@ -337,7 +240,7 @@ scala> diffs.show
           <script type="text/template">
             # Questions?
 
-            * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
+            * Read [Mastering Apache Spark (2.3.0)](https://bit.ly/mastering-apache-spark)
               * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
@@ -377,6 +280,16 @@ scala> diffs.show
           { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
         ]
       });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
     </script>
   </body>
 </html>

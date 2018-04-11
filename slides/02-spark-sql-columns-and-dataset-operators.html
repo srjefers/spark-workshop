@@ -1,0 +1,219 @@
+<!doctype html>
+<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="description" content="Apache Spark 2 Workshop | Columns and Dataset Operators">
+    <meta name="author" content="Jacek Laskowski">
+
+    <title>Apache Spark 2 Workshop | Columns and Dataset Operators</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="revealjs-css/jacek.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section class="intro" data-transition="zoom" id="home">
+          <span class="menu-title" style="display: none">Home</span>
+          <p>
+            <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1>Columns and Dataset Operators</h1>
+
+          <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section id="agenda" data-markdown>
+          <script type="text/template">
+            <!-- .slide: style="font-size: 90%" -->
+            ## Agenda
+
+            1. [Dataset Columns](#/columns)
+            1. [Column Operators / Expressions](#/column-operators)
+            1. [Dataset Operators](#/dataset-operators)
+              * [Exercise](#/dataset-operators-exercise-createOrReplaceTempView): Using createOrReplaceTempView and SQL
+              * [Exercise](#/dataset-operators-exercise-flatMap) (hard): Using flatMap
+          </script>
+        </section>
+
+        <section id="columns" data-markdown>
+          <script type="text/template">
+            <!-- .slide: style="font-size: 90%" -->
+            ## Dataset Columns
+
+            1. **Column** is a function that generates a value per row
+            1. **Column** type with methods
+              * _Explained in the following slide_
+            1. Columns can be <b>free</b> or <b>bound</b> (associated or not with Datasets)
+              ```scala
+              $"columnName"   // free (no Dataset) column reference
+              myDataset("id") // bound column reference
+              ```
+            1. Use **import spark.implicits._**
+            1. Switch to Mastering Spark SQL
+              * [Column Expressions and Operators](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Column.html)
+          </script>
+        </section>
+
+        <section id="column-operators" data-markdown>
+          <script type="text/template">
+            <!-- .slide: style="font-size: 90%" -->
+            ## Column Operators / Expressions
+
+            1. **Column** is an Catalyst expression to generate values
+            1. Special **&#9733;** (star) column reference
+            1. **Operators** to create (compound) columns
+              * **as**, **alias** or **name** for aliases
+              * **===** for equality _(!)_
+              * **desc**, **desc_nulls_first** and **desc_nulls_last** (and for **asc**)
+              * **getItem** to access items in arrays and maps
+              * **over** for windowed aggregates
+              * **cast** for casting to a custom data type
+              * **when** and **otherwise** for conditional values
+            1. **Home exercise**: Read up [Column's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Column)
+          </script>
+        </section>
+
+        <section>
+          <section id="dataset-operators" data-markdown>
+            <script type="text/template">
+              <!-- .slide: style="font-size: 90%" -->
+              ## Dataset Operators
+
+              1. **Dataset Operators** work with all records of a Dataset
+                * **as** to converting a Row-based DataFrame to a Dataset
+                * **createOrReplaceTempView** to register a temporary view
+                * **explain** to show the logical and execution plans
+                * **flatMap** to "explode" records
+                * **randomSplit** to split records to two Datasets randomly
+                * **select**, **selectExpr**, **filter**, **where**
+                * &hellip; _many many more_ &mdash; read up [Dataset's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
+              1. Switch to Mastering Spark SQL
+                * [Dataset Operators](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-dataset-operators.html)
+            </script>
+          </section>
+          <section id="dataset-operators-exercise-createOrReplaceTempView" data-markdown>
+            <script type="text/template">
+              ## Exercise: Using createOrReplaceTempView and SQL
+
+              1. Use **createOrReplaceTempView** to register a Dataset and execute a SQL (_of your liking_)
+                * Read up [the scaladoc of createOrReplaceTempView](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
+              1. Time: **15 mins**
+            </script>
+          </section>
+          <section id="dataset-operators-exercise-flatMap" data-markdown>
+            <script type="text/template">
+              <!-- .slide: style="font-size: 90%" -->
+              ## Exercise (hard): Using flatMap
+
+              1. Create a Dataset with a column of array type
+                ```scala
+                val nums = Seq(Seq(1,2,3)).toDF("nums")
+                scala> nums.printSchema
+                root
+                 |-- nums: array (nullable = true)
+                 |    |-- element: integer (containsNull = false)
+                ```
+              1. Use **flatMap** to expand the array column
+                * Read up [flatMap's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
+              1. (extra) Compare performance of **flatMap** and **explode**
+              1. Time: **30 mins**
+            </script>
+          </section>
+        </section>
+
+        <section id="recap" data-markdown>
+          <script type="text/template">
+            <!-- .slide: style="font-size: 90%" -->
+            ## Recap
+
+            1. [Dataset Columns](#/columns)
+            1. [Column Operators / Expressions](#/column-operators)
+            1. [Dataset Operators](#/dataset-operators)
+              * [Exercise](#/dataset-operators-exercise-createOrReplaceTempView): Using createOrReplaceTempView and SQL
+              * [Exercise](#/dataset-operators-exercise-flatMap) (hard): Using flatMap
+          </script>
+        </section>
+
+        <section style="text-align: left" data-markdown id="questions">
+          <script type="text/template">
+            # Questions?
+
+            * Read [Mastering Apache Spark (2.3.0)](https://bit.ly/mastering-apache-spark)
+              * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
+            * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+            * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+          </script>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'revealjs-plugins/menu/menu.js', async: true },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>

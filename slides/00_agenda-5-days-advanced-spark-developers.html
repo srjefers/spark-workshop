@@ -81,7 +81,7 @@
           </section>
           <section id="gitbook-spark-sql">
             <div style="text-align: center">
-              <span class="menu-title" style="display: none">Mastering Apache Spark</span>
+              <span class="menu-title" style="display: none">Mastering Spark SQL</span>
               <p>
                 <a href="https://bit.ly/mastering-spark-sql">https://bit.ly/mastering-spark-sql</a>
               </p>
@@ -133,7 +133,7 @@
 
         <section>
           <section id="agenda">
-            <div style="text-align: left">
+            <div style="text-align: left; font-size: 90%">
               <h2>Agenda</h2>
               <hr>
               <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
@@ -146,10 +146,10 @@
                 <a href="#/day3">Day 3</a> &mdash; Spark SQL
               </p>
               <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/day4">Day 4</a> &mdash; Spark MLlib &amp; Spark Structured Streaming
+                <a href="#/day4">Day 4</a> &mdash; Spark SQL &amp; Spark Structured Streaming
               </p>
               <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/day5">Day 5</a> &mdash; Spark Core &amp; Spark SQL
+                <a href="#/day5">Day 5</a> &mdash; Spark MLlib &amp; Troubleshooting and Monitoring
               </p>
             </div>
             <footer style="font-size: small;">&copy;Jacek Laskowski 2018 / @jaceklaskowski / jacek@japila.pl</footer>
@@ -182,7 +182,7 @@
               1. The Internals of Query Execution
                 1. QueryExecution, Catalyst, Query Plans, Analyzer, Optimizer, Planner, Tungsten
               1. Lunch Break (12:45AM)
-              1. [Columns, Operators, Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-columns-standard-functions-udfs.html)
+              1. [Columns and Dataset Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-columns-and-dataset-operators.html)
             </script>
           </section>
 
@@ -191,24 +191,20 @@
               <span class="menu-title" style="display: none">Day 3</span>
               ## Day 3 &mdash; Spark SQL
 
+              1. [Standard and User-Defined Functions](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-standard-functions-udfs.html)
+              1. Lunch Break (12:45AM)
               1. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-joins.html)
               1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-basic-aggregation.html)
-              1. Lunch Break (12:45AM)
-              1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html)
-              1. [Spark SQL Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-exercises.html)
             </script>
           </section>
 
           <section style="font-size: 90%;" id="day4" data-markdown>
             <script type="text/template">
               <span class="menu-title" style="display: none">Day 4</span>
-              ## Day 4 &mdash; Spark MLlib &amp; Spark Structured Streaming
+              ## Day 4 &mdash; Spark SQL &amp; Spark Structured Streaming
 
-              1. [Spark MLlib](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_spark_mllib.html)
-                1. ML Pipelines and Components
-                1. Supervised and Unsupervised Learning with Spark MLlib
-              1. Model Selection and Hyperparameter Tuning
-              1. ML Persistence &mdash; Saving and Loading Models and Pipelines
+              1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html)
+              1. [Spark SQL Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-exercises.html)
               1. Lunch Break (12:45AM)
               1. [Spark Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/04-structured-streaming.html)
               1. Exercise: Developing Custom Streaming Source
@@ -218,16 +214,20 @@
           <section id="day5" data-markdown>
             <script type="text/template">
               <span class="menu-title" style="display: none">Day 5</span>
-              <!-- .slide: style="font-size: 90%" -->
-              ## Day 5 &mdash; Spark Core &amp; Spark SQL
+              <!-- .slide: style="font-size: 80%" -->
+              ## Day 5 &mdash; Spark MLlib &amp; Troubleshooting and Monitoring
 
+              1. [Spark MLlib](http://blog.jaceklaskowski.pl/spark-workshop/slides/03_spark_mllib.html)
+                1. ML Pipelines and Components
+                1. Supervised and Unsupervised Learning with Spark MLlib
+              1. Model Selection and Hyperparameter Tuning
+              1. ML Persistence &mdash; Saving and Loading Models and Pipelines
+              1. Lunch Break (12:45AM)
               1. Troubleshooting and Monitoring
                 1. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01-spark-core-webui.html)
                 1. [Monitoring Spark using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html)
                 1. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html)
-              1. Lunch Break (12:45AM)
               1. Caching and Persistence
-              1. ...
             </script>
           </section>
         </section>
@@ -320,8 +320,8 @@
           <script type="text/template">
             # Questions?
 
-            * Read [Mastering Apache Spark (2.3.0)](https://bit.ly/mastering-apache-spark)
-              * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
+            * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
+              * [https://bit.ly/mastering-spark-sql](https://bit.ly/mastering-spark-sql)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </script>

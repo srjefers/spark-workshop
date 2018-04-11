@@ -46,7 +46,8 @@
 
 1. [Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_spark_sql.html)
 1. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html)
-1. [Columns, Operators, Standard Functions and UDFs](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-columns-standard-functions-udfs.html)
+1. [Columns and Dataset Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-columns-and-dataset-operators.html)
+1. [Standard and User-Defined Functions](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-standard-functions-udfs.html)
 1. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-joins.html)
 1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-basic-aggregation.html)
 1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html)
