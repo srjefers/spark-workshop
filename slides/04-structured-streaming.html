@@ -21,13 +21,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
   </head>
 
   <body>
@@ -37,24 +37,23 @@
         <section class="intro" data-transition="zoom" id="home">
           <span class="menu-title" style="display: none">Home</span>
           <p>
-            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
-            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1 style="font-size: 3.55em;">Structured Streaming</h1>
-          <h1 style="font-size: 2.77em;">Apache Spark 2.2</h1>
+          <h1 style="font-size: 3.45em;">Spark<br/>Structured Streaming</h1>
+          <h3>Apache Spark 2.3</h3>
 
-          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
-          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+          <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
 
-          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
 
         <section id="agenda" data-markdown>
           <script type="text/template">
             ## Agenda
 
-            1. [Structured Streaming](#/intro)
+            1. [Introduction to Structured Streaming](#/intro)
             1. [DataStreamReader](#/datastreamreader)
             1. [DataStreamWriter](#/datastreamwriter)
             1. [Streaming Source](#/streaming-source)
@@ -69,11 +68,11 @@
         <section id="intro">
           <h2>Structured Streaming</h2>
           <ol>
-            <li><b>Structured Streaming</b> is a new computation model as of Spark 2.0 that is an attempt to unify streaming, interactive, and batch query execution engines</li>
+            <li><b>Structured Streaming</b> is a computation model since Spark 2.0 that is an attempt to unify streaming, interactive, and batch query execution engines</li>
             <li>Structured Streaming is a <b>stream processing engine</b> with a high-level declarative streaming API built on top of Spark SQL allowing for continuous incremental execution of a structured query.</li>
             <li>Switch to Spark Structured Streaming gitbook
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-structured-streaming.html">Spark Structured Streaming &mdash; Streaming Datasets</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-structured-streaming.html">Structured Streaming &mdash; Streaming Datasets</a></li>
               </ul>
             </li>
           </ol>
@@ -82,8 +81,9 @@
         <section id="datastreamreader">
           <h2>DataStreamReader</h2>
           <ol>
-            <li><b>DataStreamReader</b> is an interface for executing structured queries periodically (giving you nearly-streaming processing)
+            <li><b>DataStreamReader</b> is the interface for loading data from streaming data source
               <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
+    import org.apache.spark.sql.streaming.DataStreamReader
     val streamReader: DataStreamReader = spark.readStream
     // source + options
     val dataset: DataFrame = streamReader.load
@@ -102,9 +102,10 @@
           <section id="datastreamwriter">
             <h2>DataStreamWriter</h2>
             <ol>
-              <li><b>DataStreamWriter</b> is the interface for writing result of streaming queries
+              <li><b>DataStreamWriter</b> is the interface for writing result of a streaming query to a data sink
                 <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
    val dataset: DataFrame = ...
+   import org.apache.spark.sql.streaming.DataStreamWriter
    val streamWriter: DataStreamWriter = dataset.writeStream
                 </code></pre>
               </li>
@@ -123,6 +124,10 @@
 queryName(queryName: String): DataStreamWriter[T]
               </code></pre>
               <li>The name must be unique among all the currently active queries in the associated SparkSession</li>
+              <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
+val streamWriter: DataStreamWriter = ...
+val namedStreamWriter: DataStreamWriter = streamWriter.queryName("name")
+              </code></pre>
             </ol>
           </section>
           <section id="datastreamwriter-outputMode" style="font-size: 85%">
@@ -162,23 +167,10 @@ trigger(ProcessingTime.create(10, TimeUnit.SECONDS))
               <li>Defaults to <i>as fast as possible</i>, i.e. <b>Trigger.ProcessingTime(0)</b></li>
             </ol>
           </section>
-          <section id="datastreamwriter-start" style="font-size: 85%">
-            <h2>Starting Streaming Query</h2>
-            <ol>
-              <li><b>start</b> starts execution of a streaming query that will continually output results to a sink as new data arrives</li>
-              <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
-start(): StreamingQuery
-              </code></pre>
-              <li>Returns <b>StreamingQuery</b> that can be used to interact with the streaming query</li>
-              <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
-val query: StreamingQuery = counter.writeStream.start
-              </code></pre>
-            </ol>
-          </section>
           <section id="datastreamwriter-foreach" style="font-size: 85%">
-            <h2>foreach and ForeachWriter</h2>
+            <h2>foreach and ForeachWriter <small>(1 of 2)</small></h2>
             <ol>
-              <li><b>DataStreamWriter.foreach</b> starts execution of a streaming query that will continually send results to the given <b>ForeachWriter</b> as a new data arrives</li>
+              <li><b>DataStreamWriter.foreach</b> allows for defining a custom data sink and will continually send results to the given <b>ForeachWriter</b> as a new data arrives</li>
               <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
 foreach(writer: ForeachWriter[T]): DataStreamWriter[T]
               </code></pre>
@@ -192,13 +184,44 @@ abstract class ForeachWriter[T] {
               </code></pre>
             </ol>
           </section>
+          <section id="datastreamwriter-foreach-2" style="font-size: 85%">
+            <h2>foreach and ForeachWriter <small>(2 of 2)</small></h2>
+              <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
+val streamWriter: DataStreamWriter = ...
+import org.apache.spark.sql.ForeachWriter
+val streamWriterWithForeachSink: DataStreamWriter =
+  streamWriter.foreach(new ForeachWriter[Long] {
+    override def open(partitionId: Long, version: Long) = true
+
+    override def process(value: Long): Unit = {
+      println(s">>> $value")
+    }
+
+    override def close(errorOrNull: Throwable): Unit = {}
+  })
+              </code></pre>
+          </section>
+          <section id="datastreamwriter-start" style="font-size: 85%">
+            <h2>Starting Streaming Query</h2>
+            <ol>
+              <li><b>start</b> starts execution of a streaming query that will continually output results to a sink as new data arrives</li>
+              <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
+start(): StreamingQuery
+              </code></pre>
+              <li>Returns <b>StreamingQuery</b> that can be used to interact with the streaming query</li>
+              <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
+import org.apache.spark.sql.streaming.StreamingQuery
+val query: StreamingQuery = counter.writeStream.start
+              </code></pre>
+            </ol>
+          </section>
         </section>
 
         <section id="streaming-source">
           <h2>Streaming Source</h2>
           <ol>
             <li><b>Streaming Source</b> acts as a continuous stream of data for a streaming query</li>
-            <li>Defined using <b>format</b> method on <b>DataFrameReader</b>
+            <li>Defined using <b>format</b> method on <b>DataStreamReader</b>
               <ul>
                 <li>Uses <b>shortName</b> of a source</li>
               </ul>
@@ -208,7 +231,7 @@ abstract class ForeachWriter[T] {
             <li><b>RateStreamSource</b> and <b>MemoryStream</b> for unit tests, PoCs, tutorials and debugging</li>
             <li>Switch to Spark Structured Streaming
               <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-Source.html">Streaming Source</a></li>
+                <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-Source.html">Streaming Data Source</a></li>
               </ul>
             </li>
           </ol>
@@ -218,7 +241,7 @@ abstract class ForeachWriter[T] {
           <h2>Streaming Sink</h2>
           <ol>
             <li><b>Streaming Sink</b> represents an external storage to write streaming datasets to.</li>
-            <li>Defined using <b>format</b> method on <b>DataFrameWriter</b>
+            <li>Defined using <b>format</b> method on <b>DataStreamWriter</b>
               <ul>
                 <li>Uses <b>shortName</b> of a sink</li>
               </ul>
@@ -234,12 +257,13 @@ abstract class ForeachWriter[T] {
           </ol>
         </section>
 
-        <section id="streaming-query">
+        <section id="streaming-query" style="font-size: 95%">
           <h2>StreamingQuery</h2>
           <ol>
             <li><b>StreamingQuery</b> represents a streaming query
               <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;">
-     val query: StreamingQuery = counter.writeStream.start
+    import org.apache.spark.sql.streaming.StreamingQuery
+    val query: StreamingQuery = counter.writeStream.start
               </code></pre>
             </li>
             <li><b>id</b> is the unique id of a query</li>
@@ -391,7 +415,7 @@ abstract class ForeachWriter[T] {
               Read <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a> gitbook
             </p>
             <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a> gitbook
+              Read <a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> gitbook
             </p>
             <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
               Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter
@@ -400,7 +424,7 @@ abstract class ForeachWriter[T] {
               Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers</a> on StackOverflow
             </p>
           </div>
-          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
 
       </div>
