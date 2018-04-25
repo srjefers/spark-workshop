@@ -1,0 +1,450 @@
+<!doctype html>
+<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="description" content="Apache Spark 2 Workshop | The Internals of Structured Query Execution">
+    <meta name="author" content="Jacek Laskowski">
+
+    <title>The Internals of Structured Query Execution</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="revealjs-css/jacek.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section class="intro" data-transition="zoom" id="home">
+          <span class="menu-title" style="display: none">Home</span>
+          <p>
+            <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1 style="font-size: 2.77em;">The Internals of <br /> Structured Query Execution</h1>
+          <br />
+          <br />
+          <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section id="agenda">
+          <h2>Agenda</h2>
+          <ol>
+            <li><a href="#/structured-queries">Structured Queries</a></li>
+            <li><a href="#/query-languages">Query Languages</a></li>
+            <li><a href="#/catalyst">Project Catalyst</a></li>
+            <li><a href="#/query-execution">Query Execution</a></li>
+            <li><a href="#/spark-core-rdd">Spark Core's RDD</a></li>
+            <li><a href="#/debugging">Debugging Query Execution</a></li>
+            <li><a href="#/tungsten">Tungsten Execution Backend</a></li>
+          </ol>
+        </section>
+
+        <section>
+          <section id="structured-queries">
+            <h2>Structured Queries</h2>
+            <ol>
+              <li><b>Structured query</b> is a query over data sets that are described by schema
+                <ul>
+                  <li>In other words, data sets have a <b>structure</b></li>
+                </ul>
+              </li>
+              <li><b>Schema</b> is a tuple of three elements:
+                <ol>
+                  <li>Name</li>
+                  <li>Type</li>
+                  <li>Nullability</li>
+                </ol>
+              </li>
+              <li>Remember SQL? It's a <b>S</b>tructured <b>Q</b>uery <b>L</b>anguage</li>
+            </ol>
+          </section>
+          <section id="why-structure-important">
+            <h2>Why is Structure important?</h2>
+            <ol>
+              <li><b>Storage</b></li>
+              <li>The less space to store large data sets the better</li>
+              <li><b>Tungsten</b> project <small>(More in the following slides)</small></li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section id="query-languages">
+            <h2>Query Languages in Spark SQL</h2>
+            <ol>
+              <li>High-level declarative query languages:</li>
+                <ul>
+                  <li>Good ol' <b>SQL</b></li>
+                  <li>Untyped row-based <b>DataFrame</b></li>
+                  <li>Typed <b>Dataset</b></li>
+                </ul>
+              </li>
+              <li>Another "axis" are programming languages
+                <ul>
+                  <li>Scala, Java, Python, R</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section id="sql">
+            <h2>SQL</h2>
+            <ol>
+              <li><b>S</b>tructured <b>Q</b>uery <b>L</b>anguage</li>
+              <li>SQL 92</li>
+              <li>Hive QL</li>
+              <li>ANTLR grammar <small>(from Presto)</small></li>
+            </ol>
+          </section>
+          <section id="dataframe">
+            <h2>DataFrames (and Schema)</h2>
+            <ol>
+              <li><b>DataFrame</b> &mdash; a collection of rows with a schema</li>
+              <li><b>Row</b> and <b>RowEncoder</b></li>
+              <li>DataFrame = <b>Dataset[Row]</b>
+                <ul>
+                  <li>Type alias in Scala</li>
+                </ul>
+              </li>
+              <li>Switch to Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-DataFrame.html">DataFrame</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section id="dataset">
+            <h2>Datasets (and Encoders)</h2>
+            <ol>
+              <li><b>Dataset</b> - strongly-typed API for working with structured data in Scala</li>
+              <li><b>Encoder</b> - Serialization and deserialization API</li>
+              <li>Switch to Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Dataset.html">Dataset</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Encoder.html">Encoders &mdash; Internal Row Converters</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section id="catalyst">
+            <h2>Project Catalyst</h2>
+            <ol>
+              <li><b>Catalyst</b> &mdash; Tree Manipulation Framework</li>
+              <li><b>Nodes</b> with child nodes</li>
+              <li>Uses <b>rules</b> to manipulate trees of nodes</li>
+              <li>Rules executed sequentially</li>
+              <li>Loops supported</li>
+            </ol>
+          </section>
+          <section id="queryplan" style="font-size: 90%;">
+            <h2>Query Plan</h2>
+            <ol>
+              <li><b>QueryPlan</b> &mdash; the base node for relational operators</li>
+              <li><b>LogicalPlan</b> &mdash; the base logical query plan</li>
+              <li><b>SparkPlan</b> &mdash; the base physical query plan</li>
+              <li>Switch to Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-LogicalPlan.html">LogicalPlan</a></li>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-SparkPlan.html">SparkPlan</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section id="query-execution">
+            <h2>Query Execution</h2>
+            <ol>
+              <li><b>QueryExecution</b> - the heart of any structured query</li>
+              <li>Use <b>Dataset.explain</b> to know the plans</li>
+              <li>Use <b>Dataset.queryExecution</b> to access the phases</li>
+              <li><b>QueryExecution.toRdd</b> to generate a <b>RDD</b> <small>(more later)</small> </li>
+            </ol>
+          </section>
+          <section id="spark-analyzer">
+            <h2>Spark Analyzer</h2>
+            <ol>
+              <li><b>Spark Analyzer</b> - Validates logical query plans</li>
+              <li>Uses Catalyst Rule Engine to execute validation rules</li>
+              <li>Once a structured query has passed Spark Analyzer the query will be executed</li>
+            </ol>
+          </section>
+          <section id="spark-optimizer">
+            <h2>Spark Optimizer</h2>
+            <ol>
+              <li><b>Spark Optimizer</b> (aka <b>Catalyst Query Optimizer</b>) - Optimizes trees of logical operators and expressions</li>
+              <li>Switch to Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Optimizer.html">Optimizer</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section id="spark-planner">
+            <h2>Spark Planner</h2>
+            <ol>
+              <li><b>Spark Planner</b> - Generates a physical query plan</li>
+              <li>At least one physical plan for any given logical plan</li>
+              <li>If a logical plan passes analyze phase there'll be a physical plan</li>
+            </ol>
+          </section>
+          <section id="spark-preparations">
+            <h2>Spark Physical Optimizer</h2>
+            <ol>
+              <li><b>Preparations</b> rules</li>
+              <li>Whole-Stage Code Generation</li>
+              <li>Allows for custom rules</li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section id="spark-core-rdd" style="font-size: 90%;">
+            <h2>Spark Core's RDD</h2>
+            <ol>
+              <li>Anything executable on Spark has to be a RDD
+                <ul>
+                  <li>...or simply a <b>job</b> (of <b>stages</b>)</li>
+                </ul>
+              </li>
+              <li><b>RDD</b> describes a <b>distributed computation</b></li>
+              <li>RDDs live in <b>SparkContext</b> on the <b>driver</b></li>
+              <li>RDD is composed of <b>partitions</b> and <b>compute</b> method
+                <ul>
+                  <li>Partitions are parts of your data</li>
+                  <li>compute method is the code you wrote</li>
+                </ul>
+              </li>
+              <li>Partitions become tasks at runtime</li>
+              <li><b>Task</b> is your code executed on a part of data</li>
+              <li>Tasks are executed on <b>executors</b></li>
+            </ol>
+          </section>
+          <section id="rdd-lineage">
+            <h2>RDD Lineage</h2>
+            <ol>
+              <li><b>RDD Lineage</b> shows RDD with dependencies</li>
+              <li>RDD lineage is a graph of computation steps</li>
+              <li><b>RDD.toDebugString</b></li>
+            </ol>
+          </section>
+          <section id="structured-query-as-rdd">
+            <h2>Structured Queries and RDDs</h2>
+            <ol>
+              <li><b>QueryExecution.toRdd</b> - the very last phase in a query execution</li>
+              <li>Spark SQL generates a RDD to execute a structured query</li>
+              <li>Spark SQL is a Spark module to use structured queries to write RDD-based distributed computations</li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section id="debugging">
+            <h2>Debugging Query Execution</h2>
+            <ol>
+              <li><b>debug</b> package with <b><code>debug</code></b> and <b><code>debugCodegen</code></b>
+                <pre><code>
+    import org.apache.spark.sql.execution.debug._
+    spark.range(10).where('id === 4).debug
+                </code></pre>
+              </li>
+              <li>Switch to Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-debugging-execution.html">Debugging Query Execution</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+        </section>
+        <section>
+          <section id="tungsten">
+            <h2>Tungsten Execution Backend</h2>
+            <ol>
+              <li><b>Tungsten Execution Backend</b> (aka <i>Project Tungsten</i>) aims at optimizing Spark jobs for CPU and memory efficiency</li>
+              <li>It is assumed that network and disk I/O are not performance bottlenecks</li>
+              <li>Switch to Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-tungsten.html">Tungsten Execution Backend</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Demos (FIXME)</h2>
+            <pre><code>
+     spark.range(10)
+       .filter(_ % 2 == 0)
+       .map(_ * 2)
+       .filter(_ == 0)
+            </code></pre>
+            <span class="fragment">
+              <pre><code>
+scala> spark.range(10).filter(_ % 2 == 0).map(_ * 2).filter(_ == 0).explain
+== Physical Plan ==
+*SerializeFromObject [input[0, bigint, true] AS value#41L]
++- *Filter &lt;function1>.apply
+   +- *MapElements &lt;function1>, obj#40: bigint
+      +- *Filter &lt;function1>.apply
+         +- *DeserializeToObject newInstance(class java.lang.Long), obj#39: java.lang.Long
+            +- *Range (0, 10, step=1, splits=Some(8))
+              </code></pre>
+            </span>
+          </section>
+          <section>
+            <h2>What's wrong with the code? (2)</h2>
+            <pre><code>
+spark.range(10)
+  .filter('id % 2 === 0)
+  .map(n => n * 2)
+  .filter('value === 0)
+            </code></pre>
+            <span class="fragment">
+              <pre><code>
+scala> spark.range(10).filter('id % 2 === 0).map(n => n * 2).filter('value === 0).explain
+== Physical Plan ==
+*Filter (isnotnull(value#64L) &amp;&amp; (value#64L = 0))
++- *SerializeFromObject [input[0, bigint, true] AS value#64L]
+   +- *MapElements &lt;function1>, obj#63: bigint
+      +- *DeserializeToObject newInstance(class java.lang.Long), obj#62: java.lang.Long
+         +- *Filter ((id#57L % 2) = 0)
+            +- *Range (0, 10, step=1, splits=Some(8))
+              </code></pre>
+            </span>
+          </section>
+          <section>
+            <h2>Compare the "Same" Queries</h2>
+            <span>
+              <pre><code>
+scala> spark.range(10).filter(_ % 2 == 0).map(_ * 2).filter(_ == 0).explain
+== Physical Plan ==
+*SerializeFromObject [input[0, bigint, true] AS value#41L]
++- *Filter &lt;function1>.apply
+   +- *MapElements &lt;function1>, obj#40: bigint
+      +- *Filter &lt;function1>.apply
+         +- *DeserializeToObject newInstance(class java.lang.Long), obj#39: java.lang.Long
+            +- *Range (0, 10, step=1, splits=Some(8))
+              </code></pre>
+            </span>
+            <span class="fragment">
+              <pre><code>
+scala> spark.range(10).filter('id % 2 === 0).map(n => n * 2).filter('value === 0).explain
+== Physical Plan ==
+*Filter (isnotnull(value#64L) &amp;&amp; (value#64L = 0))
++- *SerializeFromObject [input[0, bigint, true] AS value#64L]
+   +- *MapElements &lt;function1>, obj#63: bigint
+      +- *DeserializeToObject newInstance(class java.lang.Long), obj#62: java.lang.Long
+         +- *Filter ((id#57L % 2) = 0)
+            +- *Range (0, 10, step=1, splits=Some(8))
+              </code></pre>
+            </span>
+          </section>
+        </section>
+
+        <section id="recap">
+          <h2>Recap</h2>
+          <ol>
+            <li><a href="#/structured-queries">Structured Queries</a></li>
+            <li><a href="#/query-languages">Query Languages</a></li>
+            <li><a href="#/catalyst">Project Catalyst</a></li>
+            <li><a href="#/query-execution">Query Execution</a></li>
+            <li><a href="#/spark-core-rdd">Spark Core's RDD</a></li>
+            <li><a href="#/debugging">Debugging Query Execution</a></li>
+            <li><a href="#/tungsten">Tungsten Execution Backend</a></li>
+          </ol>
+        </section>
+
+        <section id="questions">
+          <div style="text-align: left; font-size: 95%;">
+            <h1>Questions?</h1>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers</a> on StackOverflow
+            </p>
+          </div>
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'revealjs-plugins/menu/menu.js', async: true },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
