@@ -48,10 +48,6 @@
     <div class="reveal">
       <div class="slides">
 
-        <div class="footer">
-          <small style="font-size: 0.40em;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</small>
-        </div>
-
         <section class="intro" data-transition="zoom" id="home">
           <span class="menu-title" style="display: none">Home</span>
           <p>
@@ -60,27 +56,31 @@
           </p>
           <h1>Joins</h1>
           <h3>Apache Spark 2.3 / Spark SQL</h3>
-
+          <br />
+          <br />
           <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
 
         <section id="agenda" data-markdown>
           <script type="text/template">
             ## Agenda
 
-            1. [join Operators (Dataset)](#/join-dataset)
+            1. [join Operators](#/join-dataset)
             1. [Join Condition](#/join-condition)
             1. [Join Types](#/join-types)
             1. [Join Clause (SQL)](#/join-sql)
             1. [Broadcast Join (aka Map-Side Join)](#/broadcast-join)
             1. [Exercise](#/exercise-join-bestsellers): Finding bestsellers per category
+            1. [Join Internals and Optimizations](#/join-internals)
           </script>
         </section>
 
         <section id="join-dataset" data-markdown>
           <script type="text/template">
-            ## join Operators (Dataset)
+            ## join Operators
 
             1. You can join two Datasets using join operators:
               * **join** for untyped Row-based joins
@@ -182,15 +182,122 @@
           </script>
         </section>
 
-        <section style="text-align: left" data-markdown id="questions">
-          <script type="text/template">
-            # Questions?
+        <section>
+          <section id="join-internals">
+            <span class="menu-title" style="display: none">Internals and Optimizations</span>
+            <h1>Join</h1>
+            <h1 style="font-size: 2.77em;">Internals and Optimizations</h1>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="join-logical-operator">
+            <span class="menu-title" style="display: none">Logical Join</span>
+            <h2>Join Logical Operator</h2>
+            <ol>
+              <li><b>Join</b> is a binary logical operator with two logical operators, a join type and an optional join expression</li>
+              <li>Switch to Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-LogicalPlan-Join.html">Join Logical Operator</a></li>
+                </ul>
+              </li>
+            </ol>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="join-selection" style="font-size: 80%;">
+            <span class="menu-title" style="display: none">JoinSelection</span>
+            <h2>JoinSelection Execution Planning Strategy</h2>
+            <ol>
+              <li><b>JoinSelection</b> is an execution planning strategy that SparkPlanner uses to plan Join logical operators</li>
+              <li>Supported joins (and their physical operators)
+                <ol>
+                  <li><b>Broadcast Hash Join</b> (BroadcastHashJoinExec)</li>
+                  <li><b>Shuffled Hash Join</b> (ShuffledHashJoinExec)</li>
+                  <li><b>Sort Merge Join</b> (SortMergeJoinExec)</li>
+                  <li><b>Broadcast Nested Loop Join</b> (BroadcastNestedLoopJoinExec)</li>
+                  <li><b>Cartesian Join</b> (CartesianProductExec)</li>
+                </ol>
+              </li>
+              <li>Switch to Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-SparkStrategy-JoinSelection.html">JoinSelection Execution Planning Strategy</a></li>
+                </ul>
+              </li>
+            </ol>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="join-optimization-bucketing">
+            <span class="menu-title" style="display: none">Bucketing</span>
+            <h2>Join Optimization &mdash; Bucketing</h2>
+            <ol>
+              <li><b>Bucketing</b> is an optimization technique in Spark SQL that uses buckets and bucketing columns to determine data partitioning.</li>
+              <li>Optimize performance of a join query by reducing shuffles (aka exchanges)</li>
+              <li>Switch to Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-bucketing.html">Bucketing</a></li>
+                </ul>
+              </li>
+            </ol>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="join-optimization-join-reorg">
+            <span class="menu-title" style="display: none">Join Reordering</span>
+            <h2>Join Optimization &mdash; Join Reordering</h2>
+            <ol>
+              <li><b>Join Reordering</b> is an optimization of a logical query plan that the Spark Optimizer uses for joins</li>
+              <li>Switch to Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Optimizer-ReorderJoin.html">ReorderJoin Logical Query Optimization</a></li>
+                </ul>
+              </li>
+            </ol>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="join-optimization-join-reorg-cbo" style="font-size: 80%;">
+            <span class="menu-title" style="display: none">Cost-based Join Reordering</span>
+            <h2>Join Optimization &mdash; Cost-based Join Reordering</h2>
+            <ol>
+              <li><b>Cost-based Join Reordering</b> is an optimization of a logical query plan that the Spark Optimizer uses for joins in cost-based optimization</li>
+              <li>Switch to Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Optimizer-CostBasedJoinReorder.html">CostBasedJoinReorder Logical Query Optimization</a></li>
+                </ul>
+              </li>
+            </ol>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+        </section>
 
-            * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
-              * [https://bit.ly/mastering-spark-sql](https://bit.ly/mastering-spark-sql)
-            * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
-            * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+        <section id="recap" data-markdown>
+          <script type="text/template">
+            ## Recap
+
+            1. [join Operators](#/join-dataset)
+            1. [Join Condition](#/join-condition)
+            1. [Join Types](#/join-types)
+            1. [Join Clause (SQL)](#/join-sql)
+            1. [Broadcast Join (aka Map-Side Join)](#/broadcast-join)
+            1. [Exercise](#/exercise-join-bestsellers): Finding bestsellers per category
+            1. [Join Internals and Optimizations](#/join-internals)
           </script>
+        </section>
+
+        <section id="questions">
+          <div style="text-align: left; font-size: 95%;">
+            <h1>Questions?</h1>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers</a> on StackOverflow
+            </p>
+          </div>
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
         </section>
 
       </div>
