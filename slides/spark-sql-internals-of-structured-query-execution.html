@@ -11,6 +11,7 @@
     <title>The Internals of Structured Query Execution</title>
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="revealjs-css/custom-gc.css">
     <link rel="stylesheet" href="revealjs-css/jacek.css">
     <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
 
@@ -42,11 +43,61 @@
           </p>
           <h1 style="font-size: 2.77em;">The Internals of <br /> Structured Query Execution</h1>
           <h3>Apache Spark 2.3 / Spark SQL</h3>
-          <br />
           <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
 
           <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section>
+          <section id="speaker" data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Introduction</span>
+              <p>
+                <img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+              </p>
+
+              <div style="text-align: left; font-size: 85%">
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<b>Jacek Laskowski</b> is an independent consultant</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Specializing in <b>Spark</b>, Kafka, Kafka Streams, Scala</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Development | Consulting | Training</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Among contributors to <a href="http://spark.apache.org/releases/spark-release-2-2-0.html#credits">Spark</a> (since <a href="http://spark.apache.org/releases/spark-release-1-6-0.html#credits">1.6.0</a>)</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Contact me at **jacek@japila.pl**</p> <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Follow [@JacekLaskowski](https://twitter.com/jaceklaskowski) on twitter for more **#ApacheSpark**</p>
+              </div>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+            </script>
+          </section>
+          <section id="gitbooks" data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Gitbooks</span>
+              <p>
+                <img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+              </p>
+              <div style="text-align: left">
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Jacek is best known by his **Gitbooks**</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark</a></p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a></p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/mastering-kafka-streams">Mastering Kafka Streams</a></p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://jaceklaskowski.gitbooks.io/apache-kafka">Apache Kafka Notebook</a></p>
+              </div>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+            </script>
+          </section>
+          <section id="stackoverflow" data-markdown>
+            <script type="text/template">
+              <div style="text-align: center">
+                <span class="menu-title" style="display: none">StackOverflow</span>
+                <p>
+                  <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a>
+                </p>
+                <p>
+                  <img width="60%" src="images/jaceklaskowski-stackoverflow-stats.png" style="border: 0">
+                </p>
+              </div>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+            </script>
+          </section>
         </section>
 
         <section id="agenda">
@@ -155,14 +206,43 @@
             <h2>Project Catalyst</h2>
             <ol>
               <li><b>Catalyst</b> &mdash; Tree Manipulation Framework</li>
-              <li><b>Nodes</b> with child nodes</li>
-              <li>Uses <b>rules</b> to manipulate trees of nodes</li>
-              <li>Rules executed sequentially</li>
-              <li>Loops supported</li>
+              <li><b>TreeNode</b> with child nodes
+                <ul>
+                  <li>Children are TreeNodes again</li>
+                  <li>Recursive data structure</li>
+                </ul>
+              </li>
+              <li><b>Rules</b> to manipulate TreeNodes
+                <ul>
+                  <li>Rules executed sequentially</li>
+                  <li>Loops supported</li>
+                </ul>
+              </li>
             </ol>
           </section>
+          <section id="catalyst-node">
+            <h2>TreeNode</h2>
+            <ol>
+              <li><b>TreeNode</b> is a node with child nodes (<b>children</b>)
+                <ul>
+                  <li>Recursive data structure</li>
+                  <li>Builds a tree</li>
+                </ul>
+              </li>
+            </ol>
+            <p>
+            <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-catalyst-treenode.png">
+            </p>
+          </section>
+          <section id="catalyst-treenodes">
+            <h2>TreeNodes</h2>
+            <p>
+            <img style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-catalyst-treenodes.png">
+            </p>
+          </section>
           <section id="queryplan" style="font-size: 90%;">
-            <h2>Query Plan</h2>
+            <h2>Query Plans</h2>
+            <img width="90%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-queryplans.png">
             <ol>
               <li><b>QueryPlan</b> &mdash; the base node for relational operators</li>
               <li><b>LogicalPlan</b> &mdash; the base logical query plan</li>
@@ -174,6 +254,34 @@
                 </ul>
               </li>
             </ol>
+          </section>
+          <section id="expression" style="font-size: 90%;">
+            <h2>Catalyst Expressions</h2>
+            <ol>
+              <li><b>Expression</b> &mdash; a executable node (in a Catalyst tree)</li>
+              <li>Evaluates to a value given input values
+                <ul>
+                  <li>Produces a JVM object per <b>internal row</b></li>
+                </ul>
+              </li>
+            </ol>
+            <p>
+            <pre><code>
+    def eval(input: InternalRow = null): Any
+            </code></pre>
+            </p>
+          </section>
+          <section id="catalyst-rule">
+            <h2>Rule</h2>
+            <p>
+            <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-catalyst-rule.png">
+            </p>
+          </section>
+          <section id="catalyst-ruleexecutor">
+            <h2>RuleExecutor</h2>
+            <p>
+            <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-catalyst-ruleexecutor.png">
+            </p>
           </section>
         </section>
 
@@ -187,18 +295,26 @@
               <li><b>QueryExecution.toRdd</b> to generate a <b>RDD</b> <small>(more later)</small> </li>
             </ol>
           </section>
+          <section id="query-execution-pipeline">
+            <h2>QueryExecution Pipeline</h2>
+            <img width="70%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-queryexecution-pipeline.png">
+          </section>
           <section id="spark-analyzer">
             <h2>Spark Analyzer</h2>
+            <img width="70%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-analyzer.png">
             <ol>
-              <li><b>Spark Analyzer</b> - Validates logical query plans</li>
-              <li>Uses Catalyst Rule Engine to execute validation rules</li>
+              <li><b>Spark Analyzer</b> - Validates logical query plans and expressions</li>
+              <li>Uses RuleExecutor to execute <b>validation rules</b></li>
               <li>Once a structured query has passed Spark Analyzer the query will be executed</li>
+              <li>Allows for registering new rules</li>
             </ol>
           </section>
           <section id="spark-optimizer">
             <h2>Spark Optimizer</h2>
+            <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-optimizer.png">
             <ol>
-              <li><b>Spark Optimizer</b> (aka <b>Catalyst Query Optimizer</b>) - Optimizes trees of logical operators and expressions</li>
+              <li><b>Spark Optimizer</b> (aka <b>Catalyst Query Optimizer</b>) - Optimizes logical plans and expressions</li>
+              <li>Uses RuleExecutor to execute <b>optimization rules</b></li>
               <li>Switch to Mastering Spark SQL
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Optimizer.html">Optimizer</a></li>
@@ -208,18 +324,32 @@
           </section>
           <section id="spark-planner">
             <h2>Spark Planner</h2>
+            <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-planner.png">
             <ol>
               <li><b>Spark Planner</b> - Generates a physical query plan</li>
-              <li>At least one physical plan for any given logical plan</li>
-              <li>If a logical plan passes analyze phase there'll be a physical plan</li>
+              <li><b>At least</b> one physical plan for any given logical plan
+                <ul>
+                  <li><b>Exactly one</b> in Spark 2.3</li>
+                </ul>
+              </li>
+              <li>Cost-Based Optimization</li>
             </ol>
           </section>
           <section id="spark-preparations">
-            <h2>Spark Physical Optimizer</h2>
+            <h3>Spark Physical Optimizer (Preparations)</h3>
+            <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-preparations.png">
             <ol>
-              <li><b>Preparations</b> rules</li>
-              <li>Whole-Stage Code Generation</li>
-              <li>Allows for custom rules</li>
+              <li><b>Preparations</b> rules
+                <ul>
+                  <li>Whole-Stage Code Generation</li>
+                  <li>Reuse Exchanges and Subqueries</li>
+                </ul>
+              </li>
+              <li>Note the type <b>Rule[SparkPlan]</b>
+                <ul>
+                  <li>Rules take a SparkPlan and produce a SparkPlan</li>
+                </ul>
+              </li>
             </ol>
           </section>
         </section>
@@ -294,78 +424,6 @@
                 </ul>
               </li>
             </ol>
-          </section>
-        </section>
-
-        <section>
-          <section>
-            <h2>Demos (FIXME)</h2>
-            <pre><code>
-     spark.range(10)
-       .filter(_ % 2 == 0)
-       .map(_ * 2)
-       .filter(_ == 0)
-            </code></pre>
-            <span class="fragment">
-              <pre><code>
-scala> spark.range(10).filter(_ % 2 == 0).map(_ * 2).filter(_ == 0).explain
-== Physical Plan ==
-*SerializeFromObject [input[0, bigint, true] AS value#41L]
-+- *Filter &lt;function1>.apply
-   +- *MapElements &lt;function1>, obj#40: bigint
-      +- *Filter &lt;function1>.apply
-         +- *DeserializeToObject newInstance(class java.lang.Long), obj#39: java.lang.Long
-            +- *Range (0, 10, step=1, splits=Some(8))
-              </code></pre>
-            </span>
-          </section>
-          <section>
-            <h2>What's wrong with the code? (2)</h2>
-            <pre><code>
-spark.range(10)
-  .filter('id % 2 === 0)
-  .map(n => n * 2)
-  .filter('value === 0)
-            </code></pre>
-            <span class="fragment">
-              <pre><code>
-scala> spark.range(10).filter('id % 2 === 0).map(n => n * 2).filter('value === 0).explain
-== Physical Plan ==
-*Filter (isnotnull(value#64L) &amp;&amp; (value#64L = 0))
-+- *SerializeFromObject [input[0, bigint, true] AS value#64L]
-   +- *MapElements &lt;function1>, obj#63: bigint
-      +- *DeserializeToObject newInstance(class java.lang.Long), obj#62: java.lang.Long
-         +- *Filter ((id#57L % 2) = 0)
-            +- *Range (0, 10, step=1, splits=Some(8))
-              </code></pre>
-            </span>
-          </section>
-          <section>
-            <h2>Compare the "Same" Queries</h2>
-            <span>
-              <pre><code>
-scala> spark.range(10).filter(_ % 2 == 0).map(_ * 2).filter(_ == 0).explain
-== Physical Plan ==
-*SerializeFromObject [input[0, bigint, true] AS value#41L]
-+- *Filter &lt;function1>.apply
-   +- *MapElements &lt;function1>, obj#40: bigint
-      +- *Filter &lt;function1>.apply
-         +- *DeserializeToObject newInstance(class java.lang.Long), obj#39: java.lang.Long
-            +- *Range (0, 10, step=1, splits=Some(8))
-              </code></pre>
-            </span>
-            <span class="fragment">
-              <pre><code>
-scala> spark.range(10).filter('id % 2 === 0).map(n => n * 2).filter('value === 0).explain
-== Physical Plan ==
-*Filter (isnotnull(value#64L) &amp;&amp; (value#64L = 0))
-+- *SerializeFromObject [input[0, bigint, true] AS value#64L]
-   +- *MapElements &lt;function1>, obj#63: bigint
-      +- *DeserializeToObject newInstance(class java.lang.Long), obj#62: java.lang.Long
-         +- *Filter ((id#57L % 2) = 0)
-            +- *Range (0, 10, step=1, splits=Some(8))
-              </code></pre>
-            </span>
           </section>
         </section>
 
