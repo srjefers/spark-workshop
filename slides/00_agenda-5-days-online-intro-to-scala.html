@@ -1,0 +1,305 @@
+<!doctype html>
+<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="description" content="Workshop Agenda | Introduction to Scala | 5 half-days (online)">
+    <meta name="author" content="Jacek Laskowski">
+
+    <title>Workshop Agenda | Introduction to Scala | 5 half-days (online)</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="revealjs-css/jacek.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section class="intro" data-transition="zoom" id="home">
+          <span class="menu-title" style="display: none">Home</span>
+          <p>
+            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1 style="font-size: 3.27em;">Introduction to Scala <small>5 Half-Days (online)</small></h1>
+
+          <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section>
+          <section id="speaker" data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Introduction</span>
+              <p>
+                <img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+              </p>
+
+              <div style="text-align: left">
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<b>Jacek Laskowski</b> is an independent consultant</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Specializing in Spark, Kafka, Kafka Streams, <b>Scala</b></p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Development | Consulting | Training</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Among contributors to <a href="http://spark.apache.org/releases/spark-release-2-2-0.html#credits">Spark</a> (since <a href="http://spark.apache.org/releases/spark-release-1-6-0.html#credits">1.6.0</a>)</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Contact me at **jacek@japila.pl**</p> <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Follow [@JacekLaskowski](https://twitter.com/jaceklaskowski) on twitter to **#LearnSpark**</p>
+              </div>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+            </script>
+          </section>
+          <section id="gitbook-spark">
+            <div style="text-align: center">
+              <span class="menu-title" style="display: none">Mastering Apache Spark</span>
+              <p>
+                <a href="https://bit.ly/mastering-apache-spark">https://bit.ly/mastering-apache-spark</a>
+              </p>
+              <p>
+                <img src="images/jaceklaskowski-gitbook-stats.png" style="border: 0">
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="gitbook-spark-sql">
+            <div style="text-align: center">
+              <span class="menu-title" style="display: none">Mastering Spark SQL</span>
+              <p>
+                <a href="https://bit.ly/mastering-spark-sql">https://bit.ly/mastering-spark-sql</a>
+              </p>
+              <p>
+                <img src="images/jaceklaskowski-spark-sql-gitbook-stats.png" style="border: 0">
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="gitbook-structured-streaming">
+            <div style="text-align: center">
+              <span class="menu-title" style="display: none">Spark Structured Streaming</span>
+              <p>
+                <a href="https://bit.ly/spark-structured-streaming">https://bit.ly/spark-structured-streaming</a>
+              </p>
+              <p>
+                <img width="100%" src="images/jaceklaskowski-structured-streaming-gitbook-stats.png" style="border: 0">
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section id="stackoverflow">
+            <div style="text-align: center">
+              <span class="menu-title" style="display: none">StackOverflow</span>
+              <p>
+                <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a>
+              </p>
+              <p>
+                <img width="45%" src="images/jaceklaskowski-stackoverflow-stats.png" style="border: 0">
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+        </section>
+
+        <section id="goal" data-markdown>
+          <script type="text/template">
+            # Goal
+
+            <p>
+              Learn<br />
+              <b><span style="font-size: 160%">Scala</span></b><br />
+              for Apache Spark<br />
+            </p>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </script>
+        </section>
+
+        <section>
+          <section id="agenda">
+            <div style="text-align: left; font-size: 90%">
+              <h2>Agenda</h2>
+              <hr>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="#/day1">Day 1</a> &mdash; Scala Day 1
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="#/day2">Day 2</a> &mdash; Scala Day 2
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="#/day3">Day 3</a> &mdash; Scala Day 3
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="#/day4">Day 4</a> &mdash; Scala Day 4
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="#/day5">Day 5</a> &mdash; Scala Day 5
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+
+          <section id="day1">
+            <span class="menu-title" style="display: none">Day 1</span>
+            <div style="text-align: left;">
+              <h2>Day 1 &mdash; Scala</h2>
+              <hr>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="02_scala.html">Scala</a>
+              </p>
+            </div>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+
+        </section>
+
+        <section>
+          <section id="prerequisities">
+            <h1>Prerequisities</h1>
+            <h4>Be prepared to get the most out of the workshop</h4>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <div style="text-align: left">
+              <h2>Prerequisities / To Be Installed</h2>
+              <span class="menu-title" style="display: none">To Be Installed</span>
+              <hr>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Platform, Standard Edition (Java SE) 8</a>
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a> Community Edition with <b>Scala plugin</b>
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                <a href="http://www.scala-sbt.org/download.html">sbt 1.1.6</a>
+              </p>
+            </div>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+        </section>
+
+        <section>
+          <section id="in-da-clazz">
+            <h1>"In-Class" Preparations</h1>
+            <h4>Make Instructor's Life Slightly Easier. Thanks!</h4>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <div style="text-align: left">
+              <h2>Introduce Yourself <small>(email)</small></h2>
+              <span class="menu-title" style="display: none">Introduce Yourself</span>
+              <hr>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Send an email to <a href="mailto:jacek@japila.pl">jacek@japila.pl</a>
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                First name
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                What do you expect from the workshop?
+              </p>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Where do you want to be with Scala after 5 days?
+              </p>
+            </div>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <div style="text-align: left">
+              <h2>Addendum</h2>
+              <span class="menu-title" style="display: none">Addendum</span>
+              <hr>
+              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+                Breaks every <b>45-60 mins</b>
+              </p>
+            </div>
+
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          </section>
+        </section>
+
+        <section id="questions">
+          <div style="text-align: left; font-size: 95%;">
+            <h1>Questions?</h1>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers</a> on StackOverflow
+            </p>
+          </div>
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'revealjs-plugins/menu/menu.js', async: true },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>

@@ -4,6 +4,7 @@
 
 ## Table of Contents
 
+1. [Introduction to Scala Workshop Agenda (5 half-days online)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-online-intro-to-scala.html)
 1. [Advanced Apache Spark for Developers Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-advanced-spark-developers.html) for Experienced Scala Developers with significant experience in Apache Spark &mdash; taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet) three times
 1. [Spark Structured Streaming in Apache Spark 2.2 Workshop (1 day)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-1-day-spark-structured-streaming.html) for Software Developers &mdash; held in [Ljubljana, Slovenia](https://en.wikipedia.org/wiki/Ljubljana)
 1. [Graduate Scala and Spark Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-graduate-scala-spark.html) for Junior Python and Java Developers &mdash; taught in [London, UK](https://en.wikipedia.org/wiki/London)
