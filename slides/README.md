@@ -27,6 +27,7 @@
 ### Day 0 &mdash; Scala
 
 1. [Scala &mdash; Just Enough to Write Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
+1. [Real-Life Scala Project](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala-real-life-project.html)
 1. [Scala Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala-exercises.html)
 1. [sbt &mdash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
 
