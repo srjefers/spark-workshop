@@ -42,7 +42,7 @@
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1 style="font-size: 2.77em;">The Internals of <br /> Structured Query Execution</h1>
-          <h3>Apache Spark 2.3 / Spark SQL</h3>
+          <h3>Apache Spark 2.3.1 / Spark SQL</h3>
           <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
 
@@ -109,6 +109,7 @@
             <li><a href="#/query-execution">Query Execution</a></li>
             <li><a href="#/spark-core-rdd">Spark Core's RDD</a></li>
             <li><a href="#/debugging">Debugging Query Execution</a></li>
+            <li><a href="#/whole-stage-codegen">Whole-Stage Java Code Generation</a></li>
             <li><a href="#/tungsten">Tungsten Execution Backend</a></li>
           </ol>
         </section>
@@ -117,9 +118,9 @@
           <section id="structured-queries">
             <h2>Structured Queries</h2>
             <ol>
-              <li><b>Structured query</b> is a query over data sets that are described by schema
+              <li><b>Structured query</b> is a query over data that is described by a schema
                 <ul>
-                  <li>In other words, data sets have a <b>structure</b></li>
+                  <li>In other words, data has a <b>structure</b></li>
                 </ul>
               </li>
               <li><b>Schema</b> is a tuple of three elements:
@@ -226,7 +227,7 @@
               <li><b>TreeNode</b> is a node with child nodes (<b>children</b>)
                 <ul>
                   <li>Recursive data structure</li>
-                  <li>Builds a tree</li>
+                  <li>Builds a tree of TreeNodes</li>
                 </ul>
               </li>
             </ol>
@@ -258,12 +259,8 @@
           <section id="expression" style="font-size: 90%;">
             <h2>Catalyst Expressions</h2>
             <ol>
-              <li><b>Expression</b> &mdash; a executable node (in a Catalyst tree)</li>
-              <li>Evaluates to a value given input values
-                <ul>
-                  <li>Produces a JVM object per <b>internal row</b></li>
-                </ul>
-              </li>
+              <li><b>Expression</b> &mdash; an executable node (in a Catalyst tree)</li>
+              <li>Evaluates to a JVM object given InternalRow</li>
             </ol>
             <p>
             <pre><code>
@@ -275,6 +272,12 @@
             <h2>Rule</h2>
             <p>
             <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-catalyst-rule.png">
+            </p>
+          </section>
+          <section id="catalyst-rule-example" style="font-size: 90%;">
+            <h2>Example: RemoveAllHints Logical Rule</h2>
+            <p>
+            <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-catalyst-rule-RemoveAllHints.png">
             </p>
           </section>
           <section id="catalyst-ruleexecutor">
@@ -310,10 +313,10 @@
             </ol>
           </section>
           <section id="spark-optimizer">
-            <h2>Spark Optimizer</h2>
+            <h2>Spark Logical Optimizer</h2>
             <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-optimizer.png">
             <ol>
-              <li><b>Spark Optimizer</b> (aka <b>Catalyst Query Optimizer</b>) - Optimizes logical plans and expressions</li>
+              <li><b>Spark Logical Optimizer</b> (aka <b>Catalyst Query Optimizer</b>) - Optimizes logical plans and expressions</li>
               <li>Uses RuleExecutor to execute <b>optimization rules</b></li>
               <li>Switch to Mastering Spark SQL
                 <ul>
@@ -398,10 +401,15 @@
           <section id="debugging">
             <h2>Debugging Query Execution</h2>
             <ol>
-              <li><b>debug</b> package with <b><code>debug</code></b> and <b><code>debugCodegen</code></b>
+              <li><b>debug</b> Scala package object with <b>debug</b> and <b>debugCodegen</b>
                 <pre><code>
-    import org.apache.spark.sql.execution.debug._
-    spark.range(10).where('id === 4).debug
+  import org.apache.spark.sql.execution.debug._
+
+  val q = spark.range(10).where('id === 4)
+  q.debug
+
+  val q = sql("SELECT * FROM RANGE(10) WHERE id = 4")
+  q.debugCodegen
                 </code></pre>
               </li>
               <li>Switch to Mastering Spark SQL
@@ -410,6 +418,31 @@
                 </ul>
               </li>
             </ol>
+          </section>
+        </section>
+        <section>
+          <section id="whole-stage-codegen">
+            <h2>Whole-Stage Java Code Generation</h2>
+            <ol>
+              <li><b>Whole-Stage CodeGen</b> - Physical query optimization</li>
+              <li>Collapses a query plan tree into a single optimized function</li>
+              <li>Applied to structured queries through <b>CollapseCodegenStages</b> physical optimization
+                <ul>
+                  <li><b>spark.sql.codegen.wholeStage</b> internal property</li>
+                </ul>
+              </li>
+              <li>Switch to Mastering Spark SQL
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-whole-stage-codegen.html">Whole-Stage Java Code Generation (Whole-Stage CodeGen)</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section id="whole-stage-codegen-CollapseCodegenStages-rule" style="font-size: 90%;">
+            <h2>CollapseCodegenStages Optimization Rule</h2>
+            <p>
+            <img width="85%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-CollapseCodegenStages.png">
+            </p>
           </section>
         </section>
         <section>
@@ -436,6 +469,7 @@
             <li><a href="#/query-execution">Query Execution</a></li>
             <li><a href="#/spark-core-rdd">Spark Core's RDD</a></li>
             <li><a href="#/debugging">Debugging Query Execution</a></li>
+            <li><a href="#/whole-stage-codegen">Whole-Stage Java Code Generation</a></li>
             <li><a href="#/tungsten">Tungsten Execution Backend</a></li>
           </ol>
         </section>
