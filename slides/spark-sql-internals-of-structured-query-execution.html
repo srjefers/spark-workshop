@@ -133,6 +133,20 @@
               <li>Remember SQL? It's a <b>S</b>tructured <b>Q</b>uery <b>L</b>anguage</li>
             </ol>
           </section>
+          <section id="structured-queries-example">
+            <h2>Examples of Structured Queries</h2>
+            <p>
+            <pre><code>
+    // Dataset API for Scala
+    spark.table("t1")
+      .filter($"id" % 2 === 0)
+      .join(spark.table("t2"), "id")
+
+    // SQL
+    sql("SELECT * FROM t1 WHERE id % 2 = 0")
+            </code></pre>
+            </p>
+          </section>
           <section id="why-structure-important">
             <h2>Why is Structure important?</h2>
             <ol>
@@ -191,7 +205,12 @@
             <h2>Datasets (and Encoders)</h2>
             <ol>
               <li><b>Dataset</b> - strongly-typed API for working with structured data in Scala</li>
-              <li><b>Encoder</b> - Serialization and deserialization API</li>
+              <li><b>Encoder</b> - Serialization and deserialization API
+                <ul>
+                  <li>Converts a JVM object of type T to and from an <b>InternalRow</b></li>
+                  <li><b>ExpressionEncoder</b> is the one and only implementation</li>
+                </ul>
+              </li>
               <li>Switch to Mastering Spark SQL
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Dataset.html">Dataset</a></li>
@@ -234,6 +253,7 @@
             <p>
             <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-catalyst-treenode.png">
             </p>
+            <i>What a nice class definition in Scala, isn't it?</i>
           </section>
           <section id="catalyst-treenodes">
             <h2>TreeNodes</h2>
@@ -255,6 +275,14 @@
                 </ul>
               </li>
             </ol>
+          </section>
+          <section id="treenode-sparkplan">
+            <h2>Example of TreeNode (SparkPlan)</h2>
+            <img width="33%" style="background:none; border:none; box-shadow:none;" data-src="images/treenode-sparkplan.png">
+          </section>
+          <section id="treenode-physical-plan-explain">
+            <h2>Example of TreeNode (explain output)</h2>
+            <img style="background:none; border:none; box-shadow:none;" data-src="images/treenode-physical-plan-explain.png">
           </section>
           <section id="expression" style="font-size: 90%;">
             <h2>Catalyst Expressions</h2>
@@ -292,7 +320,12 @@
           <section id="query-execution">
             <h2>Query Execution</h2>
             <ol>
-              <li><b>QueryExecution</b> - the heart of any structured query</li>
+              <li><b>QueryExecution</b> - the heart of any structured query
+                <ul>
+                  <li>Structured Query Execution Pipeline</li>
+                  <li>Execution Phases</li>
+                </ul>
+              </li>
               <li>Use <b>Dataset.explain</b> to know the plans</li>
               <li>Use <b>Dataset.queryExecution</b> to access the phases</li>
               <li><b>QueryExecution.toRdd</b> to generate a <b>RDD</b> <small>(more later)</small> </li>
@@ -307,20 +340,46 @@
             <img width="70%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-analyzer.png">
             <ol>
               <li><b>Spark Analyzer</b> - Validates logical query plans and expressions</li>
-              <li>Uses RuleExecutor to execute <b>validation rules</b></li>
+              <li>RuleExecutor of <b>LogicalPlans</b></li>
               <li>Once a structured query has passed Spark Analyzer the query will be executed</li>
               <li>Allows for registering new rules</li>
             </ol>
           </section>
-          <section id="spark-optimizer">
-            <h2>Spark Logical Optimizer</h2>
-            <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-optimizer.png">
+          <section id="catalyst-optimizer">
+            <h2>Catalyst (Base) Optimizer</h2>
+            <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-sql-catalyst-optimizer.png">
             <ol>
-              <li><b>Spark Logical Optimizer</b> (aka <b>Catalyst Query Optimizer</b>) - Optimizes logical plans and expressions</li>
-              <li>Uses RuleExecutor to execute <b>optimization rules</b></li>
+              <li><b>Catalyst Query Optimizer</b>
+                <ul>
+                  <li>Base of query optimizers</li>
+                  <li>Optimizes logical plans and expressions</li>
+                  <li>Predefined batches of rules</li>
+                </ul>
+              </li>
+              <li>Cost-Based Optimization</li>
+              <li>Allows for <b>extendedOperatorOptimizationRules</b></li>
               <li>Switch to Mastering Spark SQL
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Optimizer.html">Optimizer</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section id="spark-optimizer">
+            <h2>Spark Logical Optimizer</h2>
+            <img width="70%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-sql-spark-optimizer.png">
+            <ol>
+              <li><b>Spark Logical Optimizer</b>
+                <ul>
+                  <li>Custom Catalyst query optimizer</li>
+                  <li>Adds new optimization rules</li>
+                </ul>
+              </li>
+              <li>Defines <b>extension points</b>
+                <ul>
+                  <li>preOptimizationBatches</li>
+                  <li>postHocOptimizationBatches</li>
+                  <li>ExperimentalMethods.extraOptimizations</li>
                 </ul>
               </li>
             </ol>
@@ -329,23 +388,32 @@
             <h2>Spark Planner</h2>
             <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-planner.png">
             <ol>
-              <li><b>Spark Planner</b> - Generates a physical query plan</li>
+              <li><b>Spark Planner</b>
+                <ul>
+                  <li>Plans optimized logical plans to physical plans</li>
+                </ul>
+              </li>
               <li><b>At least</b> one physical plan for any given logical plan
                 <ul>
                   <li><b>Exactly one</b> in Spark 2.3</li>
                 </ul>
               </li>
-              <li>Cost-Based Optimization</li>
+              <li>Defines <b>extension point</b>
+                <ul>
+                  <li>ExperimentalMethods.extraStrategies</li>
+                </ul>
+              </li>
             </ol>
           </section>
           <section id="spark-preparations">
             <h3>Spark Physical Optimizer (Preparations)</h3>
             <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-preparations.png">
             <ol>
-              <li><b>Preparations</b> rules
+              <li>Physical query optimizations (aka <b>preparations</b> rules)
                 <ul>
                   <li>Whole-Stage Code Generation</li>
                   <li>Reuse Exchanges and Subqueries</li>
+                  <li>EnsureRequirements (with Bucketing)</li>
                 </ul>
               </li>
               <li>Note the type <b>Rule[SparkPlan]</b>
@@ -379,6 +447,10 @@
               <li>Tasks are executed on <b>executors</b></li>
             </ol>
           </section>
+          <section id="rdd-partitions-action-stage-tasks">
+            <h2>(No) RDD at runtime</h2>
+            <img width="70%" style="background:none; border:none; box-shadow:none;" data-src="images/stage-tasks.png">
+          </section>
           <section id="rdd-lineage">
             <h2>RDD Lineage</h2>
             <ol>
@@ -387,12 +459,21 @@
               <li><b>RDD.toDebugString</b></li>
             </ol>
           </section>
+          <section id="query-execution-pipeline-again">
+            <h2>QueryExecution Pipeline...Again</h2>
+            <img width="70%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-queryexecution-pipeline.png">
+          </section>
           <section id="structured-query-as-rdd">
             <h2>Structured Queries and RDDs</h2>
             <ol>
               <li><b>QueryExecution.toRdd</b> - the very last phase in a query execution</li>
-              <li>Spark SQL generates a RDD to execute a structured query</li>
-              <li>Spark SQL is a Spark module to use structured queries to write RDD-based distributed computations</li>
+              <li>Spark SQL generates an RDD to execute a structured query</li>
+              <li>Spark SQL uses higher-level structured queries to express RDD-based distributed computations
+                <ul>
+                  <li>RDD API is like assebler (or JVM bytecode)</li>
+                  <li>Dataset API is like Scala or Python</li>
+                </ul>
+              </li>
             </ol>
           </section>
         </section>
@@ -424,7 +505,7 @@
           <section id="whole-stage-codegen">
             <h2>Whole-Stage Java Code Generation</h2>
             <ol>
-              <li><b>Whole-Stage CodeGen</b> - Physical query optimization</li>
+              <li><b>Whole-Stage CodeGen</b> physical query optimization</li>
               <li>Collapses a query plan tree into a single optimized function</li>
               <li>Applied to structured queries through <b>CollapseCodegenStages</b> physical optimization
                 <ul>
@@ -438,6 +519,9 @@
               </li>
             </ol>
           </section>
+          <section id="whole-stage-codegen-webui">
+            <img style="background:none; border:none; box-shadow:none;" data-src="images/treenode-sparkplan.png">
+          </section>
           <section id="whole-stage-codegen-CollapseCodegenStages-rule" style="font-size: 90%;">
             <h2>CollapseCodegenStages Optimization Rule</h2>
             <p>
@@ -449,8 +533,19 @@
           <section id="tungsten">
             <h2>Tungsten Execution Backend</h2>
             <ol>
-              <li><b>Tungsten Execution Backend</b> (aka <i>Project Tungsten</i>) aims at optimizing Spark jobs for CPU and memory efficiency</li>
-              <li>It is assumed that network and disk I/O are not performance bottlenecks</li>
+              <li><b>Tungsten Execution Backend</b> (aka <i>Project Tungsten</i>)
+                <ul>
+                  <li>Optimizing Spark jobs for CPU and memory efficiency</li>
+                  <li>It is assumed that network and disk I/O are not performance bottlenecks</li>
+                </ul>
+              </li>
+              <li><b>InternalRow</b> data abstraction</li>
+              <li><b>UnsafeRow</b>
+                <ul>
+                  <li>Backed by raw memory</li>
+                  <li>Uses <b>sun.misc.Unsafe</b></li>
+                </ul>
+              </li>
               <li>Switch to Mastering Spark SQL
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-tungsten.html">Tungsten Execution Backend</a></li>
