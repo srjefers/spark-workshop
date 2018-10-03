@@ -107,6 +107,7 @@
             <li><a href="#/query-languages">Query Languages</a></li>
             <li><a href="#/catalyst">Project Catalyst</a></li>
             <li><a href="#/query-execution">Query Execution</a></li>
+            <li><a href="#/SparkSessionExtensions">SparkSessionExtensions</a></li>
             <li><a href="#/spark-core-rdd">Spark Core's RDD</a></li>
             <li><a href="#/debugging">Debugging Query Execution</a></li>
             <li><a href="#/whole-stage-codegen">Whole-Stage Java Code Generation</a></li>
@@ -139,11 +140,13 @@
             <pre><code>
     // Dataset API for Scala
     spark.table("t1")
-      .filter($"id" % 2 === 0)
       .join(spark.table("t2"), "id")
+      .where($"id" % 2 === 0)
 
     // SQL
-    sql("SELECT * FROM t1 WHERE id % 2 = 0")
+    sql("""SELECT t1.* FROM t1
+           INNER JOIN t2 ON t1.id = t2.id
+           WHERE t1.id % 2 = 0""")
             </code></pre>
             </p>
           </section>
@@ -426,6 +429,45 @@
         </section>
 
         <section>
+          <section id="SparkSessionExtensions">
+            <h2>SparkSessionExtensions</h2>
+            <ul>
+              <li><a href="https://github.com/apache/spark/commit/caf392025ce21d701b503112060fa016d5eabe04">Since</a> Apache Spark <b>2.3.0</b></li>
+              <li>Hooks and Extension Points</li>
+              <li>Customize a <b>SparkSession</b> with user-defined extensions
+                <ul>
+                  <li>Custom query execution rules</li>
+                  <li>Custom relational entity parser</li>
+                </ul>
+              </li>
+              <li>injectCheckRule</li>
+              <li>injectOptimizerRule</li>
+              <li>injectParser</li>
+              <li>injectPlannerStrategy</li>
+              <li>injectPostHocResolutionRule</li>
+              <li>injectResolutionRule</li>
+              <li>Use <b>Builder.withExtensions</b> or <b>spark.sql.extensions</b></li>
+            </ul>
+          </section>
+          <section id="SparkSessionExtensions-example">
+            <h2>SparkSessionExtensions Example</h2>
+            <pre><code data-trim data-noescape>import org.apache.spark.sql.SparkSession
+val spark = SparkSession
+  .builder
+  .withExtensions { extensions =>
+    extensions.injectResolutionRule { session =>
+      ...
+    }
+    extensions.injectOptimizerRule { session =>
+      ...
+    }
+  }
+  .getOrCreate
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
           <section id="spark-core-rdd" style="font-size: 90%;">
             <h2>Spark Core's RDD</h2>
             <ol>
@@ -470,7 +512,7 @@
               <li>Spark SQL generates an RDD to execute a structured query</li>
               <li>Spark SQL uses higher-level structured queries to express RDD-based distributed computations
                 <ul>
-                  <li>RDD API is like assebler (or JVM bytecode)</li>
+                  <li>RDD API is like assembler (or JVM bytecode)</li>
                   <li>Dataset API is like Scala or Python</li>
                 </ul>
               </li>
@@ -478,12 +520,11 @@
           </section>
         </section>
 
-        <section>
-          <section id="debugging">
-            <h2>Debugging Query Execution</h2>
-            <ol>
-              <li><b>debug</b> Scala package object with <b>debug</b> and <b>debugCodegen</b>
-                <pre><code>
+        <section id="debugging">
+          <h2>Debugging Query Execution</h2>
+          <ol>
+            <li><b>debug</b> Scala package object with <b>debug</b> and <b>debugCodegen</b>
+              <pre><code>
   import org.apache.spark.sql.execution.debug._
 
   val q = spark.range(10).where('id === 4)
@@ -491,15 +532,14 @@
 
   val q = sql("SELECT * FROM RANGE(10) WHERE id = 4")
   q.debugCodegen
-                </code></pre>
-              </li>
-              <li>Switch to Mastering Spark SQL
-                <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-debugging-execution.html">Debugging Query Execution</a></li>
-                </ul>
-              </li>
-            </ol>
-          </section>
+              </code></pre>
+            </li>
+            <li>Switch to Mastering Spark SQL
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-debugging-execution.html">Debugging Query Execution</a></li>
+              </ul>
+            </li>
+          </ol>
         </section>
         <section>
           <section id="whole-stage-codegen">
@@ -520,7 +560,8 @@
             </ol>
           </section>
           <section id="whole-stage-codegen-webui">
-            <img style="background:none; border:none; box-shadow:none;" data-src="images/treenode-sparkplan.png">
+            <h2>Whole-Stage Code Gen in Web UI</h2>
+            <img width="40%" style="background:none; border:none; box-shadow:none;" data-src="images/treenode-sparkplan.png">
           </section>
           <section id="whole-stage-codegen-CollapseCodegenStages-rule" style="font-size: 90%;">
             <h2>CollapseCodegenStages Optimization Rule</h2>
@@ -529,30 +570,28 @@
             </p>
           </section>
         </section>
-        <section>
-          <section id="tungsten">
-            <h2>Tungsten Execution Backend</h2>
-            <ol>
-              <li><b>Tungsten Execution Backend</b> (aka <i>Project Tungsten</i>)
-                <ul>
-                  <li>Optimizing Spark jobs for CPU and memory efficiency</li>
-                  <li>It is assumed that network and disk I/O are not performance bottlenecks</li>
-                </ul>
-              </li>
-              <li><b>InternalRow</b> data abstraction</li>
-              <li><b>UnsafeRow</b>
-                <ul>
-                  <li>Backed by raw memory</li>
-                  <li>Uses <b>sun.misc.Unsafe</b></li>
-                </ul>
-              </li>
-              <li>Switch to Mastering Spark SQL
-                <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-tungsten.html">Tungsten Execution Backend</a></li>
-                </ul>
-              </li>
-            </ol>
-          </section>
+        <section id="tungsten">
+          <h2>Tungsten Execution Backend</h2>
+          <ol>
+            <li><b>Tungsten Execution Backend</b> (aka <i>Project Tungsten</i>)
+              <ul>
+                <li>Optimizing Spark jobs for CPU and memory efficiency</li>
+                <li>It is assumed that network and disk I/O are not performance bottlenecks</li>
+              </ul>
+            </li>
+            <li><b>InternalRow</b> data abstraction</li>
+            <li><b>UnsafeRow</b>
+              <ul>
+                <li>Backed by raw memory</li>
+                <li>Uses <b>sun.misc.Unsafe</b></li>
+              </ul>
+            </li>
+            <li>Switch to Mastering Spark SQL
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-tungsten.html">Tungsten Execution Backend</a></li>
+              </ul>
+            </li>
+          </ol>
         </section>
 
         <section id="recap">
@@ -562,6 +601,7 @@
             <li><a href="#/query-languages">Query Languages</a></li>
             <li><a href="#/catalyst">Project Catalyst</a></li>
             <li><a href="#/query-execution">Query Execution</a></li>
+            <li><a href="#/SparkSessionExtensions">SparkSessionExtensions</a></li>
             <li><a href="#/spark-core-rdd">Spark Core's RDD</a></li>
             <li><a href="#/debugging">Debugging Query Execution</a></li>
             <li><a href="#/whole-stage-codegen">Whole-Stage Java Code Generation</a></li>
