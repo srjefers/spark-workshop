@@ -55,6 +55,7 @@
 1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html)
 1. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-multi-dimensional-aggregation.html)
 1. [The Internals of Structured Query Execution](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-internals-of-structured-query-execution.html)
+1. [Bucketing](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-bucketing.html)
 1. [Spark SQL Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-exercises.html)
 
 ### Day 4 &mdash; Spark MLlib

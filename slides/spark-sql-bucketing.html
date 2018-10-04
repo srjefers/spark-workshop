@@ -1,0 +1,380 @@
+<!doctype html>
+<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="description" content="Apache Spark 2 Workshop | Bucketing in Spark SQL">
+    <meta name="author" content="Jacek Laskowski">
+
+    <title>Bucketing in Spark SQL</title>
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="revealjs-css/custom-gc.css">
+    <link rel="stylesheet" href="revealjs-css/jacek.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section class="intro" data-transition="zoom" id="home">
+          <span class="menu-title" style="display: none">Home</span>
+          <p>
+            <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1 style="font-size: 2.77em;">Bucketing in Spark SQL</h1>
+          <h3>Apache Spark 2.3.1 / Spark SQL</h3>
+          <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+        <section>
+          <section id="speaker" data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Introduction</span>
+              <p>
+                <img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+              </p>
+
+              <div style="text-align: left; font-size: 85%">
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<b>Jacek Laskowski</b> is an independent consultant</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Specializing in <b>Spark</b>, Kafka, Kafka Streams, Scala</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Development | Consulting | Training</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Among contributors to <a href="http://spark.apache.org/releases/spark-release-2-2-0.html#credits">Spark</a> (since <a href="http://spark.apache.org/releases/spark-release-1-6-0.html#credits">1.6.0</a>)</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Contact me at **jacek@japila.pl**</p> <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Follow [@JacekLaskowski](https://twitter.com/jaceklaskowski) on twitter for more **#ApacheSpark**</p>
+              </div>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+            </script>
+          </section>
+          <section id="gitbooks" data-markdown>
+            <script type="text/template">
+              <span class="menu-title" style="display: none">Gitbooks</span>
+              <p>
+                <img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+              </p>
+              <div style="text-align: left">
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Jacek is best known by his **Gitbooks**</p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark</a></p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a></p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/mastering-kafka-streams">Mastering Kafka Streams</a></p>
+                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://jaceklaskowski.gitbooks.io/apache-kafka">Apache Kafka Notebook</a></p>
+              </div>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+            </script>
+          </section>
+          <section id="stackoverflow" data-markdown>
+            <script type="text/template">
+              <div style="text-align: center">
+                <span class="menu-title" style="display: none">StackOverflow</span>
+                <p>
+                  <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a>
+                </p>
+                <p>
+                  <img width="60%" src="images/jaceklaskowski-stackoverflow-stats.png" style="border: 0">
+                </p>
+              </div>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+            </script>
+          </section>
+        </section>
+
+        <section id="agenda">
+          <h2>Agenda</h2>
+          <ol>
+            <li><a href="#/motivation">Motivation</a></li>
+            <li><a href="#/bucketing">Bucketing</a></li>
+            <li><a href="#/bucketing-describe-extended">DESCRIBE EXTENDED</a></li>
+            <li><a href="#/summary">Summary</a></li>
+          </ol>
+        </section>
+
+        <section>
+          <section id="motivation">
+            <h1>Motivation</h1>
+          </section>
+          <section id="motivation-sample-tables">
+            <h2>Sample tables</h2>
+<!--
+import org.apache.spark.sql.SaveMode
+spark.range(10e4.toLong).write.mode(SaveMode.Overwrite).saveAsTable("large")
+spark.range(10e6.toLong).write.mode(SaveMode.Overwrite).saveAsTable("huge")
+-->
+            <pre><code data-noescape data-trim class="lang-scala hljs">
+scala> spark.catalog.listTables.show
++-----+--------+-----------+---------+-----------+
+| name|database|description|tableType|isTemporary|
++-----+--------+-----------+---------+-----------+
+| huge| default|       null|  MANAGED|      false|
+|large| default|       null|  MANAGED|      false|
++-----+--------+-----------+---------+-----------+
+            </code></pre>
+          </section>
+          <section id="motivation-join">
+            <h2>Join</h2>
+            <pre><code data-noescape data-trim class="lang-scala hljs">
+spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
+
+val huge = spark.table("huge")
+val large = spark.table("large")
+
+huge.join(large, "id").foreach(_ => ())
+            </code></pre>
+          </section>
+          <section id="motivation-sortmergejoin">
+            <h2>SortMergeJoin</h2>
+            <img width="33%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-bucketing-sortmergejoin.png">
+          </section>
+          <section id="motivation-sortmergejoin-exchanges">
+            <h2>SortMergeJoin with 2 Exchanges</h2>
+            <img width="50%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-bucketing-sortmergejoin-exchanges.png">
+          </section>
+          <section>
+            <h1>Can we do better?</h1>
+            <h2>Can we avoid the exchanges?</h2>
+          </section>
+        </section>
+
+        <section>
+          <section id="bucketing">
+            <h2>Bucketing</h2>
+            <ul>
+              <li>Optimization technique to <b>bucketize</b> tables</li>
+              <li>Uses <b>buckets</b> and <b>bucketing columns</b></li>
+              <li>Specifies physical data placement ("partitioning")</li>
+              <li>Pre-shuffle tables for future joins
+                <ul>
+                  <li>The more joins the bigger performance gains</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section id="bucketing-configuration">
+            <h2>Bucketing Configuration</h2>
+            <ul>
+              <li>Bucketing is <b>enabled by default</b></li>
+              <li><b>spark.sql.sources.bucketing.enabled</b> configuration property</li>
+              <pre><code data-noescape data-trim class="lang-scala hljs">
+scala> println(spark.version)
+2.3.2
+
+scala> println(spark.sessionState.conf.bucketingEnabled)
+true
+              </code></pre>
+            </ul>
+          </section>
+          <section id="bucketing-data-sources">
+            <h2>Bucketing and Data Sources</h2>
+            <ul>
+              <li>Bucketing used for all <b>file-based data sources</b></li>
+              <li>Use <b>DataFrameWrite.saveAsTable</b> for Spark tables
+                <ul>
+                  <li><b>DataFrameWriter.bucketBy</b> to define the <b>number of buckets</b> and the <b>bucketing columns</b></li>
+                </ul>
+              </li>
+              <br>
+              <img style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-bucketing-DataFrameWriter-bucketBy.png">
+              <li>Use Hive-specific tools for Hive tables</li>
+              <li>Use <b>SparkSession.table</b> to load bucketed tables</li>
+            </ul>
+          </section>
+          <section id="bucketing-DataFrameWriter-bucketBy-example">
+            <h2>DataFrameWriter.bucketBy Example</h2>
+            <pre><code data-noescape data-trim class="lang-scala hljs">
+// Creating bucketed tables
+import org.apache.spark.sql.SaveMode
+large.write
+  .bucketBy(4, "id")        // <-- bucketing
+  .sortBy("id")             // <-- optional sorting
+  .mode(SaveMode.Overwrite)
+  .saveAsTable("bucketed_large")
+huge.write
+  .bucketBy(4, "id")        // <-- bucketing
+  .sortBy("id")             // <-- optional sorting
+  .mode(SaveMode.Overwrite)
+  .saveAsTable("bucketed_huge")
+            </code></pre>
+          </section>
+          <section id="bucketing-join">
+            <h2>Join of Bucketed Tables</h2>
+            <pre><code data-noescape data-trim class="lang-scala hljs">
+spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
+
+val bucketed_large = spark.table("bucketed_large")
+val bucketed_huge = spark.table("bucketed_huge")
+
+bucketed_large.join(bucketed_huge, "id").foreach(_ => ())
+            </code></pre>
+          </section>
+          <section id="bucketing-sortmergejoin-no-exchanges">
+            <h2>SortMergeJoin with No Exchanges!</h2>
+            <img width="40%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-bucketing-sortmergejoin-no-exchanges.png">
+          </section>
+          <section id="bucketing-sortmergejoins-side-by-side">
+            <h2>SortMergeJoins (Before and After)</h2>
+            <table class="tableblock frame-all grid-all custom-style" style="width:100%">
+              <colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+              <tbody>
+                <tr>
+                  <td class="tableblock halign-left valign-top">
+                    <div>
+                      <div class="paragraph">
+                        <p>
+                          <span class="image">
+                            <img width="90%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-bucketing-sortmergejoin-exchanges.png">
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="tableblock halign-left valign-top">
+                    <div>
+                      <div class="paragraph">
+                        <p>
+                          <span class="image">
+                            <img width="80%" style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-bucketing-sortmergejoin-no-exchanges.png">
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+
+        <section>
+          <section id="bucketing-describe-extended">
+            <h2>DESCRIBE EXTENDED</h2>
+            <ul>
+              <li>Use <b>DESCRIBE EXTENDED</b> SQL command to know whether a table is bucketed or not</li>
+              <pre><code data-noescape data-trim class="lang-scala hljs">
+  val describeSQL = sql("DESCRIBE EXTENDED bucketed_large")
+  describeSQL.show(numRows = 50, truncate = false)
+              </code></pre>
+            </ul>
+          </section>
+          <section>
+            <h2>DESCRIBE EXTENDED</h2>
+            <img style="background:none; border:none; box-shadow:none;" data-src="images/sparksql-bucketing-describe-extended.png">
+          </section>
+        </section>
+
+        <section id="summary">
+          <h2>Summary</h2>
+          <ul>
+            <li>Bucketing is an optimization technique for joins (of tables)</li>
+            <li>Pre-shuffle tables for future joins</li>
+            <li>Enabled by default
+              <ul>
+                <li><b>spark.sql.sources.bucketing.enabled</b> property</li>
+              </ul>
+            </li>
+            <li>Uses buckets and bucketing columns
+              <ul>
+                <li>Number of buckets should be between 0 and 100000</li>
+                <li>The number of partitions on both sides of a join has to be exactly the same</li>
+              </ul>
+            </li>
+            <li>Acceptable to use bucketing for one side of a join</li>
+          </ul>
+        </section>
+
+        <section id="recap">
+          <h2>Recap</h2>
+          <ol>
+            <li><a href="#/motivation">Motivation</a></li>
+            <li><a href="#/bucketing">Bucketing</a></li>
+            <li><a href="#/bucketing-describe-extended">DESCRIBE EXTENDED</a></li>
+            <li><a href="#/summary">Summary</a></li>
+          </ol>
+        </section>
+
+        <section id="questions">
+          <div style="text-align: left; font-size: 95%;">
+            <h1>Questions?</h1>
+            <hr>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Read <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a> gitbook
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter
+            </p>
+            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
+              Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers</a> on StackOverflow
+            </p>
+          </div>
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'revealjs-plugins/menu/menu.js', async: true },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
