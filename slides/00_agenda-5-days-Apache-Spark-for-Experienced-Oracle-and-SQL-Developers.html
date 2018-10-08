@@ -35,7 +35,6 @@
       <div class="slides">
 
         <section class="intro" data-transition="zoom" id="home">
-          <span class="menu-title" style="display: none">Home</span>
           <p>
             <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
             <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
@@ -50,44 +49,38 @@
         </section>
 
         <section>
-          <section id="speaker" data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Introduction</span>
-              <p>
-                <img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
-              </p>
+          <section id="speaker">
+            <p>
+              <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            </p>
 
-              <div style="text-align: left; font-size: 85%">
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<b>Jacek Laskowski</b> is an independent consultant</p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Specializing in <b>Spark</b>, Kafka, Kafka Streams, Scala</p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Development | Consulting | Training</p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Among contributors to <a href="http://spark.apache.org/releases/spark-release-2-2-0.html#credits">Spark</a> (since <a href="http://spark.apache.org/releases/spark-release-1-6-0.html#credits">1.6.0</a>)</p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Contact me at **jacek@japila.pl**</p> <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Follow [@JacekLaskowski](https://twitter.com/jaceklaskowski) on twitter for more **#ApacheSpark**</p>
-              </div>
-              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
-            </script>
+            <ul>
+              <li><b>Jacek Laskowski</b> is an independent consultant</li>
+              <li>Specializing in <b>Spark</b>, Kafka, Kafka Streams, Scala</li>
+              <li>Development | Consulting | Training</li>
+              <li>Among contributors to <a href="http://spark.apache.org/releases/spark-release-2-2-0.html#credits">Spark</a> (since <a href="http://spark.apache.org/releases/spark-release-1-6-0.html#credits">1.6.0</a>)</li>
+              <li>Contact me at <b>jacek@japila.pl</b></li>
+              <li>Follow <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> on twitter <br> for more <b>#ApacheSpark</b></li>
+            </ul>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
-          <section id="gitbooks" data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Gitbooks</span>
-              <p>
-                <img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
-              </p>
-              <div style="text-align: left">
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Jacek is best known by his **Gitbooks**</p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark</a></p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a></p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/mastering-kafka-streams">Mastering Kafka Streams</a></p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://jaceklaskowski.gitbooks.io/apache-kafka">Apache Kafka Notebook</a></p>
-              </div>
-              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
-            </script>
+          <section id="gitbooks">
+            <p>
+              <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            </p>
+              Jacek is best known by his <b>Gitbooks</b>:
+              <ol>
+                <li><a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark</a></li>
+                <li><a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a></li>
+                <li><a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></li>
+                <li><a href="https://bit.ly/mastering-kafka-streams">Mastering Kafka Streams</a></li>
+                <li><a href="https://bit.ly/mastering-apache-kafka">Apache Kafka Notebook</a></li>
+              </ol>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
           <section id="stackoverflow" data-markdown>
             <script type="text/template">
               <div style="text-align: center">
-                <span class="menu-title" style="display: none">StackOverflow</span>
                 <p>
                   <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a>
                 </p>
@@ -103,7 +96,6 @@
         <section id="goal" data-markdown>
           <script type="text/template">
             # Goal
-
             <p>
               Building a practical and hands-on experience in<br />
               <b><span style="font-size: 140%">Scala</span></b> and <b><span style="font-size: 140%">Apache Spark™</span></b><br />
@@ -115,59 +107,58 @@
 
         <section>
           <section id="agenda">
-            <div style="text-align: left">
-              <h2>Agenda</h2>
-              <hr>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/day1">Day 1</a> &mdash; Just Enough Scala and IntelliJ IDEA
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/day2">Day 2</a> &mdash; sbt, Scala Collection API and Apache Spark
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/day3">Day 3</a> &mdash; Half-day Scala and Spark
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/day4">Day 4</a> &mdash; Option, Aggregations and Joins
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/day5">Day 5</a> &mdash; Advanced Scala and Spark
-              </p>
-            </div>
+            <h2>Agenda</h2>
+            <ul>
+              <li><a href="#/day1">Day 1</a> &mdash; Just Enough Scala and IntelliJ IDEA</li>
+              <li><a href="#/day2">Day 2</a> &mdash; sbt, Scala Collection API and Apache Spark</li>
+              <li><a href="#/day3">Day 3</a> &mdash; Half-day Scala and Spark</li>
+              <li><a href="#/day4">Day 4</a> &mdash; Option, Aggregations and Joins</li>
+              <li><a href="#/day5">Day 5</a> &mdash; Advanced Scala and Spark</li>
+            </ul>
             <footer style="font-size: small;">&copy;Jacek Laskowski 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
 
-          <section id="day1" data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Day 1</span>
-              ## Day 1 &mdash; Just Enough Scala and IntelliJ IDEA
-
-              1. [Scala &mdash; Just Enough to Develop Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html) (with spark-shell)
-                * Getting familiar with the syntax and **Scala REPL**
-                * **sbt console**
-              1. My First Scala Standalone Application
-                * Using **IntelliJ IDEA**, **sbt package** and **spark-submit**
-              1. [More Scala Exercises](http://blog.jaceklaskowski.pl/scala-workshop/slides/)
-            </script>
+          <section id="day1">
+            <h2 style="font-size: 70px;">Day 1 &mdash; Just Enough Scala <br> <small>And IntelliJ IDEA</small></h2>
+            <ol>
+              <li><a href="http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html">Scala &mdash; Just Enough to Develop Spark Applications</a>
+                <ul>
+                  <li>Getting familiar with the syntax and <b>Scala REPL</b></li>
+                  <li><b>sbt console</b></li>
+                </ul>
+              </li>
+              <li>My First Scala Standalone Application
+                <ul>
+                  <li><b>IntelliJ IDEA</b>, <b>sbt package</b> and <b>spark-submit</b></li>
+                </ul>
+              </li>
+              <li>Running Scala applications using <b>java -jar</b>
+                <ul>
+                  <li><a href="https://github.com/sbt/sbt-assembly">sbt-assembly</a> plugin</li>
+                </ul>
+              </li>
+              <li><b>Example</b>: Changing column names in Dataset
+                <ul>
+                  <li><b>Seq.foldLeft</b> and <a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset">Dataset.withColumnRenamed</a></li>
+                </ul>
+              </li>
+            </ol>
           </section>
 
           <section id="day2" data-markdown>
             <script type="text/template">
-              <span class="menu-title" style="display: none">Day 2</span>
               ## Day 2 &mdash; sbt, Scala Collection API and Apache Spark
 
               1. [sbt &mdash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
               1. [Scala Collection API](http://www.scala-lang.org/api/current/scala/collection/index.html)
                 * Reviewing **scala.collection** package
-                * Using "favourites" of [Seq](http://www.scala-lang.org/api/current/scala/collection/immutable/Seq.html)
-              1. Lunch Break
+                * "Favourites" of [Seq](http://www.scala-lang.org/api/current/scala/collection/immutable/Seq.html)
               1. [Into Apache Spark 2 Using spark-shell (and Databricks)](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
             </script>
           </section>
 
           <section id="day3" data-markdown>
             <script type="text/template">
-              <span class="menu-title" style="display: none">Day 3</span>
               ## Day 3 &mdash; Half-day Scala and Spark
 
               1. [Scala Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala-exercises.html)
@@ -180,7 +171,6 @@
 
           <section id="day4" data-markdown>
             <script type="text/template">
-              <span class="menu-title" style="display: none">Day 4</span>
               ## Day 4 &mdash; Option, Aggregations and Joins
 
               1. (Scala) [Option](http://www.scala-lang.org/api/2.11.11/#scala.Option)
@@ -192,7 +182,6 @@
 
           <section id="day5" data-markdown>
             <script type="text/template">
-              <span class="menu-title" style="display: none">Day 5</span>
               ## Day 5 &mdash; Advanced Scala and Spark
 
               1. (Scala) [Seq](http://www.scala-lang.org/api/2.11.11/#scala.collection.Seq)
@@ -213,7 +202,6 @@
           <section>
             <div style="text-align: left">
               <h2 style="font-size: 1.88em">Prerequisities / Programming Experience</h2>
-              <span class="menu-title" style="display: none">Programming Experience</span>
               <hr>
               <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 Some programming experience using modern programming language, e.g. Scala, Python, Java, F#
@@ -224,7 +212,6 @@
           <section>
             <div style="text-align: left">
               <h2>Prerequisities / To Be Installed</h2>
-              <span class="menu-title" style="display: none">To Be Installed</span>
               <hr>
               <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Platform, Standard Edition (Java SE) 8</a>
@@ -241,7 +228,6 @@
           <section>
             <div style="text-align: left">
               <h2>Prerequisities / To Be Downloaded</h2>
-              <span class="menu-title" style="display: none">To Be Downloaded</span>
               <hr>
               <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 The latest version of <a href="https://spark.apache.org/downloads.html">Apache Spark</a>
@@ -260,7 +246,6 @@
           <section>
             <div style="text-align: left">
               <h2>Introduce Yourself</h2>
-              <span class="menu-title" style="display: none">Introduce Yourself</span>
               <hr>
               <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 First name
@@ -277,7 +262,6 @@
           <section>
             <div style="text-align: left">
               <h2>Addendum</h2>
-              <span class="menu-title" style="display: none">Addendum</span>
               <hr>
               <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
                 Write down your name on paper and put it in front of you
@@ -330,7 +314,6 @@
 					{ src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
 					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'revealjs-plugins/menu/menu.js', async: true },
 					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
