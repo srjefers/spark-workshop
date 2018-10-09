@@ -55,7 +55,8 @@
             ## Agenda
 
             1. [Standard Functions](#/standard-functions)
-              * [Exercise](#/standard-functions-exercise): Using Standard Functions (upper)
+              * [Exercise](#/standard-functions-exercise): Standard Functions (upper)
+              * [Exercise](#/exercise-functions-explode): Explode Function
             1. [Standard Functions for Date and Time](#/standard-functions-datetime)
               * [Exercise](#/exercise-datetime-functions): Difference in Days Between Date Strings
             1. [User-Defined Functions (UDFs)](#/udf-heads-up)
@@ -90,6 +91,8 @@
               ```scala
               import org.apache.spark.sql.functions._
               ```
+              1. Use Dataset operators as "execution environment"
+                * <b>withColumn</b>, <b>select</b>, <b>filter</b>
               1. Switch to Mastering Spark SQL
                 * [Standard Functions — functions Object](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions.html)
               1. **Home exercise**: Read up [functions object's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
@@ -98,13 +101,30 @@
           <section id="standard-functions-exercise" data-markdown>
             <script type="text/template">
               <!-- .slide: style="font-size: 90%" -->
-              ## Exercise: Using Standard Functions (upper)
+              ## Exercise: Standard Functions (upper)
 
               1. Develop a standalone Spark SQL application (IntelliJ IDEA)
               1. Use **upper** function with **withColumn** or **select** operators
                 * Think about the difference between the Dataset operators
               1. Use Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
               1. (extra) Load a data set from CSVs given on command line
+              1. Time: **30 mins**
+            </script>
+          </section>
+          <section id="exercise-functions-explode" data-markdown>
+            <script type="text/template">
+              ## Exercise: explode function
+
+              1. Create a Dataset with a column of array type
+                ```scala
+                val nums = Seq(Seq(1,2,3)).toDF("nums")
+                scala> nums.printSchema
+                root
+                 |-- nums: array (nullable = true)
+                 |    |-- element: integer (containsNull = false)
+                ```
+              1. Use **explode** function to expand the array column
+              1. (extra) Compare performance of **flatMap** and **explode**
               1. Time: **30 mins**
             </script>
           </section>
@@ -129,7 +149,6 @@
               ## Exercise: Difference in Days Between Dates As Strings <small>(1 of 2)</small>
 
               1. Given dataset with date strings calculate number of days between them and current day
-              1. Use **unix_timestamp** function and **cast** to **timestamp**
               1. Use **to_date** and **datediff** functions
               1. Read Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
             </script>
@@ -147,13 +166,13 @@ val dates = Seq(
 val diffs = // <-- your solution here
 
 scala> diffs.show
-+-----------+-------------------+----+
-|date_string|          timestamp|diff|
-+-----------+-------------------+----+
-| 08/11/2015|2015-11-08 00:00:00| 584|
-| 09/11/2015|2015-11-09 00:00:00| 583|
-| 09/12/2015|2015-12-09 00:00:00| 553|
-+-----------+-------------------+----+
++-----------+----------+----+
+|date_string|   to_date|diff|
++-----------+----------+----+
+| 08/11/2015|2015-11-08|1066|
+| 09/11/2015|2015-11-09|1065|
+| 09/12/2015|2015-12-09|1035|
++-----------+----------+----+
 ```
             </script>
           </section>
@@ -216,7 +235,7 @@ scala> diffs.show
                 * Use Scala's [StringOps.toUpperCase](http://www.scala-lang.org/api/2.11.8/index.html#scala.collection.immutable.StringOps)
               1. **Explain** the logical and execution plans
                 * Think what happens for UDFs with **if** conditions
-              1. (extra) Use the UDF in SQL, i.e. **spark.sql**
+              1. Use the UDF in SQL, i.e. **spark.sql**
               1. (extra) Use **callUDF**
               1. Time: **30 mins**
             </script>
@@ -229,7 +248,8 @@ scala> diffs.show
             ## Recap
 
             1. [Standard Functions](#/standard-functions)
-              * [Exercise](#/standard-functions-exercise): Using Standard Functions (upper)
+              * [Exercise](#/standard-functions-exercise): Standard Functions (upper)
+              * [Exercise](#/exercise-functions-explode): Explode Function
             1. [Standard Functions for Date and Time](#/standard-functions-datetime)
               * [Exercise](#/exercise-datetime-functions): Difference in Days Between Date Strings
             1. [User-Defined Functions (UDFs)](#/udf-heads-up)
@@ -277,7 +297,6 @@ scala> diffs.show
           { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'revealjs-plugins/menu/menu.js', async: true },
           { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
         ]
       });

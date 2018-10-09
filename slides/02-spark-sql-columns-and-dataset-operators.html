@@ -40,7 +40,8 @@
             <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>Columns and Dataset Operators</h1>
+          <h1 style="font-size: 2.99em;">Columns and Dataset Operators</h1>
+          <h3>Apache Spark 2.3 / Spark SQL</h3>
 
           <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
@@ -67,6 +68,7 @@
             ## Dataset Columns
 
             1. **Column** is a function that generates a value per row
+              * Internally, a Catalyst expression
             1. **Column** type with methods
               * _Explained in the following slide_
             1. Columns can be <b>free</b> or <b>bound</b> (associated or not with Datasets)
@@ -85,7 +87,6 @@
             <!-- .slide: style="font-size: 90%" -->
             ## Column Operators / Expressions
 
-            1. **Column** is an Catalyst expression to generate values
             1. Special **&#9733;** (star) column reference
             1. **Operators** to create (compound) columns
               * **as**, **alias** or **name** for aliases
@@ -200,7 +201,6 @@
           { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'revealjs-plugins/menu/menu.js', async: true },
           { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
         ]
       });

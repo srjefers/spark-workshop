@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <meta name="description" content="Apache Spark 2 Workshop :: Spark SQL">
+    <meta name="description" content="Apache Spark 2 Workshop | Spark SQL">
     <meta name="author" content="Jacek Laskowski">
 
-    <title>Apache Spark 2 Workshop :: Spark SQL</title>
+    <title>Apache Spark 2 Workshop | Spark SQL</title>
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
     <link rel="stylesheet" href="revealjs-css/jacek.css">
@@ -41,8 +41,7 @@
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>Spark SQL</h1>
-          <h2>Overview</h2>
-
+          <h2>Practical Introduction</h2>
           <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
 
@@ -53,7 +52,7 @@
           <section>
             <h2>Introduction to Spark SQL</h2>
             <ol>
-              <li>Spark SQL = <b>SQL</b> + <b>Dataset</b> (and <b>DataFrame</b>)
+              <li>Structured queries described using <b>SQL</b> and <b>Dataset</b> (and <b>DataFrame</b>)
               <li>Good ol' <b>SQL</b> statements</li>
               <li><b>Dataset</b> (and <b>DataFrame</b>) data abstractions
                 <ul>
@@ -65,7 +64,7 @@
                   <li>Reducing garbage collections</li>
                 </ul>
               </li>
-              <li>Read Mastering Spark SQL
+              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql.html">Spark SQL &mdash; Structured Data Processing with Relational Queries on Massive Scale</a></li>
                 </ul>
@@ -91,7 +90,7 @@
               </li>
               <li>Loading datasets using <b>load</b> <small>discussed later</small></li>
               <li>spark-shell gives you one instance as <b>spark</b></li>
-              <li>Read Mastering Spark SQL
+              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-SparkSession.html">SparkSession &mdash; The Entry Point to Spark SQL</a></li>
                 </ul>
@@ -115,7 +114,7 @@
                 </ul>
               </li>
               <li>Loading and writing operators create source and sink nodes in a data flow graph</li>
-              <li>Read Mastering Spark SQL
+              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-datasource-api.html">DataSource API &mdash; Managing Datasets in External Data Sources</a></li>
                 </ul>
@@ -127,7 +126,7 @@
 
           <section style="font-size: 90%;">
             <h2>Reading/Loading Datasets</h2>
-            <pre><code>
+            <pre><code data-noescape class="lang-scala hljs">
       val dataset = spark.read.format("csv").load("csvs/*")
             </code></pre>
             <ol>
@@ -140,7 +139,7 @@
                   <li>format-specific loading methods <small>discussed on next slide</small></li>
                 </ol>
               </li>
-              <li>Read Mastering Spark SQL
+              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-DataFrameReader.html">DataFrameReader &mdash; Reading Datasets from External Data Sources</a></li>
                 </ul>
@@ -167,7 +166,7 @@
 
           <section style="font-size: 90%;">
             <h2>Writing/Saving Datasets</h2>
-            <pre><code>
+            <pre><code data-noescape class="lang-scala hljs">
           dataset.write.format("json").save("dailies")
             </code></pre>
             <ol>
@@ -180,7 +179,7 @@
                   <li><b>insertInto</b>, <b>save</b> and <b>saveAsTable</b></li>
                 </ol>
               </li>
-              <li>Read Mastering Spark SQL
+              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-DataFrameWriter.html">DataFrameWriter</a></li>
                 </ul>
@@ -197,7 +196,7 @@
               <li><b>Seq(...).toDS</b> for local Datasets</li>
               <li>Use <b>import spark.implicits._</b></li>
               <li>All Scala Collections supported (almost)</li>
-              <li>Read Mastering Spark SQL
+              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-SparkSession.html#implicits">Implicit Conversions &mdash; implicits object</a></li>
                 </ul>
@@ -221,7 +220,7 @@
   val schema = Encoders.product[Person].schema
                 </code></pre>
               </li>
-              <li>Read Mastering Spark SQL
+              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-schema.html">Schema &mdash; Structure of Data</a></li>
                 </ul>
@@ -262,7 +261,7 @@
                 * Use <b>IntelliJ IDEA</b>
               1. Define Spark SQL dependency in <b>build.sbt</b>
                 * **libraryDependencies**
-                * **"org.apache.spark" %% "spark-sql" % "2.3.0"**
+                * **"org.apache.spark" %% "spark-sql" % "2.3.2"**
               1. Write your <b>Spark SQL code</b>, i.e. <b>spark.version</b>
                 * **SparkSession**
               1. Execute <b>sbt package</b>
@@ -278,17 +277,15 @@
 ```scala
 // no master URL hard-coded!
 // Use spark-submit to specify it at submission time
-val spark: SparkSession = SparkSession.builder.getOrCreate()
-try {
-  spark.read
-    .option("header", true)
-    .csv("inventory/*.csv")
-    .write
-    .mode("overwrite")
-    .save("reports")
-} finally {
-  spark.stop()
-}
+val spark: SparkSession = SparkSession.builder.getOrCreate
+spark.read
+  .option("header", true)
+  .option("inferSchema", true)
+  .csv("inventory/*.csv")
+  .withColumn("name", upper($"name"))
+  .write
+  .mode("overwrite")
+  .save("reports")
 ```
             </script>
           </section>
@@ -351,8 +348,8 @@ try {
             1. Build up on previous exercise
             1. Use **args** for the table name and the SQL query
               * **args(0)** is the table name
-              * Use **mkString** with the remining **args** for query
-            1. Register **jdbc** Dataset as temporary view
+              * **args(1)** is the query to be executed
+            1. Register the dataset as a temporary view
               * Use **createOrReplaceTempView**
             1. Execute the SQL query using **spark.sql**
             </script>
@@ -363,8 +360,8 @@ try {
           <script type="text/template">
             # Questions?
 
-            * Read [Mastering Apache Spark (2.3.0)](https://bit.ly/mastering-apache-spark)
-              * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
+            * Read [Mastering Spark SQL](http://bit.ly/mastering-spark-sql)
+              * [http://bit.ly/mastering-spark-sql](http://bit.ly/mastering-spark-sql)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </script>
@@ -399,7 +396,6 @@ try {
           { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'revealjs-plugins/menu/menu.js', async: true },
           { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
         ]
       });
