@@ -53,7 +53,6 @@
             <p>
               <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
             </p>
-
             <ul>
               <li><b>Jacek Laskowski</b> is an independent consultant</li>
               <li>Specializing in <b>Spark</b>, Kafka, Kafka Streams, Scala</li>
@@ -112,7 +111,7 @@
               <li><a href="#/day1">Day 1</a> &mdash; Just Enough Scala (with IntelliJ IDEA)</li>
               <li><a href="#/day2">Day 2</a> &mdash; Foundations of Spark SQL</li>
               <li><a href="#/day3">Day 3</a> &mdash; Aggregations and Joins</li>
-              <li><a href="#/day4">Day 4</a> &mdash; sbt, Scala Collection API and Apache Spark</li>
+              <li><a href="#/day4">Day 4</a> &mdash; Internals of Spark Core, SQL and web UI</li>
               <li><a href="#/day5">Day 5</a> &mdash; Advanced Scala and Spark</li>
             </ul>
             <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
@@ -172,27 +171,13 @@
 
           <section id="day4" data-markdown>
             <script type="text/template">
-              ## Day 4 &mdash; sbt, Scala Collection API and Apache Spark
+              ## Day 4 &mdash; Internals of Spark Core, SQL and web UI
 
-              1. [sbt &mdash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
-              1. [Scala Collection API](http://www.scala-lang.org/api/current/scala/collection/index.html)
-                * Reviewing **scala.collection** package
-                * "Favourites" of [Seq](http://www.scala-lang.org/api/current/scala/collection/immutable/Seq.html)
-              1. (Scala) [Option](http://www.scala-lang.org/api/2.11.11/#scala.Option)
-              1. [Scala Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala-exercises.html)
-
-              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
-            </script>
-          </section>
-
-          <section id="day5" data-markdown>
-            <script type="text/template">
-              ## Day 5 &mdash; Advanced Scala and Spark
-
-              1. (Scala) [Seq](http://www.scala-lang.org/api/2.11.11/#scala.collection.Seq)
-              1. Lunch Break
-              1. (Scala) Recursive Methods and @tailrec
-              1. (Scala) [S-99: Ninety-Nine Scala Problems](http://aperiodic.net/phil/scala/s-99/)
+              1. [The Core of Spark Core](01_spark-core.html)
+              1. [web UI](01-spark-core-webui.html)
+              1. [Spark SQL Exercises](02-spark-sql-exercises.html)
+              1. [Spark and Cluster Managers](11_SparkCore-Cluster-Managers.html)
+              1. [The Internals of Structured Query Execution](spark-sql-internals-of-structured-query-execution.html)
 
               <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
             </script>
@@ -206,39 +191,26 @@
             <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
           </section>
           <section>
-            <div style="text-align: left">
-              <h2 style="font-size: 1.88em">Prerequisities / Programming Experience</h2>
-              <hr>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                Some programming experience using modern programming language, e.g. Scala, Python, Java, F#
-              </p>
-            </div>
+            <h2 style="font-size: 1.88em">Prerequisities / Programming Experience</h2>
+            <p>
+              Some programming experience using modern programming language, e.g. Scala, Python, Java, F#
+            </p>
             <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
           </section>
           <section>
-            <div style="text-align: left">
-              <h2>Prerequisities / To Be Installed</h2>
-              <hr>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Platform, Standard Edition (Java SE) 8</a>
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a> Community Edition with <b>Scala plugin</b>
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="http://www.scala-sbt.org/download.html">sbt</a>
-              </p>
-            </div>
+            <h2>Prerequisities / To Be Installed</h2>
+            <ol>
+              <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Platform, Standard Edition (Java SE) 8</a></li>
+              <li><a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a> Community Edition with <b>Scala plugin</b></li>
+              <li><a href="http://www.scala-sbt.org/download.html">sbt</a></li>
+            </ol>
             <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
           </section>
           <section>
-            <div style="text-align: left">
-              <h2>Prerequisities / To Be Downloaded</h2>
-              <hr>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                The latest version of <a href="https://spark.apache.org/downloads.html">Apache Spark</a>
-              </p>
-            </div>
+            <h2>Prerequisities / To Be Downloaded</h2>
+            <ol>
+              <li>The latest version of <a href="https://spark.apache.org/downloads.html">Apache Spark</a></li>
+            </ol>
             <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
           </section>
         </section>
@@ -247,35 +219,24 @@
           <section id="in-da-clazz">
             <h1>In-Class Preparations</h1>
             <h4>Make Instructor's Life Slightly Easier. Thanks!</h4>
+
             <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
           </section>
           <section>
-            <div style="text-align: left">
-              <h2>Introduce Yourself</h2>
-              <hr>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                First name
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                What do you expect from the workshop?
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                Where do you want to be with Scala and Spark after 5 days?
-              </p>
-            </div>
+            <h2>Introduce Yourself</h2>
+            <ol>
+              <li>First name</li>
+              <li>What do you expect from the workshop?</li>
+              <li>Where do you want to be with Spark after 5 days?</li>
+            </ol>
             <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
           </section>
           <section>
-            <div style="text-align: left">
-              <h2>Addendum</h2>
-              <hr>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                Write down your name on paper and put it in front of you
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                What time do you prefer for lunch? 12pm or 1pm?
-              </p>
-            </div>
+            <h2>Addendum</h2>
+            <ol>
+              <li>Write down your name on paper and put it in front of you (stick to your laptop?)</li>
+              <li>Is lunch at <b>12:45pm</b> OK?</li>
+            </ol>
             <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
           </section>
         </section>
@@ -286,6 +247,8 @@
 
             * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
               * [https://bit.ly/mastering-spark-sql](https://bit.ly/mastering-spark-sql)
+            * Read [Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
+              * [https://bit.ly/spark-structured-streaming](https://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
 
