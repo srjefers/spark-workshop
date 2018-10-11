@@ -12,22 +12,22 @@
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
     <link rel="stylesheet" href="revealjs-css/jacek.css">
-		<link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
 
     <!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
   </head>
 
   <body>
@@ -98,6 +98,7 @@
             <p>
               Building a practical and hands-on experience in<br />
               <b><span style="font-size: 140%">Scala</span></b> and <b><span style="font-size: 140%">Apache Spark™</span></b><br />
+              (mostly Spark SQL and Spark MLlib)<br />
               for advanced Oracle and SQL developers
             </p>
             <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
@@ -111,8 +112,8 @@
               <li><a href="#/day1">Day 1</a> &mdash; Just Enough Scala (with IntelliJ IDEA)</li>
               <li><a href="#/day2">Day 2</a> &mdash; Foundations of Spark SQL</li>
               <li><a href="#/day3">Day 3</a> &mdash; Aggregations and Joins</li>
-              <li><a href="#/day4">Day 4</a> &mdash; Internals of Spark Core, SQL and web UI</li>
-              <li><a href="#/day5">Day 5</a> &mdash; Advanced Scala and Spark</li>
+              <li><a href="#/day4">Day 4</a> &mdash; Advanced Apache Spark and Monitoring</li>
+              <li><a href="#/day5">Day 5</a> &mdash; Advanced Spark SQL and Spark MLlib</li>
             </ul>
             <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
           </section>
@@ -149,9 +150,9 @@
             <script type="text/template">
               ## Day 2 &mdash; Foundations of Spark SQL
 
-              1. [Spark SQL](02_spark_sql.html)
-              1. [Columns and Dataset Operators](02-spark-sql-columns-and-dataset-operators.html)
-              1. [Standard and User-Defined Functions](02-spark-sql-standard-functions-udfs.html)
+              1. [Spark SQL](spark-sql.html)
+              1. [Columns and Dataset Operators](spark-sql-columns-and-dataset-operators.html)
+              1. [Standard and User-Defined Functions](spark-sql-standard-functions-udfs.html)
 
               <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
             </script>
@@ -171,13 +172,27 @@
 
           <section id="day4" data-markdown>
             <script type="text/template">
-              ## Day 4 &mdash; Internals of Spark Core, SQL and web UI
+              ## Day 4 &mdash; Advanced Apache Spark and Monitoring
 
-              1. [The Core of Spark Core](01_spark-core.html)
+              1. [The Core of Apache Spark](spark-core.html)
               1. [web UI](01-spark-core-webui.html)
-              1. [Spark SQL Exercises](02-spark-sql-exercises.html)
               1. [Spark and Cluster Managers](11_SparkCore-Cluster-Managers.html)
+              1. [Spark History Server](12_SparkCore-Spark-History-Server.html)
+              1. [Spark SQL Exercises](spark-sql-exercises.html)
+
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+            </script>
+          </section>
+
+          <section id="day5" data-markdown>
+            <script type="text/template">
+              ## Day 5 &mdash; Advanced Spark SQL and Spark MLlib
+
               1. [The Internals of Structured Query Execution](spark-sql-internals-of-structured-query-execution.html)
+              1. [Join Optimization With Bucketing](spark-sql-bucketing.html)
+              1. [Machine Learning with Spark MLlib](spark-mllib.html)
+              1. [ML Pipelines In-Depth](spark-mllib-ml-pipelines.html)
+              1. [Spark SQL Exercises](spark-sql-exercises.html)
 
               <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
             </script>
@@ -245,10 +260,10 @@
           <script type="text/template">
             # Questions?
 
+            * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
+              * [http://bit.ly/mastering-apache-spark](http://bit.ly/mastering-apache-spark)
             * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
               * [https://bit.ly/mastering-spark-sql](https://bit.ly/mastering-spark-sql)
-            * Read [Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
-              * [https://bit.ly/spark-structured-streaming](https://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
 
@@ -260,34 +275,44 @@
     </div>
 
     <script src="reveal.js/lib/js/head.min.js"></script>
-		<script src="reveal.js/js/reveal.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
         controls: true,
-				progress: true,
-				history: true,
-				center: true,
-				slideNumber: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				menu: {
-					markers: true,
-					openSlideNumber: true
-				},
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
         dependencies: [
           { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'reveal.js/plugin/markdown/marked.js' },
-					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
-					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
 </html>

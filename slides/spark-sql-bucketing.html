@@ -5,13 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <meta name="description" content="Apache Spark 2 Workshop | Bucketing in Spark SQL">
+    <meta name="description" content="Apache Spark 2 Workshop | Join Optimization With Bucketing (Spark SQL)">
     <meta name="author" content="Jacek Laskowski">
 
-    <title>Bucketing in Spark SQL</title>
+    <title>Join Optimization With Bucketing (Spark SQL)</title>
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="revealjs-css/custom-gc.css">
     <link rel="stylesheet" href="revealjs-css/jacek.css">
     <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
 
@@ -36,58 +35,50 @@
       <div class="slides">
 
         <section class="intro" data-transition="zoom" id="home">
-          <span class="menu-title" style="display: none">Home</span>
           <p>
             <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1 style="font-size: 2.77em;">Bucketing in Spark SQL</h1>
-          <h3>Apache Spark 2.3.1 / Spark SQL</h3>
+          <h1 style="font-size: 2.77em;">Join Optimization With Bucketing</h1>
+          <h3>Apache Spark 2.3 / Spark SQL</h3>
           <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
           Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
 
-          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
         </section>
 
         <section>
-          <section id="speaker" data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Introduction</span>
-              <p>
-                <img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
-              </p>
-
-              <div style="text-align: left; font-size: 85%">
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<b>Jacek Laskowski</b> is an independent consultant</p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Specializing in <b>Spark</b>, Kafka, Kafka Streams, Scala</p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Development | Consulting | Training</p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Among contributors to <a href="http://spark.apache.org/releases/spark-release-2-2-0.html#credits">Spark</a> (since <a href="http://spark.apache.org/releases/spark-release-1-6-0.html#credits">1.6.0</a>)</p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Contact me at **jacek@japila.pl**</p> <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Follow [@JacekLaskowski](https://twitter.com/jaceklaskowski) on twitter for more **#ApacheSpark**</p>
-              </div>
-              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
-            </script>
+          <section id="speaker">
+            <p>
+              <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            </p>
+            <ul>
+              <li><b>Jacek Laskowski</b> is an independent consultant</li>
+              <li>Specializing in <b>Spark</b>, Kafka, Kafka Streams, Scala</li>
+              <li>Development | Consulting | Training</li>
+              <li>Among contributors to <a href="http://spark.apache.org/releases/spark-release-2-2-0.html#credits">Spark</a> (since <a href="http://spark.apache.org/releases/spark-release-1-6-0.html#credits">1.6.0</a>)</li>
+              <li>Contact me at <b>jacek@japila.pl</b></li>
+              <li>Follow <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> on twitter <br> for more <b>#ApacheSpark</b></li>
+            </ul>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
           </section>
-          <section id="gitbooks" data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Gitbooks</span>
-              <p>
-                <img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
-              </p>
-              <div style="text-align: left">
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;Jacek is best known by his **Gitbooks**</p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark</a></p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a></p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://bit.ly/mastering-kafka-streams">Mastering Kafka Streams</a></p>
-                <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;<a href="https://jaceklaskowski.gitbooks.io/apache-kafka">Apache Kafka Notebook</a></p>
-              </div>
-              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
-            </script>
+          <section id="gitbooks">
+            <p>
+              <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            </p>
+              Jacek is best known by his <b>Gitbooks</b>:
+              <ol>
+                <li><a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark</a></li>
+                <li><a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a></li>
+                <li><a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></li>
+                <li><a href="https://bit.ly/mastering-kafka-streams">Mastering Kafka Streams</a></li>
+                <li><a href="https://bit.ly/mastering-apache-kafka">Apache Kafka Notebook</a></li>
+              </ol>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
           </section>
           <section id="stackoverflow" data-markdown>
             <script type="text/template">
               <div style="text-align: center">
-                <span class="menu-title" style="display: none">StackOverflow</span>
                 <p>
                   <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a>
                 </p>
@@ -95,7 +86,7 @@
                   <img width="60%" src="images/jaceklaskowski-stackoverflow-stats.png" style="border: 0">
                 </p>
               </div>
-              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
             </script>
           </section>
         </section>
@@ -312,24 +303,17 @@ bucketed_large.join(bucketed_huge, "id").foreach(_ => ())
           </ol>
         </section>
 
-        <section id="questions">
-          <div style="text-align: left; font-size: 95%;">
-            <h1>Questions?</h1>
-            <hr>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Read <a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> gitbook
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Read <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a> gitbook
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers</a> on StackOverflow
-            </p>
-          </div>
-          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+        <section style="text-align: left" data-markdown id="questions">
+          <script type="text/template">
+            # Questions?
+
+            * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
+              * [https://bit.ly/mastering-spark-sql](https://bit.ly/mastering-spark-sql)
+            * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+            * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+
+            <footer style="font-size: small; text-align: center">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+          </script>
         </section>
 
       </div>
@@ -361,7 +345,6 @@ bucketed_large.join(bucketed_huge, "id").foreach(_ => ())
           { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'revealjs-plugins/menu/menu.js', async: true },
           { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
         ]
       });
