@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Workshop Agenda | Apache Spark™ Developer Certification Workshop Agenda | 5 days</title>
+
+    <meta name="description" content="Workshop Agenda | Apache Spark™ Developer Certification Workshop Agenda | 5 days">
+    <meta name="author" content="Jacek Laskowski">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section class="intro" data-transition="zoom" id="home">
+          <p>
+            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1 style="font-size: 2.66em">Apache Spark™ <br>Developer Certification Workshop <small>5 Days</small></h1>
+
+          <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+
+          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
+            / jacek@japila.pl</footer>
+        </section>
+
+        <section>
+          <section id="speaker" style="font-size: 90%" data-markdown>
+            <textarea data-template>
+                      <p>
+                        <img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+                      </p>
+                      * **Jacek Laskowski** is an independent consultant
+        
+                      * Specializing in **Spark**, Kafka, Kafka Streams, Scala
+        
+                      * Development | Consulting | Training
+        
+                      * Among contributors to <a href="https://github.com/apache/spark/graphs/contributors">Apache Spark</a>
+        
+                      * Contact me at **jacek@japila.pl**
+        
+                      * Follow [@JacekLaskowski](https://twitter.com/jaceklaskowski) on twitter <br>for more #ApacheSpark, #ApacheKafka, #KafkaStreams
+        
+                      <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+                    </textarea>
+          </section>
+          <section id="gitbooks">
+            <p>
+              <img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            </p>
+            <div style="text-align: center">
+              <p>Jacek is best known by his <b>Gitbooks</b>:</p>
+              <p>
+                <ol>
+                  <li><a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark</a></li>
+                  <li><a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a></li>
+                  <li><a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></li>
+                  <li><a href="https://bit.ly/mastering-kafka-streams">Mastering Kafka Streams</a></li>
+                  <li><a href="https://bit.ly/mastering-apache-kafka">Mastering Apache Kafka</a></li>
+                </ol>
+              </p>
+              <br><br>
+            </div>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a
+                href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+          </section>
+          <section id="stackoverflow">
+            <div style="text-align: center">
+              <p>
+                <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a>
+              </p>
+              <p>
+                <img width="60%" src="images/jaceklaskowski-stackoverflow-stats.png" style="border: 0">
+              </p>
+            </div>
+            
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
+              / jacek@japila.pl</footer>
+          </section>
+        </section>
+
+        <section id="goal" data-markdown>
+          <script type="text/template">
+            # Goal
+            <p>
+              Increase success rate with
+              <br>
+              <b><span style="font-size: 120%">Apache Spark™ Developer Certification</span></b>
+              <br>
+              given the requirements
+              <br>
+              from [Databricks](https://databricks.com/training/certified-spark-developer), [Cloudera](https://www.cloudera.com/more/training/certification/cca-spark.html), [Hortonworks](https://hortonworks.com/services/training/certification/hdp-certified-spark-developer/) or [MapR](https://mapr.com/training/certification/mcsd/)
+              <br>
+              with the Scala programming language
+            </p>
+            <br><br><br><br>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+          </script>
+        </section>
+
+        <section>
+          <section id="agenda">
+            <h2>Agenda</h2>
+            <ul>
+              <li><a href="#/day1">Day 1</a> &mdash; The Essentials of Spark SQL</li>
+              <li><a href="#/day2">Day 2</a> &mdash; Advanced Spark SQL</li>
+              <li><a href="#/day3">Day 3</a> &mdash; Spark Structured Streaming</li>
+              <li><a href="#/day4">Day 4</a> &mdash; Spark MLlib</li>
+              <li><a href="#/day5">Day 5</a> &mdash; Advanced Apache Spark (Core)</li>
+            </ul>
+            <br><br><br><br><br>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+          </section>
+
+          <section id="day1"data-markdown>
+            <textarea data-template>
+              ## Day 1 &mdash; The Essentials of Spark SQL
+
+              1. FIXME
+
+              <br><br><br><br><br><br><br><br>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+            </textarea>
+          </section>
+
+          <section id="day2" data-markdown>
+            <textarea data-template>
+              ## Day 2 &mdash; Advanced Spark SQL
+
+              1. FIXME
+
+              <br><br><br><br><br><br><br><br>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+            </textarea>
+          </section>
+
+          <section id="day3" data-markdown>
+            <textarea data-template>
+              ## Day 3 &mdash; Spark Structured Streaming
+
+              1. FIXME
+
+              <br><br><br><br><br><br><br><br>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+            </textarea>
+          </section>
+
+          <section id="day4" data-markdown>
+            <textarea data-template>
+              ## Day 4 &mdash; Spark MLlib
+
+              1. FIXME
+
+              <br><br><br><br><br><br><br><br>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+            </textarea>
+          </section>
+
+          <section id="day5" data-markdown>
+            <textarea data-template>
+              ## Day 5 &mdash; Advanced Apache Spark (Core)
+
+              1. FIXME
+
+              <br><br><br><br><br><br>
+              <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+            </textarea>
+          </section>
+        </section>
+
+        <section>
+          <section id="prerequisities">
+            <h1>Prerequisities</h1>
+            <h4>Be prepared to get the most out of the workshop</h4>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <h2>Prerequisities / Experience</h2>
+            <ol>
+              <li>Hands-on programming experience using Scala
+                <ul>
+                  <li>Eventually Java or Python</li>
+                  <li>Certifications are offered in Scala or Python</li>
+                </ul>
+              </li>
+              <li>Experience developing Spark applications in production already</li>
+            </ol>
+            <br><br><br><br><br><br>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <h2>Prerequisities / To Be Installed</h2>
+            <ol>
+              <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Platform, Standard Edition (Java SE) 8</a></li>
+              <li>The latest version of <a href="https://spark.apache.org/downloads.html">Apache Spark</a></li>
+              <li><a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a> Community Edition with <b>Scala plugin</b></li>
+              <li><a href="http://www.scala-sbt.org/download.html">sbt</a></li>
+              <li>Linux or macOS preferred</li>
+            </ol>
+            <br><br><br><br><br><br>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+          </section>
+        </section>
+
+        <section>
+          <section id="in-da-clazz">
+            <h1>In-Class Preparations</h1>
+            <h4>Make Instructor's Life Slightly Easier. Thanks!</h4>
+
+            <br><br><br>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <h2>Introduce Yourself</h2>
+            <ol>
+              <li>First name</li>
+              <li>What's your experience with Spark in production?</li>
+              <li>What certification do you think of?</li>
+              <li>Have you already signed up?</li>
+            </ol>
+            <br><br><br><br><br><br><br>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+          </section>
+          <section>
+            <h2>Addendum</h2>
+            <ol>
+              <li>Put your name on paper in front of you
+                <ul>
+                  <li>Stick to your laptop if possible</li>
+                </ul>
+              </li>
+              <li>Lunch at <b>12:45pm</b></li>
+            </ol>
+            <br><br><br><br><br><br><br>
+            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+          </section>
+        </section>
+
+        <section style="text-align: left" data-markdown id="questions">
+          <textarea data-template>
+            # Questions?
+
+            * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
+            * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
+            * Read [Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+            * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+            * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+
+            <br><br>
+            <footer style="font-size: small; text-align: center">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+          </textarea>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
