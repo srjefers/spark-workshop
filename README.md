@@ -42,6 +42,19 @@ Execute the following command to have a complete Docker image for the workshop.
 
 NOTE: It was tested on Mac OS only. I assume that `-v` in the command will not work on Windows and need to be changed to appropriate environment settings.
 
-```
+```bash
 docker run -ti -p 4040:4040 -p 8080:8080 -v "$PWD:/home/spark/workspace" -v "$HOME/.ivy2":/home/spark/.ivy2 -h spark --name=spark jaceklaskowski/docker-spark
 ```
+
+## Contact The Author
+
+- Read [Mastering Apache Spark](https://bit.ly/mastering-apache-spark)
+- Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
+- Read [Mastering Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
+- Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+- Upvote [Jacek Laskowski's questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+- Use [Jacek's code on GitHub](https://github.com/jaceklaskowski)
+- Read [blog posts on Medium](https://medium.com/@jaceklaskowski)
+- Upvote [Jacek's answers on Quora](https://www.quora.com/profile/Jacek-Laskowski)
+- Connect [on LinkedIn](https://www.linkedin.com/in/jaceklaskowski/)
+- Visit [Jacek Laskowski's blog](https://blog.jaceklaskowski.pl)
