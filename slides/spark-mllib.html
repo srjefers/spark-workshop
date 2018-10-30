@@ -48,29 +48,72 @@
         </section>
 
         <section>
-          <h2>Spark MLlib</h2>
-          <ol>
-            <li>Provides <b>distributed machine learning algorithms</b></li>
-            <li>Simplifies the development and usage of large scale machine learning.</li>
-            <li><b>org.apache.spark.mllib</b> for a RDD-based machine learning</li>
-            <li><b>org.apache.spark.ml</b> for a DataFrame-based machine learning</li>
-          </ol>
+          <section id="intro" style="font-size: 90%">
+            <h2>Spark MLlib</h2>
+            <ol>
+              <li>Spark library for <b>distributed machine learning</b></li>
+              <li>Simplifies the development and usage of large-scale machine learning</li>
+              <li>Uses Spark SQL for data access
+                <ul>
+                  <li><b>org.apache.spark.ml</b> is the primary API</li>
+                  <li><a href="http://spark.apache.org/docs/latest/ml-guide.html#announcement-dataframe-based-api-is-primary-api">The MLlib RDD-based API is now in maintenance mode</a></li>
+                  <li>Avoid the RDD-based MLlib API in <b>org.apache.spark.mllib</b> package</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section id="features" style="font-size: 85%">
+            <h2>Features of Spark MLlib</h2>
+            <ol>
+              <li><b>Machine learning algorithms</b>
+                <ul>
+                  <li>Classification, regression, clustering, collaborative filtering</li>
+                </ul>
+              </li>
+              <li><b>Featurization</b>
+                <ul>
+                  <li>Feature extraction, transformation, dimensionality reduction, selection</li>
+                </ul>
+              </li>
+              <li><b>Pipelines</b>
+                <ul>
+                  <li>Constructing, evaluating, and tuning machine learning pipelines</li>
+                </ul>
+              </li>
+              <li><b>Persistence</b>
+                <ul>
+                  <li>Saving and loading algorithms, models, and pipelines</li>
+                </ul>
+              </li>
+              <li><b>Utilities</b>
+                <ul>
+                  <li>Linear algebra, statistics, data handling</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
         </section>
 
         <section>
-          <section>
-            <h2>ML Pipelines - High-Level API for MLlib</h2>
-            <p>
-              Use of a machine learning algorithm is only one component of a <b>predictive analytic workflow</b>. There could also be <b>pre-processing steps</b> for the machine learning algorithm to work.
-            </p>
+          <section id="motivation">
+            <h1>Motivation</h1>
+          </section>
+          <section id="predictive-analytic-workflow">
+            <h2>Predictive analytic workflow</h2>
+            <ol>
+              <li>Use of a machine learning algorithm is only one component of a <b>predictive analytic workflow</b></li>
+              <li>There may also be <b>pre-processing steps</b> for the machine learning algorithm to work</li>
+              <li>Expectations of <b>data scientists</b> and <b>data engineers</b></li>
+            </ol>
           </section>
           <section>
-            <h2>Typical standard machine learning workflow</h2>
+            <h2>Typical machine learning workflow</h2>
             <ol>
               <li>Loading data (aka <b>data ingestion</b>)</li>
+              <li>Preparing data (aka <b>data cleanup</b>)</li>
               <li>Extracting features (aka <b>feature extraction</b>)</li>
-              <li>Training model (aka <b>model training</b>)</li>
-              <li>Evaluate (or <b>predictionize</b>)</li>
+              <li>Fitting model (aka <b>model training</b>)</li>
+              <li>Scoring (or <b>predictionize</b>)</li>
             </ol>
           </section>
           <section>
@@ -81,22 +124,41 @@
               <li>Deploying model (aka <b>model deployment</b> and <b>integration</b>)</li>
             </ol>
           </section>
-          <section>
-            <h2>Pipeline API</h2>
-            Assemble and configure practical distributed machine learning pipelines
-          </section>
         </section>
 
         <section>
-          <h2>Concepts</h2>
-          <ol>
-            <li>Pipelines and PipelineStages</li>
-            <li>Transformers</li>
-            <li>Estimators</li>
-            <li>Models</li>
-            <li>Cross Validators and Evaluators</li>
-            <li>Params (and ParamMaps)</li>
-          </ol>
+          <section id="ml-pipeline">
+            <h1>ML Pipeline</h1>
+          </section>
+          <section id="ml-pipeline-goal">
+            <h2>Goal of ML Pipeline</h2>
+            Assemble and configure <br>
+            practical distributed machine learning pipelines <br>
+            as easy-to-use pieces <br>
+            to compose more complex ones with ease (like Lego™ blocks)
+          </section>
+          <section id="ml-pipeline-features">
+            <h2>Features of ML Pipeline</h2>
+            <ol>
+              <li>DataFrame as a dataset format</li>
+              <li>ML Pipelines API is similar to scikit-learn</li>
+              <li>Easy debugging (via inspecting columns added during execution)</li>
+              <li>Parameter tuning</li>
+              <li>Compositions (to build more complex pipelines out of existing ones)</li>
+            </ol>
+          </section>
+          <section id="ml-pipeline-components">
+            <h2>Components of ML Pipeline</h2>
+            <ol>
+              <li>Pipelines and PipelineStages</li>
+              <li>Transformers</li>
+              <li>Estimators</li>
+              <li>Models</li>
+              <li>Evaluators</li>
+              <li>Cross Validators</li>
+              <li>Params and ParamMaps</li>
+            </ol>
+          </section>
         </section>
 
         <section>
@@ -105,73 +167,74 @@
         </section>
 
         <section>
-          <h2>Features of Pipeline API</h2>
-          <ol>
-            <li>DataFrame as a dataset format</li>
-            <li>ML Pipelines API is similar to scikit-learn</li>
-            <li>Easy debugging (via inspecting columns added during execution)</li>
-            <li>Parameter tuning</li>
-            <li>Compositions (to build more complex pipelines out of existing ones)</li>
-          </ol>
+          <section id="ml-pipeline-design">
+            <h2>ML Pipeline Design</h2>
+            <ol>
+              <li>Choose <b>Transformers</b></li>
+              <li>Select <b>Estimator</b> (to produce a <b>Model</b>)</li>
+              <li>Create <b>Pipeline</b></li>
+              <li><b>Fit</b> the pipeline to a training <b>Dataset</b></li>
+              <li>Use the Model</li>
+            </ol>
+          </section>
+          <section id="ml-pipeline-design-estimator">
+            <h2>ML Pipeline Design Applied - Step 1</h2>
+            <ul>
+              <li>Selecting <a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.Estimator">Estimator</a> (to produce a <b>Model</b>)</li>
+              <ol>
+                <li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.classification.LogisticRegression">LogisticRegression</a></li>
+                <li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.clustering.LDA">LDA</a> (with <a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.feature.CountVectorizer">CountVectorizer</a>)</li>
+                <li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.recommendation.ALS">ALS</a></li>
+                <li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.clustering.KMeans">KMeans</a></li>
+                <li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.classification.NaiveBayes">NaiveBayes</a></li>
+                <li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.feature.Word2Vec">Word2Vec</a></li>
+              </ol>
+            </ul>
+          </section>
+          <section id="ml-pipeline-design-transformers">
+            <h2>ML Pipeline Design Applied - Step 2</h2>
+            <ul>
+              <li>Selecting <a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.Transformer">Transformers</a> (for feature selection)</li>
+              <ol>
+                <li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.feature.Tokenizer">Tokenizer</a> (or <a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.feature.RegexTokenizer">RegexTokenizer</a>)</li>
+                <li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.feature.HashingTF">HashingTF</a></li>
+              </ol>
+            </ul>
+          </section>
+          <section id="ml-pipeline-design-pipeline">
+            <h2>ML Pipeline Design Applied - Step 3</h2>
+            <ul>
+              <li>Creating <a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.Pipeline">Pipeline</a></li>
+              <ol>
+                <li><b>new Pipeline()</b></li>
+                <li><b>setStages</b></li>
+              </ol>
+            </ul>
+          </section>
+          <section id="ml-pipeline-design-fitting-model">
+            <h2>ML Pipeline Design Applied - Step 4</h2>
+            <ul>
+              <li><b>Fitting</b> a model</li>
+              <ol>
+                <li>Requires a <b>training Dataset</b></li>
+                <li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.Pipeline">Pipeline.fit</a></li>
+              </ol>
+            </ul>
+          </section>
+          <section id="ml-pipeline-design-using-model">
+            <h2>ML Pipeline Design Applied - Step 5</h2>
+            <ul>
+              <li>Using trained <b>Model</b> (to generate predictions)</li>
+              <ol>
+                <li>Requires a <b>real Dataset</b></li>
+                <li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.Pipeline">Pipeline.transform</a></li>
+              </ol>
+            </ul>
+          </section>
         </section>
 
-        <section>
-          <h2>ML Pipeline Design</h2>
-          <ol>
-            <li>Choose <b>Transformers</b></li>
-            <li>Select <b>Estimator</b> (to produce a <b>Model</b>)</li>
-            <li>Create <b>Pipeline</b></li>
-            <li><b>Fit</b> the pipeline to a training <b>Dataset</b></li>
-            <li>Use the Model</li>
-          </ol>
-        </section>
-        <section>
-          <h2>ML Pipeline Design Applied - Step 1</h2>
-          <ul>
-            <li>Selecting <b>Estimator</b> (to produce <b>Model</b>)</li>
-            <ol>
-              <li><b>LogisticRegression</b></li>
-            </ol>
-          </ul>
-        </section>
-        <section>
-          <h2>ML Pipeline Design Applied - Step 2</h2>
-          <ul>
-            <li>Selecting <b>Transformers</b></li>
-            <ol>
-              <li><b>Tokenizer</b></li>
-              <li><b>HashingTF</b></li>
-            </ol>
-          </ul>
-        </section>
-        <section>
-          <h2>ML Pipeline Design Applied - Step 3</h2>
-          <ul>
-            <li>Creating <b>Pipeline</b></li>
-            <ol>
-              <li><b>new Pipeline()</b></li>
-              <li><b>setStages</b></li>
-            </ol>
-          </ul>
-        </section>
-        <section>
-          <h2>ML Pipeline Design Applied - Step 4</h2>
-          <ul>
-            <li><b>Fitting</b> the pipeline to a <b>training Dataset</b></li>
-            <ol>
-              <li><b>fit</b></li>
-            </ol>
-          </ul>
-        </section>
-        <section>
-          <h2>ML Pipeline Design Applied - Step 5</h2>
-          <ul>
-            <li>Using trained <b>Model</b> (to generate predictions)</li>
-            <ol>
-              <li>Transforming a <b>real Dataset</b></li>
-              <li><b>transform</b></li>
-            </ol>
-          </ul>
+        <section id="demo">
+          <h1>Demo</h1>
         </section>
 
         <section style="text-align: left" data-markdown id="questions">
