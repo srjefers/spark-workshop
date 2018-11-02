@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Apache Spark™ 2.3 Workshop | Spark SQL | Working with Missing Data</title>
+
+    <meta name="description" content="Apache Spark™ 2.3 Workshop | Spark SQL | Working with Missing Data">
+    <meta name="author" content="Jacek Laskowski">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+    
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <!-- Jacek's custom formatting -->
+    <link rel="stylesheet" href="revealjs-css/footer.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+
+      <div class="footer">
+        <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
+          / jacek@japila.pl</footer>
+      </div>
+
+      <div class="slides">
+
+        <section class="intro" data-transition="zoom" id="home">
+          <p>
+            <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1 style="font-size: 3.27em;">Working with <br> Missing Data</h1>
+          <h3>Apache Spark 2.3 / Spark SQL</h3>
+        
+          <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a>
+            / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
+            Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering
+              Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+        </section>
+
+        <section id="agenda">
+          <h2>Agenda</h2>
+          <ol>
+            <li><a href="#/introduction">What's Missing Data</a></li>
+            <li><a href="#/dataframenafunctions">DataFrameNaFunctions</a></li>
+            <li><a href="#/standard-and-sql-functions">Standard and SQL Functions</a></li>
+            <li><a href="#/schema-nullability">Schema Nullability</a></li>
+            <li><a href="#/optimizations">Optimizations</a></li>
+          </ol>
+        </section>
+
+        <section id="introduction">
+          <h2>What's Missing Data</h2>
+          <ol>
+            <li><b>Missing Data</b> are <b>null</b> or <b>NaN</b> values in dataset
+              <ul>
+                <li><b>Empty data</b> or <b>non-existent data</b></li>
+              </ul>
+            </li>
+            <li>Spark has optimization for queries with missing data</li>
+            <li>Can be a result of <b>OUTER JOIN</b>
+              <pre><code data-trim style="word-wrap: break-word;">
+scala> left.join(right, Seq("id"), "outer").show
++---+----+-----+
+| id|name| name|
++---+----+-----+
+|  1| one|jeden|
+|  0|zero| null|
++---+----+-----+
+              </code></pre>
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <section id="dataframenafunctions">
+            <h2>DataFrameNaFunctions</h2>
+            <ol>
+              <li><a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.DataFrameNaFunctions">DataFrameNaFunctions</a> is the interface to work with missing data in DataFrames</li>
+              <li>Allows for dropping or replacing missing data</li>
+              <li>Use <b>Dataset.na</b> operator to access the API</li>
+            </ol>
+            <pre><code class="hljs" style="word-wrap: break-word;">
+              na: DataFrameNaFunctions
+            </code></pre>
+          </section>
+          <section id="dataframenafunctions-api">
+            <h2>DataFrameNaFunctions API</h2>
+            <ol>
+              <li><b>Untyped transformations</b> that return a DataFrame</li>
+              <li><b>drop</b> drops rows containing any missing values</li>
+              <li><b>fill</b> replaces missing values with a value</li>
+              <li><b>replace</b> replaces values matching keys in a replacement map</li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section id="standard-and-sql-functions">
+            <h2>Standard and SQL Functions</h2>
+            <ol>
+              <li>Available functions differ per "execution mode": standard functions and SQL</li>
+              <li>Review <a href="https://github.com/apache/spark/blob/master/sql/catalyst/src/main/scala/org/apache/spark/sql/catalyst/expressions/nullExpressions.scala">nullExpressions.scala</a> for the definitive list of the Catalyst expressions
+                <ul>
+                  <li><b>Coalesce</b></li>
+                  <li><b>IfNull</b></li>
+                  <li><b>Nvl2</b></li>
+                  <li>...</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section id="standard-functions">
+            <h2>Standard Functions</h2>
+            <ol>
+              <li><b>coalesce</b> selects the first column that is not null, or null if all are null</li>
+              <li><b>isnan</b> returns true iff the column is NaN</li>
+              <li><b>isnull</b> returns true iff the column is null</li>
+              <li><b>nanvl</b> returns col1 if not a NaN, or col2</li>
+              <li>...</li>
+            </ol>
+          </section>
+          <section id="sql-functions">
+            <h2>SQL Functions</h2>
+            <ol>
+              <li><b>ifnull</b> returns expr2 if expr1 is null, or expr1 otherwise</li>
+              <li>...</li>
+            </ol>
+          </section>
+        </section>
+
+        <section id="schema-nullability">
+          <h2>Schema Nullability</h2>
+          <ol>
+            <li><b>nullable</b> attribute in schema</li>
+            <li>Helps query optimizer to handle such columns</li>
+            <li>Not enforced and acts as a hint</li>
+            <li>If used incorrectly (nulls used for a non-null column), can lead to exceptions difficult to debug</li>
+          </ol>
+        </section>
+
+        <section id="optimizations">
+          <h2>Optimizations</h2>
+          <ol>
+            <li>FIXME</li>
+          </ol>
+        </section>
+
+        <section id="recap">
+          <h2>Recap</h2>
+          <ol>
+            <li><a href="#/introduction">What's Missing Data</a></li>
+            <li><a href="#/dataframenafunctions">DataFrameNaFunctions</a></li>
+            <li><a href="#/standard-and-sql-functions">Standard and SQL Functions</a></li>
+            <li><a href="#/schema-nullability">Schema Nullability</a></li>
+            <li><a href="#/optimizations">Optimizations</a></li>
+          </ol>
+        </section>
+
+        <section style="text-align: left" data-markdown id="questions">
+          <textarea data-template>
+            # Questions?
+
+            * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
+            * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
+            * Read [Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+            * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+            * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+          </textarea>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    
+    <script>
+      // Full list of configuration options available at:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+          { src: 'reveal.js/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () { return !!document.querySelector('pre code'); }, callback: function () { hljs.initHighlightingOnLoad(); } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>

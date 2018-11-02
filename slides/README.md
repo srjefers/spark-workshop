@@ -46,19 +46,20 @@
 9. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html)
 10. [Dynamic Allocation of Executors](http://blog.jaceklaskowski.pl/spark-workshop/slides/07_Spark-Core-Dynamic-Allocation-Of-Executors.html)
 
-### Unit 3. Structured Data Processing with Spark SQL
+### Unit 3. Processing Structured Data with Spark SQL
 
 1. [Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql.html)
-2. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html)
-3. [Columns and Dataset Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-columns-and-dataset-operators.html)
-4. [Standard and User-Defined Functions](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-standard-functions-udfs.html)
-5. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-basic-aggregation.html)
-6. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-joins.html)
-7. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html)
-8. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-multi-dimensional-aggregation.html)
-9. [The Internals of Structured Query Execution](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-internals-of-structured-query-execution.html)
-10. [Join Optimization With Bucketing](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-bucketing.html)
-11. [Spark SQL Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-exercises.html)
+1. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html)
+1. [Columns and Dataset Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-columns-and-dataset-operators.html)
+1. [Standard and User-Defined Functions](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-standard-functions-udfs.html)
+1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-basic-aggregation.html)
+1. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-joins.html)
+1. [Working with Missing Data](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-Working-with-Missing-Data.html)
+1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html)
+1. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-multi-dimensional-aggregation.html)
+1. [The Internals of Structured Query Execution](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-internals-of-structured-query-execution.html)
+1. [Join Optimization With Bucketing](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-bucketing.html)
+1. [Spark SQL Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-exercises.html)
 
 ### Unit 4. Machine Learning with Spark MLlib
 
