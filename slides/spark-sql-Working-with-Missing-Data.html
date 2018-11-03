@@ -67,13 +67,12 @@
         <section id="introduction">
           <h2>What's Missing Data</h2>
           <ol>
-            <li><b>Missing Data</b> are <b>null</b> or <b>NaN</b> values in dataset
+            <li><b>Missing Data</b> are <b>null</b> or <b>NaN</b> values in data
               <ul>
                 <li><b>Empty data</b> or <b>non-existent data</b></li>
               </ul>
             </li>
-            <li>Spark has optimization for queries with missing data</li>
-            <li>Can be a result of <b>OUTER JOIN</b>
+            <li>Can be a result of <b>LEFT OUTER</b> or <b>FULL OUTER</b> joins
               <pre><code data-trim style="word-wrap: break-word;">
 scala> left.join(right, Seq("id"), "outer").show
 +---+----+-----+
@@ -84,6 +83,7 @@ scala> left.join(right, Seq("id"), "outer").show
 +---+----+-----+
               </code></pre>
             </li>
+            <li>Spark can optimize queries with missing data</li>
           </ol>
         </section>
 
@@ -114,16 +114,26 @@ scala> left.join(right, Seq("id"), "outer").show
         </section>
 
         <section>
-          <section id="standard-and-sql-functions">
+          <section id="standard-and-sql-functions" style="font-size: 85%;">
             <h2>Standard and SQL Functions</h2>
             <ol>
-              <li>Available functions differ per "execution mode": standard functions and SQL</li>
+              <li>Available functions differ per "execution mode"
+                <ul>
+                  <li>Dataset API and SQL</li>
+                </ul>
+              </li>
+              <li>Common idiom is to use <b>expr</b> standard function to use SQL-only function outside SQL mode
+              <pre><code class="lang-scala" data-trim style="word-wrap: break-word;">
+                people.withColumn("expr1", expr("nullif(expr1, expr2)"))
+              </code></pre>
+              </li>
               <li>Review <a href="https://github.com/apache/spark/blob/master/sql/catalyst/src/main/scala/org/apache/spark/sql/catalyst/expressions/nullExpressions.scala">nullExpressions.scala</a> for the definitive list of the Catalyst expressions
                 <ul>
+                  <li><b>AtLeastNNonNulls</b> (<b>Dataset.drop</b> operator)</li>
                   <li><b>Coalesce</b></li>
-                  <li><b>IfNull</b></li>
-                  <li><b>Nvl2</b></li>
-                  <li>...</li>
+                  <li><b>IfNull</b>, <b>NullIf</b></li>
+                  <li><b>IsNaN</b>, <b>IsNull</b>, <b>IsNotNull</b></li>
+                  <li><b>NaNvl</b>, <b>Nvl</b>, <b>Nvl2</b></li>
                 </ul>
               </li>
             </ol>
@@ -135,24 +145,38 @@ scala> left.join(right, Seq("id"), "outer").show
               <li><b>isnan</b> returns true iff the column is NaN</li>
               <li><b>isnull</b> returns true iff the column is null</li>
               <li><b>nanvl</b> returns col1 if not a NaN, or col2</li>
-              <li>...</li>
             </ol>
           </section>
-          <section id="sql-functions">
+          <section id="sql-functions" style="font-size: 90%;">
             <h2>SQL Functions</h2>
             <ol>
               <li><b>ifnull</b> returns expr2 if expr1 is null, or expr1 otherwise</li>
-              <li>...</li>
+              <li><b>isnan</b> returns true if expr is NaN, or false otherwise</li>
+              <li><b>isnotnull</b> returns true if the current expression is NOT null</li>
+              <li><b>isnull</b> returns true iff the column is null</li>
+              <li><b>nanvl</b> returns col1 if not a NaN, or col2</li>
+              <li><b>nullif</b> returns null if expr1 equals to expr2, or expr1 otherwise</li>
+              <li><b>nvl</b> returns expr2 if expr1 is null, or expr1</li>
+              <li><b>nvl2</b> returns expr2 if expr1 is not null, or expr3</li>
             </ol>
           </section>
         </section>
 
-        <section id="column-api-for-missing-data">
+        <section id="column-api-for-missing-data" style="font-size: 85%;">
           <h2>Column API for Missing Data</h2>
           <ol>
-            <li><b>desc_nulls_first</b> returns a descending sort with null values before non-null values (i.e. nulls first)</li>
-            <li><b>desc_nulls_last</b> returns a descending sort with null values after non-null values (i.e. nulls last)</li>
-            <li>Used for sorting using <b>Dataset.sort</b> operator
+            <li>Filtering (e.g. <b>Dataset.where</b> operator)
+              <ul>
+                <li><b>isNaN</b> returns true if the current expression is NaN</li>
+                <li><b>isNotNull</b> returns true if the current expression is NOT null</li>
+                <li><b>isNull</b> returns true if the current expression is null</li>
+              </ul>
+            </li>
+            <li>Sorting (e.g. <b>Dataset.sort</b> operator)
+              <ul>
+                <li><b>desc_nulls_first</b> returns a descending sort with null values before non-null values (i.e. nulls first)</li>
+                <li><b>desc_nulls_last</b> returns a descending sort with null values after non-null values (i.e. nulls last)</li>
+              </ul>
               <pre><code class="lang-scala" data-trim style="word-wrap: break-word;">
                 people.sort($"age".desc_nulls_last)
               </code></pre>
@@ -186,7 +210,9 @@ scala> left.join(right, Seq("id"), "outer").show
         <section id="optimizations">
           <h2>Optimizations</h2>
           <ol>
-            <li>FIXME</li>
+            <li><b>BooleanSimplification</b></li>
+            <li><b>NullPropagation</b></li>
+            <li><b>spark.sql.constraintPropagation.enabled</b> (internal) configuration property for Constraint propagation</li>
           </ol>
         </section>
 
