@@ -56,11 +56,12 @@
           <ol>
             <li><a href="#/introduction">What's Missing Data</a></li>
             <li><a href="#/dataset-api-for-missing-data">Dataset API for Missing Data</a></li>
-            <li><a href="#/standard-and-sql-functions">Standard and SQL Functions</a></li>
+            <li><a href="#/functions-for-missing-data">Functions for Missing Data</a></li>
             <li><a href="#/column-api-for-missing-data">Column API for Missing Data</a></li>
             <li><a href="#/window-aggregation-and-missing-data">Window Aggregation and Missing Data</a></li>
             <li><a href="#/schema-nullability">Schema Nullability</a></li>
             <li><a href="#/optimizations">Optimizations</a></li>
+            <li><a href="#/defining-dataset-with-missing-data">Defining Dataset With Missing Data</a></li>
           </ol>
         </section>
 
@@ -114,6 +115,9 @@ scala> left.join(right, Seq("id"), "outer").show
         </section>
 
         <section>
+          <section id="functions-for-missing-data">
+            <h1>Functions for Missing Data</h1>
+          </section>
           <section id="standard-and-sql-functions" style="font-size: 85%;">
             <h2>Standard and SQL Functions</h2>
             <ol>
@@ -145,6 +149,13 @@ scala> left.join(right, Seq("id"), "outer").show
               <li><b>isnan</b> returns true iff the column is NaN</li>
               <li><b>isnull</b> returns true iff the column is null</li>
               <li><b>nanvl</b> returns col1 if not a NaN, or col2</li>
+            </ol>
+          </section>
+          <section id="standard-aggregate-functions">
+            <h2>Standard Aggregate Functions</h2>
+            <ol>
+              <li><b>first</b> returns the first non-null value when <b>ignoreNulls</b> flag on</li>
+              <li><b>last</b></li>
             </ol>
           </section>
           <section id="sql-functions" style="font-size: 90%;">
@@ -216,16 +227,53 @@ scala> left.join(right, Seq("id"), "outer").show
           </ol>
         </section>
 
+        <section>
+          <section id="defining-dataset-with-missing-data">
+            <h1>Defining Dataset With Missing Data</h1>
+          </section>
+          <section>
+            <h2>Common but not idiomatic way</h2>
+            <pre><code data-trim style="word-wrap: break-word;">
+              val names = Seq(
+                (0, null.asInstanceOf[String]), // <-- define a missing name
+                (1, "hello")).toDF("id", "name")
+              scala> names.show
+              +---+-----+
+              | id| name|
+              +---+-----+
+              |  0| null|
+              |  1|hello|
+              +---+-----+
+            </code></pre>
+          </section>
+          <section>
+            <h2>Idiomatic way</h2>
+            <pre><code data-trim style="word-wrap: break-word;">
+              val names = Seq(
+                (0, None), // <-- define a missing name
+                (1, Some("hello"))).toDF("id", "name")
+              scala> names.show
+              +---+-----+
+              | id| name|
+              +---+-----+
+              |  0| null|
+              |  1|hello|
+              +---+-----+
+            </code></pre>
+          </section>
+        </section>
+
         <section id="recap">
           <h2>Recap</h2>
           <ol>
             <li><a href="#/introduction">What's Missing Data</a></li>
             <li><a href="#/dataset-api-for-missing-data">Dataset API for Missing Data</a></li>
-            <li><a href="#/standard-and-sql-functions">Standard and SQL Functions</a></li>
+            <li><a href="#/functions-for-missing-data">Functions for Missing Data</a></li>
             <li><a href="#/column-api-for-missing-data">Column API for Missing Data</a></li>
             <li><a href="#/window-aggregation-and-missing-data">Window Aggregation and Missing Data</a></li>
             <li><a href="#/schema-nullability">Schema Nullability</a></li>
             <li><a href="#/optimizations">Optimizations</a></li>
+            <li><a href="#/defining-dataset-with-missing-data">Defining Dataset With Missing Data</a></li>
           </ol>
         </section>
 
