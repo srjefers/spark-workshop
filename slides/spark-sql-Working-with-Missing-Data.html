@@ -55,8 +55,10 @@
           <h2>Agenda</h2>
           <ol>
             <li><a href="#/introduction">What's Missing Data</a></li>
-            <li><a href="#/dataframenafunctions">DataFrameNaFunctions</a></li>
+            <li><a href="#/dataset-api-for-missing-data">Dataset API for Missing Data</a></li>
             <li><a href="#/standard-and-sql-functions">Standard and SQL Functions</a></li>
+            <li><a href="#/column-api-for-missing-data">Column API for Missing Data</a></li>
+            <li><a href="#/window-aggregation-and-missing-data">Window Aggregation and Missing Data</a></li>
             <li><a href="#/schema-nullability">Schema Nullability</a></li>
             <li><a href="#/optimizations">Optimizations</a></li>
           </ol>
@@ -86,6 +88,9 @@ scala> left.join(right, Seq("id"), "outer").show
         </section>
 
         <section>
+          <section id="dataset-api-for-missing-data">
+            <h1>Dataset API for Missing Data</h1>
+          </section>
           <section id="dataframenafunctions">
             <h2>DataFrameNaFunctions</h2>
             <ol>
@@ -142,6 +147,32 @@ scala> left.join(right, Seq("id"), "outer").show
           </section>
         </section>
 
+        <section id="column-api-for-missing-data">
+          <h2>Column API for Missing Data</h2>
+          <ol>
+            <li><b>desc_nulls_first</b> returns a descending sort with null values before non-null values (i.e. nulls first)</li>
+            <li><b>desc_nulls_last</b> returns a descending sort with null values after non-null values (i.e. nulls last)</li>
+            <li>Used for sorting using <b>Dataset.sort</b> operator
+              <pre><code class="lang-scala" data-trim style="word-wrap: break-word;">
+                people.sort($"age".desc_nulls_last)
+              </code></pre>
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <section id="window-aggregation-and-missing-data">
+            <h1>Window Aggregation and Missing Data</h1>
+          </section>
+          <section>
+            <h2>Sorting in Window Aggregation</h2>
+            <ol>
+              <li>Window specification's <b>ORDER BY</b> and nulls</li>
+              <li>Ranking functions</li>
+            </ol>
+          </section>
+        </section>
+
         <section id="schema-nullability">
           <h2>Schema Nullability</h2>
           <ol>
@@ -163,8 +194,10 @@ scala> left.join(right, Seq("id"), "outer").show
           <h2>Recap</h2>
           <ol>
             <li><a href="#/introduction">What's Missing Data</a></li>
-            <li><a href="#/dataframenafunctions">DataFrameNaFunctions</a></li>
+            <li><a href="#/dataset-api-for-missing-data">Dataset API for Missing Data</a></li>
             <li><a href="#/standard-and-sql-functions">Standard and SQL Functions</a></li>
+            <li><a href="#/column-api-for-missing-data">Column API for Missing Data</a></li>
+            <li><a href="#/window-aggregation-and-missing-data">Window Aggregation and Missing Data</a></li>
             <li><a href="#/schema-nullability">Schema Nullability</a></li>
             <li><a href="#/optimizations">Optimizations</a></li>
           </ol>
