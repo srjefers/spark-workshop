@@ -2,11 +2,11 @@ organization := "pl.japila.spark"
 name         := "spark-workshop"
 version      := "1.0.0"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.11.12"
 
 resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
 
-val sparkV = "2.1.0"
+val sparkV = "2.3.2"
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core"      % sparkV,
   "org.apache.spark" %% "spark-sql"       % sparkV,
@@ -17,6 +17,6 @@ libraryDependencies ++= Seq(
 
 assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
 
-val scalatestV = "3.0.0-RC4"
+val scalatestV = "3.2.0-SNAP10"
 libraryDependencies += "org.scalactic" %% "scalactic" % scalatestV
 libraryDependencies += "org.scalatest" %% "scalatest" % scalatestV % "test"
