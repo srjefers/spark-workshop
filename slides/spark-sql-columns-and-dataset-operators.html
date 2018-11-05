@@ -58,7 +58,6 @@
             1. [Column Operators / Expressions](#/column-operators)
             1. [Dataset Operators](#/dataset-operators)
               * [Exercise](#/dataset-operators-exercise-createOrReplaceTempView): Using createOrReplaceTempView and SQL
-              * [Exercise](#/dataset-operators-exercise-flatMap) (hard): Using flatMap
           </script>
         </section>
 
@@ -127,25 +126,6 @@
               1. Time: **15 mins**
             </script>
           </section>
-          <section id="dataset-operators-exercise-flatMap" data-markdown>
-            <script type="text/template">
-              <!-- .slide: style="font-size: 90%" -->
-              ## Exercise (hard): Using flatMap
-
-              1. Create a Dataset with a column of array type
-                ```scala
-                val nums = Seq(Seq(1,2,3)).toDF("nums")
-                scala> nums.printSchema
-                root
-                 |-- nums: array (nullable = true)
-                 |    |-- element: integer (containsNull = false)
-                ```
-              1. Use **flatMap** to expand the array column
-                * Read up [flatMap's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
-              1. (extra) Compare performance of **flatMap** and **explode**
-              1. Time: **30 mins**
-            </script>
-          </section>
         </section>
 
         <section id="recap" data-markdown>
@@ -157,7 +137,6 @@
             1. [Column Operators / Expressions](#/column-operators)
             1. [Dataset Operators](#/dataset-operators)
               * [Exercise](#/dataset-operators-exercise-createOrReplaceTempView): Using createOrReplaceTempView and SQL
-              * [Exercise](#/dataset-operators-exercise-flatMap) (hard): Using flatMap
           </script>
         </section>
 
