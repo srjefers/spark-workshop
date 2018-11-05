@@ -1,10 +1,10 @@
-# [Spark SQL] Finding Ids of Rows with Word in Array Column
+# Exercise: Finding Ids of Rows with Word in Array Column (Spark SQL)
 
 The exercise is about finding the ids of the rows that have values from one column in an array column.
 
 ## Input Dataset
 
-```
+```text
 scala> ds.show
 +---+------------------+-----+
 | id|             Text1|Text2|
@@ -19,7 +19,7 @@ scala> ds.show
 
 ## Result
 
-```
+```text
 +-----+------------+
 |    w|         set|
 +-----+------------+
@@ -34,9 +34,10 @@ The word "seven" is in the row with the id `3`.
 
 The word "one" is in the rows with the ids `1`, `2`, `3` and `5`.
 
+<!--
 ## Solution
 
-```
+```text
 val ds = ... // the input dataset
 val words = ds.withColumn("w", explode(split($"text1", ",")))
 val s = words
@@ -53,3 +54,5 @@ scala> s.show
 | five|   [2, 5, 4]|
 +-----+------------+
 ```
+
+-->

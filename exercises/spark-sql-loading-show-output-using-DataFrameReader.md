@@ -1,4 +1,4 @@
-# [Spark SQL] Loading Dataset In Format Of show Output Using DataFrameReader
+# Exercise: Loading Dataset In Format Of show Output Using DataFrameReader (Spark SQL)
 
 The exercise is about loading a dataset that is in the format of `show` output using `DataFrameReader`.
 
@@ -6,7 +6,7 @@ In other words, given the output of `show` from a 3-column Dataset, load it usin
 
 ## Input Dataset
 
-```
+```text
 +---+------------------+-----+
 |id |Text1             |Text2|
 +---+------------------+-----+
@@ -20,7 +20,7 @@ In other words, given the output of `show` from a 3-column Dataset, load it usin
 
 ## Result
 
-```
+```text
 +---+------------------+-----+
 | id|             Text1|Text2|
 +---+------------------+-----+
@@ -32,9 +32,10 @@ In other words, given the output of `show` from a 3-column Dataset, load it usin
 +---+------------------+-----+
 ```
 
+<!--
 ## Solution
 
-```
+```text
 val in = spark
   .read
   .textFile("input.csv")
@@ -71,3 +72,5 @@ scala> solution.show
 |  5|      six,five,one|seven|
 +---+------------------+-----+
 ```
+
+-->
