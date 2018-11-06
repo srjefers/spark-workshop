@@ -1,41 +1,43 @@
 <!doctype html>
-<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <meta name="description" content="Apache Spark 2 Workshop | Standard and User-Defined Functions">
+    <title>Apache Spark™ Workshop | Spark SQL | Standard and User-Defined Functions</title>
+
+    <meta name="description" content="Apache Spark™ Workshop | Spark SQL | Standard and User-Defined Functions">
     <meta name="author" content="Jacek Laskowski">
 
-    <title>Apache Spark 2 Workshop | Standard and User-Defined Functions</title>
-
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="revealjs-css/jacek.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Jacek: custom formatting -->
+    <link rel="stylesheet" href="revealjs-css/jacek.css">
 
     <!-- Printing and PDF exports -->
     <script>
-      var link = document.createElement( 'link' );
+      var link = document.createElement('link');
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
     </script>
   </head>
 
   <body>
     <div class="reveal">
+
+      <div class="footer">
+        <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+      </div>
+
       <div class="slides">
 
         <section class="intro" data-transition="zoom" id="home">
-          <span class="menu-title" style="display: none">Home</span>
           <p>
             <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
@@ -43,30 +45,26 @@
           <h1 style="font-size: 2.77em;">Standard and User-Defined Functions</h1>
           <h3>Apache Spark 2.3 / Spark SQL</h3>
 
-          <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
-          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
-
-          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          <h4 style="font-size: smaller;">
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <br>
+            Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+          </h4>
         </section>
 
         <section id="agenda" data-markdown>
-          <script type="text/template">
-            <!-- .slide: style="font-size: 90%" -->
+          <textarea data-template>
             ## Agenda
 
             1. [Standard Functions](#/standard-functions)
-              * [Exercise](#/standard-functions-exercise): Standard Functions (upper)
-              * [Exercise](#/exercise-functions-explode): Explode Function
             1. [Standard Functions for Date and Time](#/standard-functions-datetime)
-              * [Exercise](#/exercise-datetime-functions): Difference in Days Between Date Strings
             1. [User-Defined Functions (UDFs)](#/udf-heads-up)
-              * [Exercise](#/udf-exercise): Using UDFs
-          </script>
+          </textarea>
         </section>
 
         <section>
           <section id="standard-functions" data-markdown>
-            <script type="text/template">
+            <textarea data-template>
               <!-- .slide: style="font-size: 90%" -->
               ## Standard Functions <small>(1 of 2)</small>
 
@@ -81,10 +79,10 @@
                 * String functions, e.g. **concat_ws**, **trim**, **upper**
                 * UDF functions, e.g. **callUDF**
                 * Window functions, e.g. **rank**, **row_number**
-            </script>
+            </textarea>
           </section>
           <section id="standard-functions-2" data-markdown>
-            <script type="text/template">
+            <textarea data-template>
               ## Standard Functions <small>(2 of 2)</small>
 
               1. Import **org.apache.spark.sql.functions** object
@@ -96,99 +94,37 @@
               1. Switch to Mastering Spark SQL
                 * [Standard Functions — functions Object](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions.html)
               1. **Home exercise**: Read up [functions object's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-            </script>
-          </section>
-          <section id="standard-functions-exercise" data-markdown>
-            <script type="text/template">
-              <!-- .slide: style="font-size: 90%" -->
-              ## Exercise: Standard Functions (upper)
-
-              1. Develop a standalone Spark SQL application (IntelliJ IDEA)
-              1. Use **upper** function with **withColumn** or **select** operators
-                * Think about the difference between the Dataset operators
-              1. Use Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-              1. (extra) Load a data set from CSVs given on command line
-              1. Time: **30 mins**
-            </script>
-          </section>
-          <section id="exercise-functions-explode" data-markdown>
-            <script type="text/template">
-              ## Exercise: explode function
-
-              1. Create a Dataset with a column of array type
-                ```scala
-                val nums = Seq(Seq(1,2,3)).toDF("nums")
-                scala> nums.printSchema
-                root
-                 |-- nums: array (nullable = true)
-                 |    |-- element: integer (containsNull = false)
-                ```
-              1. Use **explode** function to expand the array column
-              1. (extra) Compare performance of **flatMap** and **explode**
-              1. Time: **30 mins**
-            </script>
+            </textarea>
           </section>
         </section>
 
-        <section>
-          <section id="standard-functions-datetime" data-markdown>
-            <script type="text/template">
-              <!-- .slide: style="font-size: 90%" -->
-              ## Standard Functions for Date and Time
+        <section id="standard-functions-datetime" data-markdown>
+          <textarea data-template>
+            <!-- .slide: style="font-size: 95%" -->
+            ## Standard Functions for Date and Time
 
-              1. **unix_timestamp**
-              1. **to_timestamp**
-              1. **window**
-              1. Read Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-              1. Switch to Mastering Spark SQL
-                * [Date and Time Functions](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions-datetime.html)
-            </script>
-          </section>
-          <section id="exercise-datetime-functions" data-markdown>
-            <script type="text/template">
-              ## Exercise: Difference in Days Between Dates As Strings <small>(1 of 2)</small>
-
-              1. Given dataset with date strings calculate number of days between them and current day
-              1. Use **to_date** and **datediff** functions
-              1. Read Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-            </script>
-          </section>
-          <section id="exercise-datetime-functions-setup" data-markdown>
-            <script type="text/template">
-              ## Exercise: Difference in Days Between Dates As Strings <small>(2 of 2)</small>
-
-```scala
-val dates = Seq(
-   "08/11/2015",
-   "09/11/2015",
-   "09/12/2015").toDF("date_string")
-
-val diffs = // <-- your solution here
-
-scala> diffs.show
-+-----------+----------+----+
-|date_string|   to_date|diff|
-+-----------+----------+----+
-| 08/11/2015|2015-11-08|1066|
-| 09/11/2015|2015-11-09|1065|
-| 09/12/2015|2015-12-09|1035|
-+-----------+----------+----+
-```
-            </script>
-          </section>
+            1. **unix_timestamp**
+            1. **to_timestamp**
+            1. **window**
+            1. Read Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
+            1. Switch to Mastering Spark SQL
+              * [Date and Time Functions](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions-datetime.html)
+          </textarea>
         </section>
 
         <section>
           <section id="udf-heads-up" data-markdown>
-            ## User-Defined Functions (UDFs)
-            ### « HEADS-UP »
+            <textarea data-template>
+              ## User-Defined Functions (UDFs)
+              ### « HEADS-UP »
 
-            > **Use the standard functions whenever possible** before reverting to custom UDFs.
+              > **Use the standard functions whenever possible** before reverting to custom UDFs.
 
-            > UDFs are a blackbox for Spark Optimizer and does **not even try** to optimize them.
+              > UDFs are a blackbox for Spark Optimizer and does **not even try** to optimize them.
+            </textarea>
           </section>
           <section id="user-defined-functions" data-markdown>
-            <script type="text/template">
+            <textarea data-template>
               <!-- .slide: style="font-size: 85%" -->
               ## UDFs &mdash; User-Defined Functions
 
@@ -206,10 +142,10 @@ scala> diffs.show
                 * Also **callUDF** function
               1. Switch to Mastering Spark SQL
                 * [UDFs — User-Defined Functions](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-udfs.html)
-            </script>
+            </textarea>
           </section>
           <section data-markdown>
-            <script type="text/template">
+            <textarea data-template>
               <!-- .slide: style="font-size: 90%" -->
               ## Registering UDFs for SQL queries
 
@@ -224,48 +160,30 @@ scala> diffs.show
                 // Use myUpper as if it were a standard function
                 sql("select myUpper(name) from people").show
                 ```
-            </script>
-          </section>
-          <section id="udf-exercise" data-markdown>
-            <script type="text/template">
-              ## Exercise: Using UDFs
-
-              1. Develop a standalone Spark SQL application (IntelliJ IDEA)
-              1. Roll your own **upper** function
-                * Use Scala's [StringOps.toUpperCase](http://www.scala-lang.org/api/2.11.8/index.html#scala.collection.immutable.StringOps)
-              1. **Explain** the logical and execution plans
-                * Think what happens for UDFs with **if** conditions
-              1. Use the UDF in SQL, i.e. **spark.sql**
-              1. (extra) Use **callUDF**
-              1. Time: **30 mins**
-            </script>
+            </textarea>
           </section>
         </section>
 
         <section id="recap" data-markdown>
-          <script type="text/template">
-            <!-- .slide: style="font-size: 90%" -->
+          <textarea data-template>
             ## Recap
 
             1. [Standard Functions](#/standard-functions)
-              * [Exercise](#/standard-functions-exercise): Standard Functions (upper)
-              * [Exercise](#/exercise-functions-explode): Explode Function
             1. [Standard Functions for Date and Time](#/standard-functions-datetime)
-              * [Exercise](#/exercise-datetime-functions): Difference in Days Between Date Strings
             1. [User-Defined Functions (UDFs)](#/udf-heads-up)
-              * [Exercise](#/udf-exercise): Using UDFs
-          </script>
+          </textarea>
         </section>
 
         <section style="text-align: left" data-markdown id="questions">
-          <script type="text/template">
+          <textarea data-template>
             # Questions?
 
+            * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
             * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
-              * [https://bit.ly/mastering-spark-sql](https://bit.ly/mastering-spark-sql)
+            * Read [Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
-          </script>
+          </textarea>
         </section>
 
       </div>
@@ -302,10 +220,12 @@ scala> diffs.show
       });
     </script>
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
       ga('create', 'UA-45999426-3', 'auto');
       ga('send', 'pageview');
