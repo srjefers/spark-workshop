@@ -21,3 +21,4 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 11. [Exercise: Finding maximum values per group (groupBy)](spark-sql-exercise-Finding-maximum-values-per-group-groupBy.md)
 12. [Exercise: Collect values per group](spark-sql-exercise-Collect-values-per-group.md)
 13. [Exercise: Multiple Aggregations](spark-sql-exercise-Multiple-Aggregations.md)
+14. [Exercise: Using pivot to generate a single-row matrix](spark-sql-exercise-Using-pivot-to-generate-a-single-row-matrix.md)
