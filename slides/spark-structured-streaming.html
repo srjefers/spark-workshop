@@ -1,41 +1,43 @@
 <!doctype html>
-<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <meta name="description" content="Apache Spark 2 Workshop | Structured Streaming">
+    <title>Apache Spark™ Workshop | Spark Structured Streaming</title>
+
+    <meta name="description" content="Apache Spark™ Workshop | Spark Structured Streaming">
     <meta name="author" content="Jacek Laskowski">
 
-    <title>Apache Spark 2 Workshop | Structured Streaming</title>
-
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="revealjs-css/jacek.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Jacek: custom formatting -->
+    <link rel="stylesheet" href="revealjs-css/jacek.css">
 
     <!-- Printing and PDF exports -->
     <script>
-      var link = document.createElement( 'link' );
+      var link = document.createElement('link');
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
     </script>
   </head>
 
   <body>
     <div class="reveal">
+  
+      <div class="footer">
+        <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+      </div>
+  
       <div class="slides">
 
         <section class="intro" data-transition="zoom" id="home">
-          <span class="menu-title" style="display: none">Home</span>
           <p>
             <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
@@ -43,14 +45,15 @@
           <h1 style="font-size: 3.45em;">Spark<br/>Structured Streaming</h1>
           <h3>Apache Spark 2.3</h3>
 
-          <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
-          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
-
-          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          <h4 style="font-size: smaller;">
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <br>
+            Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+          </h4>
         </section>
 
         <section id="agenda" data-markdown>
-          <script type="text/template">
+          <textarea data-template>
             ## Agenda
 
             1. [Introduction to Structured Streaming](#/intro)
@@ -62,7 +65,7 @@
             1. [StreamingQueryManager](#/streaming-query-manager)
             1. [Demo: Streaming with Rate Source](#/demo-rate)
             1. [Exercises](#/exercises)
-          </script>
+          </textarea>
         </section>
 
         <section id="intro">
@@ -295,7 +298,7 @@ val query: StreamingQuery = counter.writeStream.start
         </section>
 
         <section id="demo-rate" data-markdown>
-          <script type="text/template">
+          <textarea data-template>
             ## Streaming with Rate Source
             ### (Demo)
 
@@ -313,7 +316,7 @@ val query: StreamingQuery = counter.writeStream.start
         .queryName("rate2console")
         .start
             ```
-          </script>
+          </textarea>
         </section>
 
         <section>
@@ -334,10 +337,9 @@ val query: StreamingQuery = counter.writeStream.start
                 <a href="#/exercise-foreach">foreach and ForeachWriter</a>
               </p>
             </div>
-            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
           <section id="exercise-csv" data-markdown>
-            <script type="text/template">
+            <textarea data-template>
               ## Streaming CSV Datasets
 
               1. Develop a standalone Spark SQL application
@@ -345,10 +347,10 @@ val query: StreamingQuery = counter.writeStream.start
               1. Use **csv** format for source and **console** for sink
               1. Use **sbt package** and **spark-submit**
               1. Time: **30 mins**
-            </script>
+            </textarea>
           </section>
           <section id="exercise-kafka" data-markdown>
-            <script type="text/template">
+            <textarea data-template>
               ## From and To Apache Kafka
 
               1. Start Kafka Broker and Console Producer
@@ -359,10 +361,10 @@ val query: StreamingQuery = counter.writeStream.start
               1. Use **sbt package** and **spark-submit**
               1. Read [KafkaSource](https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-KafkaSource.html)
               1. Time: **45 mins**
-            </script>
+            </textarea>
           </section>
           <section id="exercise-groupBy" data-markdown>
-            <script type="text/template">
+            <textarea data-template>
               ## Streaming Aggregation with groupBy
 
               1. Develop a standalone Spark SQL application
@@ -371,7 +373,7 @@ val query: StreamingQuery = counter.writeStream.start
               1. Use **groupBy** operator on streaming Dataset
               1. Use **sbt package** and **spark-submit**
               1. Time: **45 mins**
-            </script>
+            </textarea>
           </section>
           <section id="exercise-foreach">
             <div style="text-align: left">
@@ -387,12 +389,11 @@ val query: StreamingQuery = counter.writeStream.start
                 Time: <b>30 mins</b>
               </p>
             </div>
-            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
         </section>
 
         <section id="recap" data-markdown>
-          <script type="text/template">
+          <textarea data-template>
             ## Recap
 
             1. [Structured Streaming](#/intro)
@@ -404,62 +405,65 @@ val query: StreamingQuery = counter.writeStream.start
             1. [StreamingQueryManager](#/streaming-query-manager)
             1. [Demo: Streaming with Rate Source](#/demo-rate)
             1. [Exercises](#/exercises)
-          </script>
+          </textarea>
         </section>
 
-        <section id="questions">
-          <div style="text-align: left">
-            <h1>Questions?</h1>
-            <hr>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Read <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a> gitbook
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Read <a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> gitbook
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my questions and answers</a> on StackOverflow
-            </p>
-          </div>
-          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+        <section style="text-align: left" data-markdown id="questions">
+          <textarea data-template>
+            # Questions?
+
+            * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
+            * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
+            * Read [Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+            * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+            * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+          </textarea>
         </section>
 
       </div>
     </div>
 
     <script src="reveal.js/lib/js/head.min.js"></script>
-		<script src="reveal.js/js/reveal.js"></script>
-
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
+    <script src="reveal.js/js/reveal.js"></script>
+    
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
         controls: true,
-				progress: true,
-				history: true,
-				center: true,
-				slideNumber: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				menu: {
-					markers: true,
-					openSlideNumber: true
-				},
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
         dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'reveal.js/plugin/markdown/marked.js' },
-					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'revealjs-plugins/menu/menu.js', async: true },
-					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
 </html>
