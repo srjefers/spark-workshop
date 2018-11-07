@@ -55,7 +55,7 @@
 1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-basic-aggregation.html)
 1. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-joins.html)
 1. [Working with Missing Data](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-Working-with-Missing-Data.html)
-1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-windowed-aggregation.html)
+1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-windowed-aggregation.html)
 1. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-multi-dimensional-aggregation.html)
 1. [The Internals of Structured Query Execution](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-internals-of-structured-query-execution.html)
 1. [Join Optimization With Bucketing](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-bucketing.html)
