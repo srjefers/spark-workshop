@@ -27,3 +27,4 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 17. [Exercise: Calculating Gap Between Current And Highest Salaries Per Department](spark-sql-exercise-Calculating-Gap-Between-Current-And-Highest-Salaries-Per-Department.md)
 18. [Exercise: Calculating Running Total / Cumulative Sum](spark-sql-exercise-Calculating-Running-Total-Cumulative-Sum.md)
 19. [Exercise: Calculating Difference Between Consecutive Rows Per Window](spark-sql-exercise-Calculating-Difference-Between-Consecutive-Rows-Per-Window.md)
+20. [Exercise: Converting Arrays of Strings to String](spark-sql-exercise-Converting-Arrays-of-Strings-to-String.md)

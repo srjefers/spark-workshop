@@ -66,7 +66,6 @@
             <!-- .slide: style="font-size: 80%; text-align: left" -->
             ## Exercises
             <hr>
-            1. [Converting arrays of strings to string](#/converting-arrays-of-strings-to-string)
             1. [Collecting aggregates](#/groupby-collect-list)
             1. [Window with first](#/window-first)
             1. [Window with count](#/window-count)
@@ -78,77 +77,6 @@
             1. [Window with rowsBetween](#/window-rows-between)
             1. [Aggregation with nulls](#/aggregation-with-nulls)
           </script>
-        </section>
-
-        <section>
-          <section id="converting-arrays-of-strings-to-string" data-markdown>
-            <script type="text/template">
-              <!-- .slide: style="font-size: 90%" -->
-              <span class="menu-title" style="display: none">Converting arrays of strings to string</span>
-              ## Converting arrays of strings to string <small>(1 of 3)</small>
-
-              1. [How to convert column of arrays of strings to strings?](https://stackoverflow.com/q/38924762/1305344)
-
-```scala
-val words = Seq(Array("hello", "world")).toDF("words")
-scala> words.show
-+--------------+
-|         words|
-+--------------+
-|[hello, world]|
-+--------------+
-
-scala> words.printSchema
-root
- |-- words: array (nullable = true)
- |    |-- element: string (containsNull = true)
-
-// contd on next slide...
-```
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Final Output</span>
-              <!-- .slide: style="font-size: 90%" -->
-              ## Converting arrays of strings to string <small>(2 of 3)</small>
-
-```scala
-scala> solution.show
-+--------------+-----------+
-|         words|   solution|
-+--------------+-----------+
-|[hello, world]|hello world|
-+--------------+-----------+
-
-scala> solution.printSchema
-root
- |-- words: array (nullable = true)
- |    |-- element: string (containsNull = true)
- |-- solution: string (nullable = false)
-```
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Hints</span>
-              <!-- .slide: style="font-size: 90%" -->
-              ## Converting arrays of strings to string <small>Hints</small>
-
-              * Use [concat_ws](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
-                * Concatenates multiple input string columns together into a single string column, using the given separator
-
-```
-val solution = words.withColumn("solution", concat_ws(" ", $"words"))
-scala> solution.show
-+--------------+-----------+
-|         words|   solution|
-+--------------+-----------+
-|[hello, world]|hello world|
-+--------------+-----------+
-```
-            </script>
-          </section>
         </section>
 
         <section>
