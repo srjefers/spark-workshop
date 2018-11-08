@@ -64,7 +64,6 @@
             1. [Streaming Query](#/streaming-query)
             1. [StreamingQueryManager](#/streaming-query-manager)
             1. [Demo: Streaming with Rate Source](#/demo-rate)
-            1. [Exercises](#/exercises)
           </textarea>
         </section>
 
@@ -319,79 +318,6 @@ val query: StreamingQuery = counter.writeStream.start
           </textarea>
         </section>
 
-        <section>
-          <section id="exercises">
-            <div style="text-align: left">
-              <h2>Exercises</h2>
-              <hr>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/exercise-csv">Streaming CSV Datasets</a>
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/exercise-kafka">From and To Apache Kafka</a>
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/exercise-groupBy">Streaming Aggregation with groupBy</a>
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/exercise-foreach">foreach and ForeachWriter</a>
-              </p>
-            </div>
-          </section>
-          <section id="exercise-csv" data-markdown>
-            <textarea data-template>
-              ## Streaming CSV Datasets
-
-              1. Develop a standalone Spark SQL application
-                * Use IntelliJ IDEA
-              1. Use **csv** format for source and **console** for sink
-              1. Use **sbt package** and **spark-submit**
-              1. Time: **30 mins**
-            </textarea>
-          </section>
-          <section id="exercise-kafka" data-markdown>
-            <textarea data-template>
-              ## From and To Apache Kafka
-
-              1. Start Kafka Broker and Console Producer
-              1. Develop a standalone Spark SQL application
-                * Use IntelliJ IDEA
-              1. (part 1) **kafka** format for source and **console** for sink
-              1. (part 2) **kafka** format for source and **kafka** for sink
-              1. Use **sbt package** and **spark-submit**
-              1. Read [KafkaSource](https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-KafkaSource.html)
-              1. Time: **45 mins**
-            </textarea>
-          </section>
-          <section id="exercise-groupBy" data-markdown>
-            <textarea data-template>
-              ## Streaming Aggregation with groupBy
-
-              1. Develop a standalone Spark SQL application
-                * Use IntelliJ IDEA
-              1. Read datasets from Apache Kafka (**kafka** source)
-              1. Use **groupBy** operator on streaming Dataset
-              1. Use **sbt package** and **spark-submit**
-              1. Time: **45 mins**
-            </textarea>
-          </section>
-          <section id="exercise-foreach">
-            <div style="text-align: left">
-              <h2>foreach and ForeachWriter</h2>
-              <hr>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                Use <b>foreach</b> and <b>ForeachWriter</b>
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                Use <a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.streaming.DataStreamWriter">DataStreamWriter</a> and <a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.ForeachWriter">ForeachWriter</a> scaladocs
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                Time: <b>30 mins</b>
-              </p>
-            </div>
-          </section>
-        </section>
-
         <section id="recap" data-markdown>
           <textarea data-template>
             ## Recap
@@ -404,7 +330,6 @@ val query: StreamingQuery = counter.writeStream.start
             1. [Streaming Query](#/streaming-query)
             1. [StreamingQueryManager](#/streaming-query-manager)
             1. [Demo: Streaming with Rate Source](#/demo-rate)
-            1. [Exercises](#/exercises)
           </textarea>
         </section>
 
