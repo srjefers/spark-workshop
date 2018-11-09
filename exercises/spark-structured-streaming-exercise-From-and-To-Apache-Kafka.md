@@ -6,11 +6,11 @@ Please read [KafkaSource](https://jaceklaskowski.gitbooks.io/spark-structured-st
 
 Module: **Spark Structured Streaming**
 
+Duration: **45 mins**
+
 ## Requirements
 
 You will be using [Apache Kafka](http://kafka.apache.org/) as an external data source. Please download it first.
-
-1. [Apache Kafka](http://kafka.apache.org/)
 
 With Kafka installed, you should run a single-broker Kafka cluster using the following commands:
 
@@ -22,15 +22,23 @@ With Kafka installed, you should run a single-broker Kafka cluster using the fol
 1. Develop a standalone Spark application
     * Use IntelliJ IDEA
     * Define proper `libraryDependencies` with Spark SQL
-2. (part 1) **kafka** format for source and **console** for sink
+2. Use **sbt package** and **spark-submit** to submit the Spark application for execution
+
+### Part 1. Reading Data From Kafka
+
+1. Use **kafka** format for source and **console** for sink
     1. Use Kafka Console Producer to send a message that Spark processes and prints out to the console
     2. `./bin/kafka-console-producer.sh --broker-list :9092 --topic input`
-3. (part 2) **kafka** format for source and **kafka** for sink
+
+### Part 2. Writing Data To Kafka
+
+1. Use **kafka** format for source and **kafka** for sink
     1. Use Kafka Console Consumer to consume messages that Spark processed
     2. `./bin/kafka-console-consumer.sh --topic ovh-input --bootstrap-server :9092`
-4. Use **sbt package** and **spark-submit**
 
-Duration: **45 mins**
+### Part 3. Transforming Data From Kafka
+
+1. Take values (from Kafka records) and add a new column with the values "upper"
 
 <!--
 ## Solution
