@@ -69,7 +69,6 @@
             1. [Collecting aggregates](#/groupby-collect-list)
             1. [Window with first](#/window-first)
             1. [Window with count](#/window-count)
-            1. [Window with percent_rank](#/window-percent-rank)
             1. [max with All Columns](#/max-with-all-columns)
             1. [Window with collect_set and UDF](#/window-collect-set-udf)
             1. [Window and rank for longest sequence](#/window-rank-longest-sequence)
@@ -173,50 +172,6 @@ scala> solution.show
               1. Use window aggregation
               1. Use [count](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
                 * Aggregate function that returns the number of items in a group.
-            </script>
-          </section>
-        </section>
-
-        <section>
-          <section id="window-percent-rank" data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Window with percent_rank</span>
-              <!-- .slide: style="font-size: 80%" -->
-              ## Window with percent_rank
-
-              1. [How to add a column with values based on popularity?](https://stackoverflow.com/q/47195372/1305344)
-              1. Dataset has employees and salaries in no particular order
-              1. Add a new column with the following requirements:
-                1. Top 30% gets a value "high"
-                1. The next 40% gets "average"
-                1. The rest gets "low"
-
-```
-Employee   Salary   Percentage
-Tony       50000    Average
-Alan       45000    Low
-Lee        60000    Average
-David      35000    Low
-Steve      65000    High
-Paul       48000    Average
-Micky      62000    Average
-George     80000    High
-Nigel      64000    High
-John       42000    Low
-```
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Hints</span>
-              ## Window with percent_rank <small>Hints</small>
-
-              1. Use window aggregation
-              1. Use [percent_rank](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
-                * Window function that returns the relative rank (i.e. percentile) of rows within a window partition.
-              1. Use [when](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Column) and [otherwise](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Column) methods for the labels
-                * <b>when</b> evaluates a list of conditions and returns one of multiple possible result expressions
-                * <b>otherwise</b> gives the value when no <b>when</b>s have matched
             </script>
           </section>
         </section>

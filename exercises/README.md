@@ -28,6 +28,7 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 18. [Exercise: Calculating Running Total / Cumulative Sum](spark-sql-exercise-Calculating-Running-Total-Cumulative-Sum.md)
 19. [Exercise: Calculating Difference Between Consecutive Rows Per Window](spark-sql-exercise-Calculating-Difference-Between-Consecutive-Rows-Per-Window.md)
 20. [Exercise: Converting Arrays of Strings to String](spark-sql-exercise-Converting-Arrays-of-Strings-to-String.md)
+21. [Exercise: Calculating percent rank](spark-sql-exercise-Calculating-percent-rank.md)
 
 ## Spark Structured Streaming
 
@@ -35,3 +36,7 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 2. [Exercise: From and To Apache Kafka](spark-structured-streaming-exercise-From-and-To-Apache-Kafka.md)
 3. [Exercise: Streaming Aggregation with groupBy](spark-structured-streaming-exercise-Streaming-Aggregation-with-groupBy.md)
 4. [Exercise: Using foreach Operator (and ForeachWriter)](spark-structured-streaming-exercise-Using-foreach-Operator-and-ForeachWriter.md)
+
+## Spark MLlib
+
+1. [Exercise: Email Classification](spark-mllib-exercise-Email-Classification.md)

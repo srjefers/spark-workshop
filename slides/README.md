@@ -1,14 +1,14 @@
 <a id="toc" />
 
-# Apache Spark and Scala Workshops
+# Apache Spark™ and Scala Workshops
 
-## Table of Contents
+## Agendas
 
-1. [Apache Spark™ Developer Certification Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Apache-Spark-Developer-Certification.html) &mdash; _work in progress_
+1. [Apache Spark™ Developer Certification Workshop (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Apache-Spark-Developer-Certification.html) &mdash; taught in [Roubaix, France](https://en.wikipedia.org/wiki/Roubaix), 5-9 November 2018
 2. [Apache Spark for Experienced Oracle and SQL Developers Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Apache-Spark-for-Experienced-Oracle-and-SQL-Developers.html) &mdash; taught in [Gdansk, Poland](https://en.wikipedia.org/wiki/Gda%C5%84sk)
 3. [Introduction to Scala Workshop Agenda (5 half-days online)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-online-intro-to-scala.html)
 4. [Advanced Apache Spark for Developers Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-advanced-spark-developers.html) for Experienced Scala Developers with significant experience in Apache Spark &mdash; taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet) three times
-5. [Spark Structured Streaming in Apache Spark 2.2 Workshop (1 day)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-1-day-spark-structured-streaming.html) for Software Developers &mdash; held in [Ljubljana, Slovenia](https://en.wikipedia.org/wiki/Ljubljana)
+5. [Spark Structured Streaming in Apache Spark 2.2 Workshop (1 day)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-1-day-spark-structured-streaming.html) for Software Developers &mdash; taught in [Ljubljana, Slovenia](https://en.wikipedia.org/wiki/Ljubljana)
 6. [Graduate Scala and Spark Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-graduate-scala-spark.html) for Junior Python and Java Developers &mdash; taught in [London, UK](https://en.wikipedia.org/wiki/London)
 7. [Spark SQL 2.2 Workshop Agenda (3 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-3-days-Spark-SQL.html) for Data Engineers, Business Analysts and Architects - taught in-class once in [Warsaw, Poland](https://en.wikipedia.org/wiki/Warsaw)
 8. [Spark SQL / Scala Workshop Agenda (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Scala-SparkSQL.html) for Data Engineers, Business Analysts and Architects - taught twice in [Collegeville, PA, USA](https://en.wikipedia.org/wiki/Collegeville,_Pennsylvania)
@@ -26,52 +26,52 @@
 18. [1-Day Spark SQL 2 / Scala Workshop Using Databricks Cloud Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-1-day-SparkSQL-Databricks-Cloud.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
 19. [4-Day Spark 2 / Scala Workshop Agenda](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-4-days-toronto.html) for Software Developers and Data Analysts - taught in [Toronto, Canada](https://en.wikipedia.org/wiki/Toronto)
 
-### Unit 1. Scala Programming Language for Object-Oriented and Functional Programming
-
-1. [Scala &mdash; Just Enough to Write Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
-2. [Real-Life Scala Project](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala-real-life-project.html)
-3. [Scala Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala-exercises.html)
-4. [sbt &mdash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
-
-### Unit 2. Spark SQL for Large-Scale Structured Data Processing
+## Unit 1. Spark SQL for Large-Scale Structured Data Processing
 
 1. [Spark SQL](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql.html)
-1. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html)
-1. [Columns and Dataset Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-columns-and-dataset-operators.html)
-1. [Standard and User-Defined Functions](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-standard-functions-udfs.html)
-1. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-basic-aggregation.html)
-1. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-joins.html)
-1. [Working with Missing Data](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-Working-with-Missing-Data.html)
-1. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-windowed-aggregation.html)
-1. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-multi-dimensional-aggregation.html)
-1. [The Internals of Structured Query Execution](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-internals-of-structured-query-execution.html)
-1. [Join Optimization With Bucketing](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-bucketing.html)
-1. [Spark SQL Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-exercises.html)
+2. [DataSource API](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_datasource.html)
+3. [Columns and Dataset Operators](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-columns-and-dataset-operators.html)
+4. [Standard and User-Defined Functions](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-standard-functions-udfs.html)
+5. [Basic Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-basic-aggregation.html)
+6. [Joins](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-joins.html)
+7. [Working with Missing Data](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-Working-with-Missing-Data.html)
+8. [Windowed Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-windowed-aggregation.html)
+9. [Multi-Dimensional Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/slides/02-spark-sql-multi-dimensional-aggregation.html)
+10. [The Internals of Structured Query Execution](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-internals-of-structured-query-execution.html)
+11. [Join Optimization With Bucketing](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-bucketing.html)
+12. [Spark SQL Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-exercises.html)
 
-### Unit 3. Spark Structured Streaming for Large-Scale Stream Processing
+## Unit 2. Spark Structured Streaming for Large-Scale Stream Processing
 
 1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-structured-streaming.html)
 2. [Fault Tolerance and Checkpointing](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-checkpointing.html)
 3. [Monitoring Streaming Queries](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-monitoring.html)
 4. [Structured Streaming's Internals](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-internals.html)
 
-### Unit 4. Spark MLlib for Large-Scale Distributed Machine Learning
+## Unit 3. Spark MLlib for Large-Scale Distributed Machine Learning
 
 1. [Machine Learning with Spark MLlib](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-mllib.html)
 2. [ML Pipelines In-Depth](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-mllib-ml-pipelines.html)
 
-### Unit 5. Large-Scale Distributed Data Processing with Apache Spark (aka _Spark Core_)
+## Unit 4. Large-Scale Distributed Data Processing with Apache Spark (aka _Spark Core_)
 
 1. [The Elements of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
 2. [Into Apache Spark 2 Using spark-shell (and Databricks)](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
 3. [The Core of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-core.html)
-4. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/01-spark-core-webui.html)
+4. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-core-webui.html)
 5. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
 6. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html)
 7. [Monitoring Spark using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/08_Monitoring_using_SparkListeners.html)
 8. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
 9. [Spark Thrift JDBC/ODBC Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/09_SparkSQL-Spark-Thrift-Server.html)
 10. [Dynamic Allocation of Executors](http://blog.jaceklaskowski.pl/spark-workshop/slides/07_Spark-Core-Dynamic-Allocation-Of-Executors.html)
+
+## Unit 5. Scala Programming Language for Object-Oriented and Functional Programming
+
+1. [Scala &mdash; Just Enough to Write Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala.html)
+2. [Real-Life Scala Project](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala-real-life-project.html)
+3. [Scala Exercises](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_scala-exercises.html)
+4. [sbt &mdash; Interactive Build Tool for Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_sbt.html)
 
 ## Conference Talks
 

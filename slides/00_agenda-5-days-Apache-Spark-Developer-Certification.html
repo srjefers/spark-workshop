@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Apache Spark™ Developer Certification Workshop Agenda | 5 days</title>
+    <title>Apache Spark™ Developer Certification Workshop | 5 days</title>
 
-    <meta name="description" content="Apache Spark™ Developer Certification Workshop Agenda | 5 days">
+    <meta name="description" content="Apache Spark™ Developer Certification Workshop | 5 days">
     <meta name="author" content="Jacek Laskowski">
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
@@ -70,12 +70,12 @@
           <section id="gitbooks">
             <p><img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0"></p>
             <div style="text-align: center">
-              <p>Jacek is best known by his <b>Gitbooks</b>:</p>
+              <p>Jacek is best known by the online books:</p>
               <p>
                 <ol>
                   <li><a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark</a></li>
                   <li><a href="https://bit.ly/mastering-spark-sql">Mastering Spark SQL</a></li>
-                  <li><a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></li>
+                  <li><a href="https://bit.ly/spark-structured-streaming">The Internals of Spark Structured Streaming </a></li>
                   <li><a href="https://bit.ly/mastering-kafka-streams">Mastering Kafka Streams</a></li>
                   <li><a href="https://bit.ly/mastering-apache-kafka">Mastering Apache Kafka</a></li>
                 </ol>
@@ -85,10 +85,10 @@
           <section id="stackoverflow">
             <div style="text-align: center">
               <p>
-                <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a>
+                Jacek is active on <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a>
               </p>
               <p>
-                <img width="60%" src="images/jaceklaskowski-stackoverflow-stats.png" style="border: 0">
+                <img width="65%" src="images/jaceklaskowski-stackoverflow-stats.png" style="border: 0">
               </p>
             </div>
           </section>
@@ -104,7 +104,7 @@
               <br>
               given the requirements
               <br>
-              from [Databricks](https://databricks.com/training/certified-spark-developer), [Cloudera](https://www.cloudera.com/more/training/certification/cca-spark.html), [Hortonworks](https://hortonworks.com/services/training/certification/hdp-certified-spark-developer/) or [MapR](https://mapr.com/training/certification/mcsd/)
+              from [Databricks](https://databricks.com/training/certified-spark-developer), [Cloudera](https://www.cloudera.com/more/training/certification/cca-spark.html), [Hortonworks](https://hortonworks.com/services/training/certification/hdp-certified-spark-developer/), and [MapR](https://mapr.com/training/certification/mcsd/)
               <br>
               with the Scala programming language
             </p>
@@ -114,15 +114,15 @@
         </section>
 
         <section>
-          <section id="agenda" data-markdown>
+          <section id="agenda" data-markdown style="font-size: 90%;">
             <textarea data-template>
               ## Agenda
 
               1. [Day 1](#/day1) &mdash; The Essentials of Spark SQL
               1. [Day 2](#/day2) &mdash; Spark SQL
               1. [Day 3](#/day3) &mdash; Advanced Spark SQL
-              1. [Day 4](#/day4) &mdash; Spark SQL / Spark Structured Streaming
-              1. [Day 5](#/day5) &mdash; Spark MLlib / Apache Spark (Core)
+              1. [Day 4](#/day4) &mdash; Spark Structured Streaming
+              1. [Day 5](#/day5) &mdash; Spark MLlib et al.
             </textarea>
           </section>
 
@@ -178,7 +178,7 @@
 
           <section id="day4" data-markdown>
             <textarea data-template>
-              ## Day 4 &mdash; Spark SQL / Spark Structured Streaming
+              ## Day 4 &mdash; Spark Structured Streaming
 
               1. Spark SQL cntd.
                 1. [The Internals of Structured Query Execution](spark-sql-internals-of-structured-query-execution.html)
@@ -191,11 +191,17 @@
 
           <section id="day5" data-markdown>
             <textarea data-template>
-              ## Day 5 &mdash; Spark MLlib / Apache Spark (Core)
+              ## Day 5 &mdash; Spark MLlib et al.
 
-              1. Spark Structured Streaming cntd.
-                * [Exercise: From and To Apache Kafka](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-structured-streaming-exercise-From-and-To-Apache-Kafka.html)
-
+              1. Spark Structured Streaming
+                1. [Exercise: From and To Apache Kafka](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-structured-streaming-exercise-From-and-To-Apache-Kafka.html) cntd.
+              1. Spark SQL
+                1. [Exercise: Calculating percent rank](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Calculating-percent-rank.html)
+              1. Spark MLlib
+                1. [Machine Learning with Spark MLlib](spark-mllib.html)
+                1. [ML Pipelines In-Depth](spark-mllib-ml-pipelines.html)
+                1. [Exercise: Email Classification](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-mllib-exercise-Email-Classification.html)
+              1. [web UI](spark-core-webui.html)
             </textarea>
           </section>
         </section>
@@ -208,13 +214,8 @@
           <section id="prerequisities-experience">
             <h2>Prerequisities / Experience</h2>
             <ol>
-              <li>Hands-on programming experience using Scala
-                <ul>
-                  <li>Eventually Java or Python</li>
-                  <li>Certifications are offered in Scala or Python</li>
-                </ul>
-              </li>
-              <li>Experience developing Spark applications in production already</li>
+              <li>Hands-on programming experience using Scala</li>
+              <li>Experience developing Spark applications</li>
             </ol>
           </section>
           <section id="prerequisities-to-be-installed">
@@ -226,7 +227,7 @@
               <li><a href="http://www.scala-sbt.org/download.html">sbt</a></li>
               <li>Linux or macOS preferred
                 <ul>
-                  <li>Read <a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-tips-and-tricks-running-spark-windows.html">Running Spark Applications on Windows</a> if on MS Windows</li>
+                  <li>Consult <a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-tips-and-tricks-running-spark-windows.html">Running Spark Applications on Windows</a> when on MS Windows</li>
                 </ul>
               </li>
             </ol>
@@ -242,7 +243,8 @@
             <h2>Introduce Yourself</h2>
             <ol>
               <li>First name</li>
-              <li>What's your experience with Spark in production?</li>
+              <li>What's your experience with Spark?</li>
+              <li>Any production experience with Spark?</li>
               <li>What certification do you think of?</li>
               <li>Have you already signed up?</li>
             </ol>
@@ -266,7 +268,7 @@
 
             * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
             * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
-            * Read [Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+            * Read [The Internals of Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </textarea>
