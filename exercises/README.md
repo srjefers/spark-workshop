@@ -23,12 +23,13 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 13. [Exercise: Collect values per group](spark-sql-exercise-Collect-values-per-group.md)
 14. [Exercise: Multiple Aggregations](spark-sql-exercise-Multiple-Aggregations.md)
 15. [Exercise: Using pivot to generate a single-row matrix](spark-sql-exercise-Using-pivot-to-generate-a-single-row-matrix.md)
-16. [Exercise: Finding 1st and 2nd Bestsellers Per Genre](spark-sql-exercise-Finding-1st-and-2nd-Bestsellers-Per-Genre.md)
-17. [Exercise: Calculating Gap Between Current And Highest Salaries Per Department](spark-sql-exercise-Calculating-Gap-Between-Current-And-Highest-Salaries-Per-Department.md)
-18. [Exercise: Calculating Running Total / Cumulative Sum](spark-sql-exercise-Calculating-Running-Total-Cumulative-Sum.md)
-19. [Exercise: Calculating Difference Between Consecutive Rows Per Window](spark-sql-exercise-Calculating-Difference-Between-Consecutive-Rows-Per-Window.md)
-20. [Exercise: Converting Arrays of Strings to String](spark-sql-exercise-Converting-Arrays-of-Strings-to-String.md)
-21. [Exercise: Calculating percent rank](spark-sql-exercise-Calculating-percent-rank.md)
+16. [Exercise: Collecting All Values with pivot and groupBy](spark-sql-exercise-Collecting-All-Values-with-pivot-and-groupBy.md)
+17. [Exercise: Finding 1st and 2nd Bestsellers Per Genre](spark-sql-exercise-Finding-1st-and-2nd-Bestsellers-Per-Genre.md)
+18. [Exercise: Calculating Gap Between Current And Highest Salaries Per Department](spark-sql-exercise-Calculating-Gap-Between-Current-And-Highest-Salaries-Per-Department.md)
+19. [Exercise: Calculating Running Total / Cumulative Sum](spark-sql-exercise-Calculating-Running-Total-Cumulative-Sum.md)
+20. [Exercise: Calculating Difference Between Consecutive Rows Per Window](spark-sql-exercise-Calculating-Difference-Between-Consecutive-Rows-Per-Window.md)
+21. [Exercise: Converting Arrays of Strings to String](spark-sql-exercise-Converting-Arrays-of-Strings-to-String.md)
+22. [Exercise: Calculating percent rank](spark-sql-exercise-Calculating-percent-rank.md)
 
 ## Spark Structured Streaming
 
