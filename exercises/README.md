@@ -26,12 +26,13 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 16. [Exercise: Collecting All Values with pivot and groupBy](spark-sql-exercise-Collecting-All-Values-with-pivot-and-groupBy.md)
 17. [Exercise: Pivoting on Multiple Columns](spark-sql-exercise-Pivoting-on-Multiple-Columns.md)
 18. [Exercise: Generating Exam Assessment Report](spark-sql-exercise-Generating-Exam-Assessment-Report.md)
-19. [Exercise: Finding 1st and 2nd Bestsellers Per Genre](spark-sql-exercise-Finding-1st-and-2nd-Bestsellers-Per-Genre.md)
-20. [Exercise: Calculating Gap Between Current And Highest Salaries Per Department](spark-sql-exercise-Calculating-Gap-Between-Current-And-Highest-Salaries-Per-Department.md)
-21. [Exercise: Calculating Running Total / Cumulative Sum](spark-sql-exercise-Calculating-Running-Total-Cumulative-Sum.md)
-22. [Exercise: Calculating Difference Between Consecutive Rows Per Window](spark-sql-exercise-Calculating-Difference-Between-Consecutive-Rows-Per-Window.md)
-23. [Exercise: Converting Arrays of Strings to String](spark-sql-exercise-Converting-Arrays-of-Strings-to-String.md)
-24. [Exercise: Calculating percent rank](spark-sql-exercise-Calculating-percent-rank.md)
+19. [Exercise: Flattening Dataset from Long to Wide Format](spark-sql-exercise-Flattening-Dataset-from-Long-to-Wide-Format.md)
+20. [Exercise: Finding 1st and 2nd Bestsellers Per Genre](spark-sql-exercise-Finding-1st-and-2nd-Bestsellers-Per-Genre.md)
+21. [Exercise: Calculating Gap Between Current And Highest Salaries Per Department](spark-sql-exercise-Calculating-Gap-Between-Current-And-Highest-Salaries-Per-Department.md)
+22. [Exercise: Calculating Running Total / Cumulative Sum](spark-sql-exercise-Calculating-Running-Total-Cumulative-Sum.md)
+23. [Exercise: Calculating Difference Between Consecutive Rows Per Window](spark-sql-exercise-Calculating-Difference-Between-Consecutive-Rows-Per-Window.md)
+24. [Exercise: Converting Arrays of Strings to String](spark-sql-exercise-Converting-Arrays-of-Strings-to-String.md)
+25. [Exercise: Calculating percent rank](spark-sql-exercise-Calculating-percent-rank.md)
 
 ## Spark Structured Streaming
 
