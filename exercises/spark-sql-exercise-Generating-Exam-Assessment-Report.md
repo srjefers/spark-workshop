@@ -1,0 +1,55 @@
+# Exercise: Generating Exam Assessment Report
+
+Module: **Spark SQL**
+
+The exercise is to generate an exam assessment report (based on the answers from multiple students and attempts).
+
+Duration: **30 mins**
+
+## Input Dataset
+
+```text
++---+-------------+----------+-------------+----------+-------+
+|Qid|     Question|AnswerText|ParticipantID|Assessment| GeoTag|
++---+-------------+----------+-------------+----------+-------+
+|  1|Question1Text|       Yes|       abcde1|         0|(x1,y1)|
+|  2|Question2Text|        No|       abcde1|         0|(x1,y1)|
+|  3|Question3Text|         3|       abcde1|         0|(x1,y1)|
+|  1|Question1Text|        No|       abcde2|         0|(x2,y2)|
+|  2|Question2Text|       Yes|       abcde2|         0|(x2,y2)|
++---+-------------+----------+-------------+----------+-------+
+```
+
+```text
+Qid,Question,AnswerText,ParticipantID,Assessment,GeoTag
+1,Question1Text,Yes,abcde1,0,"(x1,y1)"
+2,Question2Text,No,abcde1,0,"(x1,y1)"
+3,Question3Text,3,abcde1,0,"(x1,y1)"
+1,Question1Text,No,abcde2,0,"(x2,y2)"
+2,Question2Text,Yes,abcde2,0,"(x2,y2)"
+```
+
+## Expected Dataset
+
+```text
++-------------+----------+-------+-----+-----+-----+
+|ParticipantID|Assessment| GeoTag|Qid_1|Qid_2|Qid_3|
++-------------+----------+-------+-----+-----+-----+
+|       abcde1|         0|(x1,y1)|  Yes|   No|    3|
+|       abcde2|         0|(x2,y2)|   No|  Yes| null|
++-------------+----------+-------+-----+-----+-----+
+```
+
+<!--
+val input = spark.read.option("header", true).option("inferSchema", true).csv("input.csv)
+val inputWithHeaders = input.withColumn("header", concat(lit("Qid_"), $"Qid"))
+val solution = inputWithHeaders.groupBy('ParticipantID, $"Assessment", $"GeoTag").pivot('header).agg(first('AnswerText))
+-->
+
+## Hints
+
+* Use `pivot` operator
+
+## Credits
+
+* Based on [How to pivot on arbitrary column?](https://stackoverflow.com/q/47720822/1305344)
