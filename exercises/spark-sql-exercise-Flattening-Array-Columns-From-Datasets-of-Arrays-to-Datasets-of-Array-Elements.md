@@ -1,6 +1,6 @@
 # Exercise: Flattening Array Columns (From Datasets of Arrays to Datasets of Array Elements)
 
-Module: Spark SQL
+Module: **Spark SQL**
 
 ## Input Dataset
 

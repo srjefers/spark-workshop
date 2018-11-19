@@ -1,8 +1,8 @@
 # Exercise: Pivoting on Multiple Columns
 
-Module: **Spark SQL**
-
 The exercise is to pivot a dataset on multiple columns. Since `pivot` aggregation allows for a single column only, find a solution to pivot on two or more columns.
+
+Module: **Spark SQL**
 
 Duration: **30 mins**
 

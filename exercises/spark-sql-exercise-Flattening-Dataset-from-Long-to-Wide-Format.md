@@ -1,8 +1,8 @@
 # Exercise: Flattening Dataset from Long to Wide Format
 
-Module: **Spark SQL**
-
 The exercise is to pivot an input dataset in long format to wide format.
+
+Module: **Spark SQL**
 
 Duration: **30 mins**
 

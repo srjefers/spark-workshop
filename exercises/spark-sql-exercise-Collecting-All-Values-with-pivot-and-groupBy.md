@@ -1,8 +1,8 @@
 # Exercise: Collecting All Values with pivot and groupBy
 
-Module: **Spark SQL**
-
 The exercise calculates cost average ([part 1](#part-1-expected-dataset)) and collects all the values in a column ([part 2](#part-2-expected-dataset)).
+
+Module: **Spark SQL**
 
 Duration: **30 mins**
 

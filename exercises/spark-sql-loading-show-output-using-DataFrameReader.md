@@ -4,7 +4,7 @@ The exercise is about loading a dataset that is in the format of `show` output u
 
 In other words, given the output of `show` from a 3-column Dataset, load it using `spark.read` to create the 3-column Dataset (aka _reverse-engineer the output_).
 
-Module: Spark SQL
+Module: **Spark SQL**
 
 ## Input Dataset
 

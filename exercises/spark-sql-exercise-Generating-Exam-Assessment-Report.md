@@ -1,8 +1,8 @@
 # Exercise: Generating Exam Assessment Report
 
-Module: **Spark SQL**
-
 The exercise is to generate an exam assessment report (based on the answers from multiple students and attempts).
+
+Module: **Spark SQL**
 
 Duration: **30 mins**
 

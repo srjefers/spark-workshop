@@ -8,7 +8,7 @@ A dataset has employees and salaries entries in no particular order. Add a new c
 
 Based on [How to add a column with values based on popularity?](https://stackoverflow.com/q/47195372/1305344)
 
-Module: Spark SQL
+Module: **Spark SQL**
 
 ## Input Dataset
 

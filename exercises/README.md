@@ -8,7 +8,7 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 
 ## Spark SQL
 
-1. [Exercise: Finding Ids of Rows with Word in Array Column](spark-sql-finding-ids-of-rows-with-word-in-array-column.md)
+1. [Exercise: Finding Ids of Rows with Word in Array Column](spark-sql-exercise-Finding-Ids-of-Rows-with-Word-in-Array-Column.md)
 2. [Exercise: Using Dataset.flatMap Operator](spark-sql-exercise-Using-Dataset-flatMap-Operator.md)
 3. [Exercise: Loading Dataset In Format Of show Output Using DataFrameReader](spark-sql-loading-show-output-using-DataFrameReader.md)
 4. [Exercise: Flattening Array Columns (From Datasets of Arrays to Datasets of Array Elements)](spark-sql-exercise-Flattening-Array-Columns-From-Datasets-of-Arrays-to-Datasets-of-Array-Elements.md)

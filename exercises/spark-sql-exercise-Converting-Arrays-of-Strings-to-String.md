@@ -2,7 +2,7 @@
 
 Based on [How to convert column of arrays of strings to strings?](https://stackoverflow.com/q/38924762/1305344).
 
-Module: Spark SQL
+Module: **Spark SQL**
 
 ## Input Dataset
 
