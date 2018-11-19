@@ -20,7 +20,7 @@ Module: **Spark SQL**
 +---+------------------+-----+
 ```
 
-Protips:
+## Protips
 
 * `+`s are comments
 * `|`s are separators

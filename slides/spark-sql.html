@@ -4,103 +4,118 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <meta name="description" content="Apache Spark 2 Workshop | Spark SQL">
+    <title>Apache Spark™ Workshop | Spark SQL</title>
+
+    <meta name="description" content="Apache Spark™ Workshop | Spark SQL">
     <meta name="author" content="Jacek Laskowski">
 
-    <title>Apache Spark 2 Workshop | Spark SQL</title>
-
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="revealjs-css/jacek.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Jacek: custom formatting -->
+    <link rel="stylesheet" href="revealjs-css/jacek.css">
 
     <!-- Printing and PDF exports -->
     <script>
-      var link = document.createElement( 'link' );
+      var link = document.createElement('link');
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-      document.getElementsByTagName( 'head' )[0].appendChild( link );
+      link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
     </script>
   </head>
 
   <body>
     <div class="reveal">
 
+      <div class="footer">
+        <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+      </div>
+
       <div class="slides">
 
-        <section class="intro" data-transition="zoom">
+        <section class="intro" data-transition="zoom" id="home">
           <p>
             <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
             <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>Spark SQL</h1>
-          <h2>Practical Introduction</h2>
-          <h4 style="font-size: smaller;"><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
-          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
+          <h3>Apache Spark 2.4</h3>
 
-          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
+          <h4 style="font-size: smaller;">
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <br>
+            Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+          </h4>
         </section>
 
-        <section id="spark-sql">
-          <section>
-            <h2>Introduction to Spark SQL</h2>
-            <ol>
-              <li>Structured queries described using <b>SQL</b> and <b>Dataset</b> (and <b>DataFrame</b>)
-              <li>Good ol' <b>SQL</b> statements</li>
-              <li><b>Dataset</b> (and <b>DataFrame</b>) data abstractions
-                <ul>
-                  <li>Distributed computations</li>
-                </ul>
-              </li>
-              <li><b>Encoder</b> for storage- and performance optimizations
-                <ul>
-                  <li>Reducing garbage collections</li>
-                </ul>
-              </li>
-              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
-                <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql.html">Spark SQL &mdash; Structured Data Processing with Relational Queries on Massive Scale</a></li>
-                </ul>
-              </li>
-            </ol>
+        <section id="agenda" data-markdown>
+          <textarea data-template>
+            ## Agenda
 
-            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
-          </section>
+            1. [Spark SQL](#/intro)
+            1. [SparkSession](#/sparksession)
+            1. [DataSource API](#/datasource)
+            1. [Schema](#/schema)
+            1. [Ad-hoc Local Datasets](#/ad-hoc-local-datasets)
+            1. [Complete Spark SQL Application](#/complete-spark-sql-application)
+            1. [Demo: Creating Spark SQL Application](#/demo)
+          </textarea>
+        </section>
 
-          <section id="sparksession">
-            <h2>SparkSession</h2>
-            <ol>
-              <li>The entry point to Spark SQL
-                <ul>
-                  <li>&hellip;and Spark in general these days</li>
-                </ul>
-              </li>
-              <li>Use <b>SparkSession.builder</b> Fluent API to create one</li>
-              <li>Allows creating local Datasets
-                <ul>
-                  <li><b>spark.range(numberOfRecords)</b></li>
-                </ul>
-              </li>
-              <li>Loading datasets using <b>load</b> <small>discussed later</small></li>
-              <li>spark-shell gives you one instance as <b>spark</b></li>
-              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
-                <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-SparkSession.html">SparkSession &mdash; The Entry Point to Spark SQL</a></li>
-                </ul>
-              </li>
-            </ol>
+        <section id="intro">
+          <h2>Spark SQL</h2>
+          <ol>
+            <li>Structured queries described using <b>SQL</b> and <b>Dataset</b> (and <b>DataFrame</b>)
+            <li>Good ol' <b>SQL</b> statements</li>
+            <li><b>Dataset</b> (and <b>DataFrame</b>) data abstractions
+              <ul>
+                <li>Distributed computations</li>
+              </ul>
+            </li>
+            <li><b>Encoder</b> for storage- and performance optimizations
+              <ul>
+                <li>Reducing garbage collections</li>
+              </ul>
+            </li>
+            <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql.html">Spark SQL &mdash; Structured Data Processing with Relational Queries on Massive Scale</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
 
-            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
-          </section>
+        <section id="sparksession">
+          <h2>SparkSession</h2>
+          <ol>
+            <li>The entry point to Spark SQL
+              <ul>
+                <li>&hellip;and Spark in general these days</li>
+              </ul>
+            </li>
+            <li>Use <b>SparkSession.builder</b> Fluent API to create one</li>
+            <li>Allows creating local Datasets
+              <ul>
+                <li><b>spark.range(numberOfRecords)</b></li>
+              </ul>
+            </li>
+            <li>Loading datasets using <b>load</b> <small>discussed later</small></li>
+            <li>spark-shell gives you one instance as <b>spark</b></li>
+            <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-SparkSession.html">SparkSession &mdash; The Entry Point to Spark SQL</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
 
-          <section style="font-size: 90%;">
+        <section>
+          <section style="font-size: 90%;" id="datasource">
             <h2>DataSource API &mdash; Reading and Writing Datasets</h2>
             <ol>
               <li>Loading datasets using <b>SparkSession.read</b>
@@ -120,8 +135,6 @@
                 </ul>
               </li>
             </ol>
-
-            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
 
           <section style="font-size: 90%;">
@@ -145,8 +158,6 @@
                 </ul>
               </li>
             </ol>
-
-            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
 
           <section>
@@ -160,8 +171,6 @@
               <li><b>table</b></li>
               <li><b>text</b> and <b>textFile</b></li>
             </ol>
-
-            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
 
           <section style="font-size: 90%;">
@@ -185,100 +194,58 @@
                 </ul>
               </li>
             </ol>
-
-            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
           </section>
+        </section>
 
-          <section>
-            <h2>Ad-hoc Local Datasets</h2>
-            <ol>
-              <li><b>Seq(...).toDF("col1", "col2", ...)</b> for local DataFrames</li>
-              <li><b>Seq(...).toDS</b> for local Datasets</li>
-              <li>Use <b>import spark.implicits._</b></li>
-              <li>All Scala Collections supported (almost)</li>
-              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
-                <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-SparkSession.html#implicits">Implicit Conversions &mdash; implicits object</a></li>
-                </ul>
-              </li>
-            </ol>
-
-            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
-          </section>
-
-          <section>
-            <h2>Schema</h2>
-            <ol>
-              <li>Schema = <b>StructType</b> with one or many <b>StructFields</b></li>
-              <li>Implicit (inferred) or explicit</li>
-              <li><b>dataset.printSchema</b></li>
-              <li>Schema is your case class(es)
-                <pre><code>
+        <section id="schema">
+          <h2>Schema</h2>
+          <ol>
+            <li>Schema = <b>StructType</b> with one or many <b>StructFields</b></li>
+            <li>Implicit (inferred) or explicit</li>
+            <li><b>dataset.printSchema</b></li>
+            <li>Schema is your case class(es)
+              <pre><code data-noescape class="lang-scala hljs">
   case class Person(id: Long, name: String)
 
   import org.apache.spark.sql.Encoders
   val schema = Encoders.product[Person].schema
-                </code></pre>
-              </li>
-              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
-                <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-schema.html">Schema &mdash; Structure of Data</a></li>
-                </ul>
-              </li>
-            </ol>
-
-            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
-          </section>
+              </code></pre>
+            </li>
+            <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-schema.html">Schema &mdash; Structure of Data</a></li>
+              </ul>
+            </li>
+          </ol>
         </section>
 
-        <section>
-          <section>
-            <h2>Demo: Creating Spark SQL Application</h2>
-            <ol>
-              <li>Use <b>IntelliJ IDEA</b> and <b>sbt</b></li>
-              <li>Define Spark SQL dependency in <b>build.sbt</b>
-                <ul>
-                  <li><b>libraryDependencies</b></li>
-                </ul>
-              </li>
-              <li>Write your <b>Spark SQL code</b>
-                <ul>
-                  <li><b>spark.version</b></li>
-                </ul>
-              </li>
-              <li>Execute <b>sbt package</b></li>
-              <li>Run the application using <b>spark-submit</b></li>
-            </ol>
-            <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / @jaceklaskowski / jacek@japila.pl</footer>
-          </section>
+        <section id="ad-hoc-local-datasets">
+          <h2>Ad-hoc Local Datasets</h2>
+          <ol>
+            <li><b>Seq(...).toDF("col1", "col2", ...)</b> for local DataFrames</li>
+            <li><b>Seq(...).toDS</b> for local Datasets</li>
+            <li>Use <b>import spark.implicits._</b></li>
+            <li>All Scala Collections supported (almost)</li>
+            <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
+              <ul>
+                <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-SparkSession.html#implicits">Implicit
+                    Conversions &mdash; implicits object</a></li>
+              </ul>
+            </li>
+          </ol>
+        </section>
 
-          <section style="font-size: 90%;" id="exercise-first-app" data-markdown>
-            <script type="text/template">
-              ## Exercise: My First Spark SQL Application
-              #### spark.version
-
-              1. Create a Scala sbt-managed standalone application
-                * Use <b>IntelliJ IDEA</b>
-              1. Define Spark SQL dependency in <b>build.sbt</b>
-                * **libraryDependencies**
-                * **"org.apache.spark" %% "spark-sql" % "2.3.2"**
-              1. Write your <b>Spark SQL code</b>, i.e. <b>spark.version</b>
-                * **SparkSession**
-              1. Execute <b>sbt package</b>
-              1. Run the application using <b>spark-submit</b>
-              1. Time: 40 mins
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              ## Complete Spark SQL Application
-              ### (From CSV to Parquet)
+        <section data-markdown id="complete-spark-sql-application">
+          <textarea data-template>
+            ## Complete Spark SQL Application
+            ### (From CSV to Parquet)
 
 ```scala
 // no master URL hard-coded!
 // Use spark-submit to specify it at submission time
-val spark: SparkSession = SparkSession.builder.getOrCreate
-spark.read
+val spark = SparkSession.builder.getOrCreate
+spark
+  .read
   .option("header", true)
   .option("inferSchema", true)
   .csv("inventory/*.csv")
@@ -287,84 +254,38 @@ spark.read
   .mode("overwrite")
   .save("reports")
 ```
-            </script>
-          </section>
-          <section id="exercise-csv" data-markdown>
-            <script type="text/template">
-              ## Exercise: Using CSV As Data Source
-
-              1. Write Spark SQL code
-                * **spark.read.csv**
-                * Use **header** and **inferSchema** options
-                * Use **args** for the path to CSV file(s)
-                * **show** the records
-              1. Execute <b>sbt package</b>
-              1. Run the application using <b>spark-submit</b>
-              1. Time: 30 mins
-            </script>
-          </section>
-          <section id="exercise-first-app-spark-standalone" data-markdown>
-            <script type="text/template">
-              ## Exercise: Submit Spark Application to Spark Standalone
-
-              1. Spin up a Spark Standalone cluster
-                * **bin/spark-class**
-                * **org.apache.spark.deploy.master.Master**
-                * **org.apache.spark.deploy.worker.Worker**
-              1. Submit Spark application to Cluster
-                * **spark-submit --master spark://localhost:7077**
-              1. Time: 15 mins
-            </script>
-          </section>
+          </textarea>
         </section>
 
-        <section>
-          <section id="jdbc-exercises">
-            <h1>Spark SQL + JDBC</h1>
-            <h2>Exercises</h2>
-          </section>
-          <section id="exercise-jdbc-postgresql" style="font-size: 90%;">
-            <h2>Exercise: Working with Datasets Using JDBC (and PostgreSQL)</h2>
-            <ol>
-              <li>Develop a standalone Spark SQL application (IntelliJ IDEA)</li>
-              <li><b>spark-submit --packages</b> to submit Spark application with PostgreSQL JDBC Driver</li>
-              <li>(optionally) Use <b>Spark Standalone</b> cluster
-                <ul>
-                  <li>Troubleshoot missing PostgreSQL JDBC Driver jar</li>
-                </ul>
-              </li>
-              <li>Time: 50 mins</li>
-              <li>Use Mastering Apache Spark 2
-                <ul>
-                  <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/exercises/spark-exercise-dataframe-jdbc-postgresql.html">Working with Datasets using JDBC (and PostgreSQL)</a></li>
-                </ul>
-              </li>
-            </ol>
-          </section>
-          <section id="exercise-table-query-cmd" data-markdown>
-            <script type="text/template">
-            ## Exercise: Specifying Table and SQL Query on Command Line
-
-            1. Build up on previous exercise
-            1. Use **args** for the table name and the SQL query
-              * **args(0)** is the table name
-              * **args(1)** is the query to be executed
-            1. Register the dataset as a temporary view
-              * Use **createOrReplaceTempView**
-            1. Execute the SQL query using **spark.sql**
-            </script>
-          </section>
+        <section id="demo">
+          <h2>Demo: Creating Spark SQL Application</h2>
+          <ol>
+            <li>Use <b>IntelliJ IDEA</b> and <b>sbt</b></li>
+            <li>Define Spark SQL dependency in <b>build.sbt</b>
+              <ul>
+                <li><b>libraryDependencies</b></li>
+              </ul>
+            </li>
+            <li>Write your <b>Spark SQL code</b>
+              <ul>
+                <li><b>spark.version</b></li>
+              </ul>
+            </li>
+            <li>Execute <b>sbt package</b></li>
+            <li>Run the application using <b>spark-submit</b></li>
+          </ol>
         </section>
 
         <section style="text-align: left" data-markdown id="questions">
-          <script type="text/template">
+          <textarea data-template>
             # Questions?
 
-            * Read [Mastering Spark SQL](http://bit.ly/mastering-spark-sql)
-              * [http://bit.ly/mastering-spark-sql](http://bit.ly/mastering-spark-sql)
+            * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
+            * Read [The Internals of Spark SQL](https://bit.ly/mastering-spark-sql)
+            * Read [The Internals of Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
-          </script>
+          </textarea>
         </section>
 
       </div>
@@ -391,20 +312,22 @@ spark.read
           openSlideNumber: true
         },
         dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
           { src: 'reveal.js/plugin/markdown/marked.js' },
           { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
         ]
       });
     </script>
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
       ga('create', 'UA-45999426-3', 'auto');
       ga('send', 'pageview');
