@@ -43,7 +43,7 @@
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1 style="font-size: 2.77em;">Standard and User-Defined Functions</h1>
-          <h3>Apache Spark 2.3 / Spark SQL</h3>
+          <h3>Apache Spark 2.4 / Spark SQL</h3>
 
           <h4 style="font-size: smaller;">
             <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
@@ -57,6 +57,7 @@
             ## Agenda
 
             1. [Standard Functions](#/standard-functions)
+            1. [Standard Functions for Collections](#/standard-functions-collections)
             1. [Standard Functions for Date and Time](#/standard-functions-datetime)
             1. [User-Defined Functions (UDFs)](#/udf-heads-up)
           </textarea>
@@ -68,11 +69,10 @@
               <!-- .slide: style="font-size: 90%" -->
               ## Standard Functions <small>(1 of 2)</small>
 
-              1. <!-- .element: style="font-size: 0.9em;" --> **Standard functions** (aka **native functions**) are built-in functions (in **SparkSession**) to transform columns into a column
+              1. <!-- .element: style="font-size: 0.9em;" --> **Standard functions** (aka **native functions**) are built-in functions that transform the values of columns into new values
                 * Aggregate functions, e.g. **avg**, **count**, **sum**
-                * Collection functions, e.g. **explode**, **from_json**
+                * Collection functions, e.g. **explode**, **from_json**, **array_\***
                 * Date time functions, e.g. **current_timestamp**, **to_date**, **window**
-                  * <!-- .element: style="font-size: 0.8em;" --> _More in the upcoming [slide](#/standard-functions-datetime)_
                 * Math functions, e.g. **conv**, **factorial**, **pow**
                 * Non-aggregate functions, e.g. **array**, **broadcast**, **expr**, **lit**
                 * Sorting functions, e.g. **asc**, **asc_nulls_first**, **asc_nulls_last**
@@ -98,6 +98,24 @@
           </section>
         </section>
 
+        <section id="standard-functions-collections" data-markdown>
+          <textarea data-template>
+            <!-- .slide: style="font-size: 85%" -->
+            ## Standard Functions for Collections
+
+            1. New functions in Spark 2.4 for "Array Algebra"
+              * **array_contains**, **array_distinct**, **array_except**, **array_intersect**, **flatten**, etc.
+              * **arrays_zip**, **arrays_overlap**
+            1. New functions in Spark 2.4 for "Map Algebra"
+              * **map_concat**, **map_from_entries**, **map_keys**, **map_values**
+            1. **explode**, **explode_outer**
+            1. **posexplode**, **posexplode_outer**
+            1. Review Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
+            1. Switch to The Internals of Spark SQL
+              * [Standard Functions for Collections (Collection Functions)](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-functions-collection.html)
+          </textarea>
+        </section>
+
         <section id="standard-functions-datetime" data-markdown>
           <textarea data-template>
             <!-- .slide: style="font-size: 95%" -->
@@ -106,7 +124,9 @@
             1. **unix_timestamp**
             1. **to_timestamp**
             1. **window**
-            1. Read Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
+            1. New functions in Spark 2.4
+              * **from_utc_timestamp**, **to_utc_timestamp**, **months_between**
+            1. Review Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
             1. Switch to Mastering Spark SQL
               * [Date and Time Functions](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions-datetime.html)
           </textarea>
@@ -169,6 +189,7 @@
             ## Recap
 
             1. [Standard Functions](#/standard-functions)
+            1. [Standard Functions for Collections](#/standard-functions-collections)
             1. [Standard Functions for Date and Time](#/standard-functions-datetime)
             1. [User-Defined Functions (UDFs)](#/udf-heads-up)
           </textarea>
@@ -179,8 +200,8 @@
             # Questions?
 
             * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
-            * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
-            * Read [Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+            * Read [The Internals of Spark SQL](https://bit.ly/mastering-spark-sql)
+            * Read [The Internals of Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </textarea>
@@ -210,12 +231,12 @@
           openSlideNumber: true
         },
         dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
           { src: 'reveal.js/plugin/markdown/marked.js' },
           { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
         ]
       });
     </script>

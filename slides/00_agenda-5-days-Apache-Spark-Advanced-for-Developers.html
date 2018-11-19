@@ -150,6 +150,7 @@
               ## Day 1 &mdash; The Essentials of Spark SQL
 
               1. (Warm-up) [Exercise: Finding Ids of Rows with Word in Array Column](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-Ids-of-Rows-with-Word-in-Array-Column.html)
+              1. [The Core of Apache Spark](spark-core.html)
               1. [Spark SQL](spark-sql.html)
                 * [Exercise: Standalone Spark Application to Display Spark SQL Version](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Standalone-Spark-Application-to-Display-Spark-SQL-Version.html)
                 * [Exercise: Using CSV Data Source](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Using-CSV-Data-Source.html)
@@ -158,27 +159,23 @@
             </textarea>
           </section>
 
-          <section data-markdown>
-            <script type="text/template">
-              ## Day X &mdash; Spark Core
-
-              1. [Anatomy of Spark Core Data Processing](https://github.com/jaceklaskowski/spark-workshop/blob/gh-pages/agendas/advanced-apache-spark-for-developers.md#spark-core-15-days)
-                1. [The Core of Apache Spark](spark-core.html)
-                1. [SparkContext &mdash; Entry Point to Spark Core](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-SparkContext.html)
-                1. [RDD Lineage — Logical Execution Plan](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-lineage.html)
-              1. Elements of Spark Runtime Environment
-                1. [SparkEnv — Spark Runtime Environment](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sparkenv.html)
-                1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
-              1. Lunch Break (12:45AM)
-              1. [Spark Tools](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
-            </script>
-          </section>
-
-          <section id="day2" data-markdown>
+          <section id="day2" data-markdown style="font-size: 85%;">
             <textarea data-template>
-              ## Day 2 &mdash; FIXME
+              ## Day 2 &mdash; Spark SQL
 
-              1. FIXME
+              1. [Standard and User-Defined
+              Functions](spark-sql-standard-functions-udfs.html)
+                * [Exercise: Using Standard Functions (upper)](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Using-Standard-Functions-upper.html)
+                * [Exercise: Using explode Standard Function](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Using-explode-Standard-Function.html)
+                * [Exercise: Difference in Days Between Dates As Strings](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Difference-in-Days-Between-Dates-As-Strings.html)
+                * [Exercise: Using UDFs](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Using-UDFs.html)
+              1. [Basic Aggregation](02-spark-sql-basic-aggregation.html)
+                * [Exercise: Finding maximum value (agg)](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-maximum-value-agg.html)
+                * [Exercise: Finding maximum values per group (groupBy)](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-maximum-values-per-group-groupBy.html)
+                * [Exercise: Collect values per group](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Collect-values-per-group.html)
+                * [Exercise: Multiple Aggregations](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Multiple-Aggregations.html)
+              1. [Joins](spark-sql-joins.html)
+                * [Exercise: Finding bestsellers per category](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-bestsellers-per-category.html)
             </textarea>
           </section>
 
@@ -205,6 +202,22 @@
               1. FIXME
             </textarea>
           </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              ## Day X &mdash; Spark Core
+
+              1. [Anatomy of Spark Core Data Processing](https://github.com/jaceklaskowski/spark-workshop/blob/gh-pages/agendas/advanced-apache-spark-for-developers.md#spark-core-15-days)
+                1. [SparkContext &mdash; Entry Point to Spark Core](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-SparkContext.html)
+                1. [RDD Lineage — Logical Execution Plan](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-lineage.html)
+              1. Elements of Spark Runtime Environment
+                1. [SparkEnv — Spark Runtime Environment](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sparkenv.html)
+                1. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
+              1. Lunch Break (12:45AM)
+              1. [Spark Tools](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
+            </script>
+          </section>
+
         </section>
 
         <section>

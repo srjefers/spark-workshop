@@ -44,7 +44,7 @@
           </p>
           <h1>Basic Aggregation</h1>
           <h3>(agg, groupBy and groupByKey)</h3>
-          <h3>Apache Spark 2.3 / Spark SQL</h3>
+          <h3>Apache Spark 2.4 / Spark SQL</h3>
 
           <h4 style="font-size: smaller;">
             <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
@@ -62,6 +62,7 @@
             1. [agg Operator](#/agg-operator)
             1. [Untyped groupBy Operator](#/groupBy-operator)
             1. [Typed groupByKey Operator](#/groupByKey-operator)
+            1. [User-Defined Untyped Aggregate Functions (UDAFs)](#/udaf)
           </textarea>
         </section>
 
@@ -104,6 +105,7 @@
 
         <section id="groupBy-operator" data-markdown>
           <textarea data-template>
+            <!-- .slide: style="font-size: 90%" -->
             ## Untyped groupBy Operator
 
             1. **groupBy** groups records in Dataset per _discriminator function_
@@ -113,7 +115,8 @@
               ```
             1. Creates **RelationalGroupedDataset**
               * Supports untyped, Row-based **agg**
-              * Shortcuts for _the usual suspects_, e.g. **avg**, **count**, **pivot**
+              * Shortcuts for _the usual suspects_, e.g. **avg**, **count**, **max**
+              * Supports **pivot**
               * Read [RelationalGroupedDataset's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.RelationalGroupedDataset)
           </textarea>
         </section>
@@ -137,6 +140,16 @@
           </textarea>
         </section>
 
+        <section id="udaf" data-markdown>
+          <textarea data-template>
+            ## User-Defined Untyped Aggregate Functions (UDAFs)
+
+            1. [UserDefinedAggregateFunction](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.expressions.UserDefinedAggregateFunction) - the base class for implementing user-defined aggregate functions
+            1. Switch to Mastering Spark SQL
+              * [UserDefinedAggregateFunction — Contract for User-Defined Untyped Aggregate Functions (UDAFs)](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-UserDefinedAggregateFunction.html)
+          </textarea>
+        </section>
+
         <section id="recap" data-markdown>
           <textarea data-template>
             ## Recap
@@ -145,6 +158,7 @@
             1. [agg Operator](#/agg-operator)
             1. [Untyped groupBy Operator](#/groupBy-operator)
             1. [Typed groupByKey Operator](#/groupByKey-operator)
+            1. [User-Defined Untyped Aggregate Functions (UDAFs)](#/udaf)
           </textarea>
         </section>
 
@@ -153,8 +167,8 @@
             # Questions?
 
             * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
-            * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
-            * Read [Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+            * Read [The Internals of Spark SQL](https://bit.ly/mastering-spark-sql)
+            * Read [The Internals of Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </textarea>
@@ -184,12 +198,12 @@
           openSlideNumber: true
         },
         dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
           { src: 'reveal.js/plugin/markdown/marked.js' },
           { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
         ]
       });
     </script>
