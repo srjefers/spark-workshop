@@ -1,55 +1,62 @@
-# Exercise: Using Dataset.flatMap Operator (Spark SQL)
+# Exercise: Using Dataset.flatMap Operator
 
-## Steps
+Use `spark-shell` to write a structured query that creates a new row for every element in the given array column (using `Dataset.flatMap` operator).
 
-1. Create a Dataset with a column of array type
+Module: **Spark SQL**
 
-    ```text
-    val nums = Seq(Seq(1,2,3)).toDF("nums")
+Duration: **30 mins**
 
-    scala> nums.show
-    +---------+
-    |     nums|
-    +---------+
-    |[1, 2, 3]|
-    +---------+
+## Input Dataset
 
-    scala> nums.printSchema
-    root
-        |-- nums: array (nullable = true)
-        |    |-- element: integer (containsNull = false)
-    ```
-2. Use **Dataset.flatMap** operator to expand the array column into rows (one per array element)
-    * Read up [flatMap's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
-3. (extra) Compare performance of **Dataset.flatMap** and **explode** standard function
+```text
+val nums = Seq(Seq(1,2,3)).toDF("nums")
+
+scala> nums.printSchema
+root
+ |-- nums: array (nullable = true)
+ |    |-- element: integer (containsNull = false)
+
+
+scala> nums.show
++---------+
+|     nums|
++---------+
+|[1, 2, 3]|
++---------+
+```
 
 ## Result
 
 ```text
-scala> solution.show
-+-----+
-|value|
-+-----+
-|    1|
-|    2|
-|    3|
-+-----+
++---------+---+
+|     nums|num|
++---------+---+
+|[1, 2, 3]|  1|
+|[1, 2, 3]|  2|
+|[1, 2, 3]|  3|
++---------+---+
 ```
 
-Duration: **30 mins**
+Please note that the output has two columns (not one!)
+
+## Useful Links
+
+1. Scaladoc of the [Dataset API](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
 
 <!--
 ## Solution
 
 ```text
-scala> nums.flatMap(r => r.getSeq(0): Seq[Int]).show
-+-----+
-|value|
-+-----+
-|    1|
-|    2|
-|    3|
-+-----+
+// The following give one-column output only
+val partSol1 = nums.flatMap(r => r.getSeq[Int](0))
+val partSol2 = nums.flatMap(r => r.getSeq(0): Seq[Int])
+val partSol3 = nums.flatMap(r => r.getAs[Seq[Int]]("nums"))
+
+val solution = nums.as[Seq[Int]].flatMap((ns: Seq[Int]) => ns.map(n => (ns, n))).toDF("nums", "num")
+val solution = for {
+  ns <- nums.as[Seq[Int]]
+  n <- ns
+} yield (ns, n)
 ```
 
 -->

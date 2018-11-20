@@ -1,10 +1,10 @@
-# Exercise: Loading Dataset In Format Of show Output Using DataFrameReader
+# Exercise: Reverse-engineering Dataset.show Output
 
-The exercise is about loading a dataset that is in the format of `show` output using `DataFrameReader`.
-
-In other words, given the output of `show` from a 3-column Dataset, load it using `spark.read` to create the 3-column Dataset (aka _reverse-engineer the output_).
+Write a structured query that loads a text file that contains the output of `Dataset.show` operator (aka _reverse-engineer the show output_).
 
 Module: **Spark SQL**
+
+Duration: **30 mins**
 
 ## Input Dataset
 
@@ -28,7 +28,7 @@ Module: **Spark SQL**
 * [CSVOptions.scala](https://github.com/apache/spark/blob/master/sql/catalyst/src/main/scala/org/apache/spark/sql/catalyst/csv/CSVOptions.scala)
 * [CSVFileFormat](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-CSVFileFormat.html)
 
-## Expected Dataset
+## Result
 
 ```text
 +---+------------------+-----+
@@ -103,7 +103,7 @@ val rawInput = spark
   .option("ignoreLeadingWhiteSpace", true)
   .option("ignoreTrailingWhiteSpace", true)
   .csv("exercise.txt")
-val headersToDrop = rawInput.columns.filter(_ startsWith "_")
+val headersToDrop = rawInput.columns.filter(_ startsWith "_c")
 val s = rawInput.drop(headersToDrop: _*)
 
 // Solution 4: foldLeft

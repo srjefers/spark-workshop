@@ -1,16 +1,16 @@
-# Exercise: Using UDFs (Spark SQL)
+# Exercise: Using UDFs
 
-## Steps
+Develop a standalone Spark SQL application (in IntelliJ IDEA) that uses your own `upper` user-defined function.
 
-1. Develop a standalone Spark SQL application (IntelliJ IDEA)
-2. Roll your own **upper** function
-    * Use Scala's [StringOps.toUpperCase](http://www.scala-lang.org/api/2.11.8/index.html#scala.collection.immutable.StringOps)
-3. **Explain** the logical and execution plans
-    * Think what happens for UDFs with **if** conditions
-4. Use the UDF in SQL, i.e. **spark.sql**
-5. (extra) Use **callUDF**
+Protip™: Use Scala's [StringOps.toUpperCase](https://www.scala-lang.org/api/current/scala/collection/immutable/StringOps.html)
 
-Duration: **30 mins**
+Use `explain` to display the physical plan to the console and think if/how performance changes for UDFs with branching, i.e. `if` expressions.
+
+Use the UDF in SQL, i.e. in `spark.sql`.
+
+(Extra) Use `callUDF` to call the UDF.
+
+Duration: **20 mins**
 
 <!--
 ## Solution

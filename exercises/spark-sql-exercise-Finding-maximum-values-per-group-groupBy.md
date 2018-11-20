@@ -1,20 +1,45 @@
-# Exercise: Finding maximum values per group (groupBy) (Spark SQL)
+# Exercise: Finding maximum values per group (groupBy)
 
-## Steps
+Develop a standalone Spark SQL application (using IntelliJ IDEA) that finds the highest numbers per group.
 
-1. Develop a standalone Spark SQL application (IntelliJ IDEA)
-2. Use **groupBy** operator with **max** function
-    * Use **spark.range** for sample numbers
-    * Use a CSV file with two columns for a real dataset
-3. Read [Spark API scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html)
+Protip™: Use `Dataset.groupBy` operator and `max` standard function
 
-Duration: **30 mins**
+Module: **Spark SQL**
+
+Duration: **20 mins**
+
+## Input Dataset
+
+```text
+val nums = spark.range(5).withColumn("group", 'id % 2)
+scala> nums.show
++---+-----+
+| id|group|
++---+-----+
+|  0|    0|
+|  1|    1|
+|  2|    0|
+|  3|    1|
+|  4|    0|
++---+-----+
+```
+
+## Result
+
+```text
++-----+------+
+|group|max_id|
++-----+------+
+|    0|     4|
+|    1|     3|
++-----+------+
+```
 
 <!--
 ## Solution
 
 ```text
-???
+val solution = nums.groupBy('group).agg(max("id") as "max_id")
 ```
 
 -->

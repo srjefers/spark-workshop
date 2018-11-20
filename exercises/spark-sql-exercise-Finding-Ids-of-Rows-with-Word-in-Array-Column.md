@@ -4,7 +4,7 @@ The exercise is about finding the ids of the rows that have values from one colu
 
 Module: **Spark SQL**
 
-Duration: **15 mins**
+Duration: **30 mins**
 
 ## Input Dataset
 

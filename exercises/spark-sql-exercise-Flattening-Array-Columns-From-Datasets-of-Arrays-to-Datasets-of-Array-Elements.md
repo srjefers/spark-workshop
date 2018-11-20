@@ -1,6 +1,10 @@
 # Exercise: Flattening Array Columns (From Datasets of Arrays to Datasets of Array Elements)
 
+Develop a standalone Spark application that creates columns with the values of elements of an array column.
+
 Module: **Spark SQL**
+
+Duration: **30 mins**
 
 ## Input Dataset
 
@@ -20,10 +24,9 @@ root
  |    |-- element: integer (containsNull = false)
 ```
 
-## Expected Dataset
+## Result
 
 ```text
-scala> s.show
 +---+---+---+
 |  0|  1|  2|
 +---+---+---+

@@ -1,10 +1,14 @@
-# Exercise: Difference in Days Between Dates As Strings (Spark SQL)
+# Exercise: Difference in Days Between Dates As Strings
 
-## Steps
+Use `spark-shell` to write a structured query that calculates the number of days between date strings and the current day.
 
-1. Given dataset with date strings calculate number of days between them and current day
-2. Use **to_date** and **datediff** functions
-3. Read Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
+Protip™: Use the standard functions for date and time, e.g. `to_date` and `datediff`
+
+Module: **Spark SQL**
+
+Duration: **30 mins**
+
+## Input Dataset
 
 ```text
 val dates = Seq(
@@ -12,25 +16,39 @@ val dates = Seq(
    "09/11/2015",
    "09/12/2015").toDF("date_string")
 
-val diffs = // <-- your solution here
+scala> dates.show
++-----------+
+|date_string|
++-----------+
+| 08/11/2015|
+| 09/11/2015|
+| 09/12/2015|
++-----------+
+```
 
-scala> diffs.show
+## Result
+
+```text
 +-----------+----------+----+
 |date_string|   to_date|diff|
 +-----------+----------+----+
-| 08/11/2015|2015-11-08|1066|
-| 09/11/2015|2015-11-09|1065|
-| 09/12/2015|2015-12-09|1035|
+| 08/11/2015|2015-11-08|1108|
+| 09/11/2015|2015-11-09|1107|
+| 09/12/2015|2015-12-09|1077|
 +-----------+----------+----+
 ```
 
-Duration: **30 mins**
+## Useful Links
+
+1. Scaladoc of the [functions](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) object
 
 <!--
 ## Solution
 
 ```text
-???
+val solution = dates
+   .withColumn("to_date", to_date('date_string, "dd/MM/yyyy"))
+   .withColumn("diff", datediff(current_date, 'to_date))
 ```
 
 -->

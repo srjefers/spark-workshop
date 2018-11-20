@@ -2,6 +2,8 @@
 
 The exercise is to generate an exam assessment report (based on the answers from multiple students and attempts).
 
+Protip™: Use `RelationalGroupedDataset.pivot` operator
+
 Module: **Spark SQL**
 
 Duration: **30 mins**
@@ -29,7 +31,7 @@ Qid,Question,AnswerText,ParticipantID,Assessment,GeoTag
 2,Question2Text,Yes,abcde2,0,"(x2,y2)"
 ```
 
-## Expected Dataset
+## Result
 
 ```text
 +-------------+----------+-------+-----+-----+-----+
@@ -46,10 +48,6 @@ val inputWithHeaders = input.withColumn("header", concat(lit("Qid_"), $"Qid"))
 val solution = inputWithHeaders.groupBy('ParticipantID, $"Assessment", $"GeoTag").pivot('header).agg(first('AnswerText))
 -->
 
-## Hints
-
-* Use `pivot` operator
-
 ## Credits
 
-* Based on [How to pivot on arbitrary column?](https://stackoverflow.com/q/47720822/1305344)
+* [How to pivot on arbitrary column?](https://stackoverflow.com/q/47720822/1305344)

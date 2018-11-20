@@ -1,6 +1,8 @@
 # Exercise: Pivoting on Multiple Columns
 
-The exercise is to pivot a dataset on multiple columns. Since `pivot` aggregation allows for a single column only, find a solution to pivot on two or more columns.
+Write a structured query that pivots a dataset on multiple columns. Since `pivot` aggregation allows for a single column only, find a solution to pivot on two or more columns.
+
+Protip™: Use `RelationalGroupedDataset.pivot` and `Dataset.join` operators
 
 Module: **Spark SQL**
 
@@ -43,7 +45,7 @@ val data = Seq(
   (102,4,78,18)).toDF("id", "day", "price", "units")
 ```
 
-## Expected Dataset
+## Result
 
 ```text
 +---+-------+-------+-------+-------+------+------+------+------+
@@ -55,6 +57,8 @@ val data = Seq(
 +---+-------+-------+-------+-------+------+------+------+------+
 ```
 
+Think how you can avoid multiple scans over the input dataset.
+
 <!--
 val daily_prices = data.withColumn("daily_price", concat(lit("price_"), $"day"))
 val prices = daily_prices.groupBy("id").pivot("daily_price").agg(first($"price"))
@@ -65,14 +69,6 @@ val units = daily_units.groupBy("id").pivot("daily_unit").agg(first($"units"))
 val solution = prices.join(units, "id").orderBy("id")
 -->
 
-## Hints
-
-* Use `Dataset.join` operator
-
-## Questions
-
-1. How to avoid multiple scans over the input dataset?
-
 ## Credits
 
-* Based on [How to pivot on multiple columns in Spark SQL?](https://stackoverflow.com/q/45035940/1305344)
+* [How to pivot on multiple columns in Spark SQL?](https://stackoverflow.com/q/45035940/1305344)
