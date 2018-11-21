@@ -39,6 +39,7 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 28. [Exercise: Working with Datasets Using JDBC and PostgreSQL](spark-sql-exercise-Working-with-Datasets-Using-JDBC-and-PostgreSQL.md)
 29. [Exercise: Specifying Table and SQL Query on Command Line](spark-sql-exercise-Specifying-Table-and-SQL-Query-on-Command-Line.md)
 30. [Exercise: Finding First Non-Null Value per Group](spark-sql-exercise-Finding-First-Non-Null-Value-per-Group.md)
+31. [Exercise: Finding Longest Sequence (Window Aggregation)](spark-sql-exercise-Finding-Longest-Sequence.md)
 
 ## Spark Structured Streaming
 
