@@ -67,7 +67,6 @@
             ## Exercises
             <hr>
             1. [Collecting aggregates](#/groupby-collect-list)
-            1. [Window with first](#/window-first)
             1. [Window with count](#/window-count)
             1. [max with All Columns](#/max-with-all-columns)
             1. [Window with collect_set and UDF](#/window-collect-set-udf)
@@ -106,40 +105,6 @@
               1. Use <b>groupBy</b> aggregate operator
               1. Use [collect_list](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
                 * Aggregate function that returns a list of objects with duplicates.
-            </script>
-          </section>
-        </section>
-
-        <section>
-          <section id="window-first" data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Window with first</span>
-              ## Window with first
-
-              1. [How to find first non-null ids per group?](https://stackoverflow.com/q/42986965/1305344)
-```scala
-scala> dataset.show
-+----+-----+
-|  id|group|
-+----+-----+
-|null|    0|
-|null|    1|
-|   2|    0| <-- 2 for group 0
-|null|    1|
-|   4|    1| <-- 4 for group 1
-+----+-----+
-```
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              <span class="menu-title" style="display: none">Hints</span>
-              ## Window with first <small>Hints</small>
-
-              1. Use window aggregation
-              1. Use [first](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) function
-                * Aggregate function that returns the first value of a column in a group.
-                * Return the first non-null value it sees when **ignoreNulls** is set to **true**.
             </script>
           </section>
         </section>

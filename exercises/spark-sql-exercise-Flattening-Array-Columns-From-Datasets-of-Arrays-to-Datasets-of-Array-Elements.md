@@ -34,8 +34,6 @@ root
 +---+---+---+
 ```
 
-Duration: **30 mins**
-
 <!--
 val header = input.as[Array[Int]].head
 val columns = header.indices.map(n => 'value(n) as n.toString)

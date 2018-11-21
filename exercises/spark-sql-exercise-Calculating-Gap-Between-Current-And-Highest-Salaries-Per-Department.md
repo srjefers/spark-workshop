@@ -1,8 +1,14 @@
-# Exercise: Calculating Gap Between Current And Highest Salaries Per Department (Spark SQL)
+# Exercise: Calculating Gap Between Current And Highest Salaries Per Department
 
-The exercise is to calculate the difference in salaries between employees per department. In other words, we want to know how much more the highest-paid employee gets compared to other teammates.
+Write a structured query that shows the difference in salaries between the top-paid employee and others per department. In other words, we want to know how much more the highest-paid employee gets compared to other teammates.
 
 The exercise could also be described as "Calculating the gap between the current book and the bestseller per genre" (given the other exercise with book sales and bestsellers).
+
+Protip™: Use `max` or `first` standard functions
+
+Module: **Spark SQL**
+
+Duration: **15 mins**
 
 ## Input Dataset
 
@@ -45,10 +51,9 @@ scala> salaries.show
 
 NOTE: Use [Online Generate Test Data](http://www.convertcsv.com/generate-test-data.htm) for more sophisticated datasets in CSV or JSON format.
 
-## Expected Dataset
+## Result
 
 ```text
-scala> solution.show
 +---+-----------------+----------+------+----+
 | id|             name|department|salary|diff|
 +---+-----------------+----------+------+----+
@@ -70,8 +75,6 @@ scala> solution.show
 1. How does `orderBy` influence the result? Why?
     1. Think about the number of rows included in a window (mind `rangeBetween`)
 
-Duration: **30 mins**
-
 <!--
 ## Solution
 
@@ -79,7 +82,8 @@ Duration: **30 mins**
 import org.apache.spark.sql.expressions.Window
 
 // Solution 1
-val departmentById = Window.partitionBy("department")
+val departmentById = Window
+  .partitionBy("department")
   .orderBy("id")
   .rangeBetween(Window.unboundedPreceding, Window.unboundedFollowing)
 val solution = salaries.withColumn("diff", (max('salary) over departmentById) - 'salary)

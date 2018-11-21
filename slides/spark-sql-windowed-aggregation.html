@@ -43,7 +43,7 @@
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1 style="font-size: 3.47em;">Windowed Aggregation</h1>
-          <h3>Apache Spark 2.3 / Spark SQL</h3>
+          <h3>Apache Spark 2.4 / Spark SQL</h3>
 
           <h4 style="font-size: smaller;">
             <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
@@ -60,6 +60,7 @@
             1. [Window Functions](#/window-functions)
             1. [Window Specification](#/window-specification)
             1. [over Column Operator](#/over-column-operator)
+            1. [Demo: Finding Most Populated Cities Per Country](#/demo)
           </textarea>
         </section>
 
@@ -68,8 +69,8 @@
             ## Window Aggregate Functions
 
             1. **Window Aggregate Functions** perform a calculation over a group of records called **window** that are in *some* relation to the current record
-            1. Generates a value for **every row**
-              * Unlike basic aggregates that generate **at most** the number of input rows
+            1. Generate a value for **every row**
+              * Unlike basic aggregation that generates **at most** the number of input rows
             1. Switch to Mastering Spark SQL
               * [Window Aggregation Functions](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions-windows.html)
           </textarea>
@@ -86,31 +87,37 @@
               * cume_dist, lag, lead
             1. **Aggregate functions**
               * sum, avg, min, max, count, etc.
+              * User-Defined Aggregate Functions (UDAFs)
           </textarea>
         </section>
 
         <section>
-          <section id="window-specification" data-markdown>
+          <section id="window-specification" data-markdown style="font-size: 80%">
             <textarea data-template>
-              ## Window Specification
+              ## Window Specification / WindowSpec
 
               1. **Window Specification** defines a **window** (view) that includes the rows that are in relation to the current row (for every row)
-              1. (Logically) **partitions** dataset
-              1. May define **frame boundary** and **ordering**
+              1. (Logically) **partitions** dataset into groups
+                * **partitionBy**
+              1. May define **frame boundary**
+                * **rangeBetween**, **rowsBetween**
+              1. May define **ordering**
+                * **orderBy**
+                * Uses an unbounded window frame (rowFrame, unboundedPreceding, unboundedFollowing) for undefined ordering
+                * Uses a growing window frame (rangeFrame, unboundedPreceding, currentRow) with ordering defined
             </textarea>
           </section>
-          <section id="windowspec" data-markdown>>
+          <section id="windowspec" data-markdown>
             <textarea data-template>
-              ## WindowSpec Factory Object
+              ## Window Factory Object
 
               1. Use **Window** factory object to create **WindowSpec**
-              ```scala
-                import org.apache.spark.sql.expressions.Window
+              <pre style="margin-left: 0px;"><code style="width: 900px;" class="lang-scala hljs">import org.apache.spark.sql.expressions.Window
                 val departmentById = Window
                   .partitionBy("department")
                   .orderBy("id")
                   .rangeBetween(Window.unboundedPreceding, Window.unboundedFollowing)
-              ```
+              </code></pre>
             </textarea>
           </section>
         </section>
@@ -121,10 +128,10 @@
             ## over Column Operator
 
             1. **over** column operator defines a **windowing column** (aka **analytic clause**)
-            1. Applies aggregate function over window
+            1. Applies window function over window
             ```scala
-              val overUnspecifiedFrame = $"someColumn".over()
-              val overRange = $"someColumn" over someWindow
+              val overUnspecifiedFrame = sum('someColumn).over()
+              val overRange = rank over someWindow
             ```
             1. Use with **withColumn** or **select** operators
             ```scala
@@ -132,6 +139,15 @@
             ```
             1. Switch to Mastering Spark SQL
               * [Defining Windowing Column (Analytic Clause) &mdash; over Operator](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Column.html#over)
+          </textarea>
+        </section>
+
+        <section id="demo" data-markdown>
+          <textarea data-template>
+            <!-- .slide: style="font-size: 90%" -->
+            ## Demo: Finding Most Populated Cities Per Country
+
+            1. [Exercise: Finding Most Populated Cities Per Country](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-Most-Populated-Cities-Per-Country.html) using windowed aggregation (not good ol' groupBy and join)
           </textarea>
         </section>
 
@@ -143,6 +159,7 @@
             1. [Window Functions](#/window-functions)
             1. [Window Specification](#/window-specification)
             1. [over Column Operator](#/over-column-operator)
+            1. [Demo: Finding Most Populated Cities Per Country](#/demo)
           </textarea>
         </section>
 
@@ -151,8 +168,8 @@
             # Questions?
 
             * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
-            * Read [Mastering Spark SQL](https://bit.ly/mastering-spark-sql)
-            * Read [Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+            * Read [The Internals of Spark SQL](https://bit.ly/mastering-spark-sql)
+            * Read [The Internals of Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </textarea>
@@ -163,7 +180,7 @@
 
     <script src="reveal.js/lib/js/head.min.js"></script>
     <script src="reveal.js/js/reveal.js"></script>
-    
+
     <script>
       // More info about config & dependencies:
       // - https://github.com/hakimel/reveal.js#configuration
@@ -182,12 +199,12 @@
           openSlideNumber: true
         },
         dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
           { src: 'reveal.js/plugin/markdown/marked.js' },
           { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
           { src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
         ]
       });
     </script>

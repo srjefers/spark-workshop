@@ -1,6 +1,12 @@
-# Exercise: Calculating Difference Between Consecutive Rows Per Window (Spark SQL)
+# Exercise: Calculating Difference Between Consecutive Rows Per Window
 
-The exercise is to calculate the difference between consecutive rows per window (based on `department`) ordered by `time`.
+Write a structured query that calculates the difference between consecutive `running_total` rows over time per department.
+
+Protip™: Use `lag` standard function
+
+Module: **Spark SQL**
+
+Duration: **15 mins**
 
 ## Input Dataset
 
@@ -40,7 +46,7 @@ scala> sales.show
 
 NOTE: Use [Online Generate Test Data](http://www.convertcsv.com/generate-test-data.htm) for more sophisticated datasets in CSV or JSON format.
 
-## Expected Dataset
+## Result
 
 ```text
 // ordering (time) does not really matter
@@ -61,8 +67,6 @@ scala> solution.show
 |   8|   Support|         1|          228|   1|
 +----+----------+----------+-------------+----+
 ```
-
-Duration: **30 mins**
 
 <!--
 ## Solution

@@ -1,10 +1,14 @@
-# Exercise: Calculating Running Total / Cumulative Sum (Spark SQL)
+# Exercise: Calculating Running Total / Cumulative Sum
 
-The exercise is to calculate [running total](https://en.wikipedia.org/wiki/Running_total) (aka **cumulative sum** or **partial sum**) over time per department.
+Write a structured query that calculates [running total](https://en.wikipedia.org/wiki/Running_total) (aka **cumulative sum** or **partial sum**) of items sold over time per department.
 
 From [Wikipedia](https://en.wikipedia.org/wiki/Running_total):
 
 > A **running total** is the summation of a sequence of numbers which is updated each time a new number is added to the sequence, by adding the value of the new number to the previous running total.
+
+Module: **Spark SQL**
+
+Duration: **15 mins**
 
 ## Input Dataset
 
@@ -23,7 +27,6 @@ time,department,items_sold
 ```
 
 ```text
-scala> sales.show
 +----+----------+----------+
 |time|department|items_sold|
 +----+----------+----------+
@@ -42,7 +45,7 @@ scala> sales.show
 
 NOTE: Use [Online Generate Test Data](http://www.convertcsv.com/generate-test-data.htm) for more sophisticated datasets in CSV or JSON format.
 
-## Expected Dataset
+## Result
 
 ```text
 +----+----------+----------+-------------+
@@ -60,8 +63,6 @@ NOTE: Use [Online Generate Test Data](http://www.convertcsv.com/generate-test-da
 |   8|   Support|         1|          228|
 +----+----------+----------+-------------+
 ```
-
-Duration: **30 mins**
 
 <!--
 ## Solution

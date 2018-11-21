@@ -1,4 +1,12 @@
-# Exercise: Finding 1st and 2nd Bestsellers Per Genre (Spark SQL)
+# Exercise: Finding 1st and 2nd Bestsellers Per Genre
+
+Write a structured query that gives the 1st and 2nd bestsellers per genre.
+
+Protip™: Use `rank` standard function
+
+Module: **Spark SQL**
+
+Duration: **15 mins**
 
 ## Input Dataset
 
@@ -21,7 +29,7 @@ val books = spark
   .read
   .option("header", true)
   .option("inferSchema", true)
-  .csv("book_sales.csv")
+  .csv("books.csv")
 scala> books.show
 +---+-----------------+--------+--------+
 | id|            title|   genre|quantity|
@@ -41,10 +49,9 @@ scala> books.show
 
 NOTE: Use [Online Generate Test Data](http://www.convertcsv.com/generate-test-data.htm) for more sophisticated datasets in CSV or JSON format.
 
-## Expected Dataset
+## Result
 
 ```text
-scala> solution.show
 +---+-------------+--------+--------+----+
 | id|        title|   genre|quantity|rank|
 +---+-------------+--------+--------+----+
@@ -55,8 +62,6 @@ scala> solution.show
 |  9|   Owen Boone|  sci-fi|      27|   1|
 +---+-------------+--------+--------+----+
 ```
-
-Duration: **30 mins**
 
 <!--
 ## Solution
