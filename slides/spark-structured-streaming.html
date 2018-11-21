@@ -64,15 +64,16 @@
             1. [Streaming Sink](#/streaming-sink)
             1. [Streaming Query](#/streaming-query)
             1. [StreamingQueryManager](#/streaming-query-manager)
-            1. [Demo: Streaming with Rate Source](#/demo-rate)
+            1. [Demo: Streaming with Rate Source](#/demo)
           </textarea>
         </section>
 
-        <section id="intro">
+        <section id="intro" style="font-size: 90%">
           <h2>Spark Structured Streaming</h2>
           <ol>
             <li><b>Structured Streaming</b> is a computation model that attempts to unify streaming, interactive, and batch query execution engines</li>
-            <li>Structured Streaming is a <b>stream processing engine</b> with a high-level declarative streaming API built on top of Spark SQL allowing for continuous incremental execution of a structured query</li>
+            <li>Structured Streaming is a <b>stream processing engine</b> with a high-level declarative streaming API built on top of Spark SQL</li>
+            <li>Continuous incremental execution of a structured query</li>
             <li>Switch to The Internals of Spark Structured Streaming gitbook
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-structured-streaming.html">Structured Streaming &mdash; Streaming Datasets</a></li>
@@ -81,7 +82,7 @@
           </ol>
         </section>
 
-        <section id="datastreamreader">
+        <section id="datastreamreader" style="font-size: 90%">
           <h2>DataStreamReader</h2>
           <ol>
             <li><b>DataStreamReader</b> is the interface for loading data from streaming data source
@@ -92,6 +93,7 @@
     val dataset: DataFrame = streamReader.load
               </code></pre>
             </li>
+            <li>Streaming DataFrame represents an unbounded table</li>
             <li>Streaming query is described using Dataset API</li>
             <li>Switch to The Internals of Spark Structured Streaming gitbook
               <ul>
@@ -327,24 +329,23 @@ val query: StreamingQuery = counter.writeStream.start
           </ol>
         </section>
 
-        <section id="demo-rate" data-markdown>
+        <section id="demo" data-markdown>
           <textarea data-template>
-            ## Streaming with Rate Source
-            ### (Demo)
+            ## Demo: Streaming with Rate Source
 
             1. Simple rate-to-console pipeline
             1. Using **rate** format for source and **console** for sink
             ```
-      val q = spark
-        .readStream
-        .format("rate") // <-- rate source
-        .option(...)
-        .load
-        .writeStream
-        .format("console") // <-- console sink
-        .option(...)
-        .queryName("rate2console")
-        .start
+  val q = spark
+    .readStream
+    .format("rate") // <-- rate source
+    .option(...)
+    .load
+    .writeStream
+    .format("console") // <-- console sink
+    .option(...)
+    .queryName("rate2console")
+    .start
             ```
           </textarea>
         </section>
@@ -360,7 +361,7 @@ val query: StreamingQuery = counter.writeStream.start
             1. [Streaming Sink](#/streaming-sink)
             1. [Streaming Query](#/streaming-query)
             1. [StreamingQueryManager](#/streaming-query-manager)
-            1. [Demo: Streaming with Rate Source](#/demo-rate)
+            1. [Demo: Streaming with Rate Source](#/demo)
           </textarea>
         </section>
 

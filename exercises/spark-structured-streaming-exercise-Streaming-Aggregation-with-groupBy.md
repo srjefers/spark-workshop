@@ -1,16 +1,14 @@
-# Exercise: Streaming Aggregation with groupBy
+# Exercise: Basic Streaming Aggregation (groupBy)
 
-## Steps
+Develop a standalone Spark Structured Streaming application (using IntelliJ IDEA) that runs a streaming query that counts the words (in a batch) and prints the result out to the console.
 
-1. Develop a standalone Spark SQL application
-    * Use IntelliJ IDEA
-2. Read datasets from Apache Kafka (**kafka** source)
-3. Use **groupBy** operator on streaming Dataset
-4. Use **sbt package** and **spark-submit**
+The query can use any streaming data source (e.g. `csv`) and `console` for the streaming sink.
+
+Use `sbt package` and `spark-submit` to run the application.
 
 Module: **Spark Structured Streaming**
 
-Duration: **45 mins**
+Duration: **30 mins**
 
 <!--
 ## Solution
