@@ -64,22 +64,35 @@
             1. [Streaming Sink](#/streaming-sink)
             1. [Streaming Query](#/streaming-query)
             1. [StreamingQueryManager](#/streaming-query-manager)
-            1. [Demo: Streaming with Rate Source](#/demo)
+            1. [Demo: Streaming Structured Query](#/demo)
           </textarea>
         </section>
 
-        <section id="intro" style="font-size: 90%">
-          <h2>Spark Structured Streaming</h2>
-          <ol>
-            <li><b>Structured Streaming</b> is a computation model that attempts to unify streaming, interactive, and batch query execution engines</li>
-            <li>Structured Streaming is a <b>stream processing engine</b> with a high-level declarative streaming API built on top of Spark SQL</li>
-            <li>Continuous incremental execution of a structured query</li>
-            <li>Switch to The Internals of Spark Structured Streaming gitbook
-              <ul>
-                <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-structured-streaming.html">Structured Streaming &mdash; Streaming Datasets</a></li>
-              </ul>
-            </li>
-          </ol>
+        <section>
+          <section id="intro" style="font-size: 90%">
+            <h2>Spark Structured Streaming <small>(1 of 2)</small></h2>
+            <ol>
+              <li><b>Structured Streaming</b> is a computation model that attempts to unify streaming, interactive, and batch query execution engines</li>
+              <li>Structured Streaming is a <b>stream processing engine</b> with a high-level declarative streaming API built on top of Spark SQL</li>
+              <li>Continuous incremental execution of a structured query</li>
+              <li>Switch to The Internals of Spark Structured Streaming gitbook
+                <ul>
+                  <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-structured-streaming.html">Structured Streaming &mdash; Streaming Datasets</a></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h2>Spark Structured Streaming <small>(2 of 2)</small></h2>
+            <ol>
+              <li>Spark Structured Streaming is part of Spark SQL</li>
+              <li>When developing streaming applications use the following dependency
+                <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;" class="lang-scala hljs">
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.0"
+                </code></pre>
+              </li>
+            </ol>
+          </section>
         </section>
 
         <section id="datastreamreader" style="font-size: 90%">
@@ -138,13 +151,13 @@ val namedStreamWriter: DataStreamWriter = streamWriter.queryName("name")
           <section id="datastreamwriter-outputMode" style="font-size: 85%">
             <h2>DataStreamWriter and Output Mode</h2>
             <ol>
-              <li><b>Output mode</b> specifies how the result of a streaming query is written to a sink</li>
+              <li><b>Output mode</b> specifies <b>when</b> and <b>what</b> (output) rows of a streaming query are written to the sink</li>
               <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;" class="lang-scala hljs">
-outputMode(outputMode: String): DataStreamWriter[T]
-outputMode(outputMode: OutputMode): DataStreamWriter[T] // <-- typed version
+        outputMode(outputMode: String): DataStreamWriter[T]
+        outputMode(outputMode: OutputMode): DataStreamWriter[T]
               </code></pre>
               <li><b>append</b> writes only the new rows in a streaming query</li>
-              <li><b>complete</b> writes all the rows in a streaming query every time there are some updates</li>
+              <li><b>complete</b> writes all the rows in an streaming aggregation query every time there are some updates</li>
               <li><b>update</b> writes only the rows that were updated in a streaming query every time there are some updates
                 <ul>
                   <li>Equivalent to append mode if the query doesn't use aggregations</li>
@@ -331,21 +344,22 @@ val query: StreamingQuery = counter.writeStream.start
 
         <section id="demo" data-markdown>
           <textarea data-template>
-            ## Demo: Streaming with Rate Source
+            ## Demo: Streaming Structured Query
 
-            1. Simple rate-to-console pipeline
-            1. Using **rate** format for source and **console** for sink
-            ```
-  val q = spark
-    .readStream
-    .format("rate") // <-- rate source
-    .option(...)
-    .load
-    .writeStream
-    .format("console") // <-- console sink
-    .option(...)
-    .queryName("rate2console")
-    .start
+            1. Basic rate-source-to-console-sink pipeline
+            1. Using **rate** streaming source and **console** streaming sink
+            ```scala
+        spark
+          .readStream
+          .format("rate") // <-- rate source
+          .load
+          .writeStream
+          .format("console") // <-- console sink
+          .trigger(Trigger.ProcessingTime(5.seconds))
+          .option("truncate", false)
+          .queryName("rate2console")
+          .start
+          .awaitTermination
             ```
           </textarea>
         </section>
@@ -361,7 +375,7 @@ val query: StreamingQuery = counter.writeStream.start
             1. [Streaming Sink](#/streaming-sink)
             1. [Streaming Query](#/streaming-query)
             1. [StreamingQueryManager](#/streaming-query-manager)
-            1. [Demo: Streaming with Rate Source](#/demo)
+            1. [Demo: Streaming Structured Query](#/demo)
           </textarea>
         </section>
 
