@@ -1,250 +1,201 @@
 <!doctype html>
-<!-- Inspired by view-source:https://brookewenig.github.io/SparkOverview.html  -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <meta name="description" content="Apache Spark 2 Workshop | web UI">
+    <title>Apache Spark™ Workshop | Spark Core | web UI</title>
+
+    <meta name="description" content="Apache Spark™ Workshop | Spark Core | web UI">
     <meta name="author" content="Jacek Laskowski">
 
-    <title>Apache Spark 2 Workshop | web UI</title>
-
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="revealjs-css/jacek.css">
-		<link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 
     <!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Jacek: custom formatting -->
+    <link rel="stylesheet" href="revealjs-css/jacek.css">
 
     <!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
   </head>
 
   <body>
     <div class="reveal">
+
+      <div class="footer">
+        <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+      </div>
+
       <div class="slides">
 
         <section class="intro" data-transition="zoom" id="home">
-          <span class="menu-title" style="display: none">Home</span>
           <p>
-            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1 style="font-size: 3.55em;">web UI</h1>
-          <h1 style="font-size: 2.77em;">Apache Spark 2.2</h1>
+          <h3>Apache Spark 2.4</h3>
 
-          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a><br />
-          Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a>  / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a></h4>
-
-          <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          <h4 style="font-size: smaller;">
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <br>
+            Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+          </h4>
         </section>
 
-        <section id="spark-properties">
-          <div style="text-align: left">
-            <h2>Spark Properties</h2>
-            <hr>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              <b>spark-submit</b>'s Command-Line Options
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Spark Properties
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Environment Variables <small>(considered obsolete)</small>
-            </p>
-            <hr>
-            <div style="font-size: medium;">
-              <ul>
-                <li>Find more in Mastering Apache Spark 2
-                  <ul>
-                    <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-properties.html">Spark Properties and spark-defaults.conf Properties File</a></li>
-                    <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit-SparkSubmitOptionParser.html">SparkSubmitOptionParser — spark-submit's Command-Line Parser</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        <section id="agenda" data-markdown>
+          <textarea data-template>
+            ## Agenda
+
+            1. [Spark Properties](#/spark-properties)
+            1. [web UI](#/webui)
+            1. [web UI / Spark Properties](#/webui-spark-properties)
+            1. [web UI Tabs](#/webui-tabs)
+            1. [Demo: web UI Walkthrough](#/demo)
+          </textarea>
         </section>
 
-        <section id="webui">
-          <div style="text-align: left">
-            <h2>web UI</h2>
-            <hr>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              <b>web UI</b> is the web interface of a singe Spark application</p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Monitoring and inspecting Spark jobs and tasks</p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Opens at <b>http://localhost:4040</b> (by default)</p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              One big <b>SparkListener</b></p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Composed of tabs and pages <small>(on the following slides)</small></p>
-          </div>
-          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        <section id="spark-properties" data-markdown>
+          <textarea data-template>
+            ## Spark Properties
+
+            1. **spark-submit**'s Command-Line Options
+            1. Spark Properties
+            1. Environment Variables <small>(considered obsolete)</small>
+            1. Switch to [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
+              * [Spark Properties and spark-defaults.conf Properties File](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-properties.html)
+              * [SparkSubmitOptionParser — spark-submit's Command-Line Parser](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-submit-SparkSubmitOptionParser.html)
+          </textarea>
         </section>
 
-        <section id="webui-spark-properties">
-          <div style="text-align: left">
-            <h2>web UI / Spark Properties</h2>
-            <hr>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Enabled by default unless <b>spark.ui.enabled</b> is turned off
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Use <b>spark.ui.port</b> to set the port number
-            </p>
-            <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-              Actual availability and URL dependent on the deployment environment (e.g. YARN, Mesos, Standalone, local, Kubernetes)
-            </p>
-          </div>
-          <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+        <section id="webui" data-markdown>
+          <textarea data-template>
+            ## web UI
+
+            1. **web UI** is the web interface of a singe Spark application
+            1. Monitoring and inspecting Spark jobs and tasks
+            1. Opens at http://localhost:4040 (by default)
+            1. One big **SparkListener**
+            1. Composed of tabs and pages <small>(on the following slides)</small>
+          </textarea>
+        </section>
+
+        <section id="webui-spark-properties" data-markdown>
+          <textarea data-template>
+            ## web UI / Spark Properties
+
+            1. Enabled by default unless **spark.ui.enabled** is false
+            1. Use **spark.ui.port** to set the port number
+            1. Actual availability and URL depends on the deployment environment (e.g. YARN, Mesos, Standalone, local, Kubernetes)
+          </textarea>
         </section>
 
         <section>
-          <section id="webui-tabs">
-            <div style="text-align: left">
-              <h2>web UI Tabs <small>(1 of 2)</small></h2>
-              <hr>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <b>Jobs</b> shows status of Spark jobs
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <b>Stages</b> shows status of stages of all Spark jobs
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <b>Storage</b> shows RDD size and memory use
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <b>Environment</b> shows the environment
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <b>Executors</b> shows status of executors
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <b>SQL</b> shows status of batch and streaming queries
-              </p>
-            </div>
-            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          <section id="webui-tabs" data-markdown>
+            <textarea data-template>
+              ## web UI Tabs <small>(1 of 2)</small>
+
+              1. **Jobs** shows status of Spark jobs
+              1. **Stages** shows status of stages of all Spark jobs
+              1. **Storage** shows RDD size and memory use
+              1. **Environment** shows the environment
+              1. **Executors** shows status of executors
+              1. **SQL** shows status of batch and streaming queries
+            </textarea>
           </section>
-          <section>
-            <div style="text-align: left">
-              <h2>web UI Tabs <small>(2 of 2)</small></h2>
-              <hr>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                Module-specific tabs for <b>Streaming</b> and <b>Thrift Server</b>
-              </p>
-              <hr>
-              <div style="font-size: medium;">
-                <ul>
-                  <li>Find more in Mastering Apache Spark 2
-                    <ul>
-                      <li><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-webui.html">Web UI — Spark Application’s Web Console</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
+          <section data-markdown>
+            <textarea data-template>
+              ## web UI Tabs <small>(2 of 2)</small>
+
+              1. Module-specific tabs for **Streaming** and **Thrift Server**
+              1. Switch to [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
+                * [Web UI — Spark Application’s Web Console](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-webui.html)
+            </textarea>
           </section>
         </section>
 
-        <section>
-          <section id="demos">
-            <div style="text-align: left">
-    					<h2>Demo Time</h2>
-              <hr>
-    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/using-webui">Using web UI</a>
-              </p>
-    					<p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                <a href="#/webui-executors">Observing Executors</a>
-              </p>
-            </div>
-            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
-          </section>
-          <section id="using-webui">
-            <span class="menu-title" style="display: none">Using web UI</span>
-            <div style="text-align: left">
-              <h2>Demo / Using web UI</h2>
-              <hr>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                Showing Active, Failed, Completed Jobs in Spark UI
-              </p>
-            </div>
-            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
-          </section>
-          <section id="webui-executors">
-            <span class="menu-title" style="display: none">Observing Executors</span>
-            <div style="text-align: left">
-              <h2>Demo / Observing Executors</h2>
-              <hr>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                Using Hadoop YARN cluster to observe executors in Event Timeline
-              </p>
-              <p><i class="fa fa-arrow-circle-right success"></i>&nbsp;
-                Using <b>SparkContext.requestTotalExecutors</b> to request executors
-              </p>
-            </div>
-            <footer style="font-size: small;">&copy;Jacek Laskowski 2017 / @jaceklaskowski / jacek@japila.pl</footer>
-          </section>
+        <section id="demo">
+          <h1>Demo</h1>
+          <h1>web UI Walkthrough</h1>
+        </section>
+
+        <section id="recap" data-markdown>
+          <textarea data-template>
+            ## Recap
+
+            1. [Spark Properties](#/spark-properties)
+            1. [web UI](#/webui)
+            1. [web UI / Spark Properties](#/webui-spark-properties)
+            1. [web UI Tabs](#/webui-tabs)
+            1. [Demo: web UI Walkthrough](#/demo)
+          </textarea>
         </section>
 
         <section style="text-align: left" data-markdown id="questions">
-          <script type="text/template">
+          <textarea data-template>
             # Questions?
 
-            * Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
-              * [https://bit.ly/mastering-apache-spark](https://bit.ly/mastering-apache-spark)
+            * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
+            * Read [The Internals of Spark SQL](https://bit.ly/mastering-spark-sql)
+            * Read [The Internals of Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
-          </script>
+          </textarea>
         </section>
 
       </div>
     </div>
 
     <script src="reveal.js/lib/js/head.min.js"></script>
-		<script src="reveal.js/js/reveal.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
         controls: true,
-				progress: true,
-				history: true,
-				center: true,
-				slideNumber: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				menu: {
-					markers: true,
-					openSlideNumber: true
-				},
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
         dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'reveal.js/plugin/markdown/marked.js' },
-					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
           { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'revealjs-plugins/menu/menu.js', async: true },
-					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
 </html>
