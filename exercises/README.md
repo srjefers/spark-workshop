@@ -44,9 +44,9 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 ## Spark Structured Streaming
 
 1. [Exercise: Streaming CSV Datasets](spark-structured-streaming-exercise-Streaming-CSV-Datasets.md)
-2. [Exercise: Basic Streaming Aggregation (groupBy)](spark-structured-streaming-exercise-Streaming-Aggregation-with-groupBy.md)
+2. [Exercise: Basic Streaming Aggregation](spark-structured-streaming-exercise-Streaming-Aggregation-with-groupBy.md)
 3. [Exercise: Using foreach Operator (and ForeachWriter)](spark-structured-streaming-exercise-Using-foreach-Operator-and-ForeachWriter.md)
-4. [Exercise: From and To Apache Kafka](spark-structured-streaming-exercise-From-and-To-Apache-Kafka.md)
+4. [Exercise: Using Kafka Data Source](spark-structured-streaming-exercise-Using-Kafka-Data-Source.md)
 
 ## Spark MLlib
 

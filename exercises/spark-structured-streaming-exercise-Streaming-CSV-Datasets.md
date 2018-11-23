@@ -2,7 +2,7 @@
 
 Develop a standalone Spark Structured Streaming application (using IntelliJ IDEA) that runs a streaming query that loads CSV files and prints their content out to the console.
 
-The query should use `csv` format for the streaming source and `console` for the streaming sink.
+The query should use `csv` streaming source and `console` streaming sink.
 
 Use `sbt package` and `spark-submit` to run the application.
 
