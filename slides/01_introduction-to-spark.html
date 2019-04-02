@@ -2,99 +2,70 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Apache Spark 2 Workshop - The Elements of Apache Spark</title>
+    <title>Apache Spark 2 Workshop | Introduction to Apache Spark</title>
 
-    <meta name="description" content="The Elements of Apache Spark">
+    <meta name="description" content="Apache Spark 2 Workshop | Introduction to Apache Spark">
     <meta name="author" content="Jacek Laskowski">
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
-
-    <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Jacek: custom formatting -->
+    <link rel="stylesheet" href="revealjs-css/jacek.css">
 
     <!-- Printing and PDF exports -->
     <script>
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
     </script>
-
-    <!-- https://github.com/hakimel/reveal.js/issues/174 -->
-    <style>
-      .slides .header {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-      }
-      .slides .footer {
-        position: absolute;
-        bottom: 0px;
-        left: 35%;
-      }
-    </style>
-    <!--[if lt IE 9]>
-    <script src="lib/js/html5shiv.js"></script>
-    <![endif]-->
   </head>
 
   <body>
     <div class="reveal">
 
+      <div class="footer">
+        <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2019 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+      </div>
+
       <div class="slides">
-        <div class="footer">
-          <small>Copyright ©2017 Jacek Laskowski</small>
-        </div>
 
-        <section class="intro" data-transition="zoom">
+        <section class="intro" data-transition="zoom" id="home">
           <p>
-            <img width="25%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="15%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="15%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="7%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1>The Elements of</h1>
-          <h1>Apache Spark 2</h1>
-          <h4><a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a> / <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a></h4>
+          <h2>Introduction to</h2>
+          <h1 style="font-size: 3.44em;">Apache Spark</h1>
+          <h3>Apache Spark 2.4.0</h3>
+
+          <h4 style="font-size: smaller;">
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <br>
+            The "Internals" Books: <a href="https://bit.ly/mastering-apache-spark">Apache Spark</a> / <a href="https://bit.ly/mastering-spark-sql">Spark SQL</a> / <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+          </h4>
         </section>
 
-        <section>
-          <section id="modules-day1">
-            <h2>Modules - Day 1 (1 of 2)</h2>
-            <ul>
-              <li>The Elements of Apache Spark (<i>aka</i> Why Spark)</li>
-              <li>Tools Intro - IntelliJ IDEA and Scala Worksheet</li>
-              <li>Introduction to Scala (<i>aka</i> Why Scala)</li>
-              <li>Spark Setup and Your First Spark Application</li>
-              <li><b>Exercise</b>: My First Scala Application (using IntelliJ IDEA)</li>
-            </ul>
-          </section>
-          <section>
-            <h2>Modules - Day 1 (2 of 2)</h2>
-            <ul>
-              <li>Introduction to sbt and sbt-assembly</li>
-              <li><b>Exercise</b>: Running Scala Application from Command Line</li>
-              <li>Introduction to Spark SQL using spark-shell and Spark's web U</li>
-              <li><b>Exercise</b>: My First Spark SQL Application (using IntelliJ IDEA)</li>
-              <li>Introduction to spark-submit and run-example</li>
-              <li><b>Exercise</b>: spark-submit Your Spark App / run-example SparkPi</li>
-            </ul>
-          </section>
+        <section id="agenda" style="font-size: 90%" data-markdown>
+          <textarea data-template>
+            ## Agenda
+
+            1. [Apache Spark](#/intro)
+          </textarea>
         </section>
 
-        <section>
-          <h1>Apache Spark 2.2</h1>
-        </section>
-
-        <section>
-          <img width="65%" style="background:none; border:none; box-shadow:none;" data-src="images/about-spark.png" />
-          <small>From <a href="http://spark.apache.org/">the official documentation of Apache Spark</a></small>
+        <section id="intro" style="font-size: 90%" data-markdown>
+          <textarea data-template>
+            <small>From <a href="http://spark.apache.org/">the official documentation</a> of Apache Spark:</small>
+            <img width="65%" style="background:none; border:none; box-shadow:none;" data-src="images/about-spark.png" />
+          </textarea>
         </section>
 
         <section>
@@ -104,84 +75,74 @@
         </section>
 
         <section>
-          <h2>Why Apache Spark 2</h2>
-          <section id="why-spark">
-            <p>"Apache Spark is a fast and general-purpose cluster computing system."</p>
-            <p>
-              <small><a href="http://spark.apache.org/docs/latest/index.html">http://spark.apache.org/docs/latest/index.html</a></small>
-            </p>
+          <section id="why-spark" style="font-size: 90%" data-markdown>
+            <textarea data-template>
+              <h2>Why Apache Spark <small>(1 of 5)</small></h2>
+
+              Quoting the official documentation in <a href="http://spark.apache.org/docs/latest/index.html">Spark Overview</a>:
+
+              _"**Apache Spark** is a fast and general-purpose cluster computing system. It provides high-level APIs in Java, Scala, Python and R, and an optimized engine that supports general execution graphs. It also supports a rich set of higher-level tools including Spark SQL for SQL and structured data processing, MLlib for machine learning, GraphX for graph processing, and Spark Streaming."_
+
+            </textarea>
           </section>
 
-          <section>
-            <p>
-              "Apache Spark is an open-source distributed general-purpose cluster computing framework with in-memory data processing engine"
-            </p>
-            <p>
-              <small><a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-overview.html">https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-overview.html</a></small>
-            </p>
-          </section>
-          <section>
-            <p>
-              "One of the Spark project goals was to deliver a platform that supports a very wide array of <b>diverse workflows</b> - not only MapReduce <b>batch jobs</b> (there were available in Hadoop already at that time), but also <b>iterative computations</b> like graph algorithms or Machine Learning. [...] And also <b>different scales of workloads</b> from sub-second interactive jobs to jobs that run for many hours."
-            </p>
-            <p>
-              <small><a href="https://youtu.be/49Hr5xZyTEA">Matei Zaharia - the author of Apache Spark - in Introduction to AmpLab Spark Internals video</a></small>
-            </p>
-          </section>
-          <section>
-            High-level APIs for Scala, Java, Python, R and SQL languages
-          </section>
-          <section>
-            <b>RDD</b> - Resilient Distributed Dataset
-            <p>
-              (or simply a Distributed Parallel Collection API for Scala)
-            </p>
-          </section>
-          <section>
-            <b>Spark SQL</b> for processing structured and semi-structured datasets
-          </section>
-          <section>
-            Support for good ol' <b>SQL</b>
-          </section>
-          <section>
-            <b>DataFrame</b> - Python's pandas for Distributed Environment
-          </section>
-          <section>
-            <b>Dataset</b> for Type-Safe DataFrames
-          </section>
-          <section>
-            Interactive Exploration / Exploratory Analytics
-            <p>
-              (ad hoc queries)
-            </p>
-          </section>
-          <section>
-            Batch and Iterative Workloads
-          </section>
-          <section>
-            Rich Data Source Support
-          </section>
-          <section>
-            Cluster Deployment with built-in <b>Spark Standalone</b>, <b>Hadoop YARN</b>, and <b>Apache Mesos</b>
-          </section>
-          <section>
-            Data Locality
-          </section>
-          <section>
-            <b>Spark MLlib</b> for Machine Learning in Distributed Environment with Peta Bytes of Data
-          </section>
-          <section>
-            <b>Spark Streaming</b> for Scalable, High-tThroughput, Fault-Tolerant Stream Processing of Live Data Streams
-          </section>
-          <section>
-            <b>Spark GraphX</b> for Graphs and Graph-Parallel Computation
-          </section>
-        </section>
+          <section style="font-size: 90%" data-markdown>
+            <textarea data-template>
+              <h2>Why Apache Spark <small>(2 of 5)</small></h2>
 
-        <section id="spark-project">
-          <p>
-            <img width="100%" src="images/spark-platform.png" style="border: 0">
-          </p>
+              Quoting myself from <a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-overview.html">The Internals of Apache Spark</a>:
+
+              _"**Apache Spark** is an open-source distributed general-purpose cluster computing framework with (mostly) in-memory data processing engine that can do ETL, analytics, machine learning and graph processing on large volumes of data at rest (batch processing) or in motion (streaming processing) with rich concise high-level APIs for the programming languages: Scala, Python, Java, R, and SQL."_
+
+            </textarea>
+          </section>
+
+          <section style="font-size: 90%" data-markdown>
+            <textarea data-template>
+              <h2>Why Apache Spark <small>(3 of 5)</small></h2>
+
+              Quoting Matei Zaharia (the author of Apache Spark) in <a href="https://youtu.be/49Hr5xZyTEA">Introduction to AmpLab Spark Internals</a> video:
+
+              _"One of the Spark project goals was to deliver a platform that supports a very wide array of <b>diverse workflows</b> - not only MapReduce <b>batch jobs</b> (there were available in Hadoop already at that time), but also <b>iterative computations</b> like graph algorithms or Machine Learning. [...] And also <b>different scales of workloads</b> from sub-second interactive jobs to jobs that run for many hours."_
+
+            </textarea>
+          </section>
+
+          <section style="font-size: 90%" data-markdown>
+            <textarea data-template>
+              ## Why Apache Spark <small>(4 of 5)</small>
+
+              * General-purpose distributed computing framework
+              * Open source under [the Apache License, Version 2.0](https://en.wikipedia.org/wiki/Apache_License)
+              * High-level APIs for batch and stream processing
+              * Support for Scala, Python, Java, R and SQL
+              * Supports general execution graphs (described in RDD API)
+              * High-level specialized engines
+                * Spark SQL for batch ETL and analytics
+                * Spark MLlib for machine learning
+                * Spark Structured Streaming for stream processing
+            </textarea>
+          </section>
+
+          <section style="font-size: 80%" data-markdown>
+            <textarea data-template>
+              ## Why Apache Spark <small>(5 of 5)</small>
+
+              * RDD (Resilient Distributed Dataset)
+                * Distributed Parallel Collection API for Scala
+                * Description (metadata) of distributed computations
+                * Data locality
+              * DataFrame and Dataset
+                * Python's pandas for Distributed Environment
+                * Type-safe (Scala and Java)
+              * Interactive exploration and exploratory analytics
+                * Ad hoc queries (command line and notebooks)
+              * Batch and highly iterative workloads
+              * Rich data source support
+              * Support for various cluster managers
+                * Hadoop YARN, Kubernetes, Spark Standalone, Apache Mesos
+            </textarea>
+          </section>
         </section>
 
         <section id="spark-core">
@@ -201,7 +162,7 @@
               In-Memory, Immutable, Lazy Evaluated, Partitioned, Cacheable, Parallel, Typed
             </li>
             <li>
-              <b>CAUTION:</b> Often too low-level these days. Leave it alone until you really want it.
+              <b>CAUTION:</b> Don't use directly. Too low-level. Leave it alone until you really <i>really</i> want it. Even then, think twice.
             </li>
           </ul>
         </section>
@@ -256,59 +217,10 @@
           </ul>
         </section>
 
-        <section>
-          <section id="spark-streaming">
-            <h2>Spark Streaming</h2>
-            <ol>
-              <li>
-                Scalable, high-throughput, fault-tolerant stream processing of live<small>*</small> data streams
-                <ul>
-                  <li>
-                    Works in batches.
-                  </li>
-                </ul>
-              </li>
-              <li><b>Discretized Stream</b> (DStream)</li>
-              <li>
-                Continuous Data Stream
-              </li>
-              <li>
-                Tight integration with other Spark modules
-              </li>
-            </ol>
-          </section>
-          <section id="spark-streaming-architecture">
-            <p>
-              <img width="100%" src="images/spark-streaming-architecture.png" style="border: 0">
-            </p>
-            <small>From <a href="http://spark.apache.org/docs/latest/streaming-programming-guide.html">the official documentation of Apache Spark</a></small>
-          </section>
+        <section id="spark-structured-streaming">
+          <h2>Spark Structured Streaming</h2>
         </section>
 
-        <section id="spark-graphx">
-          <h2>Spark GraphX</h2>
-          <ul>
-            <li>
-              Distributed Graph Processing
-            </li>
-            <li>
-              <b>Property Graph</b> on top of RDD
-              <ul>
-                <li>
-                  A directed multigraph with properties attached to each vertex and edge
-                </li>
-              </ul>
-            </li>
-            <li>
-              Graph algorithms
-              <ul>
-                <li>PageRank</li>
-                <li>Connected Components</li>
-                <li>Triangle Counting</li>
-              </ul>
-            </li>
-          </ul>
-        </section>
         <section id="tools">
           <h2>Tools</h2>
           <ul>
@@ -325,64 +237,66 @@
               <b>web UI</b> - a web interface to monitor Spark computations
             </li>
             <li>
-              <b>Scaladoc</b> - <a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.package">Spark's Scala API documentation</a>
+              <a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.package">Scala API for Apache Spark</a>
+            </li>
+            <li>
+              <a href="http://spark.apache.org/docs/latest/api/python/index.html">Spark Python API Docs</a>
             </li>
           </ul>
         </section>
 
-        <section id="questions" style="text-align: left">
-          <h1>Questions?</h1>
-          <p>
-            <ul>
-              <li>Read <a href="https://bit.ly/mastering-apache-spark">Mastering Apache Spark 2</a>
-                <ul>
-                  <li>https://bit.ly/mastering-apache-spark</li>
-                </ul>
-              </li>
-              <li>Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> on twitter</li>
-              <li>Upvote <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">my activities on StackOverflow</a></li>
-              <li>Use <a href="https://github.com/jaceklaskowski">Jacek's code at GitHub</a></li>
-              <li>Read <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski @ Medium</a></li>
-              <li>Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a></li>
-            </ul>
-          </p>
+        <section style="text-align: left" data-markdown id="questions">
+          <textarea data-template>
+            # Questions?
+
+            * Read [The Internals of Apache Spark](https://bit.ly/mastering-apache-spark)
+            * Read [The Internals of Kafka Streams](http://bit.ly/mastering-kafka-streams)
+            * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+            * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+            * Find me on [Medium](https://medium.com/@jaceklaskowski)
+          </textarea>
         </section>
 
       </div>
     </div>
 
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.js"></script>
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
 
     <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
 
-        // Full list of configuration options available at:
-        // https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-            transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-            // Optional reveal.js plugins
-            dependencies: [
-                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-                { src: 'plugin/zoom-js/zoom.js', async: true },
-                { src: 'plugin/notes/notes.js', async: true }
-            ]
-        });
-
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
     </script>
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
       ga('create', 'UA-45999426-3', 'auto');
       ga('send', 'pageview');

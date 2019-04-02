@@ -1,5 +1,3 @@
-<a id="toc" />
-
 # Apache Spark™ and Scala Workshops
 
 ## Agendas
@@ -56,9 +54,9 @@
 
 ## Unit 4. Large-Scale Distributed Data Processing with Apache Spark (aka _Spark Core_)
 
-1. [The Elements of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
-2. [Into Apache Spark 2 Using spark-shell (and Databricks)](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
-3. [The Core of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-core.html)
+1. [Introduction to Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_introduction-to-spark.html)
+2. [The Core of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-core.html)
+3. [Into Apache Spark 2 Using spark-shell (and Databricks)](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
 4. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-core-webui.html)
 5. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
 6. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html)

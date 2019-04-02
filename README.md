@@ -1,6 +1,6 @@
 # Apache Spark™ and Scala Workshops
 
-This repository contains the materials (i.e. [agendas](slides/#table-of-contents), [slides](slides), [demo](demo), [exercises](exercises)) for [Apache Spark™](http://spark.apache.org/) and [Scala](https://www.scala-lang.org/) workshops led by [Jacek Laskowski](https://twitter.com/jaceklaskowski).
+This repository contains the materials (i.e. [agendas](slides/#agendas), [slides](slides/#unit-1-spark-sql-for-large-scale-structured-data-processing), [demo](demo), [exercises](exercises)) for [Apache Spark™](http://spark.apache.org/) and [Scala](https://www.scala-lang.org/) workshops led by [Jacek Laskowski](https://twitter.com/jaceklaskowski).
 
 - Have you ever thought about learning Apache Spark™ or Scala?
 - Would you like to gain expertise in the tools used for Big Data and Predictive Analytics but you don't know where to start?
