@@ -10,14 +10,14 @@
     <meta name="author" content="Jacek Laskowski">
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
-    
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
-    
+
     <!-- Jacek: custom formatting -->
     <link rel="stylesheet" href="revealjs-css/jacek.css">
-    
+
     <!-- Printing and PDF exports -->
     <script>
       var link = document.createElement('link');
@@ -32,7 +32,10 @@
     <div class="reveal">
 
       <div class="footer">
-        <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+        <footer style="font-size: small;">
+          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2019 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
+          / jacek@japila.pl
+        </footer>
       </div>
 
       <div class="slides">
@@ -43,12 +46,12 @@
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>Joins</h1>
-          <h3>Apache Spark 2.4 / Spark SQL</h3>
+          <h3>Apache Spark 2.4.1 / Spark SQL</h3>
 
           <h4 style="font-size: smaller;">
-            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
             <br>
-            Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+            The "Internals" Books: <a href="https://bit.ly/apache-spark-internals">Apache Spark</a> / <a href="https://bit.ly/spark-sql-internals">Spark SQL</a> / <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
           </h4>
         </section>
 
@@ -82,7 +85,7 @@
   left.join(right).where(left("id") === right("id"))
 </code></pre>
             <!-- .element: style="width: 810px;" -->
-            1. Switch to Mastering Spark SQL
+            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
               * [Dataset Join Operators](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-joins.html)
           </textarea>
         </section>
@@ -140,7 +143,7 @@
               ```scala
               spark.sql("select * from t1, t2 where t1.id = t2.id")
               ```
-            1. Switch to Mastering Spark SQL
+            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
               * [Executing SQL Queries (aka SQL Mode) &mdash; sql Method](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-SparkSession.html#sql)
           </textarea>
         </section>
@@ -160,7 +163,7 @@
               SELECT /*+ BROADCAST (t1) */ * FROM t1, t2 WHERE t1.id = t2.id
               ```
               * **BROADCAST**, **BROADCASTJOIN** or **MAPJOIN** hints supported
-            1. Switch to Mastering Spark SQL
+            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
               * [broadcast Function](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions.html#broadcast)
               * [withHints Parsing Handler](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-AstBuilder.html#withHints)
           </textarea>
@@ -175,7 +178,7 @@
             <h2>Join Logical Operator</h2>
             <ol>
               <li><b>Join</b> is a binary logical operator with two logical operators, a join type and an optional join expression</li>
-              <li>Switch to Mastering Spark SQL
+              <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-LogicalPlan-Join.html">Join Logical Operator</a></li>
                 </ul>
@@ -195,7 +198,7 @@
                   <li><b>Cartesian Join</b> (CartesianProductExec)</li>
                 </ol>
               </li>
-              <li>Switch to Mastering Spark SQL
+              <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-SparkStrategy-JoinSelection.html">JoinSelection Execution Planning Strategy</a></li>
                 </ul>
@@ -207,7 +210,7 @@
             <ol>
               <li><b>Bucketing</b> is an optimization technique in Spark SQL that uses buckets and bucketing columns to determine data partitioning.</li>
               <li>Optimize performance of a join query by reducing shuffles (aka exchanges)</li>
-              <li>Switch to Mastering Spark SQL
+              <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-bucketing.html">Bucketing</a></li>
                 </ul>
@@ -218,7 +221,7 @@
             <h2>Join Optimization &mdash; Join Reordering</h2>
             <ol>
               <li><b>Join Reordering</b> is an optimization of a logical query plan that the Spark Optimizer uses for joins</li>
-              <li>Switch to Mastering Spark SQL
+              <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Optimizer-ReorderJoin.html">ReorderJoin Logical Query Optimization</a></li>
                 </ul>
@@ -229,7 +232,7 @@
             <h2>Join Optimization &mdash; Cost-based Join Reordering</h2>
             <ol>
               <li><b>Cost-based Join Reordering</b> is an optimization of a logical query plan that the Spark Optimizer uses for joins in cost-based optimization</li>
-              <li>Switch to Mastering Spark SQL
+              <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Optimizer-CostBasedJoinReorder.html">CostBasedJoinReorder Logical Query Optimization</a></li>
                 </ul>
@@ -255,9 +258,9 @@
           <textarea data-template>
             # Questions?
 
-            * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
-            * Read [The Internals of Spark SQL](https://bit.ly/mastering-spark-sql)
-            * Read [The Internals of Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+            * Read [The Internals of Apache Spark](https://bit.ly/apache-spark-internals)
+            * Read [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+            * Read [The Internals of Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </textarea>

@@ -10,7 +10,7 @@
     <meta name="author" content="Jacek Laskowski">
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" />
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
@@ -32,7 +32,10 @@
     <div class="reveal">
 
       <div class="footer">
-        <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+        <footer style="font-size: small;">
+          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2019 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
+          / jacek@japila.pl
+        </footer>
       </div>
 
       <div class="slides">
@@ -43,12 +46,12 @@
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1 style="font-size: 2.77em;">Standard and User-Defined Functions</h1>
-          <h3>Apache Spark 2.4 / Spark SQL</h3>
+          <h3>Apache Spark 2.4.1 / Spark SQL</h3>
 
           <h4 style="font-size: smaller;">
-            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
             <br>
-            Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+            The "Internals" Books: <a href="https://bit.ly/apache-spark-internals">Apache Spark</a> / <a href="https://bit.ly/spark-sql-internals">Spark SQL</a> / <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
           </h4>
         </section>
 
@@ -91,7 +94,7 @@
               ```
               1. Use Dataset operators as "execution environment"
                 * <b>withColumn</b>, <b>select</b>, <b>filter</b>
-              1. Switch to Mastering Spark SQL
+              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
                 * [Standard Functions — functions Object](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions.html)
               1. **Home exercise**: Read up [functions object's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
             </textarea>
@@ -111,7 +114,7 @@
             1. **explode**, **explode_outer**
             1. **posexplode**, **posexplode_outer**
             1. Review Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-            1. Switch to The Internals of Spark SQL
+            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
               * [Standard Functions for Collections (Collection Functions)](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-functions-collection.html)
           </textarea>
         </section>
@@ -127,7 +130,7 @@
             1. New functions in Spark 2.4
               * **from_utc_timestamp**, **to_utc_timestamp**, **months_between**
             1. Review Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-            1. Switch to Mastering Spark SQL
+            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
               * [Date and Time Functions](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions-datetime.html)
           </textarea>
         </section>
@@ -160,7 +163,7 @@
               1. Use UDFs as standard functions
                 * <b>withColumn</b>, <b>select</b>, <b>filter</b> etc.
                 * Also **callUDF** function
-              1. Switch to Mastering Spark SQL
+              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
                 * [UDFs — User-Defined Functions](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-udfs.html)
             </textarea>
           </section>
@@ -199,9 +202,9 @@
           <textarea data-template>
             # Questions?
 
-            * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
-            * Read [The Internals of Spark SQL](https://bit.ly/mastering-spark-sql)
-            * Read [The Internals of Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+            * Read [The Internals of Apache Spark](https://bit.ly/apache-spark-internals)
+            * Read [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+            * Read [The Internals of Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </textarea>
