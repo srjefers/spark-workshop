@@ -10,7 +10,7 @@
     <meta name="author" content="Jacek Laskowski">
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
@@ -32,7 +32,10 @@
     <div class="reveal">
 
       <div class="footer">
-        <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+        <footer style="font-size: small;">
+          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2019 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
+          / jacek@japila.pl
+        </footer>
       </div>
 
       <div class="slides">
@@ -44,12 +47,12 @@
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>Spark SQL</h1>
-          <h3>Apache Spark 2.4</h3>
+          <h3>Apache Spark 2.4.1</h3>
 
           <h4 style="font-size: smaller;">
-            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
             <br>
-            Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+            The "Internals" Books: <a href="https://bit.ly/apache-spark-internals">Apache Spark</a> / <a href="https://bit.ly/spark-sql-internals">Spark SQL</a> / <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
           </h4>
         </section>
 
@@ -82,7 +85,7 @@
                 <li>Reducing garbage collections</li>
               </ul>
             </li>
-            <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
+            <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql.html">Spark SQL &mdash; Structured Data Processing with Relational Queries on Massive Scale</a></li>
               </ul>
@@ -106,7 +109,7 @@
             </li>
             <li>Loading datasets using <b>load</b> <small>discussed later</small></li>
             <li>spark-shell gives you one instance as <b>spark</b></li>
-            <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
+            <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-SparkSession.html">SparkSession &mdash; The Entry Point to Spark SQL</a></li>
               </ul>
@@ -129,7 +132,7 @@
                 </ul>
               </li>
               <li>Loading and writing operators create source and sink nodes in a data flow graph</li>
-              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
+              <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-datasource-api.html">DataSource API &mdash; Managing Datasets in External Data Sources</a></li>
                 </ul>
@@ -152,7 +155,7 @@
                   <li>format-specific loading methods <small>discussed on next slide</small></li>
                 </ol>
               </li>
-              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
+              <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-DataFrameReader.html">DataFrameReader &mdash; Reading Datasets from External Data Sources</a></li>
                 </ul>
@@ -188,7 +191,7 @@
                   <li><b>insertInto</b>, <b>save</b> and <b>saveAsTable</b></li>
                 </ol>
               </li>
-              <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
+              <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-DataFrameWriter.html">DataFrameWriter</a></li>
                 </ul>
@@ -211,7 +214,7 @@
   val schema = Encoders.product[Person].schema
               </code></pre>
             </li>
-            <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
+            <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-schema.html">Schema &mdash; Structure of Data</a></li>
               </ul>
@@ -226,7 +229,7 @@
             <li><b>Seq(...).toDS</b> for local Datasets</li>
             <li>Use <b>import spark.implicits._</b></li>
             <li>All Scala Collections supported (almost)</li>
-            <li>Switch to <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a>
+            <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-SparkSession.html#implicits">Implicit
                     Conversions &mdash; implicits object</a></li>
@@ -280,9 +283,9 @@ spark
           <textarea data-template>
             # Questions?
 
-            * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
-            * Read [The Internals of Spark SQL](https://bit.ly/mastering-spark-sql)
-            * Read [The Internals of Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+            * Read [The Internals of Apache Spark](https://bit.ly/apache-spark-internals)
+            * Read [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+            * Read [The Internals of Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </textarea>

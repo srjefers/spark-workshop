@@ -10,7 +10,7 @@
     <meta name="author" content="Jacek Laskowski">
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
@@ -32,7 +32,10 @@
     <div class="reveal">
 
       <div class="footer">
-        <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+        <footer style="font-size: small;">
+          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2019 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
+          / jacek@japila.pl
+        </footer>
       </div>
 
       <div class="slides">
@@ -43,12 +46,12 @@
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1 style="font-size: 2.99em;">Columns and Dataset Operators</h1>
-          <h3>Apache Spark 2.4 / Spark SQL</h3>
+          <h3>Apache Spark 2.4.1 / Spark SQL</h3>
 
           <h4 style="font-size: smaller;">
-            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
             <br>
-            Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+            The "Internals" Books: <a href="https://bit.ly/apache-spark-internals">Apache Spark</a> / <a href="https://bit.ly/spark-sql-internals">Spark SQL</a> / <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
           </h4>
         </section>
 
@@ -78,7 +81,7 @@
               myDataset("id") // bound column reference
               ```
             1. Use **import spark.implicits._**
-            1. Switch to Mastering Spark SQL
+            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
               * [Column Expressions and Operators](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Column.html)
           </textarea>
         </section>
@@ -115,7 +118,7 @@
                 * **randomSplit** to split records to two Datasets randomly
                 * **select**, **selectExpr**, **filter**, **where**
                 * &hellip; _many many more_ &mdash; read up [Dataset's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
-              1. Switch to Mastering Spark SQL
+              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
                 * [Dataset Operators](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-dataset-operators.html)
             </textarea>
           </section>
@@ -136,9 +139,9 @@
           <textarea data-template>
             # Questions?
 
-            * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
-            * Read [The Internals of Spark SQL](https://bit.ly/mastering-spark-sql)
-            * Read [The Internals of Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+            * Read [The Internals of Apache Spark](https://bit.ly/apache-spark-internals)
+            * Read [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+            * Read [The Internals of Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </textarea>
