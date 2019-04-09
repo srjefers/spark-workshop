@@ -62,7 +62,7 @@
             1. [Standard Functions](#/standard-functions)
             1. [Standard Functions for Collections](#/standard-functions-collections)
             1. [Standard Functions for Date and Time](#/standard-functions-datetime)
-            1. [User-Defined Functions (UDFs)](#/udf-heads-up)
+            1. [User-Defined Functions (UDFs)](#/udf)
           </textarea>
         </section>
 
@@ -136,7 +136,7 @@
         </section>
 
         <section>
-          <section id="udf-heads-up" data-markdown>
+          <section id="udf" data-markdown>
             <textarea data-template>
               ## User-Defined Functions (UDFs)
               ### « HEADS-UP »
@@ -185,6 +185,18 @@
                 ```
             </textarea>
           </section>
+          <section data-markdown>
+            <textarea data-template>
+              <!-- .slide: style="font-size: 90%" -->
+              ## Deterministic UserDefinedFunctions
+
+              1. User-defined function is **deterministic** by default
+                * Evaluates to the same result for the same input(s)
+              1. Use **deterministic** method to find out whether it is or not
+              1. Use **asNondeterministic** to disable determinism
+              1. Non-deterministic expressions are not allowed in some logical operators and are excluded in some optimizations
+            </textarea>
+          </section>
         </section>
 
         <section id="recap" data-markdown>
@@ -194,7 +206,7 @@
             1. [Standard Functions](#/standard-functions)
             1. [Standard Functions for Collections](#/standard-functions-collections)
             1. [Standard Functions for Date and Time](#/standard-functions-datetime)
-            1. [User-Defined Functions (UDFs)](#/udf-heads-up)
+            1. [User-Defined Functions (UDFs)](#/udf)
           </textarea>
         </section>
 
