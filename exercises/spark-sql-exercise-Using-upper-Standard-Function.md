@@ -1,39 +1,53 @@
-# Exercise: Using upper Standard Function
+# Exercise (Mohamed): Using upper Standard Function
 
-Develop a standalone Spark SQL application (using IntelliJ IDEA) that converts a string column to upper case.
+Develop a standalone Spark SQL application (using IntelliJ IDEA) that converts one or more string columns to upper case.
 
-(Extra) Load a CSV data set with the path given on command line
+The standalone application should take _at least_ two input parameters:
+
+* The path of a CSV data set to load
+
+* One or more column names
+
+The output dataset should extend the current columns with new ones with their names including the "source", e.g. if `city` column were used, the output could be `upper_city`.
+
+Extra: Make sure the conversion happens on string columns only
 
 Module: **Spark SQL**
 
-Duration: **15 mins**
+Duration: **30 mins**
 
 ## Input Dataset
 
 ```text
-+---+-----------------+
-| id|             city|
-+---+-----------------+
-|  0|           Warsaw|
-|  1|Villeneuve-Loubet|
-+---+-----------------+
++---+-----------------+-------+
+| id|             city|country|
++---+-----------------+-------+
+|  0|           Warsaw| Poland|
+|  1|Villeneuve-Loubet| France|
+|  2|           Vranje| Serbia|
+|  3|       Pittsburgh|     US|
++---+-----------------+-------+
 ```
 
 ```text
-id,city
-0,Warsaw
-1,Villeneuve-Loubet
+id,city,country
+0,Warsaw,Poland
+1,Villeneuve-Loubet,France
+2,Vranje,Serbia
+3,Pittsburgh,US
 ```
 
 ## Result
 
 ```text
-+---+-----------------+-----------------+
-| id|             city|            upper|
-+---+-----------------+-----------------+
-|  0|           Warsaw|           WARSAW|
-|  1|Villeneuve-Loubet|VILLENEUVE-LOUBET|
-+---+-----------------+-----------------+
++---+-----------------+-------+-----------------+
+| id|             city|country|       upper_city|
++---+-----------------+-------+-----------------+
+|  0|           Warsaw| Poland|           WARSAW|
+|  1|Villeneuve-Loubet| France|VILLENEUVE-LOUBET|
+|  2|           Vranje| Serbia|           VRANJE|
+|  3|       Pittsburgh|     US|       PITTSBURGH|
++---+-----------------+-------+-----------------+
 ```
 
 ## Useful Links
@@ -44,7 +58,8 @@ id,city
 ## Solution
 
 ```text
-val solution = cities.withColumn("upper", upper('city))
+val cities = spark.read.option("header", true).csv("cities.csv")
+val solution = cities.withColumn("upper_city", upper('city))
 ```
 
 -->

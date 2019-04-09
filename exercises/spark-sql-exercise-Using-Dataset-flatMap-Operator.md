@@ -1,6 +1,6 @@
 # Exercise: Using Dataset.flatMap Operator
 
-Use `spark-shell` to write a structured query that creates a new row for every element in the given array column (using `Dataset.flatMap` operator).
+Use `spark-shell` to write a structured query that creates as many rows as the element in a given array column (using `Dataset.flatMap` operator).
 
 Module: **Spark SQL**
 

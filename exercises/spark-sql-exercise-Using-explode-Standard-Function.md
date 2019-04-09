@@ -2,9 +2,9 @@
 
 Develop a standalone Spark SQL application (using IntelliJ IDEA) that creates a new row for every element in the given array column.
 
-(Extra) Compare performance of `explode` standard function and `Dataset.flatMap` operator.
+Use web UI to compare performance (query plans) of queries with `explode` standard function and `Dataset.flatMap` operator.
 
-(Extra) Load a CSV data set with the path given on command line and the column name (to explode).
+Think about the differences between `explode` function and `flatMap` operator. Are there any? What are they? Can you generate new rows? How many?
 
 Module: **Spark SQL**
 

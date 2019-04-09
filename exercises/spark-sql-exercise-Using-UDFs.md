@@ -1,16 +1,30 @@
 # Exercise: Using UDFs
 
-Develop a standalone Spark SQL application (in IntelliJ IDEA) that uses your own `upper` user-defined function.
+Develop a standalone Spark SQL application (in IntelliJ IDEA) that uses your own `upper` user-defined function (e.g. `my_upper`).
 
 Protip™: Use Scala's [StringOps.toUpperCase](https://www.scala-lang.org/api/current/scala/collection/immutable/StringOps.html)
 
-Use `explain` to display the physical plan to the console and think if/how performance changes for UDFs with branching, i.e. `if` expressions.
+Use your UDF in SQL, i.e. in `spark.sql`.
 
-Use the UDF in SQL, i.e. in `spark.sql`.
+Use [callUDF](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) standard function to call your UDF.
 
-(Extra) Use `callUDF` to call the UDF.
+Module: **Spark SQL**
 
-Duration: **20 mins**
+Duration: **30 mins**
+
+## Nondeterministic UDFs
+
+Think about using non-deterministic "features" like the current timestamp or a random number. What happens when you use such "features" in your UDFs?
+
+```scala
+// Use .asNondeterministic to see the change
+val my_date = udf { (n: Long) => util.Random.nextInt() }
+spark
+  .range(1)
+  .withColumn("randgen", randgen('id))
+  .select(randgen('id) === 'randgen)
+  .show
+```
 
 <!--
 ## Solution
