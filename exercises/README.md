@@ -21,7 +21,7 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 10. [Exercise: Using explode Standard Function](spark-sql-exercise-Using-explode-Standard-Function.md)
 11. [Exercise: Difference in Days Between Dates As Strings](spark-sql-exercise-Difference-in-Days-Between-Dates-As-Strings.md)
 12. [Exercise: Using UDFs](spark-sql-exercise-Using-UDFs.md)
-13. [Exercise: Finding maximum value (agg)](spark-sql-exercise-Finding-maximum-value-agg.md)
+13. [Exercise: Calculating aggregations](spark-sql-exercise-Finding-maximum-value-agg.md)
 14. [Exercise: Finding maximum values per group (groupBy)](spark-sql-exercise-Finding-maximum-values-per-group-groupBy.md)
 15. [Exercise: Collect values per group](spark-sql-exercise-Collect-values-per-group.md)
 16. [Exercise: Multiple Aggregations](spark-sql-exercise-Multiple-Aggregations.md)
@@ -40,6 +40,7 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 29. [Exercise: Specifying Table and SQL Query on Command Line](spark-sql-exercise-Specifying-Table-and-SQL-Query-on-Command-Line.md)
 30. [Exercise: Finding First Non-Null Value per Group](spark-sql-exercise-Finding-First-Non-Null-Value-per-Group.md)
 31. [Exercise: Finding Longest Sequence (Window Aggregation)](spark-sql-exercise-Finding-Longest-Sequence.md)
+32. [Exercise: Finding Most Common Non-null Prefix per Group (Occurences)](spark-sql-exercise-Finding-Most-Common-Non-null-Prefix-Occurences-per-Group.md)
 
 ## Spark Structured Streaming
 

@@ -1,8 +1,17 @@
-# Exercise: Finding maximum value (agg)
+# Exercise: Calculating aggregations
 
-Develop a standalone Spark SQL application (using IntelliJ IDEA) that finds the biggest city (among the cities in a dataset).
+Develop a standalone Spark SQL application (using IntelliJ IDEA) that calculates aggregations defined on a command line (e.g. finds the biggest city among the cities in a dataset).
 
-Protip™: Use standard functions (not UDFs!)
+Protip™: Use [Dataset.agg](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset) operator and [standard functions](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) only (not UDFs!)
+
+The standalone application should take _at least_ two input parameters:
+
+* The path of a CSV data set to load
+* One or more aggregations (e.g. `max`, `avg`)
+
+Protip™: Mind the spaces in `population` column and then the type.
+
+Extra: Include the name of the city when one aggregation is used.
 
 Module: **Spark SQL**
 
@@ -16,6 +25,8 @@ Duration: **20 mins**
 +---+-----------------+----------+
 |  0|           Warsaw| 1 764 615|
 |  1|Villeneuve-Loubet|    15 020|
+|  2|           Vranje|    83 524|
+|  3|       Pittsburgh| 1 775 634|
 +---+-----------------+----------+
 ```
 
@@ -23,21 +34,19 @@ Duration: **20 mins**
 id,name,population
 0,Warsaw,1 764 615
 1,Villeneuve-Loubet,15 020
+2,Vranje,83 524
+3,Pittsburgh,1 775 634
 ```
 
 ## Result
 
 ```text
-+--------------+
-|max_population|
-+--------------+
-|       1764615|
-+--------------+
++----------+
+|population|
++----------+
+|   1775634|
++----------+
 ```
-
-## Useful Links
-
-1. Scaladoc of the [functions](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) object
 
 <!--
 ## Solution

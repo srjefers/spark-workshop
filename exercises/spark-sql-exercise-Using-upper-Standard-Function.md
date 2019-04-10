@@ -5,7 +5,6 @@ Develop a standalone Spark SQL application (using IntelliJ IDEA) that converts o
 The standalone application should take _at least_ two input parameters:
 
 * The path of a CSV data set to load
-
 * One or more column names
 
 The output dataset should extend the current columns with new ones with their names including the "source", e.g. if `city` column were used, the output could be `upper_city`.
