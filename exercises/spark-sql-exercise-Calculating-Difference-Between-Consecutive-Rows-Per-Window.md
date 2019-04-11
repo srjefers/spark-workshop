@@ -2,7 +2,7 @@
 
 Write a structured query that calculates the difference between consecutive `running_total` rows over time per department.
 
-Protip™: Use `lag` standard function
+Protip™: Use [lag](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) standard function
 
 Module: **Spark SQL**
 
@@ -26,7 +26,11 @@ time,department,items_sold,running_total
 
 ```text
 // Mind the inferSchema so time is a numeric value
-val sales = spark.read.option("header", true).option("inferSchema", true).csv("sales.csv")
+val sales = spark
+  .read
+  .option("header", true)
+  .option("inferSchema", true)
+  .csv("sales.csv")
 scala> sales.show
 +----+----------+----------+-------------+
 |time|department|items_sold|running_total|

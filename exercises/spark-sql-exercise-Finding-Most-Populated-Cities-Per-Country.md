@@ -1,8 +1,8 @@
 # Exercise: Finding Most Populated Cities Per Country
 
-Write a structured query that finds the most populated cities per country.
+Write a structured query that gives the most populated cities per country.
 
-Protip™: Use `Dataset.groupBy` operator and `max` standard function followed by `Dataset.join`.
+Protip™: Use [Dataset.groupBy](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset) operator and [max](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) standard function followed by [Dataset.join](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset).
 
 Module: **Spark SQL**
 

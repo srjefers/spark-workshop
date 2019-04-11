@@ -2,7 +2,7 @@
 
 Write a structured query that gives the 1st and 2nd bestsellers per genre.
 
-Protip™: Use `rank` standard function
+Protip™: Use [rank](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) standard function
 
 Module: **Spark SQL**
 

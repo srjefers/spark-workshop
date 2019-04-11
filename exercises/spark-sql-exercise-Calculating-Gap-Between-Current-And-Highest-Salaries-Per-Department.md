@@ -4,7 +4,7 @@ Write a structured query that shows the difference in salaries between the top-p
 
 The exercise could also be described as "Calculating the gap between the current book and the bestseller per genre" (given the other exercise with book sales and bestsellers).
 
-Protip™: Use `max` or `first` standard functions
+Protip™: Use [max](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) or [first](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) standard functions
 
 Module: **Spark SQL**
 
