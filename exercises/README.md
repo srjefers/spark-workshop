@@ -41,6 +41,7 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 30. [Exercise: Finding First Non-Null Value per Group](spark-sql-exercise-Finding-First-Non-Null-Value-per-Group.md)
 31. [Exercise: Finding Longest Sequence (Window Aggregation)](spark-sql-exercise-Finding-Longest-Sequence.md)
 32. [Exercise: Finding Most Common Non-null Prefix per Group (Occurences)](spark-sql-exercise-Finding-Most-Common-Non-null-Prefix-Occurences-per-Group.md)
+33. [Exercise: Developing Custom Data Source](spark-sql-exercise-Developing-Custom-Data-Source.md)
 
 ## Spark Structured Streaming
 

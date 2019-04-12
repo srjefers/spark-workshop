@@ -47,6 +47,7 @@
 2. [Fault Tolerance and Checkpointing](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-checkpointing.html)
 3. [Monitoring Streaming Queries](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-monitoring.html)
 4. [Structured Streaming's Internals](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-internals.html)
+5. [Developing Custom Data Source](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-sql-Developing-Custom-Data-Source.html)
 
 ## Unit 3. Spark MLlib for Large-Scale Distributed Machine Learning
 
