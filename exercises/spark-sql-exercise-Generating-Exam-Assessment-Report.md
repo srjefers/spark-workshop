@@ -1,8 +1,10 @@
 # Exercise: Generating Exam Assessment Report
 
-The exercise is to generate an exam assessment report (based on the answers from multiple students and attempts).
+Write a structured query (using `spark-shell` or [Databricks Community Edition](https://community.cloud.databricks.com)) that generates an exam assessment report (given the answers from multiple students and their attempts) that includes the question IDs (as columns) and the answers (as their values).
 
-Protip™: Use `RelationalGroupedDataset.pivot` operator
+Please note that a student (participant) can answer one or more questions in a single assessment and geo tag.
+
+Protip™: Use [RelationalGroupedDataset.pivot](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.RelationalGroupedDataset) operator
 
 Module: **Spark SQL**
 

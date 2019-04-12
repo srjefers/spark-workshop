@@ -1,6 +1,6 @@
 # Exercise: Finding 1st and 2nd Bestsellers Per Genre
 
-Write a structured query that gives the 1st and 2nd bestsellers per genre.
+Write a structured query (using `spark-shell` or [Databricks Community Edition](https://community.cloud.databricks.com)) that gives the 1st and 2nd bestsellers per genre.
 
 Protip™: Use [rank](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) standard function
 
