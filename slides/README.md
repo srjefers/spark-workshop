@@ -62,7 +62,7 @@
 2. [The Core of Apache Spark](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-core.html)
 3. [Into Apache Spark 2 Using spark-shell (and Databricks)](http://blog.jaceklaskowski.pl/spark-workshop/slides/01_Spark-Intro-Using-Spark-Shell.html)
 4. [web UI](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-core-webui.html)
-5. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/11_SparkCore-Cluster-Managers.html)
+5. [Spark and Cluster Managers](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-core-spark-and-cluster-managers.html)
 6. [Spark History Server](http://blog.jaceklaskowski.pl/spark-workshop/slides/12_SparkCore-Spark-History-Server.html)
 7. [Monitoring Spark using SparkListeners](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-core-monitoring-sparklisteners.html)
 8. [Debugging Spark Applications](http://blog.jaceklaskowski.pl/spark-workshop/slides/02_debugging-spark.html)
