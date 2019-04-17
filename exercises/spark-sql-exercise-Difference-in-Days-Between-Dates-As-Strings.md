@@ -1,8 +1,8 @@
 # Exercise: Difference in Days Between Dates As Strings
 
-Use `spark-shell` to write a structured query that calculates the number of days between date strings and the current day.
+Write a structured query (using `spark-shell` or [Databricks Community Edition](https://community.cloud.databricks.com)) that calculates the number of days between dates given as text (in some format) and the current date.
 
-Protip™: Use the standard functions for date and time, e.g. `to_date` and `datediff`
+Protip™: Use the standard functions for date and time, e.g. [to_date](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) and [datediff](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
 
 Module: **Spark SQL**
 
@@ -15,7 +15,6 @@ val dates = Seq(
    "08/11/2015",
    "09/11/2015",
    "09/12/2015").toDF("date_string")
-
 scala> dates.show
 +-----------+
 |date_string|
@@ -32,15 +31,13 @@ scala> dates.show
 +-----------+----------+----+
 |date_string|   to_date|diff|
 +-----------+----------+----+
-| 08/11/2015|2015-11-08|1108|
-| 09/11/2015|2015-11-09|1107|
-| 09/12/2015|2015-12-09|1077|
+| 08/11/2015|2015-11-08|1256|
+| 09/11/2015|2015-11-09|1255|
+| 09/12/2015|2015-12-09|1225|
 +-----------+----------+----+
 ```
 
-## Useful Links
-
-1. Scaladoc of the [functions](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) object
+**NOTE**: The `diff` column is `current_date`-sensitive and your result will certainly be different (as the current date of yours will be after the page was published).
 
 <!--
 ## Solution

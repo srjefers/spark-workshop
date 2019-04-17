@@ -1,8 +1,8 @@
 # Exercise: Using pivot for Cost Average and Collecting Values
 
-Write a structured query that calculates cost average ([part 1](#part-1-result)) and collects all the values in a column ([part 2](#part-2-result)).
+Write a structured query (using `spark-shell` or [Databricks Community Edition](https://community.cloud.databricks.com)) that calculates cost average ([part 1](#part-1-result)) and collects all the values in a column ([part 2](#part-2-result)).
 
-Protip™: Use `RelationalGroupedDataset.pivot` operator
+Protip™: Use [RelationalGroupedDataset.pivot](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.RelationalGroupedDataset) operator
 
 Module: **Spark SQL**
 

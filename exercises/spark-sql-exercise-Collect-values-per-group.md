@@ -1,10 +1,14 @@
 # Exercise: Collect values per group
 
-Use `spark-shell` to collect ids per group in a dataset.
+Write a structured query (using `spark-shell` or [Databricks Community Edition](https://community.cloud.databricks.com)) that collects ids per group in a dataset.
+
+Protip™: Use [collect_list](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) standard function
+
+Extra: The values collected should be ordered in a descending order
 
 Module: **Spark SQL**
 
-Duration: **20 mins**
+Duration: **15 mins**
 
 ## Input Dataset
 

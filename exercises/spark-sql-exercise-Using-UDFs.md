@@ -1,6 +1,6 @@
 # Exercise: Using UDFs
 
-Develop a standalone Spark SQL application (in IntelliJ IDEA) that uses your own `upper` user-defined function (e.g. `my_upper`).
+Develop a standalone Spark SQL application (using IntelliJ IDEA) that uses your own `upper` user-defined function (e.g. `my_upper`).
 
 Protip™: Use Scala's [StringOps.toUpperCase](https://www.scala-lang.org/api/current/scala/collection/immutable/StringOps.html)
 

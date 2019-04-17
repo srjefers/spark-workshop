@@ -1,6 +1,6 @@
 # Exercise: Multiple Aggregations
 
-Use `spark-shell` to compute maximum and minimum of `id` column for every group.
+Write a structured query (using `spark-shell` or [Databricks Community Edition](https://community.cloud.databricks.com)) that computes multiple aggregations per group, i.e. the maximum and the minimum of `id` column per group.
 
 Module: **Spark SQL**
 

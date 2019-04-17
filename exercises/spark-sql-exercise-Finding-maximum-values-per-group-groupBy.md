@@ -1,8 +1,8 @@
 # Exercise: Finding maximum values per group (groupBy)
 
-Develop a standalone Spark SQL application (using IntelliJ IDEA) that finds the highest numbers per group.
+Develop a standalone Spark SQL application (using IntelliJ IDEA) that finds the highest (maximum) numbers per group.
 
-Protip™: Use `Dataset.groupBy` operator and `max` standard function
+Protip™: Use [Dataset.groupBy](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset) operator and [max](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) standard function
 
 Module: **Spark SQL**
 

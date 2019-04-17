@@ -1,6 +1,8 @@
 # Exercise: Finding Ids of Rows with Word in Array Column
 
-The exercise is about finding the ids of the rows that have values from one column in an array column.
+Develop a standalone Spark SQL application (using IntelliJ IDEA) that finds the ids of the rows that have values of one column in an array column.
+
+Protip™: Use [split](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) and [explode](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) standard functions
 
 Module: **Spark SQL**
 

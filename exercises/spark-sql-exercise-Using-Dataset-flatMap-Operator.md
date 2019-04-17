@@ -1,6 +1,8 @@
 # Exercise: Using Dataset.flatMap Operator
 
-Use `spark-shell` to write a structured query that creates as many rows as the element in a given array column (using `Dataset.flatMap` operator).
+Write a structured query (using `spark-shell` or [Databricks Community Edition](https://community.cloud.databricks.com)) that creates as many rows as the number of elements in a given array column. The values of the new rows should be the elements of the array column themselves.
+
+Protip™: Use [Dataset.flatMap](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset) operator
 
 Module: **Spark SQL**
 
