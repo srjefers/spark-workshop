@@ -1,6 +1,6 @@
 # Exercise: Flattening Array Columns (From Datasets of Arrays to Datasets of Array Elements)
 
-Develop a standalone Spark SQL application (using IntelliJ IDEA) that creates columns with the values of elements of an array column.
+Develop a standalone Spark SQL application (using IntelliJ IDEA) that creates a Dataset with columns that have the elements of an array column as values and their names being positions (in the array column).
 
 Protips™:
 
@@ -15,18 +15,21 @@ Duration: **30 mins**
 ## Input Dataset
 
 ```text
-val input = Seq(Seq(1,2,3)).toDF
+val input = Seq(
+  Seq("a","b","c"),
+  Seq("X","Y","Z")).toDF
 scala> input.show
 +---------+
 |    value|
 +---------+
-|[1, 2, 3]|
+|[a, b, c]|
+|[X, Y, Z]|
 +---------+
 
 scala> input.printSchema
 root
  |-- value: array (nullable = true)
- |    |-- element: integer (containsNull = false)
+ |    |-- element: string (containsNull = true)
 ```
 
 ## Result
@@ -35,13 +38,14 @@ root
 +---+---+---+
 |  0|  1|  2|
 +---+---+---+
-|  1|  2|  3|
+|  a|  b|  c|
+|  X|  Y|  Z|
 +---+---+---+
 ```
 
 <!--
 // The solution assumes that the number of elements is the same across arrays
-val header = input.as[Array[Int]].head
+val header = input.as[Array[String]].head
 val columns = header.indices.map(n => 'value(n) as n.toString)
 val s = input.select(columns: _*)
 
