@@ -48,6 +48,9 @@
           <h1 style="font-size: 3.17em;">Caching and Persistence</h1>
           <h3>Apache Spark 2.4.1 / Spark SQL</h3>
 
+          <br />
+          <br />
+          <hr />
           <h4 style="font-size: smaller;">
             <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
             <br>
@@ -59,29 +62,79 @@
           <textarea data-template>
             ## Agenda
 
-            1. [Caching and Persistence](#/intro)
+            1. [Dataset Caching and Persistence](#/intro)
+            1. [StorageLevel](#/storagelevel)
             1. [web UI's Storage Tab](#/web-ui)
             1. [CacheManager](#/cache-manager)
           </textarea>
         </section>
 
-        <section id="intro" data-markdown>
-          <textarea data-template>
-            ## Caching and Persistence
+        <section>
+          <section id="intro" data-markdown style="font-size: 90%;">
+            <textarea data-template>
+              ## Dataset Caching and Persistence <small>(1 of 2)</small>
 
-            1. FIXME
-            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-              * FIXME
-          </textarea>
+              1. **Persisting (or caching) a dataset** in memory or disk for faster (local) access
+              1. **Dataset.cache** persists the Dataset with the default MEMORY_AND_DISK storage level
+              1. **Dataset.persist** persist the Dataset with a given storage level
+              1. **Dataset.unpersist** un-persist (removes) any cached block data from memory and disk
+              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+                * [Dataset Caching and Persistence](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-caching-and-persistence.html)
+            </textarea>
+          </section>
+          <section id="intro-2" data-markdown style="font-size: 90%;">
+            <textarea data-template>
+              ## Dataset Caching and Persistence <small>(2 of 2)</small>
+
+              1. Dataset turns into an RDD at execution time
+              1. Persisting a Dataset boils down to persisting the RDD
+              1. RDD blocks are stored on executors only
+              1. Every executor has exactly one BlockManager
+              1. BlockManager is a key-value store of blocks of data
+              1. Switch to [The Internals of Apache Spark](https://bit.ly/apache-spark-internals)
+                * [BlockManager — Key-Value Store of Blocks of Data](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-BlockManager.html)
+            </textarea>
+          </section>
+        </section>
+
+        <section>
+          <section id="storagelevel" data-markdown>
+            <textarea data-template>
+              ## StorageLevel <small>(1 of 2)</small>
+
+              1. [StorageLevel](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.storage.StorageLevel) describes how block data of an RDD should be stored:
+                1. **useDisk**
+                1. **useMemory**
+                1. **useOffHeap**
+                1. **deserialized**
+                1. **replication** (default: 1)
+              1. Predefined 12 StorageLevels with functions to create new ones <small>(on the following slide)</small>
+            </textarea>
+          </section>
+          <section data-markdown id="predefined-storagelevels">
+            <textarea data-template>
+              ## Predefined StorageLevels <small>(2 of 2)</small>
+
+              <p>
+                <img style="background:none; border:none; box-shadow:none;" data-src="images/spark-sql-storage-levels.png">
+                <small>Source: [RDD Persistence](http://spark.apache.org/docs/latest/rdd-programming-guide.html#rdd-persistence)</small>
+              </p>
+
+            </textarea>
+          </section>
         </section>
 
         <section id="web-ui" data-markdown>
           <textarea data-template>
             ## web UI's Storage Tab
 
-            1. FIXME
-            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-              * FIXME
+            <p>
+              <img style="background:none; border:none; box-shadow:none;" data-src="images/spark-sql-webui-storage-tab.png">
+              <small>http://localhost:4040/storage/</small>
+            </p>
+
+            1. Switch to [The Internals of Apache Spark](https://bit.ly/apache-spark-internals)
+              * [Storage Tab](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-webui-storage.html)
           </textarea>
         </section>
 
@@ -89,9 +142,12 @@
           <textarea data-template>
             ## CacheManager
 
-            1. FIXME
+            1. **CacheManager** is an in-memory cache (registry) of structured queries (by their logical plans)
+            1. Shared across SparkSessions through SharedState
+              * Available as **spark.sharedState.cacheManager**
+            1. Spark developers interact with CacheManager using Dataset operators (cache, persist, and unpersist)
             1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-              * FIXME
+              * [CacheManager — In-Memory Cache for Tables and Views](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-CacheManager.html)
           </textarea>
         </section>
 
@@ -99,7 +155,8 @@
           <textarea data-template>
             ## Recap
 
-            1. [Caching and Persistence](#/intro)
+            1. [Dataset Caching and Persistence](#/intro)
+            1. [StorageLevel](#/storagelevel)
             1. [web UI's Storage Tab](#/web-ui)
             1. [CacheManager](#/cache-manager)
           </textarea>
