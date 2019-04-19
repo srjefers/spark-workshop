@@ -32,24 +32,27 @@
     <div class="reveal">
 
       <div class="footer">
-        <footer style="font-size: small;">&copy;<a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2018 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a> / jacek@japila.pl</footer>
+        <footer style="font-size: small;">
+          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2019 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
+          / jacek@japila.pl
+        </footer>
       </div>
 
       <div class="slides">
 
         <section class="intro" data-transition="zoom" id="home">
           <p>
-            <img width="3%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
             <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
-          <h1 style="font-size: 3.45em;">Spark<br/>Structured Streaming</h1>
-          <h3>Apache Spark 2.4</h3>
+          <h1 style="font-size: 3.25em;">Spark<br/>Structured Streaming</h1>
+          <h3>Apache Spark 2.4.1 / Spark SQL</h3>
 
+          <hr />
           <h4 style="font-size: smaller;">
-            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
             <br>
-            Books: <a href="http://bit.ly/mastering-apache-spark">Mastering Apache Spark</a> / <a href="http://bit.ly/mastering-spark-sql">Mastering Spark SQL</a> / <a href="http://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+            The "Internals" Books: <a href="https://bit.ly/apache-spark-internals">Apache Spark</a> / <a href="https://bit.ly/spark-sql-internals">Spark SQL</a> / <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
           </h4>
         </section>
 
@@ -75,7 +78,7 @@
               <li><b>Structured Streaming</b> is a computation model that attempts to unify streaming, interactive, and batch query execution engines</li>
               <li>Structured Streaming is a <b>stream processing engine</b> with a high-level declarative streaming API built on top of Spark SQL</li>
               <li>Continuous incremental execution of a structured query</li>
-              <li>Switch to The Internals of Spark Structured Streaming gitbook
+              <li>Switch to <a href="https://bit.ly/spark-structured-streaming">The Internals of Spark Structured Streaming</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/spark-structured-streaming.html">Structured Streaming &mdash; Streaming Datasets</a></li>
                 </ul>
@@ -84,14 +87,14 @@
           </section>
           <section>
             <h2>Spark Structured Streaming <small>(2 of 2)</small></h2>
+
             <ol>
               <li>Spark Structured Streaming is part of Spark SQL</li>
-              <li>When developing streaming applications use the following dependency
-                <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 50px;" class="lang-scala hljs">
-libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.0"
-                </code></pre>
-              </li>
+              <li>When developing streaming applications use the following dependency</li>
             </ol>
+              <pre style="margin-left: 0px;"><code style="width: 900px; padding-left: 40px;" class="lang-scala hljs">
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.1"
+              </code></pre>
           </section>
         </section>
 
@@ -108,7 +111,7 @@ libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.0"
             </li>
             <li>Streaming DataFrame represents an unbounded table</li>
             <li>Streaming query is described using Dataset API</li>
-            <li>Switch to The Internals of Spark Structured Streaming gitbook
+            <li>Switch to <a href="https://bit.ly/spark-structured-streaming">The Internals of Spark Structured Streaming</a>
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-DataStreamReader.html">DataStreamReader</a></li>
               </ul>
@@ -127,7 +130,7 @@ libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.0"
    val streamWriter: DataStreamWriter = dataset.writeStream
                 </code></pre>
               </li>
-              <li>Switch to The Internals of Spark Structured Streaming gitbook
+              <li>Switch to <a href="https://bit.ly/spark-structured-streaming">The Internals of Spark Structured Streaming</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-DataStreamWriter.html">DataStreamWriter</a></li>
                 </ul>
@@ -265,7 +268,7 @@ val query: StreamingQuery = counter.writeStream.start
           </section>
         </section>
 
-        <section id="streaming-source">
+        <section id="streaming-source" style="font-size: 90%">
           <h2>Streaming Source</h2>
           <ol>
             <li><b>Streaming Source</b> acts as a continuous stream of data for a streaming query</li>
@@ -277,7 +280,7 @@ val query: StreamingQuery = counter.writeStream.start
             <li><b>FileStreamSource</b> and <b>TextSocketSource</b>
             <li><b>KafkaSource</b> for Apache Kafka 0.10+</li>
             <li><b>RateStreamSource</b> and <b>MemoryStream</b> for unit tests, PoCs, tutorials and debugging</li>
-            <li>Switch to Spark Structured Streaming
+            <li>Switch to <a href="https://bit.ly/spark-structured-streaming">The Internals of Spark Structured Streaming</a>
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-Source.html">Streaming Data Source</a></li>
               </ul>
@@ -285,7 +288,7 @@ val query: StreamingQuery = counter.writeStream.start
           </ol>
         </section>
 
-        <section id="streaming-sink">
+        <section id="streaming-sink" style="font-size: 90%">
           <h2>Streaming Sink</h2>
           <ol>
             <li><b>Streaming Sink</b> represents an external storage to write streaming datasets to.</li>
@@ -297,7 +300,7 @@ val query: StreamingQuery = counter.writeStream.start
             <li><b>ConsoleSink</b>, <b>FileStreamSink</b> and <b>ForeachSink</b></li>
             <li><b>KafkaSink</b> for Apache Kafka 0.10+</li>
             <li><b>MemorySink</b> for unit tests, tutorials and debugging</li>
-            <li>Switch to Spark Structured Streaming
+            <li>Switch to <a href="https://bit.ly/spark-structured-streaming">The Internals of Spark Structured Streaming</a>
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-Sink.html">Streaming Sink</a></li>
               </ul>
@@ -318,7 +321,7 @@ val query: StreamingQuery = counter.writeStream.start
             <li><b>runId</b> is the unique id of the run of a query</li>
             <li>Use <b>awaitTermination</b> to wait for the termination of a query, either by <b>query.stop</b> or by an exception</li>
             <li>Use <b>stop</b> to stop execution of a query</li>
-            <li>Switch to Spark Structured Streaming
+            <li>Switch to <a href="https://bit.ly/spark-structured-streaming">The Internals of Spark Structured Streaming</a>
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-StreamingQuery.html">StreamingQuery</a></li>
               </ul>
@@ -334,7 +337,7 @@ val query: StreamingQuery = counter.writeStream.start
         val qm: StreamingQueryManager = spark.streams
               </code></pre>
             </li>
-            <li>Switch to Spark Structured Streaming
+            <li>Switch to <a href="https://bit.ly/spark-structured-streaming">The Internals of Spark Structured Streaming</a>
               <ul>
                 <li><a href="https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-sql-streaming-StreamingQueryManager.html">StreamingQueryManager &mdash; Streaming Query Management</a></li>
               </ul>
@@ -383,9 +386,9 @@ val query: StreamingQuery = counter.writeStream.start
           <textarea data-template>
             # Questions?
 
-            * Read [Mastering Apache Spark](http://bit.ly/mastering-apache-spark)
-            * Read [The Internals of Spark SQL](https://bit.ly/mastering-spark-sql)
-            * Read [The Internals of Spark Structured Streaming](http://bit.ly/spark-structured-streaming)
+            * Read [The Internals of Apache Spark](https://bit.ly/apache-spark-internals)
+            * Read [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+            * Read [The Internals of Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </textarea>
