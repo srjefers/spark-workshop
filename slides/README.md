@@ -47,9 +47,10 @@
 ## Unit 2. Spark Structured Streaming for Large-Scale Stream Processing
 
 1. [Structured Streaming](http://blog.jaceklaskowski.pl/spark-workshop/slides/spark-structured-streaming.html)
-2. [Fault Tolerance and Checkpointing](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-checkpointing.html)
-3. [Monitoring Streaming Queries](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-monitoring.html)
-4. [Structured Streaming's Internals](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-internals.html)
+1. [Fault Tolerance and Checkpointing](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-checkpointing.html)
+1. [Monitoring Streaming Queries](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-monitoring.html)
+1. [Structured Streaming's Internals](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-internals.html)
+1. [Stateful Stream Processing](http://blog.jaceklaskowski.pl/spark-workshop/slides/structured-streaming-stateful-stream-processing.html)
 
 ## Unit 3. Spark MLlib for Large-Scale Distributed Machine Learning
 
