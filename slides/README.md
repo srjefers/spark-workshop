@@ -2,6 +2,7 @@
 
 ## Agendas
 
+1. [Apache Spark™ Advanced for Developers Workshop (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Apache-Spark-Advanced-for-Developers-1911.html) for Experienced Scala Developers with significant experience in Apache Spark™ &mdash; being taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet), 25-29 November 2019
 1. [Apache Spark™ with Scala for PySpark Developers Workshop (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Apache-Spark-with-Scala-for-PySpark-Developers-Workshop.html) &mdash; taught in [Pittsburgh PA, US](https://en.wikipedia.org/wiki/Pittsburgh), 15-19 April 2019
 1. [Apache Spark™ Advanced for Developers Workshop (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Apache-Spark-Advanced-for-Developers.html) for Experienced Scala Developers with significant experience in Apache Spark™ &mdash; taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet), 8-12 April 2019
 1. [Apache Spark™ Advanced for Developers Workshop (5 days)](http://blog.jaceklaskowski.pl/spark-workshop/slides/00_agenda-5-days-Apache-Spark-Advanced-for-Developers_2018.html) for Experienced Scala Developers with significant experience in Apache Spark™ &mdash; taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet), 19-23 November 2018

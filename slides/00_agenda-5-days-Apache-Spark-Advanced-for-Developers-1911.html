@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Apache Spark™ Advanced for Developers Workshop | 5 days</title>
+
+    <meta name="description" content="Apache Spark™ Advanced for Developers Workshop | 5 days">
+    <meta name="author" content="Jacek Laskowski">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <!-- Jacek: custom formatting -->
+    <link rel="stylesheet" href="revealjs-css/jacek.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+
+      <div class="footer">
+        <footer style="font-size: small;">
+          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2019 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
+          / jacek@japila.pl
+        </footer>
+      </div>
+
+      <div class="slides">
+
+        <section class="intro" data-transition="zoom" id="home">
+          <p>
+            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+          </p>
+          <h1 style="font-size: 2.77em;">Apache Spark™<br>Advanced for Developers Workshop <small>5 Days</small></h1>
+
+          <h4 style="font-size: smaller;">
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <br>
+            The "Internals" Books: <a href="https://bit.ly/apache-spark-internals">Apache Spark</a> / <a href="https://bit.ly/spark-sql-internals">Spark SQL</a> / <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+          </h4>
+        </section>
+
+        <section>
+          <section id="speaker" style="font-size: 85%" data-markdown>
+            <textarea data-template>
+              <p><img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0"></p>
+
+              * **Jacek Laskowski** is a freelance IT consultant
+              * Specializing in **Spark**, Kafka, Kafka Streams, Scala
+              * Development | Consulting | Training | Speaking
+              * 6 "The Internals Of" online books
+              * Among contributors to <a href="https://github.com/apache/spark/graphs/contributors">Apache Spark</a>
+              * Among <a href="https://www.confluent.io/nominate/">Confluent Community Catalyst</a> (Class of 2019 - 2020)
+              * Contact me at **jacek@japila.pl**
+              * Follow [@JacekLaskowski](https://twitter.com/jaceklaskowski) on twitter <br>for more #ApacheSpark, #ApacheKafka, #KafkaStreams #DeltaLake
+            </textarea>
+          </section>
+          <section id="gitbooks" style="font-size: 85%">
+            <p><img width="12%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0"></p>
+            <div style="text-align: center">
+              <p>Jacek is best known by "The Internals Of" online books:</p>
+              <p>
+                <ol>
+                  <li><a href="https://bit.ly/apache-spark-internals">The Internals of Apache Spark</a></li>
+                  <li><a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a></li>
+                  <li><a href="https://bit.ly/spark-structured-streaming">The Internals of Spark Structured Streaming</a></li>
+                  <li><a href="https://bit.ly/kafka-streams-internals">The Internals of Kafka Streams</a></li>
+                  <li><a href="https://bit.ly/apache-kafka-internals">The Internals of Apache Kafka</a></li>
+                  <li><a href="https://delta.japila.pl/">The Internals of Delta Lake</a> «NEW»</li>
+                </ol>
+              </p>
+            </div>
+          </section>
+          <section id="stackoverflow">
+            <div style="text-align: center">
+              <p>
+                Jacek is active on <a href="http://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a>
+              </p>
+              <p>
+                <img width="60%" src="images/jaceklaskowski-stackoverflow-stats.png" style="border: 0">
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section id="goal" data-markdown>
+            <textarea data-template>
+              # Goal
+              <p>
+                Advance in solving analytical problems using<br />
+                <b><span style="font-size: 140%">Spark SQL</span></b><br />
+                and explore the recent Apache Spark 2.4.4, incl.<br />
+                <b><span style="font-size: 120%">Spark Structured Streaming</span></b>, <b><span style="font-size: 120%">Spark MLlib</span></b> and <b><span style="font-size: 140%">Delta Lake</span></b>
+              </p>
+            </textarea>
+          </section>
+          <section id="professional-objectives" style="font-size: 90%">
+            <h2>Professional Objectives</h2>
+            <ul>
+              <li>Advance in solving analytical problems using Spark SQL</li>
+              <li>Explore the recent features of Apache Spark 2.4</li>
+              <li>Deep dive into the internals of Apache Spark and the modules (Spark SQL, Spark Structured Streaming and Spark MLlib)</li>
+              <li>Understand performance tuning of Apache Spark applications and the advanced features of Apache Spark</li>
+            </ul>
+          </section>
+          <section id="training-content" style="font-size: 80%">
+            <h2>Training content</h2>
+            <ul>
+              <li>Anatomy of Spark Core Data Processing Platform</li>
+              <li>Foundations of Spark SQL</li>
+              <li>Internals of Structured Query Execution</li>
+              <li>Standard, User-Defined and User-Defined Aggregate Functions (Spark SQL)</li>
+              <li>Basic, Windowed and Multi-Dimensional Aggregations (Spark SQL)</li>
+              <li>Monitoring Spark Applications Using web UI and SparkListeners</li>
+              <li>Join Optimization with Bucketing (Spark SQL)</li>
+              <li>Stream Processing with Spark Structured Streaming</li>
+              <li>Machine Learning with Spark MLlib</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section id="agenda" data-markdown style="font-size: 90%;">
+            <textarea data-template>
+              ## Agenda
+
+              1. [Day 1](#/day1) &mdash; The Essentials of Spark SQL
+              1. [Day 2](#/day2) &mdash; Spark Core / Spark SQL
+              1. [Day 3](#/day3) &mdash; Advanced Spark SQL
+              1. [Day 4](#/day4) &mdash; Spark SQL / Spark Structured Streaming
+              1. [Day 5](#/day5) &mdash; Spark (All Modules)
+            </textarea>
+          </section>
+
+          <section id="day1" data-markdown style="font-size: 90%;">
+            <textarea data-template>
+              ## Day 1 &mdash; The Essentials of Spark SQL
+
+              1. (Warm-up) [Exercise: Finding Ids of Rows with Word in Array Column](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-Ids-of-Rows-with-Word-in-Array-Column.html)
+              1. [Spark SQL](spark-sql.html)
+                * [Exercise: Standalone Spark Application to Display Spark SQL Version](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Standalone-Spark-Application-to-Display-Spark-SQL-Version.html)
+                * [Exercise: Using CSV Data Source](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Using-CSV-Data-Source.html)
+              1. [Columns and Dataset Operators](spark-sql-columns-and-dataset-operators.html)
+                * [Exercise: Using Dataset.flatMap Operator](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Using-Dataset-flatMap-Operator.html)
+            </textarea>
+          </section>
+
+          <section id="day2" data-markdown>
+            <textarea data-template>
+              ## Day 2 &mdash; Spark Core / Spark SQL
+
+              1. [The Core of Apache Spark](spark-core.html)
+              1. [Monitoring Spark using SparkListeners](spark-core-monitoring-sparklisteners.html)
+              1. [Standard and User-Defined
+              Functions](spark-sql-standard-functions-udfs.html)
+                * [Exercise: Using upper Standard Function](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Using-upper-Standard-Function.html)
+                * [Exercise: Using explode Standard Function](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Using-explode-Standard-Function.html)
+                * [Exercise: Difference in Days Between Dates As Strings](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Difference-in-Days-Between-Dates-As-Strings.html)
+                * [Exercise: Using UDFs](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Using-UDFs.html)
+            </textarea>
+          </section>
+
+          <section id="day3" data-markdown style="font-size: 80%;">
+            <textarea data-template>
+              ## Day 3 &mdash; Advanced Spark SQL
+
+              1. [Basic Aggregation](spark-sql-basic-aggregation.html)
+                * [Exercise: Finding maximum values per group (groupBy)](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-maximum-values-per-group-groupBy.html)
+                * [Exercise: Collect values per group](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Collect-values-per-group.html)
+                * [Exercise: Multiple Aggregations](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Multiple-Aggregations.html)
+                * [Exercise: Calculating aggregations](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-maximum-value-agg.html)
+              1. [Joins](spark-sql-joins.html)
+                * [Exercise: Finding Most Populated Cities Per Country](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-Most-Populated-Cities-Per-Country.html)
+              1. [The Internals of Structured Query Execution](spark-sql-internals-of-structured-query-execution.html)
+              1. Exercises
+                * [Exercise: Flattening Array Columns (From Datasets of Arrays to Datasets of Array Elements)](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Flattening-Array-Columns-From-Datasets-of-Arrays-to-Datasets-of-Array-Elements.html)
+                * [Exercise: Reverse-engineering Dataset.show Output](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Reverse-engineering-Dataset-show-Output.html)
+                * [Exercise: Using pivot for Cost Average and Collecting Values](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Using-pivot-for-Cost-Average-and-Collecting-Values.html)
+            </textarea>
+          </section>
+
+          <section id="day4" data-markdown style="font-size: 75%;">
+            <textarea data-template>
+              ## Day 4 &mdash; Spark SQL / Spark Structured Streaming
+
+              1. [Windowed Aggregation](spark-sql-windowed-aggregation.html)
+                * [Exercise: Finding 1st and 2nd Bestsellers Per Genre](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-1st-and-2nd-Bestsellers-Per-Genre.html)
+                * [Exercise: Calculating Gap Between Current And Highest Salaries Per Department](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Calculating-Gap-Between-Current-And-Highest-Salaries-Per-Department.html)
+                * [Exercise: Calculating Running Total / Cumulative Sum](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Calculating-Running-Total-Cumulative-Sum.html)
+                * [Exercise: Calculating Difference Between Consecutive Rows Per Window](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Calculating-Difference-Between-Consecutive-Rows-Per-Window.html)
+              1. [Spark Structured Streaming](spark-structured-streaming.html)
+                * [Exercise: Streaming CSV Datasets](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-structured-streaming-exercise-Streaming-CSV-Datasets.html)
+                * [Exercise: Stateless Streaming Aggregation](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-structured-streaming-exercise-Streaming-Aggregation-with-groupBy.html)
+            </textarea>
+          </section>
+
+          <section id="day5" data-markdown style="font-size: 75%;">
+            <textarea data-template>
+              ## Day 5 &mdash; Spark (All Modules)
+
+              1. Spark Structured Streaming cntd.
+                1. [Developing Custom Data Source](spark-sql-Developing-Custom-Data-Source.html)
+                1. [Exercise: Developing Custom Data Source](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Developing-Custom-Data-Source.html)
+                1. [Exercise: Using Kafka Data Source](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-structured-streaming-exercise-Using-Kafka-Data-Source.html)
+              1. Spark SQL / Exercises
+                1. [Exercise: Generating Exam Assessment Report](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Generating-Exam-Assessment-Report.html)
+                1. [Exercise: Finding Longest Sequence](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-Longest-Sequence.html)
+                1. [Exercise: Calculating percent rank](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Calculating-percent-rank.html)
+              1. Spark MLlib
+                1. [Machine Learning with Spark MLlib](spark-mllib.html)
+                1. [ML Pipelines In-Depth](spark-mllib-ml-pipelines.html)
+                1. [Exercise: Email Classification](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-mllib-exercise-Email-Classification.html)
+              1. [web UI](spark-core-webui.html)
+            </textarea>
+          </section>
+
+        </section>
+
+        <section>
+          <section id="prerequisities">
+            <h1>Prerequisities</h1>
+            <h4>Be prepared to get the most out of the workshop</h4>
+          </section>
+          <section id="prerequisities-experience">
+            <h2>Prerequisities / Experience</h2>
+            <ol>
+              <li>Hands-on programming experience using Scala</li>
+              <li>Experience developing Spark applications</li>
+            </ol>
+          </section>
+          <section id="prerequisities-to-be-installed">
+            <h2>Prerequisities / To Be Installed</h2>
+            <ul>
+              <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Platform, Standard Edition (Java SE) 8</a></li>
+              <li><a href="http://spark.apache.org/downloads.html">Apache Spark</a></li>
+              <li><a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a> Community Edition with <b>Scala plugin</b></li>
+              <li><a href="http://www.scala-sbt.org/download.html">sbt</a></li>
+              <li><a href="http://kafka.apache.org/downloads">Apache Kafka</a></li>
+              <li>Linux or macOS preferred
+                <ul>
+                  <li>Consult <a href="https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-tips-and-tricks-running-spark-windows.html">Running Spark Applications on Windows</a> when on MS Windows</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section id="in-da-clazz">
+            <h1>In-Class Preparations</h1>
+            <h4>Make Instructor's Life Slightly Easier. Thanks!</h4>
+          </section>
+          <section id="introduce-yourself">
+            <h2>Introduce Yourself</h2>
+            <ol>
+              <li>First name</li>
+              <li>What's your experience with Spark?</li>
+              <li>Any production experience with Spark?</li>
+              <li>What do you expect from the workshop?</li>
+              <li>Where do you want to be with Spark after 5 days?</li>
+            </ol>
+          </section>
+          <section id="addendum">
+            <h2>Addendum</h2>
+            <ol>
+              <li>Put your name on paper in front of you
+                <ul>
+                  <li>Stick to your laptop if possible</li>
+                  <li>Use LARGE fonts</li>
+                </ul>
+              </li>
+              <li>1-hour lunch break at <b>12:45pm</b></li>
+            </ol>
+          </section>
+        </section>
+
+        <section style="text-align: left" data-markdown id="questions">
+          <textarea data-template>
+            # Questions?
+
+            * Read [The Internals of Apache Spark](https://bit.ly/apache-spark-internals)
+            * Read [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+            * Read [The Internals of Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
+            * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
+            * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
+          </textarea>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          markers: true,
+          openSlideNumber: true
+        },
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/markdown/marked.js' },
+          { src: 'reveal.js/plugin/markdown/markdown.js' },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-45999426-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
