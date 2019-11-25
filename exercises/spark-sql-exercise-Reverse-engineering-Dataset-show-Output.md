@@ -25,7 +25,6 @@ Duration: **30 mins**
 * `+`s are comments
 * `|`s are separators
 * A CSV file with `+`s as comments and `|`s as separators
-* [CSVOptions.scala](https://github.com/apache/spark/blob/master/sql/catalyst/src/main/scala/org/apache/spark/sql/catalyst/csv/CSVOptions.scala)
 * [CSVFileFormat](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-CSVFileFormat.html)
 
 ## Result

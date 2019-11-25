@@ -20,6 +20,8 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 9. [Exercise: Using upper Standard Function](spark-sql-exercise-Using-upper-Standard-Function.md)
 10. [Exercise: Using explode Standard Function](spark-sql-exercise-Using-explode-Standard-Function.md)
 11. [Exercise: Difference in Days Between Dates As Strings](spark-sql-exercise-Difference-in-Days-Between-Dates-As-Strings.md)
+1. [Exercise: Why are all fields null when querying with schema?](spark-sql-exercise-Why-are-all-fields-null-when-querying-with-schema.md)
+1. [Exercise: How to add days (as values of a column) to date?](spark-sql-exercise-How-to-add-days-as-values-of-a-column-to-date.md)
 12. [Exercise: Using UDFs](spark-sql-exercise-Using-UDFs.md)
 13. [Exercise: Calculating aggregations](spark-sql-exercise-Finding-maximum-value-agg.md)
 14. [Exercise: Finding maximum values per group (groupBy)](spark-sql-exercise-Finding-maximum-values-per-group-groupBy.md)

@@ -47,7 +47,7 @@
             <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1>Spark SQL</h1>
-          <h3>Apache Spark 2.4.1</h3>
+          <h3>Apache Spark 2.4.4</h3>
 
           <h4 style="font-size: smaller;">
             <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
@@ -72,14 +72,24 @@
 
         <section id="intro">
           <h2>Spark SQL</h2>
-          <ol>
-            <li>Structured queries described using <b>SQL</b> and <b>Dataset</b> (and <b>DataFrame</b>)
-            <li>Good ol' <b>SQL</b> statements</li>
-            <li><b>Dataset</b> (and <b>DataFrame</b>) data abstractions
+          <ol style="font-size: 80%">
+            <li>Data Processing with Structured Queries on Massive Scale
               <ul>
-                <li>Distributed computations</li>
+                <li>SQL-like Relational Queries</li>
+                <li>Distributed computations (RDD API)</li>
               </ul>
             </li>
+            <li>High-level "front-end" languages
+              <ul>
+                <li>SQL, Scala, Java, Python, R</li>
+              </ul>
+            </li>
+            <li>Low-level "backend" Logical Operators
+              <ul>
+                <li>Logical and physical query plans</li>
+              </ul>
+            </li>
+            <li><b>Dataset</b> (and <b>DataFrame</b>) data abstractions</li>
             <li><b>Encoder</b> for storage- and performance optimizations
               <ul>
                 <li>Reducing garbage collections</li>
@@ -96,17 +106,8 @@
         <section id="sparksession">
           <h2>SparkSession</h2>
           <ol>
-            <li>The entry point to Spark SQL
-              <ul>
-                <li>&hellip;and Spark in general these days</li>
-              </ul>
-            </li>
-            <li>Use <b>SparkSession.builder</b> Fluent API to create one</li>
-            <li>Allows creating local Datasets
-              <ul>
-                <li><b>spark.range(numberOfRecords)</b></li>
-              </ul>
-            </li>
+            <li>The entry point to Spark SQL</li>
+            <li>Use <b>SparkSession.builder</b> Fluent API to build one</li>
             <li>Loading datasets using <b>load</b> <small>discussed later</small></li>
             <li>spark-shell gives you one instance as <b>spark</b></li>
             <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
@@ -118,7 +119,7 @@
         </section>
 
         <section>
-          <section style="font-size: 90%;" id="datasource">
+          <section style="font-size: 85%;" id="datasource">
             <h2>DataSource API &mdash; Reading and Writing Datasets</h2>
             <ol>
               <li>Loading datasets using <b>SparkSession.read</b>
@@ -132,6 +133,7 @@
                 </ul>
               </li>
               <li>Loading and writing operators create source and sink nodes in a data flow graph</li>
+              <li>Pluggable API</li>
               <li>Switch to <a href="https://bit.ly/spark-sql-internals">The Internals of Spark SQL</a>
                 <ul>
                   <li><a href="https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-datasource-api.html">DataSource API &mdash; Managing Datasets in External Data Sources</a></li>
@@ -164,15 +166,19 @@
           </section>
 
           <section>
-            <h2>Built-In Formats</h2>
+            <h2>Built-In Data Sources (Formats)</h2>
             <ol>
-              <li><b>csv</b></li>
+              <li>File Formats
+                <ul>
+                  <li><b>csv</b></li>
+                  <li><b>json</b></li>
+                  <li><b>orc</b></li>
+                  <li><b>parquet</b></li>
+                  <li><b>text</b> and <b>textFile</b></li>
+                </ul>
+              </li>
               <li><b>jdbc</b></li>
-              <li><b>json</b></li>
-              <li><b>orc</b></li>
-              <li><b>parquet</b></li>
               <li><b>table</b></li>
-              <li><b>text</b> and <b>textFile</b></li>
             </ol>
           </section>
 
@@ -253,6 +259,7 @@ spark
   .option("inferSchema", true)
   .csv("inventory/*.csv")
   .withColumn("name", upper($"name"))
+  .groupBy("categoryId").agg(count("id") as "count")
   .write
   .mode("overwrite")
   .save("reports")

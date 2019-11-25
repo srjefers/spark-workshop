@@ -13,5 +13,5 @@ Duration: **30 mins**
     * Use **header** and **inferSchema** options
     * Use **args** for the path to CSV file(s)
     * **show** the records
-2. Execute **sbt package**
+2. Build an executable jar using **sbt package**
 3. Run the application using **spark-submit**
