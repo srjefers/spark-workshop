@@ -47,8 +47,9 @@
           </p>
           <h1>Basic Aggregation</h1>
           <h3>(agg, groupBy and groupByKey)</h3>
-          <h3>Apache Spark 2.4.1 / Spark SQL</h3>
+          <h3>Apache Spark 2.4.4 / Spark SQL</h3>
 
+          <hr />
           <h4 style="font-size: smaller;">
             <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
             <br>
@@ -97,10 +98,10 @@
               ds.agg(sum('id) as "sum")
             ```
             1. Entire Dataset acts as a single group
-              * **groupBy** used to define groups (_on the following slide_)
+              * **groupBy** used to define groups <small>(more in the following slide)</small>
             1. Creates DataFrame
               * &hellip;hence considered untyped due to **Row** inside
-              * Typed variant available (_on the following slide_)
+              * Typed variant available <small>(more in the following slide)</small>
             1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
               * [Basic Aggregation &mdash; Typed and Untyped Grouping Operators](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-basic-aggregation.html)
           </textarea>
