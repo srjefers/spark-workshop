@@ -2,6 +2,11 @@
 
 Write a structured query that loads a text file that contains the output of `Dataset.show` operator (aka _reverse-engineer the show output_).
 
+There are two approaches to solve the problem with different levels of complexity. You should work it out in reverse order of complexity. _Sorry, no free lunches_ 😎
+
+1. (hard) Use `text` data source
+1. (intermediate) Use `csv` data source
+
 Module: **Spark SQL**
 
 Duration: **30 mins**
@@ -10,22 +15,15 @@ Duration: **30 mins**
 
 ```text
 +---+------------------+-----+
-|id |Text1             |Text2|
+| id|             Text1|Text2|
 +---+------------------+-----+
-|1  |one,two,three     |one  |
-|2  |four,one,five     |six  |
-|3  |seven,nine,one,two|eight|
-|4  |two,three,five    |five |
-|5  |six,five,one      |seven|
+|  1|     one,two,three|  one|
+|  2|     four,one,five|  six|
+|  3|seven,nine,one,two|eight|
+|  4|    two,three,five| five|
+|  5|      six,five,one|seven|
 +---+------------------+-----+
 ```
-
-## Protips
-
-* `+`s are comments
-* `|`s are separators
-* A CSV file with `+`s as comments and `|`s as separators
-* [CSVFileFormat](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-CSVFileFormat.html)
 
 ## Result
 
@@ -40,6 +38,13 @@ Duration: **30 mins**
 |  5|      six,five,one|seven|
 +---+------------------+-----+
 ```
+
+## Protips
+
+* `+`s are comments
+* `|`s are separators
+* A CSV file with `+`s as comments and `|`s as separators
+* [CSVFileFormat](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-CSVFileFormat.html)
 
 <!--
 

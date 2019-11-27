@@ -46,7 +46,7 @@
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1 style="font-size: 3.47em;">Windowed Aggregation</h1>
-          <h3>Apache Spark 2.4.1 / Spark SQL</h3>
+          <h3>Apache Spark 2.4.4 / Spark SQL</h3>
 
           <br />
           <br />
@@ -66,16 +66,16 @@
             1. [Window Functions](#/window-functions)
             1. [Window Specification](#/window-specification)
             1. [over Column Operator](#/over-column-operator)
-            1. [Demo: Finding Most Populated Cities Per Country](#/demo)
+            1. [Demo](#/demo)
           </textarea>
         </section>
 
-        <section id="window-aggregate-functions" data-markdown>
+        <section id="window-aggregate-functions" data-markdown style="font-size: 90%">
           <textarea data-template>
             ## Window Aggregate Functions
 
             1. **Window Aggregate Functions** are standard functions that perform calculations over a group of records called **window**
-            1. Window defines a group of rows that are in *some* relation to the current record
+            1. Window defines a logical group of rows that are in some relation to the current record
             1. Generate a value for **every row**
               * Unlike basic aggregations that generate **at most** the number of input rows
             1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
@@ -99,11 +99,11 @@
         </section>
 
         <section>
-          <section id="window-specification" data-markdown style="font-size: 80%">
+          <section id="window-specification" data-markdown style="font-size: 75%">
             <textarea data-template>
               ## Window Specification / WindowSpec
 
-              1. **Window Specification** defines a **window** (view) that includes the rows that are in relation to the current row (for every row)
+              1. **Window Specification** defines a **window** (logical view) that includes the rows that are in relation to the current row (for every row)
               1. (Logically) **partitions** dataset into groups
                 * **partitionBy**
               1. May define **frame boundary**
@@ -154,7 +154,9 @@
             <!-- .slide: style="font-size: 90%" -->
             ## Demo: Finding Most Populated Cities Per Country
 
-            1. [Exercise: Finding Most Populated Cities Per Country](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-Most-Populated-Cities-Per-Country.html) using windowed aggregation (not good ol' groupBy and join)
+            1. [Exercise: Finding Most Populated Cities Per Country](http://blog.jaceklaskowski.pl/spark-workshop/exercises/spark-sql-exercise-Finding-Most-Populated-Cities-Per-Country.html) using windowed aggregation
+            1. Compare the execution plan to a structured query with groupBy and join operators (web UI)
+              * Disable [broadcast join](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-joins-broadcast.html) using spark.sql.autoBroadcastJoinThreshold property
           </textarea>
         </section>
 
@@ -166,7 +168,7 @@
             1. [Window Functions](#/window-functions)
             1. [Window Specification](#/window-specification)
             1. [over Column Operator](#/over-column-operator)
-            1. [Demo: Finding Most Populated Cities Per Country](#/demo)
+            1. [Demo](#/demo)
           </textarea>
         </section>
 
