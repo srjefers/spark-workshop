@@ -44,13 +44,17 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 31. [Exercise: Finding Longest Sequence (Window Aggregation)](spark-sql-exercise-Finding-Longest-Sequence.md)
 32. [Exercise: Finding Most Common Non-null Prefix per Group (Occurences)](spark-sql-exercise-Finding-Most-Common-Non-null-Prefix-Occurences-per-Group.md)
 33. [Exercise: Developing Custom Data Source](spark-sql-exercise-Developing-Custom-Data-Source.md)
+33. [Exercise: Using rollup Operator for Total and Average Salaries by Department and Company-Wide](spark-sql-exercise-Using-rollup-Operator-for-Total-and-Average-Salaries-by-Department-and-Company-Wide.md)
 
 ## Spark Structured Streaming
 
+1. [Exercise: Your First Standalone Structured Streaming Application](spark-structured-streaming-exercise-Your-First-Standalone-Structured-Streaming-Application.md)
 1. [Exercise: Streaming CSV Datasets](spark-structured-streaming-exercise-Streaming-CSV-Datasets.md)
 2. [Exercise: Stateless Streaming Aggregation](spark-structured-streaming-exercise-Streaming-Aggregation-with-groupBy.md)
 3. [Exercise: Using foreach Operator (and ForeachWriter)](spark-structured-streaming-exercise-Using-foreach-Operator-and-ForeachWriter.md)
 4. [Exercise: Using Kafka Data Source](spark-structured-streaming-exercise-Using-Kafka-Data-Source.md)
+1. [Exercise: Executing SQL Statements from Kafka](spark-structured-streaming-exercise-Executing-SQL-Statements-from-Kafka.md)
+1. [Exercise: Writing Selected Columns to Kafka](spark-structured-streaming-exercise-Writing-Selected-Columns-to-Kafka.md)
 
 ## Spark MLlib
 

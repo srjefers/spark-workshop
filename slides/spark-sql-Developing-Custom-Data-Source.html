@@ -60,7 +60,7 @@
           <textarea data-template>
             ## Agenda
 
-            1. [DataSource](#/DataSource)
+            1. [Introduction](#/introduction)
             1. ["Final Product"](#/final-product)
             1. [RelationProvider](#/RelationProvider)
             1. [DataSourceRegister](#/DataSourceRegister)
@@ -71,43 +71,140 @@
           </textarea>
         </section>
 
-        <section id="DataSource" data-markdown>
+        <section id="introduction" data-markdown style="font-size: 90%">
           <textarea data-template>
-            ## DataSource
+            ## Introduction
 
-            1. **DataSource** is the main class in Spark SQL to handle **data source resolution**
-              * Data source is often referred to as **format**
-            1. FIXME
+            1. **Data Source** - a Spark SQL component that is used to load or save datasets from external data storages or systems
+            1. **Data Source API** - a set of interfaces (contracts) in Spark SQL to implement a custom data source
+            1. **DataSource** - a class in Spark SQL that is responsible for **data source resolution**
+            1. Data Source is referenced in a Spark SQL application using **DataFrameReader.format** or **DataFrameWriter.format**
             1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-              * FIXME
+              * [DataSource &mdash; Pluggable Data Provider Framework](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-DataSource.html)
           </textarea>
         </section>
 
-        <section id="final-product" data-markdown>
-          <textarea data-template>
-            ## "Final Product"
+        <section>
+          <section id="final-product" data-markdown style="font-size: 90%">
+            <textarea data-template>
+              ## "Final Product" / Load Side (1 of 2)
 
-            <pre style="margin-left: 0px;"><code style="width: 900px;" class="lang-scala hljs">spark
+              <pre style="margin-left: 0px;"><code style="width: 900px;" class="lang-scala hljs">spark
   .read
   .format("XXX") // <-- your custom data source / format
   .option("header", true) // <-- the data source supports options
   .load("data.xxx")
-  // column pruning
-  .select('id, 'name)
-  // filter pushdown
-  .where('id > 5)
+  .select("id", "name") // column pruning
+  .where($"id" > 5)     // filter pushdown
   .show
-            </code></pre>
-          </textarea>
+              </code></pre>
+            </textarea>
+          </section>
+          <section id="final-product-save-side" data-markdown style="font-size: 90%">
+            <textarea data-template>
+              ## "Final Product" / Save Side (2 of 2)
+
+              <pre style="margin-left: 0px;"><code style="width: 900px;" class="lang-scala hljs">dataframe
+  .write
+  .format("XXX") // <-- your custom data source / format
+  .option("header", true) // <-- the data source supports options
+  .mode("overwrite") // modes
+  .save("data.xxx")
+              </code></pre>
+            </textarea>
+          </section>
+        </section>
+
+        <section>
+          <section id="BaseRelation" data-markdown style="font-size: 85%">
+            <textarea data-template>
+              ## BaseRelation
+
+              1. **BaseRelation** - the contract of relations with a known schema
+                * Schema is the metadata of a data
+                * Schema describes the shape of a data
+              1. Does not define data itself
+                * Use the data-specific contracts <small><i>(in the following slides)</i></small>
+
+
+                <pre><code class="lang-scala hljs">
+                  abstract class BaseRelation {
+                    def sqlContext: SQLContext
+                    def schema: StructType
+                    def sizeInBytes: Long = sqlContext.conf.defaultSizeInBytes
+                    def needConversion: Boolean = true
+                    def unhandledFilters(filters: Array[Filter]): Array[Filter] = filters
+                  }
+                </code></pre>
+
+              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+                * [BaseRelation &mdash; Collection of Tuples with Schema](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-BaseRelation.html)
+            </textarea>
+          </section>
+          <section id="PrunedScan" data-markdown style="font-size: 85%">
+            <textarea data-template>
+              ## PrunedScan
+
+              1. **PrunedScan** - the contract of relations that support:
+                * **Column Pruning** - eliminating unneeded columns
+
+
+                <pre><code class="lang-scala hljs">
+                  trait PrunedScan {
+                    def buildScan(requiredColumns: Array[String]): RDD[Row]
+                  }
+                </code></pre>
+
+              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+                * [PrunedScan Contract &mdash; Relations with Column Pruning](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-PrunedScan.html)
+            </textarea>
+          </section>
+          <section id="PrunedFilteredScan" data-markdown style="font-size: 85%">
+            <textarea data-template>
+              ## PrunedFilteredScan
+
+              1. **PrunedFilteredScan** - the contract of relations that support:
+                * **Column Pruning** - eliminating unneeded columns
+                * **Filter Pushdown** - filtering using selected predicates
+
+
+                <pre><code class="lang-scala hljs">
+                  trait PrunedFilteredScan {
+                    def buildScan(requiredColumns: Array[String], filters: Array[Filter]): RDD[Row]
+                  }
+                </code></pre>
+
+              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+                * [PrunedFilteredScan Contract &mdash; Relations with Column Pruning and Filter Pushdown](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-PrunedFilteredScan.html)
+            </textarea>
+          </section>
+          <section id="TableScan" data-markdown style="font-size: 85%">
+            <textarea data-template>
+              ## TableScan
+
+              1. **TableScan** - the contract of relations that support:
+                * **Column Pruning** - eliminating unneeded columns
+
+
+                <pre><code class="lang-scala hljs">
+                  trait TableScan {
+                    def buildScan(): RDD[Row]
+                  }
+                </code></pre>
+
+              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+                * [TableScan Contract &mdash; Relations with Column Pruning](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-TableScan.html)
+            </textarea>
+          </section>
         </section>
 
         <section id="RelationProvider" data-markdown>
           <textarea data-template>
             ## RelationProvider
 
-            1. **RelationProvider** is...FIXME
+            1. **RelationProvider** - the contract of `BaseRelation` providers with schema inference (discovery)
             1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-              * FIXME
+              * [RelationProvider Contract &mdash; Relation Providers With Schema Inference](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-RelationProvider.html)
           </textarea>
         </section>
 
@@ -118,26 +215,6 @@
             1. **DataSourceRegister** is...FIXME
             1. **META-INF/services/org.apache.spark.sql.sources.DataSourceRegister**
               * DataSource uses Java's ServiceLoader to load DataSourceRegisters
-            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-              * FIXME
-          </textarea>
-        </section>
-
-        <section id="BaseRelation" data-markdown>
-          <textarea data-template>
-            ## BaseRelation
-
-            1. **BaseRelation** is...FIXME
-            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-              * FIXME
-          </textarea>
-        </section>
-
-        <section id="PrunedFilteredScan" data-markdown>
-          <textarea data-template>
-            ## PrunedFilteredScan
-
-            1. **PrunedFilteredScan** is...FIXME
             1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
               * FIXME
           </textarea>

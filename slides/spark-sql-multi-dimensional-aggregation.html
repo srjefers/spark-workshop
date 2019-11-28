@@ -61,48 +61,32 @@
             ## Agenda
 
             1. [Multi-dimensional rollup Operator](#/rollup)
-              * [Exercise](#/rollup-exercise): Total and average salaries by department and company-wide
             1. [Multi-dimensional cube Operator](#/cube)
             1. [GROUPING SETS SQL clause](#/grouping-sets)
             1. [grouping Aggregate Function](#/grouping)
             1. [grouping_id Aggregate Function](#/grouping-id)
-              * [Exercise](#/grouping-id-exercise): Convert grouping_id to bitmask
           </textarea>
         </section>
 
-        <section>
-          <section id="rollup" data-markdown style="font-size: 85%">
-            <textarea data-template>
-              ## Multi-dimensional rollup Operator
+        <section id="rollup" data-markdown style="font-size: 85%">
+          <textarea data-template>
+            ## Multi-dimensional rollup Operator
 
-              1. **rollup** calculates subtotals and totals over (ordered) combination of groups
-                ```scala
-                val inventory =
-                  Seq(("t1", 2015, 100), ("t1", 2016, 50), ("t2", 2016, 40))
-                    .toDF("name", "year", "amount")
-                inventory.rollup("name", "year").sum("amount")
-                ```
-                * **Quiz**: How many records in result set?
-              1. Advanced variant of **groupBy** with higher efficiency
-              1. Creates **RelationalGroupedDataset**
-                * Supports untyped, Row-based **agg**
-                * Shortcuts for _the usual suspects_, e.g. **avg**, **count**, **pivot**
-              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-                * [rollup Aggregation Operator](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-multi-dimensional-aggregation.html#rollup)
-            </textarea>
-          </section>
-          <section id="rollup-exercise" data-markdown>
-            <textarea data-template>
-              ## Exercise: Total and average salaries by department and company-wide
-
-              1. Develop a standalone Spark SQL application (IntelliJ IDEA)
-              1. Use **rollup** aggregate operator (and multi-column **agg**)
-              1. Use Spark API scaladoc
-                * [Dataset](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
-                * [RelationalGroupedDataset](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.RelationalGroupedDataset)
-              1. Time: **30 mins**
-            </textarea>
-          </section>
+            1. **rollup** calculates subtotals and totals over (ordered) combination of groups
+              ```scala
+              val inventory =
+                Seq(("t1", 2015, 100), ("t1", 2016, 50), ("t2", 2016, 40))
+                  .toDF("name", "year", "amount")
+              inventory.rollup("name", "year").sum("amount")
+              ```
+              * **Quiz**: How many records in result set?
+            1. Advanced variant of **groupBy** with higher efficiency
+            1. Creates **RelationalGroupedDataset**
+              * Supports untyped, Row-based **agg**
+              * Shortcuts for _the usual suspects_, e.g. **avg**, **count**, **pivot**
+            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+              * [rollup Aggregation Operator](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-multi-dimensional-aggregation.html#rollup)
+          </textarea>
         </section>
 
         <section>
@@ -164,27 +148,14 @@ workshops
           </textarea>
         </section>
 
-        <section>
-          <section id="grouping-id" data-markdown>
-            <textarea data-template>
-              ## grouping_id Aggregate Function
+        <section id="grouping-id" data-markdown>
+          <textarea data-template>
+            ## grouping_id Aggregate Function
 
-              1. **Exercise** (hard): Can you guess yourself?
-              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-                * [grouping_id Aggregate Function](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions.html#grouping_id)
-            </textarea>
-          </section>
-          <section id="grouping-id-exercise" data-markdown>
-            <textarea data-template>
-              ## Exercise: Convert grouping_id to bitmask
-
-              1. Find the function to _return the string representation of the binary value of a long column_
-              1. Use the function to "binarize" **grouping_id** results
-              1. Use Spark API scaladoc
-                * [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-              1. Time: **30 mins**
-            </textarea>
-          </section>
+            1. **Exercise** (hard): Can you guess yourself?
+            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
+              * [grouping_id Aggregate Function](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions.html#grouping_id)
+          </textarea>
         </section>
 
         <section id="recap" data-markdown>
@@ -192,12 +163,10 @@ workshops
             ## Recap
 
             1. [Multi-dimensional rollup Operator](#/rollup)
-              * [Exercise](#/rollup-exercise): Total and average salaries by department and company-wide
             1. [Multi-dimensional cube Operator](#/cube)
             1. [GROUPING SETS SQL clause](#/grouping-sets)
             1. [grouping Aggregate Function](#/grouping)
             1. [grouping_id Aggregate Function](#/grouping-id)
-              * [Exercise](#/grouping-id-exercise): Convert grouping_id to bitmask
           </textarea>
         </section>
 
