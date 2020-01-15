@@ -23,6 +23,9 @@ Duration: **30 mins**
 |    Pittsburgh PA|United States|   302 407|
 |       Chicago IL|United States| 2 716 000|
 |     Milwaukee WI|United States|   595 351|
+|          Vilnius|    Lithuania|   580 020|
+|        Stockholm|       Sweden|   972 647|
+|         Goteborg|       Sweden|   580 020|
 +-----------------+-------------+----------+
 ```
 
@@ -35,6 +38,9 @@ Villeneuve-Loubet,France,15 020
 Pittsburgh PA,United States,302 407
 Chicago IL,United States,2 716 000
 Milwaukee WI,United States,595 351
+Vilnius,Lithuania,580 020
+Stockholm,Sweden,972 647
+Goteborg,Sweden,580 020
 ```
 
 ## Result
@@ -46,6 +52,8 @@ Milwaukee WI,United States,595 351
 |    Warsaw|       Poland| 1 764 615|
 |     Paris|       France| 2 206 488|
 |Chicago IL|United States| 2 716 000|
+|   Vilnius|    Lithuania|   580 020|
+| Stockholm|       Sweden|   972 647|
 +----------+-------------+----------+
 ```
 
