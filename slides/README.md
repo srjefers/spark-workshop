@@ -2,6 +2,7 @@
 
 ## Agendas
 
+1. [Apache Spark™ Advanced for Developers Workshop (5 half-days online)](https://jaceklaskowski.github.io/spark-workshop/slides/00_agenda-5-days-online-Apache-Spark-Advanced-for-Developers.html) &mdash; _being taught_ online, 14-18 September 2020
 1. [Apache Spark™ Advanced for Developers Workshop (5 days)](https://jaceklaskowski.github.io/spark-workshop/slides/00_agenda-5-days-Apache-Spark-Advanced-for-Developers.html) &mdash; taught in [Vilnius, Lithuania](https://en.wikipedia.org/wiki/Vilnius), 13-17 January 2020
 1. [Apache Spark™ Advanced for Developers Workshop (5 days)](https://jaceklaskowski.github.io/spark-workshop/slides/00_agenda-5-days-Apache-Spark-Advanced-for-Developers-1911.html) for Experienced Scala Developers with significant experience in Apache Spark™ &mdash; taught in [Villeneuve-Loubet, France](https://en.wikipedia.org/wiki/Villeneuve-Loubet), 25-29 November 2019
 1. [Apache Spark™ with Scala for PySpark Developers Workshop (5 days)](https://jaceklaskowski.github.io/spark-workshop/slides/00_agenda-5-days-Apache-Spark-with-Scala-for-PySpark-Developers-Workshop.html) &mdash; taught in [Pittsburgh PA, US](https://en.wikipedia.org/wiki/Pittsburgh), 15-19 April 2019
