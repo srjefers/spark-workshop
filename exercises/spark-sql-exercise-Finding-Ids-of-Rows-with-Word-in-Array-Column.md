@@ -2,7 +2,7 @@
 
 Develop a standalone Spark SQL application (using IntelliJ IDEA) that finds the ids of the rows that have values of one column in an array column.
 
-Protip™: Use [split](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) and [explode](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) standard functions
+Protip™: Use [split](http://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/functions$.html) and [explode](http://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/functions$.html) standard functions
 
 Module: **Spark SQL**
 

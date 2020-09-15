@@ -33,7 +33,8 @@
 
       <div class="footer">
         <footer style="font-size: small;">
-          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2019 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
+          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2020 / <a
+            href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
           / jacek@japila.pl
         </footer>
       </div>
@@ -46,12 +47,18 @@
             <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
           </p>
           <h1 style="font-size: 2.99em;">Columns and Dataset Operators</h1>
-          <h3>Apache Spark 2.4.4 / Spark SQL</h3>
+          <h3>Apache Spark 3.0.1 / Spark SQL</h3>
 
           <h4 style="font-size: smaller;">
-            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a
+              href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a
+              href="https://github.com/jaceklaskowski">GitHub</a> / <a
+              href="https://www.linkedin.com/in/jaceklaskowski/">LinkedIn</a>
             <br>
-            The "Internals" Books: <a href="https://bit.ly/apache-spark-internals">Apache Spark</a> / <a href="https://bit.ly/spark-sql-internals">Spark SQL</a> / <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+            The "Internals" Books: <a href="https://books.japila.pl/apache-spark-internals">Apache Spark</a> / <a
+              href="https://jaceklaskowski.github.io/mastering-spark-sql-book/">Spark SQL</a> / <a
+              href="https://jaceklaskowski.github.io/spark-structured-streaming-book/">Spark Structured Streaming</a> / <a
+              href="https://books.japila.pl/delta-lake-internals">Delta Lake</a>
           </h4>
         </section>
 
@@ -81,8 +88,8 @@
               myDataset("id") // bound column reference
               ```
             1. Use **import spark.implicits._**
-            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-              * [Column Expressions and Operators](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-Column.html)
+            1. Switch to [The Internals of Spark SQL](https://jaceklaskowski.github.io/mastering-spark-sql-book/)
+              * [Column Expressions and Operators](https://jaceklaskowski.github.io/mastering-spark-sql-book/spark-sql-Column/)
           </textarea>
         </section>
 
@@ -100,7 +107,7 @@
               * **over** for windowed aggregates
               * **cast** for casting to a custom data type
               * **when** and **otherwise** for conditional values
-            1. **Home exercise**: Read up [Column's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Column)
+            1. **Home exercise**: Read up [Column's scaladoc](http://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/Column.html)
           </textarea>
         </section>
 
@@ -117,9 +124,9 @@
                 * **flatMap** to "explode" records
                 * **randomSplit** to split records to two Datasets randomly
                 * **select**, **selectExpr**, **filter**, **where**
-                * &hellip; _many many more_ &mdash; read up [Dataset's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.Dataset)
-              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-                * [Dataset Operators](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-dataset-operators.html)
+                * &hellip; _many many more_ &mdash; read up [Dataset's scaladoc](http://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/Dataset.html)
+              1. Switch to [The Internals of Spark SQL](https://jaceklaskowski.github.io/mastering-spark-sql-book/)
+                * [Dataset Operators](https://jaceklaskowski.github.io/mastering-spark-sql-book/spark-sql-dataset-operators/)
             </textarea>
           </section>
         </section>
@@ -139,9 +146,9 @@
           <textarea data-template>
             # Questions?
 
-            * Read [The Internals of Apache Spark](https://bit.ly/apache-spark-internals)
-            * Read [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-            * Read [The Internals of Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
+            * Read [The Internals of Apache Spark](https://books.japila.pl/apache-spark-internals/)
+            * Read [The Internals of Spark SQL](https://jaceklaskowski.github.io/mastering-spark-sql-book/)
+            * Read [The Internals of Spark Structured Streaming](https://jaceklaskowski.github.io/spark-structured-streaming-book/)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </textarea>
