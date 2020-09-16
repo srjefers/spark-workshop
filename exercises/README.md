@@ -10,6 +10,7 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 ## Spark SQL
 
 1. [split function with variable delimiter per row](sql/split-function-with-variable-delimiter-per-row.md)
+1. [Selecting the most important rows per assigned priority](sql/selecting-the-most-important-rows-per-assigned-priority.md)
 1. [Standalone Spark Application to Display Spark SQL Version](spark-sql-exercise-Standalone-Spark-Application-to-Display-Spark-SQL-Version.md)
 2. [Using CSV Data Source](spark-sql-exercise-Using-CSV-Data-Source.md)
 3. [Finding Ids of Rows with Word in Array Column](spark-sql-exercise-Finding-Ids-of-Rows-with-Word-in-Array-Column.md)

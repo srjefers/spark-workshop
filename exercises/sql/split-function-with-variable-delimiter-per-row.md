@@ -15,8 +15,7 @@ val dept = Seq(
   ("50000.0#0#0#", "#"),
   ("0@1000.0@", "@"),
   ("1$", "$"),
-  ("1000.00^Test_string", "^")
-).toDF("VALUES", "Delimiter")
+  ("1000.00^Test_string", "^")).toDF("VALUES", "Delimiter")
 scala> dept.show
 +-------------------+---------+
 |             VALUES|Delimiter|
@@ -56,11 +55,11 @@ scala> extra.show(truncate = false)
 +-------------------+---------+----------------------+----------------------+
 ```
 
+<!--
 ## Credits
 
 * [How to use split function with variable delimiter for each row?](https://stackoverflow.com/q/62874723/1305344)
 
-<!--
 ## Solution
 
 ```text
