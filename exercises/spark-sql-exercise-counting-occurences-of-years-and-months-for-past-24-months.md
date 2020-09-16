@@ -14,7 +14,6 @@ Duration: **30 mins**
 
 ## Input Dataset
 
-.sales.csv
 ```text
 YEAR_MONTH,AMOUNT
 202001,500

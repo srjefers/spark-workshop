@@ -9,6 +9,7 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 
 ## Spark SQL
 
+1. [split function with variable delimiter per row](sql/split-function-with-variable-delimiter-per-row.md)
 1. [Standalone Spark Application to Display Spark SQL Version](spark-sql-exercise-Standalone-Spark-Application-to-Display-Spark-SQL-Version.md)
 2. [Using CSV Data Source](spark-sql-exercise-Using-CSV-Data-Source.md)
 3. [Finding Ids of Rows with Word in Array Column](spark-sql-exercise-Finding-Ids-of-Rows-with-Word-in-Array-Column.md)
@@ -20,7 +21,7 @@ This repository contains the exercises for [Apache Spark™ and Scala Workshops]
 9. [Using upper Standard Function](spark-sql-exercise-Using-upper-Standard-Function.md)
 10. [Using explode Standard Function](spark-sql-exercise-Using-explode-Standard-Function.md)
 11. [Difference in Days Between Dates As Strings](spark-sql-exercise-Difference-in-Days-Between-Dates-As-Strings.md)
-1. [Counting Occurences Of Years and Months For Past 24 Months](spark-sql-exercise-counting-occurences-of-years-and-months-for-past-24-months.md)
+1. [Counting Occurences Of Years and Months For 24 Months From Now](spark-sql-exercise-counting-occurences-of-years-and-months-for-past-24-months.md)
 1. [Why are all fields null when querying with schema?](spark-sql-exercise-Why-are-all-fields-null-when-querying-with-schema.md)
 1. [How to add days (as values of a column) to date?](spark-sql-exercise-How-to-add-days-as-values-of-a-column-to-date.md)
 12. [Using UDFs](spark-sql-exercise-Using-UDFs.md)
