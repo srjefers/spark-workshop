@@ -115,10 +115,10 @@
               ## Agenda
 
               1. [Day 1](#/day1) &mdash; The Internals of Spark SQL
-              1. [Day 2](#/day2) &mdash; The Internals of Apache Spark
+              1. [Day 2](#/day2) &mdash; Spark SQL
               1. [Day 3](#/day3) &mdash; Advanced Spark SQL
-              1. [Day 4](#/day4) &mdash; web UI
-              1. [Day 5](#/day5) &mdash; Performance Optimizations / Troubleshooting
+              1. [Day 4](#/day4) &mdash; Spark SQL
+              1. [Day 5](#/day5) &mdash; Spark SQL and Delta Lake
             </textarea>
           </section>
 
@@ -126,7 +126,7 @@
             <textarea data-template>
               ## Day 1 &mdash; The Internals of Spark SQL
 
-              1. (Warm-up) [Exercise: Finding Ids of Rows with Word in Array Column](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Finding-Ids-of-Rows-with-Word-in-Array-Column.html)
+              1. (Warm-up) [Exercise: Finding Ids of Rows with Word in Array Column](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/Finding-Ids-of-Rows-with-Word-in-Array-Column.html)
               1. [Spark SQL](spark-sql.html)
               1. Data Structures (Dataset, DataFrame, RDD)
               1. [The Internals of Structured Query Execution](spark-sql-internals-of-structured-query-execution.html)
@@ -139,16 +139,11 @@
               ## Day 2 &mdash; Spark SQL
 
               1. [Standard and User-Defined Functions](spark-sql-standard-functions-udfs.html)
-                * [Exercise: How to add days (as values of a column) to date?](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-How-to-add-days-as-values-of-a-column-to-date.html)
+                * [Exercise: How to add days (as values of a column) to date?](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/How-to-add-days-as-values-of-a-column-to-date.html)
               1. [Basic Aggregation](spark-sql-basic-aggregation.html)
-                * [Exercise: Finding maximum values per group (groupBy)](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Finding-maximum-values-per-group-groupBy.html)
-                * [Exercise: Collect values per group](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Collect-values-per-group.html)
-                * [Exercise: Multiple Aggregations](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Multiple-Aggregations.html)
-                * [Exercise: Calculating aggregations](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Finding-maximum-value-agg.html)
+                * [Exercise: Multiple Aggregations](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/Multiple-Aggregations.html)
               1. [Joins](spark-sql-joins.html)
-                * [Exercise: Finding Most Populated Cities Per Country](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Finding-Most-Populated-Cities-Per-Country.html)
-              1. Exercises
-                * [Exercise: Flattening Array Columns (From Datasets of Arrays to Datasets of Array Elements)](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Flattening-Array-Columns-From-Datasets-of-Arrays-to-Datasets-of-Array-Elements.html)
+                * [Exercise: Finding Most Populated Cities Per Country](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/Finding-Most-Populated-Cities-Per-Country.html)
             </textarea>
           </section>
 
@@ -156,53 +151,34 @@
             <textarea data-template>
               ## Day 3 &mdash; Advanced Spark SQL
 
-              1. Exercises
-                * [Exercise: Reverse-engineering Dataset.show Output](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Reverse-engineering-Dataset-show-Output.html)
-                * [Exercise: Using pivot for Cost Average and Collecting Values](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Using-pivot-for-Cost-Average-and-Collecting-Values.html)
               1. [Windowed Aggregation](spark-sql-windowed-aggregation.html)
-                * [Exercise: Finding 1st and 2nd Bestsellers Per Genre](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Finding-1st-and-2nd-Bestsellers-Per-Genre.html)
-                * [Exercise: Calculating Gap Between Current And Highest Salaries Per Department](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Calculating-Gap-Between-Current-And-Highest-Salaries-Per-Department.html)
-                * [Exercise: Calculating Running Total / Cumulative Sum](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Calculating-Running-Total-Cumulative-Sum.html)
-                * [Exercise: Calculating Difference Between Consecutive Rows Per Window](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Calculating-Difference-Between-Consecutive-Rows-Per-Window.html)
-              1. [Multi-Dimensional Aggregation](spark-sql-multi-dimensional-aggregation.html)
-                * [Exercise: Using rollup Operator for Total and Average Salaries by Department and Company-Wide](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Using-rollup-Operator-for-Total-and-Average-Salaries-by-Department-and-Company-Wide.html)
-              1. [Developing Custom Data Source](spark-sql-Developing-Custom-Data-Source.html)
+                * [Exercise: Finding 1st and 2nd Bestsellers Per Genre](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/Finding-1st-and-2nd-Bestsellers-Per-Genre.html)
+                * [Exercise: Calculating Gap Between Current And Highest Salaries Per Department](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/Calculating-Gap-Between-Current-And-Highest-Salaries-Per-Department.html)
+                * [Exercise: Calculating Difference Between Consecutive Rows Per Window](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/Calculating-Difference-Between-Consecutive-Rows-Per-Window.html)
             </textarea>
           </section>
 
           <section id="day4" data-markdown style="font-size: 75%;">
             <textarea data-template>
-              ## Day 4 &mdash; Spark Structured Streaming
+              ## Day 4 &mdash; Spark SQL
 
-              1. [Exercise: Developing Custom Data Source](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Developing-Custom-Data-Source.html)
-              1. [Spark Structured Streaming](spark-structured-streaming.html)
-                * [Exercise: Your First Standalone Structured Streaming Application](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Your-First-Standalone-Structured-Streaming-Application.html)
-                * [Exercise: Streaming CSV Datasets](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Streaming-CSV-Datasets.html)
-                * [Exercise: Stateless Streaming Aggregation](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Streaming-Aggregation-with-groupBy.html)
-              1. Spark Structured Streaming / Kafka Data Source
-                * [The Essentials of Apache Kafka™](https://jaceklaskowski.github.io/kafka-workshop/slides/apache-kafka-essentials.html)
-                * [Exercise: Using Kafka Data Source](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Using-Kafka-Data-Source.html)
+              1. Spark SQL / Exercises
+                * [split function with variable delimiter per row](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/split-function-with-variable-delimiter-per-row.html)
+                * [Selecting the most important rows per assigned priority](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/selecting-the-most-important-rows-per-assigned-priority.html)
+                * [Adding count to the source DataFrame](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/adding-count-to-the-source-dataframe.html)
             </textarea>
           </section>
 
           <section id="day5" data-markdown style="font-size: 75%;">
             <textarea data-template>
-              ## Day 5 &mdash; Spark (All Modules)
+              ## Day 5 &mdash; Spark SQL and Delta Lake
 
-              1. Spark Structured Streaming / Exercises
-                * [Exercise: Using foreach Operator (and ForeachWriter)](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Using-foreach-Operator-and-ForeachWriter.html)
-                * [Exercise: Executing SQL Statements from Kafka](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Executing-SQL-Statements-from-Kafka.html)
-                * [Exercise: Writing Selected Columns to Kafka](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Writing-Selected-Columns-to-Kafka.html)
-              1. Delta Lake
-              1. Spark MLlib
-                1. [Machine Learning with Spark MLlib](spark-mllib.html)
-                1. [ML Pipelines](spark-mllib-ml-pipelines.html)
-                1. [Exercise: Email Classification](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-mllib-exercise-Email-Classification.html)
-              1. [web UI](spark-core-webui.html)
               1. Spark SQL / Exercises
-                1. [Exercise: Generating Exam Assessment Report](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Generating-Exam-Assessment-Report.html)
-                1. [Exercise: Finding Longest Sequence](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Finding-Longest-Sequence.html)
-                1. [Exercise: Calculating percent rank](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-sql-exercise-Calculating-percent-rank.html)
+                * [Limiting collect_set Standard Function](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/limiting-collect_set-standard-function.html)
+                * [Structs for column names and values](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/structs-for-column-names-and-values.html)
+                * [Exercise: Using pivot for Cost Average and Collecting Values](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/Using-pivot-for-Cost-Average-and-Collecting-Values.html)
+              1. [Multi-Dimensional Aggregation](spark-sql-multi-dimensional-aggregation.html)
+              1. Introduction to Delta Lake
             </textarea>
           </section>
 
@@ -248,12 +224,26 @@
               <li>Say <b>"Hi!"</b> in the chat window</li>
             </ol>
           </section>
+          <section id="schedule">
+            <h2>Schedule</h2>
+            <ol>
+              <li>5 x 45-minute blocks / day</li>
+              <li>Mon-Tue
+                <ul>
+                  <li>9:00 - 11:00, 15' break, 11:30 - 13:00</li>
+                </ul>
+              </li>  
+              <li>Wed-Fri
+                <ul>
+                  <li>10:00 - 11:45, 15' break, 12:00 - 14:00</li>
+                </ul>
+              </li>  
+            </ol>
+          </section>
           <section id="addendum">
             <h2>Addendum</h2>
             <ol>
               <li>Ask questions in the chat window</li>
-              <li>5 x 45-minute blocks</li>
-              <li>Breaks on demand</li>
             </ol>
           </section>
         </section>
