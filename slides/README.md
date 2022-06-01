@@ -2,6 +2,7 @@
 
 ## Agendas
 
+1. [Big Data Solutions using Apache Spark (2 days)](https://jaceklaskowski.github.io/spark-workshop/slides/00_agenda-2-days-Big-Data-Solutions-using-Apache-Spark.html) &mdash; [Stockholm, Sweden](https://en.wikipedia.org/wiki/Stockholm), 2-3 Jun 2022
 1. [Apache Spark™ Advanced for PySpark Developers Workshop (2 days online)](https://jaceklaskowski.github.io/spark-workshop/slides/00_agenda-2-days-Spark-SQL-for-PySpark-Developers.html) &mdash; taught online, 25-26 January 2022
 1. [Apache Spark™ Advanced for Developers Workshop (5 half-days online)](https://jaceklaskowski.github.io/spark-workshop/slides/00_agenda-5-days-online-Apache-Spark-Advanced-for-Developers.html) &mdash; taught online, 14-18 September 2020
 1. [Apache Spark™ Advanced for Developers Workshop (5 days)](https://jaceklaskowski.github.io/spark-workshop/slides/00_agenda-5-days-Apache-Spark-Advanced-for-Developers.html) &mdash; taught in [Vilnius, Lithuania](https://en.wikipedia.org/wiki/Vilnius), 13-17 January 2020
