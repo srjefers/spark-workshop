@@ -98,15 +98,3 @@
 1. [Agenda &mdash; Day 1](https://jaceklaskowski.github.io/spark-workshop/slides/01_agenda.html)
 1. [Agenda &mdash; Day 2](https://jaceklaskowski.github.io/spark-workshop/slides/02_agenda.html)
 1. [Agenda &mdash; Day 3](https://jaceklaskowski.github.io/spark-workshop/slides/03_agenda.html)
-
-## Contact The Author
-
-* Read [Mastering Apache Spark 2](https://bit.ly/mastering-apache-spark)
-* Read [Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
-* Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
-* Upvote [Jacek Laskowski's questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
-* Use [Jacek's code on GitHub](https://github.com/jaceklaskowski)
-* Read [blog posts on Medium](https://medium.com/@jaceklaskowski)
-* Upvote [Jacek's answers on Quora](https://www.quora.com/profile/Jacek-Laskowski)
-* Connect [on LinkedIn](https://www.linkedin.com/in/jaceklaskowski/)
-* Visit [Jacek Laskowski's blog](https://blog.jaceklaskowski.pl)
