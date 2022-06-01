@@ -9,23 +9,15 @@
     <meta name="description" content="Big Data Solutions using Apache Spark (2 days)">
     <meta name="author" content="Jacek Laskowski">
 
-    <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+    <link rel="stylesheet" href="reveal4/dist/reset.css">
+    <link rel="stylesheet" href="reveal4/dist/reveal.css">
+    <link rel="stylesheet" href="reveal4/dist/theme/beige.css">
     
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="reveal4/plugin/highlight/monokai.css">
     
     <!-- Jacek: custom formatting -->
     <link rel="stylesheet" href="revealjs-css/jacek.css">
-    
-    <!-- Printing and PDF exports -->
-    <script>
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-      document.getElementsByTagName('head')[0].appendChild(link);
-    </script>
   </head>
 
   <body>
@@ -144,12 +136,12 @@
                   Country](https://jaceklaskowski.github.io/spark-workshop/exercises/sql/Finding-Most-Populated-Cities-Per-Country.html)
               1. web UI
               1. [Spark Structured Streaming](spark-structured-streaming.html)
-                * [Exercise: Your First Standalone Structured Streaming Application](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Your-First-Standalone-Structured-Streaming-Application.html)
-                * [Exercise: Streaming CSV Datasets](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Streaming-CSV-Datasets.html)
-                * [Exercise: Stateless Streaming Aggregation](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Streaming-Aggregation-with-groupBy.html)
-                * [Exercise: Using foreach Operator (and ForeachWriter)](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Using-foreach-Operator-and-ForeachWriter.html)
+                  * [Exercise: Your First Standalone Structured Streaming Application](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Your-First-Standalone-Structured-Streaming-Application.html)
+                  * [Exercise: Streaming CSV Datasets](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Streaming-CSV-Datasets.html)
+                  * [Exercise: Stateless Streaming Aggregation](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Streaming-Aggregation-with-groupBy.html)
+                  * [Exercise: Using foreach Operator (and ForeachWriter)](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Using-foreach-Operator-and-ForeachWriter.html)
               1. (?) Spark Structured Streaming / Kafka Data Source
-                * [Exercise: Using Kafka Data Source](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Using-Kafka-Data-Source.html)
+                  * [Exercise: Using Kafka Data Source](https://jaceklaskowski.github.io/spark-workshop/exercises/spark-structured-streaming-exercise-Using-Kafka-Data-Source.html)
             </textarea>
           </section>
         </section>
@@ -209,42 +201,30 @@
       </div>
     </div>
 
-    <script src="reveal.js/lib/js/head.min.js"></script>
-    <script src="reveal.js/js/reveal.js"></script>
-
+    <script src="reveal4/dist/reveal.js"></script>
+    <script src="reveal4/plugin/notes/notes.js"></script>
+    <script src="reveal4/plugin/markdown/markdown.js"></script>
+    <script src="reveal4/plugin/highlight/highlight.js"></script>
+    <script src="reveal4/plugin/zoom/zoom.js"></script>
     <script>
       // More info about config & dependencies:
       // - https://github.com/hakimel/reveal.js#configuration
       // - https://github.com/hakimel/reveal.js#dependencies
       Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        slideNumber: true,
-
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-        menu: {
-          markers: true,
-          openSlideNumber: true
-        },
-        dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
-          { src: 'reveal.js/plugin/markdown/marked.js' },
-          { src: 'reveal.js/plugin/markdown/markdown.js' },
-          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
-        ]
+        hash: true,
+        pdf: true,
+        slideNumber: 'c/t',
+        showSlideNumber: 'speaker',
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom]
       });
     </script>
     <script>
       (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
       })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
       ga('create', 'UA-45999426-3', 'auto');
