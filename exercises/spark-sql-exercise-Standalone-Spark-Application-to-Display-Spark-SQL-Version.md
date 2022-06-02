@@ -1,6 +1,6 @@
 # Exercise: Standalone Spark Application to Display Spark SQL Version
 
-The exercise is to create a standalone Spark SQL application in Scala that displays the version of Spark SQL in use.
+This exercise is about creating a standalone Spark SQL application in Scala that displays the version of Spark SQL in use.
 
 Module: **Spark SQL**
 
@@ -9,12 +9,13 @@ Duration: **30 mins**
 ## Steps
 
 1. In **IntelliJ IDEA** create a new Scala sbt-managed project
-2. Define Spark SQL dependency in **build.sbt**
-    * **libraryDependencies**
-    * **"org.apache.spark" %% "spark-sql" % "2.4.4"**
-3. Write the required **Spark SQL code**
+1. Define Spark SQL dependency in **build.sbt**
+    * `libraryDependencies`
+    * `"org.apache.spark" %% "spark-sql" % "3.2.1"`
+1. Write the required **Spark SQL code**
     * Create a new instance of [SparkSession](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.SparkSession)
     * Use [SparkSession.version](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.SparkSession@version:String) method to know the version of Spark on which this application is running
-    * **spark.version**
-4. Build an executable jar using **sbt package**
-5. Run the application using **spark-submit**
+    * `spark.version`
+1. Build an executable jar
+    * Use `sbt package` on command line or use IDEA's sbt view
+1. Run the application using `spark-submit`

@@ -9,23 +9,15 @@
     <meta name="description" content="Apache Spark™ Workshop | Spark SQL | Basic Aggregation">
     <meta name="author" content="Jacek Laskowski">
 
-    <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+    <link rel="stylesheet" href="reveal4/dist/reset.css">
+    <link rel="stylesheet" href="reveal4/dist/reveal.css">
+    <link rel="stylesheet" href="reveal4/dist/theme/beige.css">
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="reveal4/plugin/highlight/monokai.css">
 
     <!-- Jacek: custom formatting -->
     <link rel="stylesheet" href="revealjs-css/jacek.css">
-
-    <!-- Printing and PDF exports -->
-    <script>
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-      document.getElementsByTagName('head')[0].appendChild(link);
-    </script>
   </head>
 
   <body>
@@ -33,7 +25,8 @@
 
       <div class="footer">
         <footer style="font-size: small;">
-          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2019 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
+          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2022 / <a
+            href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
           / jacek@japila.pl
         </footer>
       </div>
@@ -42,18 +35,21 @@
 
         <section class="intro" data-transition="zoom" id="home">
           <p>
-            <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="10%" src="images/jacek_laskowski_20201229_200x200.png" style="border: 0">
           </p>
           <h1>Basic Aggregation</h1>
           <h3>(agg, groupBy and groupByKey)</h3>
-          <h3>Apache Spark 2.4.4 / Spark SQL</h3>
+          <h3>Apache Spark 3.2 / Spark SQL</h3>
 
           <hr />
           <h4 style="font-size: smaller;">
-            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a
+              href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a
+              href="https://github.com/jaceklaskowski">GitHub</a> / <a
+              href="https://www.linkedin.com/in/jaceklaskowski/">LinkedIn</a>
             <br>
-            The "Internals" Books: <a href="https://bit.ly/apache-spark-internals">Apache Spark</a> / <a href="https://bit.ly/spark-sql-internals">Spark SQL</a> / <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+            The "Internals" Books: <a href="https://books.japila.pl">books.japila.pl</a>
           </h4>
         </section>
 
@@ -76,11 +72,11 @@
             ## Aggregate Functions
 
             1. **Aggregate functions** accept a group of records as input
-              * Unlike regular functions that act on a single record
+                * Unlike regular functions that act on a single record
             1. Available among standard functions
-              ```scala
-              import org.apache.spark.sql.functions._
-              ```
+                ```scala
+                import org.apache.spark.sql.functions._
+                ```
             1. _Usual suspects_: **avg**, **collect_list**, **count**, **min**, **mean**, **sum**
             1. You can create custom **user-defined aggregate functions (UDAFs)**
             1. Read [functions object's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
@@ -93,17 +89,17 @@
             ## agg Operator
 
             1. **agg** applies an aggregate function to records in Dataset
-            ```scala
-              val ds = spark.range(10)
-              ds.agg(sum('id) as "sum")
-            ```
+                ```scala
+                  val ds = spark.range(10)
+                  ds.agg(sum('id) as "sum")
+                ```
             1. Entire Dataset acts as a single group
-              * **groupBy** used to define groups <small>(more in the following slide)</small>
+                * **groupBy** used to define groups <small>(more in the following slide)</small>
             1. Creates DataFrame
-              * &hellip;hence considered untyped due to **Row** inside
-              * Typed variant available <small>(more in the following slide)</small>
-            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-              * [Basic Aggregation &mdash; Typed and Untyped Grouping Operators](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-basic-aggregation.html)
+                * &hellip;hence considered untyped due to **Row** inside
+                * Typed variant available <small>(more in the following slide)</small>
+            1. Switch to [The Internals of Spark SQL](https://books.japila.pl/spark-sql-internals/)
+                * [Basic Aggregation &mdash; Typed and Untyped Grouping Operators](https://books.japila.pl/spark-sql-internals/basic-aggregation)
           </textarea>
         </section>
 
@@ -113,15 +109,15 @@
             ## Untyped groupBy Operator
 
             1. **groupBy** groups records in Dataset per _discriminator function_
-              ```
-              val nums = spark.range(10)
-              nums.groupBy('id % 2 as "group").agg(sum('id) as "sum")
-              ```
+                ```
+                val nums = spark.range(10)
+                nums.groupBy('id % 2 as "group").agg(sum('id) as "sum")
+                ```
             1. Creates **RelationalGroupedDataset**
-              * Supports untyped, Row-based **agg**
-              * Shortcuts for _the usual suspects_, e.g. **avg**, **count**, **max**
-              * Supports **pivot**
-              * Read [RelationalGroupedDataset's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.RelationalGroupedDataset)
+                * Supports untyped, Row-based **agg**
+                * Shortcuts for _the usual suspects_, e.g. **avg**, **count**, **max**
+                * Supports **pivot**
+                * Read [RelationalGroupedDataset's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.RelationalGroupedDataset)
           </textarea>
         </section>
 
@@ -131,26 +127,26 @@
             ## Typed groupByKey Operator
 
             1. **groupByKey** similar to **groupBy** operator, but gives typed interface
-            ```scala
-              ds.groupByKey(_ % 2).reduceGroups(_ + _).show
+                ```scala
+                  ds.groupByKey(_ % 2).reduceGroups(_ + _).show
 
-              // compare to untyped query
-              nums.groupBy('id % 2 as "group").agg(sum('id) as "sum")
-            ```
+                  // compare to untyped query
+                  nums.groupBy('id % 2 as "group").agg(sum('id) as "sum")
+                ```
             1. Creates **KeyValueGroupedDataset**
-              * Supports typed **agg**
-              * Shortcuts for _the usual suspects_, e.g. **reduceGroups**, **mapValues**, **mapGroups**, **flatMapGroups**, **cogroup**
-              * Read [KeyValueGroupedDataset's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.KeyValueGroupedDataset)
+                * Supports typed **agg**
+                * Shortcuts for _the usual suspects_, e.g. **reduceGroups**, **mapValues**, **mapGroups**, **flatMapGroups**, **cogroup**
+                * Read [KeyValueGroupedDataset's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.KeyValueGroupedDataset)
           </textarea>
         </section>
 
         <section id="udaf" data-markdown>
           <textarea data-template>
-            ## User-Defined Untyped Aggregate Functions (UDAFs)
+            ## User-Defined Aggregate Functions (UDAFs)
 
             1. [UserDefinedAggregateFunction](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.expressions.UserDefinedAggregateFunction) - the base class for implementing user-defined aggregate functions
-            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-              * [UserDefinedAggregateFunction — Contract for User-Defined Untyped Aggregate Functions (UDAFs)](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-UserDefinedAggregateFunction.html)
+            1. Switch to [The Internals of Spark SQL](https://books.japila.pl/spark-sql-internals/)
+                * [UserDefinedAggregateFunction &mdash; User-Defined Untyped Aggregate Functions (UDAFs)](https://books.japila.pl/spark-sql-internals/expressions/UserDefinedAggregateFunction)
           </textarea>
         </section>
 
@@ -162,7 +158,7 @@
             1. [agg Operator](#/agg-operator)
             1. [Untyped groupBy Operator](#/groupBy-operator)
             1. [Typed groupByKey Operator](#/groupByKey-operator)
-            1. [User-Defined Untyped Aggregate Functions (UDAFs)](#/udaf)
+            1. [User-Defined Aggregate Functions (UDAFs)](#/udaf)
           </textarea>
         </section>
 
@@ -170,9 +166,9 @@
           <textarea data-template>
             # Questions?
 
-            * Read [The Internals of Apache Spark](https://bit.ly/apache-spark-internals)
-            * Read [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-            * Read [The Internals of Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
+            * Read [The Internals of Apache Spark](https://books.japila.pl/apache-spark-internals/)
+            * Read [The Internals of Spark SQL](https://books.japila.pl/spark-sql-internals/)
+            * Read [The Internals of Spark Structured Streaming](https://books.japila.pl/spark-structured-streaming-internals/)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </textarea>
@@ -181,42 +177,30 @@
       </div>
     </div>
 
-    <script src="reveal.js/lib/js/head.min.js"></script>
-    <script src="reveal.js/js/reveal.js"></script>
-
+    <script src="reveal4/dist/reveal.js"></script>
+    <script src="reveal4/plugin/notes/notes.js"></script>
+    <script src="reveal4/plugin/markdown/markdown.js"></script>
+    <script src="reveal4/plugin/highlight/highlight.js"></script>
+    <script src="reveal4/plugin/zoom/zoom.js"></script>
     <script>
       // More info about config & dependencies:
       // - https://github.com/hakimel/reveal.js#configuration
       // - https://github.com/hakimel/reveal.js#dependencies
       Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        slideNumber: true,
-
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-        menu: {
-          markers: true,
-          openSlideNumber: true
-        },
-        dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
-          { src: 'reveal.js/plugin/markdown/marked.js' },
-          { src: 'reveal.js/plugin/markdown/markdown.js' },
-          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
-        ]
+        hash: true,
+        pdf: true,
+        slideNumber: 'c/t',
+        showSlideNumber: 'speaker',
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom]
       });
     </script>
     <script>
       (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
       })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
       ga('create', 'UA-45999426-3', 'auto');

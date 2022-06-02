@@ -9,23 +9,15 @@
     <meta name="description" content="Apache Spark™ Workshop | Spark SQL | Standard and User-Defined Functions">
     <meta name="author" content="Jacek Laskowski">
 
-    <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/beige.css" />
+    <link rel="stylesheet" href="reveal4/dist/reset.css">
+    <link rel="stylesheet" href="reveal4/dist/reveal.css">
+    <link rel="stylesheet" href="reveal4/dist/theme/beige.css">
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="reveal4/plugin/highlight/monokai.css">
 
     <!-- Jacek: custom formatting -->
     <link rel="stylesheet" href="revealjs-css/jacek.css">
-
-    <!-- Printing and PDF exports -->
-    <script>
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-      document.getElementsByTagName('head')[0].appendChild(link);
-    </script>
   </head>
 
   <body>
@@ -33,7 +25,8 @@
 
       <div class="footer">
         <footer style="font-size: small;">
-          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2019 / <a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
+          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2022 / <a
+            href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
           / jacek@japila.pl
         </footer>
       </div>
@@ -42,17 +35,20 @@
 
         <section class="intro" data-transition="zoom" id="home">
           <p>
-            <img width="12%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="6%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
+            <img width="10%" src="images/jacek_laskowski_20201229_200x200.png" style="border: 0">
           </p>
           <h1 style="font-size: 2.77em;">Standard and User-Defined Functions</h1>
-          <h3>Apache Spark 2.4.4 / Spark SQL</h3>
+          <h3>Apache Spark 3.2 / Spark SQL</h3>
 
-          <hr />
+          <hr>
           <h4 style="font-size: smaller;">
-            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a href="https://github.com/jaceklaskowski">GitHub</a>
+            <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a
+              href="https://stackoverflow.com/users/1305344/jacek-laskowski">StackOverflow</a> / <a
+              href="https://github.com/jaceklaskowski">GitHub</a> / <a
+              href="https://www.linkedin.com/in/jaceklaskowski/">LinkedIn</a>
             <br>
-            The "Internals" Books: <a href="https://bit.ly/apache-spark-internals">Apache Spark</a> / <a href="https://bit.ly/spark-sql-internals">Spark SQL</a> / <a href="https://bit.ly/spark-structured-streaming">Spark Structured Streaming</a>
+            The "Internals" Books: <a href="https://books.japila.pl">books.japila.pl</a>
           </h4>
         </section>
 
@@ -74,15 +70,15 @@
               ## Standard Functions <small>(1 of 2)</small>
 
               1. <!-- .element: style="font-size: 0.9em;" --> **Standard functions** (aka **native functions**) are built-in functions that transform the values of columns into new values
-                * Aggregate functions, e.g. **avg**, **count**, **sum**
-                * Collection functions, e.g. **explode**, **from_json**, **array_\***
-                * Date time functions, e.g. **current_timestamp**, **to_date**, **window**
-                * Math functions, e.g. **conv**, **factorial**, **pow**
-                * Non-aggregate functions, e.g. **array**, **broadcast**, **expr**, **lit**
-                * Sorting functions, e.g. **asc**, **asc_nulls_first**, **asc_nulls_last**
-                * String functions, e.g. **concat_ws**, **trim**, **upper**
-                * UDF functions, e.g. **callUDF**, **udf**
-                * Window functions, e.g. **rank**, **row_number**
+                  * Aggregate functions, e.g. **avg**, **count**, **sum**
+                  * Collection functions, e.g. **explode**, **from_json**, **array_\***
+                  * Date time functions, e.g. **current_timestamp**, **to_date**, **window**
+                  * Math functions, e.g. **conv**, **factorial**, **pow**
+                  * Non-aggregate functions, e.g. **array**, **broadcast**, **expr**, **lit**
+                  * Sorting functions, e.g. **asc**, **asc_nulls_first**, **asc_nulls_last**
+                  * String functions, e.g. **concat_ws**, **trim**, **upper**
+                  * UDF functions, e.g. **callUDF**, **udf**
+                  * Window functions, e.g. **rank**, **row_number**
             </textarea>
           </section>
           <section id="standard-functions-2" data-markdown>
@@ -90,14 +86,13 @@
               ## Standard Functions <small>(2 of 2)</small>
 
               1. Import **org.apache.spark.sql.functions** object
-              ```scala
-              import org.apache.spark.sql.functions._
-              ```
+                  ```scala
+                  import org.apache.spark.sql.functions._
+                  ```
               1. Use Dataset operators as "execution environment"
-                * <b>withColumn</b>, <b>select</b>, <b>filter</b>
-              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-                * [Standard Functions — functions Object](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions.html)
-              1. **Home exercise**: Read up [functions object's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
+                  * <b>withColumn</b>, <b>select</b>, <b>filter</b>
+              1. Home exercise
+                  * Read up [functions object's scaladoc](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
             </textarea>
           </section>
         </section>
@@ -107,16 +102,14 @@
             <!-- .slide: style="font-size: 85%" -->
             ## Standard Functions for Collections
 
-            1. New functions in Spark 2.4 for "Array Algebra"
-              * **array_contains**, **array_distinct**, **array_except**, **array_intersect**, **flatten**, etc.
-              * **arrays_zip**, **arrays_overlap**
-            1. New functions in Spark 2.4 for "Map Algebra"
-              * **map_concat**, **map_from_entries**, **map_keys**, **map_values**
+            1. Functions for "Array Algebra"
+                * **array_contains**, **array_distinct**, **array_except**, **array_intersect**, **flatten**, etc.
+                * **arrays_zip**, **arrays_overlap**
+            1. Functions for "Map Algebra"
+                * **map_concat**, **map_from_entries**, **map_keys**, **map_values**
             1. **explode**, **explode_outer**
             1. **posexplode**, **posexplode_outer**
             1. Review Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-              * [Standard Functions for Collections (Collection Functions)](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark-sql-functions-collection.html)
           </textarea>
         </section>
 
@@ -128,11 +121,10 @@
             1. **unix_timestamp**
             1. **to_timestamp**
             1. **window**
-            1. New functions in Spark 2.4
-              * **from_utc_timestamp**, **to_utc_timestamp**, **months_between**
+            1. **from_utc_timestamp**, **to_utc_timestamp**, **months_between**
             1. Review Spark API scaladoc for [functions object](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$)
-            1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-              * [Date and Time Functions](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions-datetime.html)
+            1. Switch to [The Internals of Spark SQL](https://books.japila.pl/spark-sql-internals/)
+                * [Date and Time Functions](https://books.japila.pl/spark-sql-internals/spark-sql-functions-datetime)
           </textarea>
         </section>
 
@@ -150,22 +142,22 @@
           <section id="user-defined-functions" data-markdown>
             <textarea data-template>
               <!-- .slide: style="font-size: 85%" -->
-              ## UDFs &mdash; User-Defined Functions
+              ## UDFs &mdash; User-Defined Functions
 
               1. User-Defined Function extends the "vocabulary" of Spark SQL
               1. Use <b>udf</b> function to define a user-defined function
-                ```scala
-                // pure Scala function
-                val myUpperFn = (input: String) => input.toUpperCase
+                  ```scala
+                  // pure Scala function
+                  val myUpperFn = (input: String) => input.toUpperCase
 
-                // user-defined function
-                val myUpper = udf(myUpperFn)
-                ```
+                  // user-defined function
+                  val myUpper = udf(myUpperFn)
+                  ```
               1. Use UDFs as standard functions
-                * <b>withColumn</b>, <b>select</b>, <b>filter</b> etc.
-                * Also **callUDF** function
-              1. Switch to [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-                * [UDFs — User-Defined Functions](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-udfs.html)
+                  * <b>withColumn</b>, <b>select</b>, <b>filter</b> etc.
+                  * Also **callUDF** function
+              1. Switch to [The Internals of Spark SQL](https://books.japila.pl/spark-sql-internals/)
+                  * [User-Defined Functions](https://books.japila.pl/spark-sql-internals/spark-sql-udfs/)
             </textarea>
           </section>
           <section data-markdown>
@@ -174,16 +166,16 @@
               ## Registering UDFs for SQL queries
 
               1. Use <b>spark.udf.register</b> to register a Scala function as a user-defined function
-                ```scala
-                // pure Scala function
-                val myUpperFn = (input: String) => input.toUpperCase
+                  ```scala
+                  // pure Scala function
+                  val myUpperFn = (input: String) => input.toUpperCase
 
-                // register Scala function as UDF
-                spark.udf.register("myUpper", myUpperFn)
+                  // register Scala function as UDF
+                  spark.udf.register("myUpper", myUpperFn)
 
-                // Use myUpper as if it were a standard function
-                sql("select myUpper(name) from people").show
-                ```
+                  // Use myUpper as if it were a standard function
+                  sql("select myUpper(name) from people").show
+                  ```
             </textarea>
           </section>
           <section data-markdown>
@@ -192,7 +184,7 @@
               ## Deterministic UserDefinedFunctions
 
               1. User-defined function is **deterministic** by default
-                * Evaluates to the same result for the same input(s)
+                  * Evaluates to the same result for the same input(s)
               1. Use **deterministic** method to find out whether it is or not
               1. Use **asNondeterministic** to disable determinism
               1. Non-deterministic expressions are not allowed in some logical operators and are excluded in some optimizations
@@ -215,9 +207,9 @@
           <textarea data-template>
             # Questions?
 
-            * Read [The Internals of Apache Spark](https://bit.ly/apache-spark-internals)
-            * Read [The Internals of Spark SQL](https://bit.ly/spark-sql-internals)
-            * Read [The Internals of Spark Structured Streaming](https://bit.ly/spark-structured-streaming)
+            * Read [The Internals of Apache Spark](https://books.japila.pl/apache-spark-internals/)
+            * Read [The Internals of Spark SQL](https://books.japila.pl/spark-sql-internals/)
+            * Read [The Internals of Spark Structured Streaming](https://books.japila.pl/spark-structured-streaming-internals/)
             * Follow [@jaceklaskowski](https://twitter.com/jaceklaskowski) on twitter
             * Upvote [my questions and answers on StackOverflow](http://stackoverflow.com/users/1305344/jacek-laskowski)
           </textarea>
@@ -226,42 +218,30 @@
       </div>
     </div>
 
-    <script src="reveal.js/lib/js/head.min.js"></script>
-    <script src="reveal.js/js/reveal.js"></script>
-
+    <script src="reveal4/dist/reveal.js"></script>
+    <script src="reveal4/plugin/notes/notes.js"></script>
+    <script src="reveal4/plugin/markdown/markdown.js"></script>
+    <script src="reveal4/plugin/highlight/highlight.js"></script>
+    <script src="reveal4/plugin/zoom/zoom.js"></script>
     <script>
       // More info about config & dependencies:
       // - https://github.com/hakimel/reveal.js#configuration
       // - https://github.com/hakimel/reveal.js#dependencies
       Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        slideNumber: true,
-
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-        menu: {
-          markers: true,
-          openSlideNumber: true
-        },
-        dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
-          { src: 'reveal.js/plugin/markdown/marked.js' },
-          { src: 'reveal.js/plugin/markdown/markdown.js' },
-          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
-        ]
+        hash: true,
+        pdf: true,
+        slideNumber: 'c/t',
+        showSlideNumber: 'speaker',
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom]
       });
     </script>
     <script>
       (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
       })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
       ga('create', 'UA-45999426-3', 'auto');
