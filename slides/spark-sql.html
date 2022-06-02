@@ -9,23 +9,15 @@
     <meta name="description" content="Apache Spark™ Workshop | Spark SQL">
     <meta name="author" content="Jacek Laskowski">
 
-    <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/beige.css">
+    <link rel="stylesheet" href="reveal4/dist/reset.css">
+    <link rel="stylesheet" href="reveal4/dist/reveal.css">
+    <link rel="stylesheet" href="reveal4/dist/theme/beige.css">
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="reveal4/plugin/highlight/monokai.css">
 
     <!-- Jacek: custom formatting -->
     <link rel="stylesheet" href="revealjs-css/jacek.css">
-
-    <!-- Printing and PDF exports -->
-    <script>
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
-      document.getElementsByTagName('head')[0].appendChild(link);
-    </script>
   </head>
 
   <body>
@@ -33,7 +25,7 @@
 
       <div class="footer">
         <footer style="font-size: small;">
-          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2020 / <a
+          &copy; <a href="https://medium.com/@jaceklaskowski">Jacek Laskowski</a> 2022 / <a
             href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a>
           / jacek@japila.pl
         </footer>
@@ -43,12 +35,11 @@
 
         <section class="intro" data-transition="zoom" id="home">
           <p>
-            <img width="5%" style="background:none; border:none; box-shadow:none;" data-src="images/scala-logo.png">
             <img width="17%" style="background:none; border:none; box-shadow:none;" data-src="images/spark-logo.png">
-            <img width="8%" src="images/jacek_laskowski_20141201_512px.png" style="border: 0">
+            <img width="10%" src="images/jacek_laskowski_20201229_200x200.png" style="border: 0">
           </p>
           <h1>Spark SQL</h1>
-          <h3>Apache Spark 3.0.1</h3>
+          <h3>Apache Spark 3.2</h3>
 
           <br><br>
           <h4 style="font-size: smaller;">
@@ -57,10 +48,7 @@
               href="https://github.com/jaceklaskowski">GitHub</a> / <a
               href="https://www.linkedin.com/in/jaceklaskowski/">LinkedIn</a>
             <br>
-            The "Internals" Books: <a href="https://books.japila.pl/apache-spark-internals">Apache Spark</a> / <a
-              href="https://jaceklaskowski.github.io/mastering-spark-sql-book/">Spark SQL</a> / <a
-              href="https://jaceklaskowski.github.io/spark-structured-streaming-book/">Spark Structured Streaming</a> / <a
-              href="https://books.japila.pl/delta-lake-internals">Delta Lake</a>
+            The "Internals" Books: <a href="https://books.japila.pl">books.japila.pl</a>
           </h4>
         </section>
 
@@ -103,9 +91,9 @@
                 <li>Reducing garbage collections</li>
               </ul>
             </li>
-            <li>Switch to <a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/">The Internals of Spark SQL</a>
+            <li>Switch to <a href="https://books.japila.pl/spark-sql-internals/">The Internals of Spark SQL</a>
               <ul>
-                <li><a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/spark-sql/">Spark SQL &mdash; Structured Data Processing with Relational Queries on Massive Scale</a></li>
+                <li><a href="https://books.japila.pl/spark-sql-internals/overview/">Spark SQL &mdash; Structured Data Processing with Relational Queries on Massive Scale</a></li>
               </ul>
             </li>
           </ol>
@@ -118,9 +106,9 @@
             <li>Use <b>SparkSession.builder</b> Fluent API to build one</li>
             <li>Loading datasets using <b>load</b> <small>discussed later</small></li>
             <li>spark-shell gives you one instance as <b>spark</b></li>
-            <li>Switch to <a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/">The Internals of Spark SQL</a>
+            <li>Switch to <a href="https://books.japila.pl/spark-sql-internals/">The Internals of Spark SQL</a>
               <ul>
-                <li><a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/SparkSession/">SparkSession &mdash; The Entry Point to Spark SQL</a></li>
+                <li><a href="https://books.japila.pl/spark-sql-internals/SparkSession/">SparkSession &mdash; The Entry Point to Spark SQL</a></li>
               </ul>
             </li>
           </ol>
@@ -128,7 +116,7 @@
 
         <section>
           <section style="font-size: 85%;" id="datasource">
-            <h2>DataSource API &mdash; Reading and Writing Datasets</h2>
+            <h2>DataSource API &mdash; Reading and Writing Datasets</h2>
             <ol>
               <li>Loading datasets using <b>SparkSession.read</b>
                 <ul>
@@ -142,9 +130,9 @@
               </li>
               <li>Loading and writing operators create source and sink nodes in a data flow graph</li>
               <li>Pluggable API</li>
-              <li>Switch to <a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/">The Internals of Spark SQL</a>
+              <li>Switch to <a href="https://books.japila.pl/spark-sql-internals/">The Internals of Spark SQL</a>
                 <ul>
-                  <li><a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/spark-sql-datasource-api/">DataSource API &mdash; Managing Datasets in External Data Sources</a></li>
+                  <li><a href="https://books.japila.pl/spark-sql-internals/DataSource/">DataSource &mdash; Pluggable Data Provider Framework</a></li>
                 </ul>
               </li>
             </ol>
@@ -165,9 +153,9 @@
                   <li>format-specific loading methods <small>discussed on next slide</small></li>
                 </ol>
               </li>
-              <li>Switch to <a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/">The Internals of Spark SQL</a>
+              <li>Switch to <a href="https://books.japila.pl/spark-sql-internals/">The Internals of Spark SQL</a>
                 <ul>
-                  <li><a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/DataFrameReader/">DataFrameReader &mdash; Reading Datasets from External Data Sources</a></li>
+                  <li><a href="https://books.japila.pl/spark-sql-internals/DataFrameReader/">DataFrameReader &mdash; Reading Datasets from External Data Sources</a></li>
                 </ul>
               </li>
             </ol>
@@ -205,9 +193,9 @@
                   <li><b>insertInto</b>, <b>save</b> and <b>saveAsTable</b></li>
                 </ol>
               </li>
-              <li>Switch to <a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/">The Internals of Spark SQL</a>
+              <li>Switch to <a href="https://books.japila.pl/spark-sql-internals/">The Internals of Spark SQL</a>
                 <ul>
-                  <li><a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/spark-sql-DataFrameWriter/">DataFrameWriter</a></li>
+                  <li><a href="https://books.japila.pl/spark-sql-internals/DataFrameWriter/">DataFrameWriter</a></li>
                 </ul>
               </li>
             </ol>
@@ -228,9 +216,9 @@
   val schema = Encoders.product[Person].schema
               </code></pre>
             </li>
-            <li>Switch to <a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/">The Internals of Spark SQL</a>
+            <li>Switch to <a href="https://books.japila.pl/spark-sql-internals/">The Internals of Spark SQL</a>
               <ul>
-                <li><a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/spark-sql-schema/">Schema &mdash; Structure of Data</a></li>
+                <li><a href="https://books.japila.pl/spark-sql-internals/types/StructType/">StructType</a></li>
               </ul>
             </li>
           </ol>
@@ -243,10 +231,9 @@
             <li><b>Seq(...).toDS</b> for local Datasets</li>
             <li>Use <b>import spark.implicits._</b></li>
             <li>All Scala Collections supported (almost)</li>
-            <li>Switch to <a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/">The Internals of Spark SQL</a>
+            <li>Switch to <a href="https://books.japila.pl/spark-sql-internals/">The Internals of Spark SQL</a>
               <ul>
-                <li><a href="https://jaceklaskowski.github.io/mastering-spark-sql-book/spark-sql-SparkSession-implicits/">Implicit
-                    Conversions &mdash; implicits object</a></li>
+                <li><a href="https://books.japila.pl/spark-sql-internals/implicits/">implicits Object &mdash; Implicits Conversions</a></li>
               </ul>
             </li>
           </ol>
@@ -309,42 +296,30 @@ spark
       </div>
     </div>
 
-    <script src="reveal.js/lib/js/head.min.js"></script>
-    <script src="reveal.js/js/reveal.js"></script>
-
+    <script src="reveal4/dist/reveal.js"></script>
+    <script src="reveal4/plugin/notes/notes.js"></script>
+    <script src="reveal4/plugin/markdown/markdown.js"></script>
+    <script src="reveal4/plugin/highlight/highlight.js"></script>
+    <script src="reveal4/plugin/zoom/zoom.js"></script>
     <script>
       // More info about config & dependencies:
       // - https://github.com/hakimel/reveal.js#configuration
       // - https://github.com/hakimel/reveal.js#dependencies
       Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        slideNumber: true,
-
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-        menu: {
-          markers: true,
-          openSlideNumber: true
-        },
-        dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
-          { src: 'reveal.js/plugin/markdown/marked.js' },
-          { src: 'reveal.js/plugin/markdown/markdown.js' },
-          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-          { src: 'reveal.js/plugin/notes/notes.js', async: true },
-          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
-        ]
+        hash: true,
+        pdf: true,
+        slideNumber: 'c/t',
+        showSlideNumber: 'speaker',
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom]
       });
     </script>
     <script>
       (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
       })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
       ga('create', 'UA-45999426-3', 'auto');
