@@ -18,7 +18,7 @@ Think about using non-deterministic "features" like the current timestamp or a r
 
 ```scala
 // Use .asNondeterministic to see the change
-val my_date = udf { (n: Long) => util.Random.nextInt() }
+val randgen = udf { (n: Long) => util.Random.nextInt() }
 spark
   .range(1)
   .withColumn("randgen", randgen('id))
